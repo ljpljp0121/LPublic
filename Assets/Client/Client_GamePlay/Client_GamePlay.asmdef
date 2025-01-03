@@ -1,0 +1,18 @@
+{
+    "name": "Client_GamePlay",
+    "rootNamespace": "",
+    "references": [
+        "GUID:a3e921f58af3d9447a80e1bb70bff132",
+        "GUID:0f1a01b1055ba2b46a4501f8db73ea13",
+        "GUID:2a81c6962524d424a8ef5072bd3b0fa0"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,0 +1,20 @@
+{
+    "name": "Client_UI",
+    "rootNamespace": "",
+    "references": [
+        "GUID:d29df7111ebd8c041bcbcd2a6a22083b",
+        "GUID:a3e921f58af3d9447a80e1bb70bff132",
+        "GUID:0f1a01b1055ba2b46a4501f8db73ea13",
+        "GUID:2a81c6962524d424a8ef5072bd3b0fa0",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
