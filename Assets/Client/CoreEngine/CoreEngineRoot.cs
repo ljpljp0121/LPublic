@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using HybridCLR;
 using UnityEngine;
 using YooAsset;
@@ -18,7 +19,6 @@ public class CoreEngineRoot : MonoBehaviour
         "mscorlib.dll",
         "System.dll",
         "System.Core.dll",
-        "CoreEngine.dll",
     };
     public static Dictionary<string, byte[]> assetDataDic = new Dictionary<string, byte[]>();
 
@@ -66,7 +66,7 @@ public class CoreEngineRoot : MonoBehaviour
 
     private void StartGame()
     {
-        LoadMetadataForAOTAssemblies();
+        //LoadMetadataForAOTAssemblies();
 #if !UNITY_EDITOR
         client_Logic = Assembly.Load(ReadBytesFromStreamingAssets("Client_Logic.dll"));
         client_GamePlay = Assembly.Load(ReadBytesFromStreamingAssets("Client_GamePlay.dll"));
