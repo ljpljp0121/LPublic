@@ -1,9 +1,9 @@
 using TMPro;
 using UnityEngine;
 
-public class TestHotUpdate
+public class TestHotUpdate : MonoBehaviour
 {
-    public  static void Run()
+    void Start()
     {
         Debug.Log("Hello, HybridCLR");
     }

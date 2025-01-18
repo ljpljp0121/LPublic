@@ -18,4 +18,9 @@ public static class LogSystem
     {
         Debug.LogError(message);
     }
+
+    public static void Warning(string message)
+    {
+        Debug.LogWarning(message);
+    }
 }

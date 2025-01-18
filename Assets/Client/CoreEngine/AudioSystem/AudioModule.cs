@@ -3,13 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class AudioModule : MonoBehaviour
 {
     private static GameObjectPoolModule poolModule;
 
-    [SerializeField] private AudioSource BgAudioSource;
-    [SerializeField] private GameObject EffectAudioPlayPrefab;
+    private AudioSource bgAudioSource;
+    private GameObject effectAudioPlayPrefab;
     [SerializeField] private int EffectAudioPoolNum = 20;
     // 场景中生效的所有特效音乐播放器
     private List<AudioSource> audioPlayList;
@@ -108,7 +109,7 @@ public class AudioModule : MonoBehaviour
     /// </summary>
     private void UpdateBGAudioPlay()
     {
-        BgAudioSource.volume = bgVolume * globalVolume;
+        bgAudioSource.volume = bgVolume * globalVolume;
     }
 
     /// <summary>
@@ -157,7 +158,7 @@ public class AudioModule : MonoBehaviour
     /// </summary>
     private void UpdateMute()
     {
-        BgAudioSource.mute = isMute;
+        bgAudioSource.mute = isMute;
         UpdateEffectAudioPlay();
     }
 
@@ -166,7 +167,7 @@ public class AudioModule : MonoBehaviour
     /// </summary>
     private void UpdateLoop()
     {
-        BgAudioSource.loop = isLoop;
+        bgAudioSource.loop = isLoop;
     }
 
     /// <summary>
@@ -176,11 +177,11 @@ public class AudioModule : MonoBehaviour
     {
         if (isPause)
         {
-            BgAudioSource.Pause();
+            bgAudioSource.Pause();
         }
         else
         {
-            BgAudioSource.UnPause();
+            bgAudioSource.UnPause();
         }
     }
 
@@ -188,11 +189,14 @@ public class AudioModule : MonoBehaviour
 
     public void Init()
     {
-        Transform poolRoot = new GameObject("AudioPlayerPoolRoot").transform;
+        bgAudioSource = GetComponent<AudioSource>();
+        Transform poolRoot = new GameObject("AudioPoolRoot").transform;
         poolRoot.SetParent(transform);
         poolModule = new GameObjectPoolModule();
         poolModule.Init(poolRoot);
-        poolModule.InitObjectPool(EffectAudioPlayPrefab, -1, EffectAudioPoolNum);
+        effectAudioPlayPrefab = new GameObject("AudioPlay");
+        effectAudioPlayPrefab.AddComponent<AudioSource>();
+        poolModule.InitObjectPool(effectAudioPlayPrefab, -1, EffectAudioPoolNum);
         audioPlayList = new List<AudioSource>(EffectAudioPoolNum);
         audioPlayRoot = new GameObject("AudioPlayRoot").transform;
         audioPlayRoot.SetParent(transform);
@@ -226,11 +230,11 @@ public class AudioModule : MonoBehaviour
             yield return CoroutineTool.WaitForFrames();
             if (!isPause) currTime += Time.deltaTime;
             float ratio = Mathf.Lerp(1, 0, currTime / fadeOutTime);
-            BgAudioSource.volume = bgVolume * globalVolume * ratio;
+            bgAudioSource.volume = bgVolume * globalVolume * ratio;
         }
 
-        BgAudioSource.clip = clip;
-        BgAudioSource.Play();
+        bgAudioSource.clip = clip;
+        bgAudioSource.Play();
         currTime = 0;
         // 提高音量，也就是淡入
         while (currTime < fadeInTime)
@@ -238,7 +242,7 @@ public class AudioModule : MonoBehaviour
             yield return CoroutineTool.WaitForFrames();
             if (!isPause) currTime += Time.deltaTime;
             float ratio = Mathf.InverseLerp(0, 1, currTime / fadeInTime);
-            BgAudioSource.volume = bgVolume * globalVolume * ratio;
+            bgAudioSource.volume = bgVolume * globalVolume * ratio;
         }
         fadeCoroutine = null;
     }
@@ -279,8 +283,8 @@ public class AudioModule : MonoBehaviour
     {
         if (bgWithClipsCoroutine != null) MonoSystem.EndCoroutine(bgWithClipsCoroutine);
         if (fadeCoroutine != null) MonoSystem.EndCoroutine(fadeCoroutine);
-        BgAudioSource.Stop();
-        BgAudioSource.clip = null;
+        bgAudioSource.Stop();
+        bgAudioSource.clip = null;
     }
 
     public void PauseBgAudio()
@@ -309,8 +313,8 @@ public class AudioModule : MonoBehaviour
         GameObject audioPlay = poolModule.GetObject("AudioPlay", audioPlayRoot);
         if (audioPlay.IsNull())
         {
-            audioPlay = GameObject.Instantiate(EffectAudioPlayPrefab, audioPlayRoot);
-            audioPlay.name = EffectAudioPlayPrefab.name;
+            audioPlay = GameObject.Instantiate(effectAudioPlayPrefab, audioPlayRoot);
+            audioPlay.name = effectAudioPlayPrefab.name;
         }
         AudioSource audioSource = audioPlay.GetComponent<AudioSource>();
         SetEffectAudioPlay(audioSource, is3D ? 1f : 0f);
@@ -321,12 +325,12 @@ public class AudioModule : MonoBehaviour
     /// <summary>
     /// 回收播放器
     /// </summary>
-    private void RecycleAudioPlay(AudioSource audioSource, AudioClip clip, bool autoReleaseClip, Action callBak)
+    private void RecycleAudioPlay(AudioSource audioSource, AudioClip clip, Action callBak)
     {
-        StartCoroutine(DoRecycleAudioPlay(audioSource, clip, autoReleaseClip, callBak));
+        StartCoroutine(DoRecycleAudioPlay(audioSource, clip, callBak));
     }
 
-    private IEnumerator DoRecycleAudioPlay(AudioSource audioSource, AudioClip clip, bool autoReleaseClip,
+    private IEnumerator DoRecycleAudioPlay(AudioSource audioSource, AudioClip clip,
         Action callBak)
     {
         // 延迟 Clip的长度（秒）
@@ -336,12 +340,11 @@ public class AudioModule : MonoBehaviour
         {
             audioPlayList.Remove(audioSource);
             poolModule.PushObject(audioSource.gameObject);
-            if (autoReleaseClip) ResSystem.UnloadAsset(clip);
             callBak?.Invoke();
         }
     }
 
-    public void PlayOneShot(AudioClip clip, Component component = null, bool autoReleaseClip = false,
+    public void PlayOneShot(AudioClip clip, Component component = null,
         float volumeScale = 1, bool is3d = true, Action callBack = null)
     {
         // 初始化音乐播放器
@@ -358,7 +361,7 @@ public class AudioModule : MonoBehaviour
         audioSource.PlayOneShot(clip, volumeScale);
         // 播放器回收以及回调函数
         callBack += () => PlayOverRemoveOwnerDestroyAction(component); // 播放结束时移除宿主销毁Action
-        RecycleAudioPlay(audioSource, clip, autoReleaseClip, callBack);
+        RecycleAudioPlay(audioSource, clip, callBack);
     }
 
     // 宿主销毁时，提前回收
@@ -373,7 +376,7 @@ public class AudioModule : MonoBehaviour
         if (owner != null) owner.RemoveOnDestroy<AudioSource>(OnOwnerDestroy);
     }
 
-    public void PlayOneShot(AudioClip clip, Vector3 position, bool autoReleaseClip = false, float volumeScale = 1,
+    public void PlayOneShot(AudioClip clip, Vector3 position, float volumeScale = 1,
         bool is3d = true, Action callBack = null)
     {
         // 初始化音乐播放器
@@ -383,7 +386,7 @@ public class AudioModule : MonoBehaviour
         // 播放一次音效
         audioSource.PlayOneShot(clip, volumeScale);
         // 播放器回收以及回调函数
-        RecycleAudioPlay(audioSource, clip, autoReleaseClip, callBack);
+        RecycleAudioPlay(audioSource, clip, callBack);
     }
 
     #endregion

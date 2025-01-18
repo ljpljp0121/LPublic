@@ -1,0 +1,22 @@
+ManifestFileVersion: 0
+CRC: 4147351981
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: defaultpackage_assets_bundle_dll_client_gameplay_dll.bundle
+      Dependencies: {}
+    Info_1:
+      Name: defaultpackage_assets_bundle_dll_client_logic_dll.bundle
+      Dependencies: {}
+    Info_2:
+      Name: defaultpackage_assets_bundle_dll_client_ui_dll.bundle
+      Dependencies: {}
+    Info_3:
+      Name: defaultpackage_assets_bundle_dll_mscorlib_dll.bundle
+      Dependencies: {}
+    Info_4:
+      Name: defaultpackage_assets_bundle_dll_system_core_dll.bundle
+      Dependencies: {}
+    Info_5:
+      Name: defaultpackage_assets_bundle_dll_system_dll.bundle
+      Dependencies: {}

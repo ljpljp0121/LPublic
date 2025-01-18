@@ -13,7 +13,7 @@ public static class TableSystem
 
     private static JSONNode LoadTable(string tableName)
     {
-        var _textAsset = ResSystem.LoadAsset<TextAsset>(string.Format("TableData/{0}.json", tableName));
+        var _textAsset = AssetSystem.LoadAsset<TextAsset>(string.Format("TableData/{0}.json", tableName));
         return JSON.Parse(_textAsset.text);
     }
 }

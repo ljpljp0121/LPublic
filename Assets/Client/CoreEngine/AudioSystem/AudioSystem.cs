@@ -8,6 +8,13 @@ public static class AudioSystem
     public static void Init()
     {
         audioModule = CoreEngineRoot.RootTransform.GetComponentInChildren<AudioModule>();
+        if (audioModule == null)
+        {
+            GameObject audioSystemObj = new GameObject("AudioSystem");
+            audioSystemObj.transform.SetParent(CoreEngineRoot.RootTransform);
+            audioSystemObj.AddComponent<AudioSource>();
+            audioModule = audioSystemObj.AddComponent<AudioModule>();
+        }
         audioModule.Init();
     }
 
@@ -88,9 +95,9 @@ public static class AudioSystem
     /// <param name="volumeScale">音量 0-1</param>
     /// <param name="is3d">是否3D</param>
     /// <param name="callBack">回调函数-在音乐播放完成后执行</param>
-    public static void PlayOneShot(AudioClip clip, Component component = null, bool autoReleaseClip = false,
+    public static void PlayOneShot(AudioClip clip, Component component = null,
         float volumeScale = 1, bool is3d = true, Action callBack = null)
-        => audioModule.PlayOneShot(clip, component, autoReleaseClip, volumeScale, is3d, callBack);
+        => audioModule.PlayOneShot(clip, component, volumeScale, is3d, callBack);
 
     /// <summary>
     /// 播放一次特效音乐
@@ -101,7 +108,7 @@ public static class AudioSystem
     /// <param name="volumeScale">音量 0-1</param>
     /// <param name="is3d">是否3D</param>
     /// <param name="callBack">回调函数-在音乐播放完成后执行</param>
-    public static void PlayOneShot(AudioClip clip, Vector3 position, bool autoReleaseClip = false,
+    public static void PlayOneShot(AudioClip clip, Vector3 position,
         float volumeScale = 1, bool is3d = true, Action callBack = null)
-        => audioModule.PlayOneShot(clip, position, autoReleaseClip, volumeScale, is3d, callBack);
+        => audioModule.PlayOneShot(clip, position, volumeScale, is3d, callBack);
 }

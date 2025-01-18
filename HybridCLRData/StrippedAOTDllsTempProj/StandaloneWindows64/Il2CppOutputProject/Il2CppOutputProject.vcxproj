@@ -42,7 +42,673 @@
     <UnityPlayerConfiguration>Master</UnityPlayerConfiguration>
   </PropertyGroup>
   <ItemGroup>
-    <ClCompile Include="Source\dummy.cpp">
+    <ClCompile Include="Source\Assembly-CSharp.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Assembly-CSharp__1.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\CoreEngine.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\GenericMethods.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\GenericMethods__1.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\GenericMethods__10.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\GenericMethods__11.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\GenericMethods__12.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\GenericMethods__13.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\GenericMethods__14.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\GenericMethods__15.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\GenericMethods__16.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\GenericMethods__17.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\GenericMethods__2.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\GenericMethods__3.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\GenericMethods__4.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\GenericMethods__5.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\GenericMethods__6.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\GenericMethods__7.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\GenericMethods__8.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\GenericMethods__9.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__1.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__10.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__11.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__12.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__13.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__14.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__15.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__16.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__17.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__18.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__19.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__2.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__20.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__21.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__22.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__23.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__24.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__25.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__26.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__27.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__28.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__29.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__3.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__30.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__31.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__32.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__33.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__34.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__35.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__36.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__37.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__38.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__39.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__4.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__40.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__41.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__42.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__43.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__44.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__45.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__46.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__47.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__48.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__49.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__5.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__50.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__51.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__52.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__53.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__54.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__55.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__56.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__57.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__58.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__59.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__6.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__60.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__61.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__62.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__63.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__64.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__65.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__66.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__67.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__68.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__69.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__7.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__70.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__71.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__72.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__73.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__74.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__75.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__76.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__77.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__8.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__9.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\HybridCLR.Runtime.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Il2CppCCalculateFieldValues.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Il2CppCCalculateFieldValues1.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Il2CppCCalculateFieldValues2.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Il2CppCCalculateTypeValues.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Il2CppCCalculateTypeValues1.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Il2CppCCFieldValuesTable.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Il2CppCCTypeValuesTable.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Il2CppCodeRegistration.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Il2CppInteropDataTable.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Il2CppInvokerTable.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Il2CppReversePInvokeWrapperTable.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Il2CppUnresolvedIndirectCallStubs.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Luban.Runtime.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Mono.Security.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\mscorlib.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\mscorlib__1.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\mscorlib__10.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\mscorlib__11.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\mscorlib__12.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\mscorlib__13.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\mscorlib__14.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\mscorlib__15.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\mscorlib__16.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\mscorlib__17.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\mscorlib__18.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\mscorlib__19.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\mscorlib__2.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\mscorlib__3.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\mscorlib__4.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\mscorlib__5.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\mscorlib__6.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\mscorlib__7.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\mscorlib__8.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\mscorlib__9.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Sirenix.OdinInspector.Attributes.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Sirenix.OdinInspector.Modules.Unity.Addressables.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Sirenix.Serialization.Config.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Sirenix.Serialization.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Sirenix.Serialization__1.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Sirenix.Serialization__2.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Sirenix.Serialization__3.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Sirenix.Serialization__4.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Sirenix.Utilities.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Sirenix.Utilities__1.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\System.Configuration.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\System.Core.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\System.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\System.Numerics.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\System.Xml.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\System__1.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\System__2.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\System__3.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Unity.Addressables.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Unity.Addressables__1.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Unity.Burst.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Unity.Burst.Unsafe.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Unity.Burst__1.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Unity.Burst__2.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Unity.Mathematics.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Unity.Mathematics__1.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Unity.Mathematics__10.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Unity.Mathematics__11.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Unity.Mathematics__2.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Unity.Mathematics__3.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Unity.Mathematics__4.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Unity.Mathematics__5.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Unity.Mathematics__6.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Unity.Mathematics__7.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Unity.Mathematics__8.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Unity.Mathematics__9.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Unity.RenderPipeline.Universal.ShaderLibrary.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Unity.RenderPipelines.Core.Runtime.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Unity.RenderPipelines.Core.Runtime__1.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Unity.RenderPipelines.Core.Runtime__2.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Unity.RenderPipelines.Core.Runtime__3.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Unity.RenderPipelines.Core.Runtime__4.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Unity.RenderPipelines.Core.Runtime__5.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Unity.RenderPipelines.Core.Runtime__6.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Unity.RenderPipelines.Universal.Runtime.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Unity.RenderPipelines.Universal.Runtime__1.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Unity.RenderPipelines.Universal.Runtime__10.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Unity.RenderPipelines.Universal.Runtime__2.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Unity.RenderPipelines.Universal.Runtime__3.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Unity.RenderPipelines.Universal.Runtime__4.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Unity.RenderPipelines.Universal.Runtime__5.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Unity.RenderPipelines.Universal.Runtime__6.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Unity.RenderPipelines.Universal.Runtime__7.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Unity.RenderPipelines.Universal.Runtime__8.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Unity.RenderPipelines.Universal.Runtime__9.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Unity.ResourceManager.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Unity.TextMeshPro.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Unity.TextMeshPro__1.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Unity.TextMeshPro__2.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Unity.TextMeshPro__3.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Unity.TextMeshPro__4.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Unity.TextMeshPro__5.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Unity.TextMeshPro__6.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.AIModule.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.AndroidJNIModule.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.AnimationModule.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.AssetBundleModule.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.AudioModule.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.CoreModule.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.CoreModule__1.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.CoreModule__2.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.CoreModule__3.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.DirectorModule.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.GridModule.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.IMGUIModule.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.IMGUIModule__1.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.InputLegacyModule.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.InputModule.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.JSONSerializeModule.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.ParticleSystemModule.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.Physics2DModule.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.PhysicsModule.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.PropertiesModule.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.SharedInternalsModule.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.SpriteMaskModule.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.SpriteShapeModule.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.SubsystemsModule.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.TerrainModule.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.TextCoreFontEngineModule.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.TextCoreTextEngineModule.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.TextCoreTextEngineModule__1.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.TextCoreTextEngineModule__2.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.TextCoreTextEngineModule__3.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.TextRenderingModule.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.TilemapModule.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.UI.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.UIElementsModule.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.UIElementsModule__1.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.UIElementsModule__10.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.UIElementsModule__11.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.UIElementsModule__12.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.UIElementsModule__13.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.UIElementsModule__14.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.UIElementsModule__2.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.UIElementsModule__3.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.UIElementsModule__4.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.UIElementsModule__5.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.UIElementsModule__6.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.UIElementsModule__7.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.UIElementsModule__8.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.UIElementsModule__9.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.UIModule.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.UI__1.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.UI__2.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.UI__3.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.UnityAnalyticsModule.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.UnityWebRequestAssetBundleModule.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.UnityWebRequestModule.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.VFXModule.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.VideoModule.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.VRModule.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.XRModule.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\YooAsset.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\YooAsset__1.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\YooAsset__2.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\__Generated.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Assembly-CSharp_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\CoreEngine_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\HybridCLR.Runtime_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\Il2CppGenericAdjustorThunkTable.c">
+    </ClCompile>
+    <ClCompile Include="Source\Il2CppGenericClassTable.c">
+    </ClCompile>
+    <ClCompile Include="Source\Il2CppGenericInstDefinitions.c">
+    </ClCompile>
+    <ClCompile Include="Source\Il2CppGenericMethodDefinitions.c">
+    </ClCompile>
+    <ClCompile Include="Source\Il2CppGenericMethodPointerTable.c">
+    </ClCompile>
+    <ClCompile Include="Source\Il2CppGenericMethodTable.c">
+    </ClCompile>
+    <ClCompile Include="Source\Il2CppMetadataRegistration.c">
+    </ClCompile>
+    <ClCompile Include="Source\Il2CppMetadataUsage.c">
+    </ClCompile>
+    <ClCompile Include="Source\Il2CppRgctxTable.c">
+    </ClCompile>
+    <ClCompile Include="Source\Il2CppTypeDefinitions.c">
+    </ClCompile>
+    <ClCompile Include="Source\Luban.Runtime_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\Mono.Security_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\mscorlib_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\Sirenix.OdinInspector.Attributes_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\Sirenix.OdinInspector.Modules.Unity.Addressables_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\Sirenix.Serialization.Config_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\Sirenix.Serialization_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\Sirenix.Utilities_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\System.Configuration_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\System.Core_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\System.Numerics_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\System.Xml_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\System_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\Unity.Addressables_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\Unity.Burst.Unsafe_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\Unity.Burst_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\Unity.Mathematics_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\Unity.RenderPipeline.Universal.ShaderLibrary_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\Unity.RenderPipelines.Core.Runtime_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\Unity.RenderPipelines.Universal.Runtime_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\Unity.ResourceManager_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\Unity.TextMeshPro_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.AIModule_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.AndroidJNIModule_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.AnimationModule_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.AssetBundleModule_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.AudioModule_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.CoreModule_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.DirectorModule_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.GridModule_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.IMGUIModule_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.InputLegacyModule_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.InputModule_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.JSONSerializeModule_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.ParticleSystemModule_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.Physics2DModule_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.PhysicsModule_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.PropertiesModule_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.SharedInternalsModule_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.SpriteMaskModule_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.SpriteShapeModule_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.SubsystemsModule_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.TerrainModule_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.TextCoreFontEngineModule_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.TextCoreTextEngineModule_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.TextRenderingModule_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.TilemapModule_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.UIElementsModule_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.UIModule_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.UI_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.UnityAnalyticsModule_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.UnityWebRequestAssetBundleModule_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.UnityWebRequestModule_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.VFXModule_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.VideoModule_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.VRModule_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.XRModule_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\YooAsset_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\__Generated_CodeGen.c">
     </ClCompile>
     <ClInclude Include="IL2CPP\external\baselib\Include\Baselib.h">
     </ClInclude>

@@ -526,13 +526,13 @@ public static class EventListenerExtension
 
     #region 资源相关事件
 
-    public static void OnReleaseAddressableAsset<TEventArg>(this Component com, Action<GameObject, TEventArg> action,
+    public static void OnReleaseAsset<TEventArg>(this Component com, Action<GameObject, TEventArg> action,
         TEventArg args = default(TEventArg))
     {
         AddEventListener(com, EventType.OnReleaseAddressableAsset, action, args);
     }
 
-    public static void OnReleaseAddressableAsset(this Component com, Action<GameObject> action)
+    public static void OnReleaseAsset(this Component com, Action<string> action)
     {
         AddEventListener(com, EventType.OnReleaseAddressableAsset, action);
     }

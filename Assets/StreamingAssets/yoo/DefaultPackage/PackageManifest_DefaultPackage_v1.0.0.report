@@ -1,0 +1,171 @@
+{
+    "Summary": {
+        "YooVersion": "2.2.9",
+        "UnityVersion": "2022.3.27f1c1",
+        "BuildDate": "2025/1/17 0:12:29",
+        "BuildSeconds": 11,
+        "BuildTarget": 19,
+        "BuildPipeline": "BuiltinBuildPipeline",
+        "BuildBundleType": 2,
+        "BuildPackageName": "DefaultPackage",
+        "BuildPackageVersion": "v1.0.0",
+        "BuildPackageNote": "2025/1/17 0:12:17",
+        "UniqueBundleName": true,
+        "EnableAddressable": false,
+        "LocationToLower": false,
+        "IncludeAssetGUID": false,
+        "AutoCollectShaders": false,
+        "IgnoreRuleName": "YooAsset.Editor.NormalIgnoreRule",
+        "ClearBuildCacheFiles": false,
+        "UseAssetDependencyDB": false,
+        "EnableSharePackRule": true,
+        "EncryptionClassName": "null",
+        "FileNameStyle": 0,
+        "CompressOption": 2,
+        "DisableWriteTypeTree": false,
+        "IgnoreTypeTreeChanges": true,
+        "AssetFileTotalCount": 6,
+        "MainAssetTotalCount": 6,
+        "AllBundleTotalCount": 6,
+        "AllBundleTotalSize": 1041665,
+        "EncryptedBundleTotalCount": 0,
+        "EncryptedBundleTotalSize": 0
+    },
+    "AssetInfos": [
+        {
+            "Address": "",
+            "AssetPath": "Assets/Bundle/Dll/Client_GamePlay.dll.bytes",
+            "AssetGUID": "c3b93846753421743944aa0748cb59ee",
+            "AssetTags": [],
+            "MainBundleName": "defaultpackage_assets_bundle_dll_client_gameplay_dll.bundle",
+            "MainBundleSize": 3429,
+            "DependAssets": []
+        },
+        {
+            "Address": "",
+            "AssetPath": "Assets/Bundle/Dll/Client_Logic.dll.bytes",
+            "AssetGUID": "4402d702c0b6b964aa427fe045b8cf82",
+            "AssetTags": [],
+            "MainBundleName": "defaultpackage_assets_bundle_dll_client_logic_dll.bundle",
+            "MainBundleSize": 3709,
+            "DependAssets": []
+        },
+        {
+            "Address": "",
+            "AssetPath": "Assets/Bundle/Dll/Client_UI.dll.bytes",
+            "AssetGUID": "1ba43ffa94d95fc48b365147250e5a8e",
+            "AssetTags": [],
+            "MainBundleName": "defaultpackage_assets_bundle_dll_client_ui_dll.bundle",
+            "MainBundleSize": 3560,
+            "DependAssets": []
+        },
+        {
+            "Address": "",
+            "AssetPath": "Assets/Bundle/Dll/mscorlib.dll.bytes",
+            "AssetGUID": "617206e1f5c4e124d81f583a375e5d19",
+            "AssetTags": [],
+            "MainBundleName": "defaultpackage_assets_bundle_dll_mscorlib_dll.bundle",
+            "MainBundleSize": 896572,
+            "DependAssets": []
+        },
+        {
+            "Address": "",
+            "AssetPath": "Assets/Bundle/Dll/System.Core.dll.bytes",
+            "AssetGUID": "8d008ec8b6b3391469d834648cc60575",
+            "AssetTags": [],
+            "MainBundleName": "defaultpackage_assets_bundle_dll_system_core_dll.bundle",
+            "MainBundleSize": 23048,
+            "DependAssets": []
+        },
+        {
+            "Address": "",
+            "AssetPath": "Assets/Bundle/Dll/System.dll.bytes",
+            "AssetGUID": "8eeb6dbb092616248ba9b73b9af6bb90",
+            "AssetTags": [],
+            "MainBundleName": "defaultpackage_assets_bundle_dll_system_dll.bundle",
+            "MainBundleSize": 111347,
+            "DependAssets": []
+        }
+    ],
+    "BundleInfos": [
+        {
+            "BundleName": "defaultpackage_assets_bundle_dll_client_gameplay_dll.bundle",
+            "FileName": "a3b6d8d048900f3b6cdffd27c4bfdd45.bundle",
+            "FileHash": "a3b6d8d048900f3b6cdffd27c4bfdd45",
+            "FileCRC": "979a5976",
+            "FileSize": 3429,
+            "Encrypted": false,
+            "Tags": [],
+            "DependBundles": [],
+            "AllBuiltinAssets": [
+                "Assets/Bundle/Dll/Client_GamePlay.dll.bytes"
+            ]
+        },
+        {
+            "BundleName": "defaultpackage_assets_bundle_dll_client_logic_dll.bundle",
+            "FileName": "0fd7524b340977f9a74ed178215b28ee.bundle",
+            "FileHash": "0fd7524b340977f9a74ed178215b28ee",
+            "FileCRC": "bac71130",
+            "FileSize": 3709,
+            "Encrypted": false,
+            "Tags": [],
+            "DependBundles": [],
+            "AllBuiltinAssets": [
+                "Assets/Bundle/Dll/Client_Logic.dll.bytes"
+            ]
+        },
+        {
+            "BundleName": "defaultpackage_assets_bundle_dll_client_ui_dll.bundle",
+            "FileName": "b81fc76e0777ae4d6044dc06afb21c44.bundle",
+            "FileHash": "b81fc76e0777ae4d6044dc06afb21c44",
+            "FileCRC": "e5200c83",
+            "FileSize": 3560,
+            "Encrypted": false,
+            "Tags": [],
+            "DependBundles": [],
+            "AllBuiltinAssets": [
+                "Assets/Bundle/Dll/Client_UI.dll.bytes"
+            ]
+        },
+        {
+            "BundleName": "defaultpackage_assets_bundle_dll_mscorlib_dll.bundle",
+            "FileName": "85a579c8a5320eb21bfd1e795555e6d0.bundle",
+            "FileHash": "85a579c8a5320eb21bfd1e795555e6d0",
+            "FileCRC": "0f6de10c",
+            "FileSize": 896572,
+            "Encrypted": false,
+            "Tags": [],
+            "DependBundles": [],
+            "AllBuiltinAssets": [
+                "Assets/Bundle/Dll/mscorlib.dll.bytes"
+            ]
+        },
+        {
+            "BundleName": "defaultpackage_assets_bundle_dll_system_core_dll.bundle",
+            "FileName": "4fbcf628e52e50efcdf6e91d11cc76a4.bundle",
+            "FileHash": "4fbcf628e52e50efcdf6e91d11cc76a4",
+            "FileCRC": "b9a38c9a",
+            "FileSize": 23048,
+            "Encrypted": false,
+            "Tags": [],
+            "DependBundles": [],
+            "AllBuiltinAssets": [
+                "Assets/Bundle/Dll/System.Core.dll.bytes"
+            ]
+        },
+        {
+            "BundleName": "defaultpackage_assets_bundle_dll_system_dll.bundle",
+            "FileName": "5e3c07b7c640beeff6af0e76b969ed92.bundle",
+            "FileHash": "5e3c07b7c640beeff6af0e76b969ed92",
+            "FileCRC": "dd2d89e9",
+            "FileSize": 111347,
+            "Encrypted": false,
+            "Tags": [],
+            "DependBundles": [],
+            "AllBuiltinAssets": [
+                "Assets/Bundle/Dll/System.dll.bytes"
+            ]
+        }
+    ],
+    "IndependAssets": []
+}

@@ -1,0 +1,20 @@
+ManifestFileVersion: 0
+CRC: 2589446366
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 7c4553cb37a49c2ff144e7471773872e
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 7c4553cb37a49c2ff144e7471773872e
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Bundle/Dll/Client_GamePlay.dll.bytes
+Dependencies: []
