@@ -1,0 +1,20 @@
+ManifestFileVersion: 0
+CRC: 4005899919
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 027812103e23ea5e1caad27dec99b92f
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 027812103e23ea5e1caad27dec99b92f
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Bundle/DllBytes/Client_Logic.dll.bytes
+Dependencies: []

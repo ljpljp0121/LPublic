@@ -1,7 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
+using System.IO;
 using UnityEditor;
 using UnityEngine;
+using HybridCLR.Editor;
 
 public static class BuildMenu
 {
@@ -9,6 +9,40 @@ public static class BuildMenu
     public static void BuildClient()
     {
         Debug.Log("开始构建客户端");
-        HybridCLR.Editor.SettingsUtil.Enable = true;
+        SettingsUtil.Enable = true;
+    }
+
+    [MenuItem("Project/Build/GenerateDllBytesFile")]
+    public static void GenerateDllBytesFile()
+    {
+        Debug.Log("开始生成dll文本文件");
+        string hotupdateDllDirPath = System.Environment.CurrentDirectory + "\\" +
+                                     SettingsUtil
+                                         .GetHotUpdateDllsOutputDirByTarget(EditorUserBuildSettings.activeBuildTarget)
+                                         .Replace('/', '\\');
+        string aotDllDirPath = System.Environment.CurrentDirectory + "\\" +
+                               SettingsUtil.GetAssembliesPostIl2CppStripDir(EditorUserBuildSettings.activeBuildTarget)
+                                   .Replace('/', '\\');
+        string hotUpdateDllTextDirPath = System.Environment.CurrentDirectory + "\\Assets\\Bundle\\HotUpdateDll";
+        string aotDllTextDirPath = System.Environment.CurrentDirectory + "\\Assets\\Bundle\\AOTDll";
+        foreach (string dllName in SettingsUtil.AOTAssemblyNames)
+        {
+            string path = $"{aotDllDirPath}\\{dllName}.dll";
+            if (File.Exists(path))
+            {
+                File.Copy(path, $"{aotDllTextDirPath}\\{dllName}.dll.bytes", true);
+            }
+            else
+            {
+                path = $"{hotupdateDllDirPath}\\{dllName}.dll";
+                File.Copy(path, $"{aotDllTextDirPath}\\{dllName}.dll.bytes", true);
+            }
+        }
+        foreach (string dllName in SettingsUtil.HotUpdateAssemblyNamesExcludePreserved)
+        {
+            File.Copy($"{hotupdateDllDirPath}\\{dllName}.dll", $"{hotUpdateDllTextDirPath}\\{dllName}.dll.bytes", true);
+        }
+        AssetDatabase.Refresh();
+        Debug.Log("完成生成dll文本文件");
     }
 }

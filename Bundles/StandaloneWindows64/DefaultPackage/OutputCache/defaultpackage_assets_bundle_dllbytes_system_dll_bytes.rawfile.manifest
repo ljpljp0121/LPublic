@@ -1,0 +1,20 @@
+ManifestFileVersion: 0
+CRC: 428815223
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: e4b9954c5f2c7bb22271fc0e00540232
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: e4b9954c5f2c7bb22271fc0e00540232
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Bundle/DllBytes/System.dll.bytes
+Dependencies: []

@@ -1,0 +1,203 @@
+{
+    "FileVersion": "2.2.5",
+    "EnableAddressable": false,
+    "LocationToLower": false,
+    "IncludeAssetGUID": false,
+    "OutputNameStyle": 0,
+    "BuildBundleType": 2,
+    "BuildPipeline": "BuiltinBuildPipeline",
+    "PackageName": "DefaultPackage",
+    "PackageVersion": "2025-01-20-87",
+    "PackageNote": "2025/1/20 1:27:18",
+    "AssetList": [
+        {
+            "Address": "",
+            "AssetPath": "Assets/Bundle/DllBytes/Client_GamePlay.dll.bytes",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 0
+        },
+        {
+            "Address": "",
+            "AssetPath": "Assets/Bundle/DllBytes/Client_Logic.dll.bytes",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 1
+        },
+        {
+            "Address": "",
+            "AssetPath": "Assets/Bundle/DllBytes/Client_UI.dll.bytes",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 2
+        },
+        {
+            "Address": "",
+            "AssetPath": "Assets/Bundle/DllBytes/HotUpdate/Client_GamePlay.dll.bytes",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 3
+        },
+        {
+            "Address": "",
+            "AssetPath": "Assets/Bundle/DllBytes/HotUpdate/Client_Logic.dll.bytes",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 4
+        },
+        {
+            "Address": "",
+            "AssetPath": "Assets/Bundle/DllBytes/HotUpdate/Client_UI.dll.bytes",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 5
+        },
+        {
+            "Address": "",
+            "AssetPath": "Assets/Bundle/DllBytes/mscorlib.dll.bytes",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 6
+        },
+        {
+            "Address": "",
+            "AssetPath": "Assets/Bundle/DllBytes/System.Core.dll.bytes",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 7
+        },
+        {
+            "Address": "",
+            "AssetPath": "Assets/Bundle/DllBytes/System.dll.bytes",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 8
+        },
+        {
+            "Address": "",
+            "AssetPath": "Assets/Bundle/Prefab/Image.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 9
+        },
+        {
+            "Address": "",
+            "AssetPath": "Assets/Bundle/Scenes/GameScene.unity",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 10
+        }
+    ],
+    "BundleList": [
+        {
+            "BundleName": "defaultpackage_assets_bundle_dllbytes_client_gameplay_dll_bytes.rawfile",
+            "UnityCRC": 3149632859,
+            "FileHash": "88f019f716f11f965b1acf34ff3042a8",
+            "FileCRC": "2e3b59da",
+            "FileSize": 3442,
+            "Encrypted": false,
+            "Tags": [],
+            "DependIDs": []
+        },
+        {
+            "BundleName": "defaultpackage_assets_bundle_dllbytes_client_logic_dll_bytes.rawfile",
+            "UnityCRC": 4005899919,
+            "FileHash": "3d71e21f58a265014ed4c9ee6061ff0c",
+            "FileCRC": "40ad690b",
+            "FileSize": 3721,
+            "Encrypted": false,
+            "Tags": [],
+            "DependIDs": []
+        },
+        {
+            "BundleName": "defaultpackage_assets_bundle_dllbytes_client_ui_dll_bytes.rawfile",
+            "UnityCRC": 2715506592,
+            "FileHash": "a19d52a2c334b1373545791bd749cadd",
+            "FileCRC": "0137e070",
+            "FileSize": 3572,
+            "Encrypted": false,
+            "Tags": [],
+            "DependIDs": []
+        },
+        {
+            "BundleName": "defaultpackage_assets_bundle_dllbytes_hotupdate_client_gameplay_dll_bytes.rawfile",
+            "UnityCRC": 8387865,
+            "FileHash": "c1d12a3a2974e34a6afb36823a6cd1cf",
+            "FileCRC": "44fbf918",
+            "FileSize": 3466,
+            "Encrypted": false,
+            "Tags": [],
+            "DependIDs": []
+        },
+        {
+            "BundleName": "defaultpackage_assets_bundle_dllbytes_hotupdate_client_logic_dll_bytes.rawfile",
+            "UnityCRC": 1664302012,
+            "FileHash": "d44584f23d4b14078a741737e3270556",
+            "FileCRC": "a5f8ee97",
+            "FileSize": 3737,
+            "Encrypted": false,
+            "Tags": [],
+            "DependIDs": []
+        },
+        {
+            "BundleName": "defaultpackage_assets_bundle_dllbytes_hotupdate_client_ui_dll_bytes.rawfile",
+            "UnityCRC": 3323804159,
+            "FileHash": "f1b199b92f582166913755a7fbc3bd8a",
+            "FileCRC": "279d3eb8",
+            "FileSize": 3586,
+            "Encrypted": false,
+            "Tags": [],
+            "DependIDs": []
+        },
+        {
+            "BundleName": "defaultpackage_assets_bundle_dllbytes_mscorlib_dll_bytes.rawfile",
+            "UnityCRC": 1532640363,
+            "FileHash": "017834a8977df1c0cdd8b9dd7a880d9b",
+            "FileCRC": "d4d3dd81",
+            "FileSize": 889931,
+            "Encrypted": false,
+            "Tags": [],
+            "DependIDs": []
+        },
+        {
+            "BundleName": "defaultpackage_assets_bundle_dllbytes_system_core_dll_bytes.rawfile",
+            "UnityCRC": 1883254032,
+            "FileHash": "8f66cbdc09397b84c56498295cb977b3",
+            "FileCRC": "4735a8aa",
+            "FileSize": 23058,
+            "Encrypted": false,
+            "Tags": [],
+            "DependIDs": []
+        },
+        {
+            "BundleName": "defaultpackage_assets_bundle_dllbytes_system_dll_bytes.rawfile",
+            "UnityCRC": 428815223,
+            "FileHash": "7ef50bb021ec0e41ddef3f7ae8de072d",
+            "FileCRC": "a8819776",
+            "FileSize": 115725,
+            "Encrypted": false,
+            "Tags": [],
+            "DependIDs": []
+        },
+        {
+            "BundleName": "defaultpackage_assets_bundle_prefab.bundle",
+            "UnityCRC": 3253119745,
+            "FileHash": "c6099003908c11171b69cc16b4616fed",
+            "FileCRC": "72e130e8",
+            "FileSize": 4163,
+            "Encrypted": false,
+            "Tags": [],
+            "DependIDs": []
+        },
+        {
+            "BundleName": "defaultpackage_assets_bundle_scenes.bundle",
+            "UnityCRC": 3203750847,
+            "FileHash": "f1fadbe9f3fdf93157d3f2135bca3c1e",
+            "FileCRC": "fd3f1217",
+            "FileSize": 120170,
+            "Encrypted": false,
+            "Tags": [],
+            "DependIDs": []
+        }
+    ]
+}

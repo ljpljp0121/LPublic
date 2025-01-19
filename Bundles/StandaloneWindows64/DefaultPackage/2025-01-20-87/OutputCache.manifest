@@ -1,0 +1,37 @@
+ManifestFileVersion: 0
+CRC: 1327641692
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: defaultpackage_assets_bundle_dllbytes_client_gameplay_dll_bytes.rawfile
+      Dependencies: {}
+    Info_1:
+      Name: defaultpackage_assets_bundle_dllbytes_client_logic_dll_bytes.rawfile
+      Dependencies: {}
+    Info_2:
+      Name: defaultpackage_assets_bundle_dllbytes_client_ui_dll_bytes.rawfile
+      Dependencies: {}
+    Info_3:
+      Name: defaultpackage_assets_bundle_dllbytes_hotupdate_client_gameplay_dll_bytes.rawfile
+      Dependencies: {}
+    Info_4:
+      Name: defaultpackage_assets_bundle_dllbytes_hotupdate_client_logic_dll_bytes.rawfile
+      Dependencies: {}
+    Info_5:
+      Name: defaultpackage_assets_bundle_dllbytes_hotupdate_client_ui_dll_bytes.rawfile
+      Dependencies: {}
+    Info_6:
+      Name: defaultpackage_assets_bundle_dllbytes_mscorlib_dll_bytes.rawfile
+      Dependencies: {}
+    Info_7:
+      Name: defaultpackage_assets_bundle_dllbytes_system_core_dll_bytes.rawfile
+      Dependencies: {}
+    Info_8:
+      Name: defaultpackage_assets_bundle_dllbytes_system_dll_bytes.rawfile
+      Dependencies: {}
+    Info_9:
+      Name: defaultpackage_assets_bundle_prefab.bundle
+      Dependencies: {}
+    Info_10:
+      Name: defaultpackage_assets_bundle_scenes.bundle
+      Dependencies: {}

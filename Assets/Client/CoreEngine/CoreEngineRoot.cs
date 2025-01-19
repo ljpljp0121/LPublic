@@ -66,7 +66,7 @@ public class CoreEngineRoot : MonoBehaviour
 
     private void StartGame()
     {
-        //LoadMetadataForAOTAssemblies();
+        LoadMetadataForAOTAssemblies();
 #if !UNITY_EDITOR
         client_Logic = Assembly.Load(ReadBytesFromStreamingAssets("Client_Logic.dll"));
         client_GamePlay = Assembly.Load(ReadBytesFromStreamingAssets("Client_GamePlay.dll"));

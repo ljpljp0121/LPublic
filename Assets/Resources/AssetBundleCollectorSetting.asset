@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AssetBundleCollectorSetting
   m_EditorClassIdentifier: 
   ShowPackageView: 1
-  ShowEditorAlias: 0
+  ShowEditorAlias: 1
   UniqueBundleName: 1
   Packages:
   - PackageName: DefaultPackage
@@ -37,12 +37,12 @@ MonoBehaviour:
         FilterRuleName: CollectAll
         AssetTags: 
         UserData: 
-    - GroupName: Dll
+    - GroupName: HotUpdateDll
       GroupDesc: "\u70ED\u66F4\u7A0B\u5E8F\u96C6"
       AssetTags: 
       ActiveRuleName: EnableGroup
       Collectors:
-      - CollectPath: Assets/Bundle/Dll
+      - CollectPath: Assets/Bundle/HotUpdateDll
         CollectorGUID: 73a48d32aad4cf74ab163e530a59df27
         CollectorType: 0
         AddressRuleName: AddressByFileName
@@ -148,6 +148,19 @@ MonoBehaviour:
       Collectors:
       - CollectPath: Assets/Bundle/TableData
         CollectorGUID: 79e92a0d00edfb94aab9c8ed9d75118f
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+    - GroupName: AOTDll
+      GroupDesc: "AOT\u7A0B\u5E8F\u96C6"
+      AssetTags: 
+      ActiveRuleName: EnableGroup
+      Collectors:
+      - CollectPath: Assets/Bundle/AOTDll
+        CollectorGUID: 99675685dcc11bd41b6c11db6d328980
         CollectorType: 0
         AddressRuleName: AddressByFileName
         PackRuleName: PackDirectory
