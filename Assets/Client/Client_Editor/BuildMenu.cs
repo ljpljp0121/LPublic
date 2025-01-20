@@ -2,6 +2,7 @@ using System.IO;
 using UnityEditor;
 using UnityEngine;
 using HybridCLR.Editor;
+using HybridCLR.Editor.Commands;
 
 public static class BuildMenu
 {
@@ -10,6 +11,8 @@ public static class BuildMenu
     {
         Debug.Log("开始构建客户端");
         SettingsUtil.Enable = true;
+        PrebuildCommand.GenerateAll();
+        GenerateDllBytesFile();
     }
 
     [MenuItem("Project/Build/GenerateDllBytesFile")]
@@ -30,7 +33,7 @@ public static class BuildMenu
             string path = $"{aotDllDirPath}\\{dllName}.dll";
             if (File.Exists(path))
             {
-                File.Copy(path, $"{aotDllTextDirPath}\\{dllName}.dll.bytes", true);
+                File.Copy(path, $"{aotDllTextDirPath}\\{dllName}.dl l.bytes", true);
             }
             else
             {
