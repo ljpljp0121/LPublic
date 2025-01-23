@@ -2,14 +2,14 @@
     "Summary": {
         "YooVersion": "2.2.9",
         "UnityVersion": "2022.3.27f1c1",
-        "BuildDate": "2025/1/17 0:12:29",
-        "BuildSeconds": 11,
+        "BuildDate": "2025/1/22 2:01:31",
+        "BuildSeconds": 14,
         "BuildTarget": 19,
         "BuildPipeline": "BuiltinBuildPipeline",
         "BuildBundleType": 2,
         "BuildPackageName": "DefaultPackage",
         "BuildPackageVersion": "v1.0.0",
-        "BuildPackageNote": "2025/1/17 0:12:17",
+        "BuildPackageNote": "2025/1/22 2:01:15",
         "UniqueBundleName": true,
         "EnableAddressable": false,
         "LocationToLower": false,
@@ -24,146 +24,191 @@
         "CompressOption": 2,
         "DisableWriteTypeTree": false,
         "IgnoreTypeTreeChanges": true,
-        "AssetFileTotalCount": 6,
-        "MainAssetTotalCount": 6,
+        "AssetFileTotalCount": 11,
+        "MainAssetTotalCount": 10,
         "AllBundleTotalCount": 6,
-        "AllBundleTotalSize": 1041665,
+        "AllBundleTotalSize": 1243186,
         "EncryptedBundleTotalCount": 0,
         "EncryptedBundleTotalSize": 0
     },
     "AssetInfos": [
         {
             "Address": "",
-            "AssetPath": "Assets/Bundle/Dll/Client_GamePlay.dll.bytes",
+            "AssetPath": "Assets/Bundle/AOTDll/CoreEngine.dll.bytes",
+            "AssetGUID": "cf78a669c7841b54790babd8e3178c88",
+            "AssetTags": [],
+            "MainBundleName": "defaultpackage_assets_bundle_aotdll.bundle",
+            "MainBundleSize": 1186343,
+            "DependAssets": []
+        },
+        {
+            "Address": "",
+            "AssetPath": "Assets/Bundle/AOTDll/Luban.Runtime.dll.bytes",
+            "AssetGUID": "b560f3c32109fa7419700fb49dffb920",
+            "AssetTags": [],
+            "MainBundleName": "defaultpackage_assets_bundle_aotdll.bundle",
+            "MainBundleSize": 1186343,
+            "DependAssets": []
+        },
+        {
+            "Address": "",
+            "AssetPath": "Assets/Bundle/AOTDll/mscorlib.dll.bytes",
+            "AssetGUID": "91a3658cd95e10840a36b217d741b630",
+            "AssetTags": [],
+            "MainBundleName": "defaultpackage_assets_bundle_aotdll.bundle",
+            "MainBundleSize": 1186343,
+            "DependAssets": []
+        },
+        {
+            "Address": "",
+            "AssetPath": "Assets/Bundle/AOTDll/System.Core.dll.bytes",
+            "AssetGUID": "4ee49557ed162804b92dfec53d9d3a0b",
+            "AssetTags": [],
+            "MainBundleName": "defaultpackage_assets_bundle_aotdll.bundle",
+            "MainBundleSize": 1186343,
+            "DependAssets": []
+        },
+        {
+            "Address": "",
+            "AssetPath": "Assets/Bundle/AOTDll/System.dll.bytes",
+            "AssetGUID": "c815e7ed0c9142e44853b3df19b4b705",
+            "AssetTags": [],
+            "MainBundleName": "defaultpackage_assets_bundle_aotdll.bundle",
+            "MainBundleSize": 1186343,
+            "DependAssets": []
+        },
+        {
+            "Address": "",
+            "AssetPath": "Assets/Bundle/AOTDll/YooAsset.dll.bytes",
+            "AssetGUID": "5df0d0e492ac4f74480a7bf2f70a4487",
+            "AssetTags": [],
+            "MainBundleName": "defaultpackage_assets_bundle_aotdll.bundle",
+            "MainBundleSize": 1186343,
+            "DependAssets": []
+        },
+        {
+            "Address": "",
+            "AssetPath": "Assets/Bundle/HotUpdateDll/Client_GamePlay.dll.bytes",
             "AssetGUID": "c3b93846753421743944aa0748cb59ee",
             "AssetTags": [],
-            "MainBundleName": "defaultpackage_assets_bundle_dll_client_gameplay_dll.bundle",
-            "MainBundleSize": 3429,
+            "MainBundleName": "defaultpackage_assets_bundle_hotupdatedll_client_gameplay_dll_bytes.rawfile",
+            "MainBundleSize": 3447,
             "DependAssets": []
         },
         {
             "Address": "",
-            "AssetPath": "Assets/Bundle/Dll/Client_Logic.dll.bytes",
+            "AssetPath": "Assets/Bundle/HotUpdateDll/Client_Logic.dll.bytes",
             "AssetGUID": "4402d702c0b6b964aa427fe045b8cf82",
             "AssetTags": [],
-            "MainBundleName": "defaultpackage_assets_bundle_dll_client_logic_dll.bundle",
-            "MainBundleSize": 3709,
+            "MainBundleName": "defaultpackage_assets_bundle_hotupdatedll_client_logic_dll_bytes.rawfile",
+            "MainBundleSize": 3724,
             "DependAssets": []
         },
         {
             "Address": "",
-            "AssetPath": "Assets/Bundle/Dll/Client_UI.dll.bytes",
+            "AssetPath": "Assets/Bundle/HotUpdateDll/Client_UI.dll.bytes",
             "AssetGUID": "1ba43ffa94d95fc48b365147250e5a8e",
             "AssetTags": [],
-            "MainBundleName": "defaultpackage_assets_bundle_dll_client_ui_dll.bundle",
-            "MainBundleSize": 3560,
+            "MainBundleName": "defaultpackage_assets_bundle_hotupdatedll_client_ui_dll_bytes.rawfile",
+            "MainBundleSize": 3578,
             "DependAssets": []
         },
         {
             "Address": "",
-            "AssetPath": "Assets/Bundle/Dll/mscorlib.dll.bytes",
-            "AssetGUID": "617206e1f5c4e124d81f583a375e5d19",
+            "AssetPath": "Assets/Bundle/Prefab/PatchWindow.prefab",
+            "AssetGUID": "cd3c0e69e672e0f4cb953ab81d5644e9",
             "AssetTags": [],
-            "MainBundleName": "defaultpackage_assets_bundle_dll_mscorlib_dll.bundle",
-            "MainBundleSize": 896572,
-            "DependAssets": []
-        },
-        {
-            "Address": "",
-            "AssetPath": "Assets/Bundle/Dll/System.Core.dll.bytes",
-            "AssetGUID": "8d008ec8b6b3391469d834648cc60575",
-            "AssetTags": [],
-            "MainBundleName": "defaultpackage_assets_bundle_dll_system_core_dll.bundle",
-            "MainBundleSize": 23048,
-            "DependAssets": []
-        },
-        {
-            "Address": "",
-            "AssetPath": "Assets/Bundle/Dll/System.dll.bytes",
-            "AssetGUID": "8eeb6dbb092616248ba9b73b9af6bb90",
-            "AssetTags": [],
-            "MainBundleName": "defaultpackage_assets_bundle_dll_system_dll.bundle",
-            "MainBundleSize": 111347,
-            "DependAssets": []
+            "MainBundleName": "defaultpackage_assets_bundle_prefab.bundle",
+            "MainBundleSize": 15122,
+            "DependAssets": [
+                "Assets/TextMesh Pro/Examples & Extras/Fonts/Anton.ttf"
+            ]
         }
     ],
     "BundleInfos": [
         {
-            "BundleName": "defaultpackage_assets_bundle_dll_client_gameplay_dll.bundle",
-            "FileName": "a3b6d8d048900f3b6cdffd27c4bfdd45.bundle",
-            "FileHash": "a3b6d8d048900f3b6cdffd27c4bfdd45",
-            "FileCRC": "979a5976",
-            "FileSize": 3429,
+            "BundleName": "defaultpackage_assets_bundle_aotdll.bundle",
+            "FileName": "786236d037cda267d082ce67163f6c37.bundle",
+            "FileHash": "786236d037cda267d082ce67163f6c37",
+            "FileCRC": "6f1faea7",
+            "FileSize": 1186343,
             "Encrypted": false,
             "Tags": [],
             "DependBundles": [],
             "AllBuiltinAssets": [
-                "Assets/Bundle/Dll/Client_GamePlay.dll.bytes"
+                "Assets/Bundle/AOTDll/CoreEngine.dll.bytes",
+                "Assets/Bundle/AOTDll/Luban.Runtime.dll.bytes",
+                "Assets/Bundle/AOTDll/mscorlib.dll.bytes",
+                "Assets/Bundle/AOTDll/System.Core.dll.bytes",
+                "Assets/Bundle/AOTDll/System.dll.bytes",
+                "Assets/Bundle/AOTDll/YooAsset.dll.bytes"
             ]
         },
         {
-            "BundleName": "defaultpackage_assets_bundle_dll_client_logic_dll.bundle",
-            "FileName": "0fd7524b340977f9a74ed178215b28ee.bundle",
-            "FileHash": "0fd7524b340977f9a74ed178215b28ee",
-            "FileCRC": "bac71130",
-            "FileSize": 3709,
+            "BundleName": "defaultpackage_assets_bundle_hotupdatedll_client_gameplay_dll_bytes.rawfile",
+            "FileName": "c69cfd63cc9dde226b44ecd5bdf8795b.rawfile",
+            "FileHash": "c69cfd63cc9dde226b44ecd5bdf8795b",
+            "FileCRC": "7d7cb65c",
+            "FileSize": 3447,
             "Encrypted": false,
             "Tags": [],
             "DependBundles": [],
             "AllBuiltinAssets": [
-                "Assets/Bundle/Dll/Client_Logic.dll.bytes"
+                "Assets/Bundle/HotUpdateDll/Client_GamePlay.dll.bytes"
             ]
         },
         {
-            "BundleName": "defaultpackage_assets_bundle_dll_client_ui_dll.bundle",
-            "FileName": "b81fc76e0777ae4d6044dc06afb21c44.bundle",
-            "FileHash": "b81fc76e0777ae4d6044dc06afb21c44",
-            "FileCRC": "e5200c83",
-            "FileSize": 3560,
+            "BundleName": "defaultpackage_assets_bundle_hotupdatedll_client_logic_dll_bytes.rawfile",
+            "FileName": "84b0fe88a3b51ecd960f41228712e4d8.rawfile",
+            "FileHash": "84b0fe88a3b51ecd960f41228712e4d8",
+            "FileCRC": "e8c86cd3",
+            "FileSize": 3724,
             "Encrypted": false,
             "Tags": [],
             "DependBundles": [],
             "AllBuiltinAssets": [
-                "Assets/Bundle/Dll/Client_UI.dll.bytes"
+                "Assets/Bundle/HotUpdateDll/Client_Logic.dll.bytes"
             ]
         },
         {
-            "BundleName": "defaultpackage_assets_bundle_dll_mscorlib_dll.bundle",
-            "FileName": "85a579c8a5320eb21bfd1e795555e6d0.bundle",
-            "FileHash": "85a579c8a5320eb21bfd1e795555e6d0",
-            "FileCRC": "0f6de10c",
-            "FileSize": 896572,
+            "BundleName": "defaultpackage_assets_bundle_hotupdatedll_client_ui_dll_bytes.rawfile",
+            "FileName": "1ccad907f3d04739c857ff6cd1347ebc.rawfile",
+            "FileHash": "1ccad907f3d04739c857ff6cd1347ebc",
+            "FileCRC": "3a411849",
+            "FileSize": 3578,
             "Encrypted": false,
             "Tags": [],
             "DependBundles": [],
             "AllBuiltinAssets": [
-                "Assets/Bundle/Dll/mscorlib.dll.bytes"
+                "Assets/Bundle/HotUpdateDll/Client_UI.dll.bytes"
             ]
         },
         {
-            "BundleName": "defaultpackage_assets_bundle_dll_system_core_dll.bundle",
-            "FileName": "4fbcf628e52e50efcdf6e91d11cc76a4.bundle",
-            "FileHash": "4fbcf628e52e50efcdf6e91d11cc76a4",
-            "FileCRC": "b9a38c9a",
-            "FileSize": 23048,
+            "BundleName": "defaultpackage_assets_bundle_prefab.bundle",
+            "FileName": "b8d16c527e55fb8d272057efb1b39522.bundle",
+            "FileHash": "b8d16c527e55fb8d272057efb1b39522",
+            "FileCRC": "bcac32e7",
+            "FileSize": 15122,
             "Encrypted": false,
             "Tags": [],
-            "DependBundles": [],
+            "DependBundles": [
+                "defaultpackage_share_assets_textmesh_pro_examples_&_extras_fonts.bundle"
+            ],
             "AllBuiltinAssets": [
-                "Assets/Bundle/Dll/System.Core.dll.bytes"
+                "Assets/Bundle/Prefab/PatchWindow.prefab"
             ]
         },
         {
-            "BundleName": "defaultpackage_assets_bundle_dll_system_dll.bundle",
-            "FileName": "5e3c07b7c640beeff6af0e76b969ed92.bundle",
-            "FileHash": "5e3c07b7c640beeff6af0e76b969ed92",
-            "FileCRC": "dd2d89e9",
-            "FileSize": 111347,
+            "BundleName": "defaultpackage_share_assets_textmesh_pro_examples_&_extras_fonts.bundle",
+            "FileName": "b4a18202d5b08858928dced6d07e494e.bundle",
+            "FileHash": "b4a18202d5b08858928dced6d07e494e",
+            "FileCRC": "64bd7529",
+            "FileSize": 30972,
             "Encrypted": false,
             "Tags": [],
             "DependBundles": [],
             "AllBuiltinAssets": [
-                "Assets/Bundle/Dll/System.dll.bytes"
+                "Assets/TextMesh Pro/Examples & Extras/Fonts/Anton.ttf"
             ]
         }
     ],

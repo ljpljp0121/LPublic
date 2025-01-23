@@ -6,12 +6,23 @@ using HybridCLR.Editor.Commands;
 
 public static class BuildMenu
 {
-    [MenuItem("Project/Build/Client")]
-    public static void BuildClient()
+    [MenuItem("Project/Build/NewClient")]
+    public static void BuildNewClient()
     {
         Debug.Log("开始构建客户端");
         SettingsUtil.Enable = true;
+        //华佗构建准备
         PrebuildCommand.GenerateAll();
+        //搬运dll文本文件
+        GenerateDllBytesFile();
+    }
+
+    [MenuItem("Project/Build/UpdateClient")]
+    public static void BuildUpdateClient()
+    {
+        Debug.Log("开始更新客户端");
+        CompileDllCommand.CompileDllActiveBuildTarget();
+        //搬运dll文本文件
         GenerateDllBytesFile();
     }
 
@@ -33,7 +44,7 @@ public static class BuildMenu
             string path = $"{aotDllDirPath}\\{dllName}.dll";
             if (File.Exists(path))
             {
-                File.Copy(path, $"{aotDllTextDirPath}\\{dllName}.dl l.bytes", true);
+                File.Copy(path, $"{aotDllTextDirPath}\\{dllName}.dll.bytes", true);
             }
             else
             {

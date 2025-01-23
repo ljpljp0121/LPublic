@@ -66,17 +66,17 @@ public class CoreEngineRoot : MonoBehaviour
 
     private void StartGame()
     {
-        LoadMetadataForAOTAssemblies();
-#if !UNITY_EDITOR
-        client_Logic = Assembly.Load(ReadBytesFromStreamingAssets("Client_Logic.dll"));
-        client_GamePlay = Assembly.Load(ReadBytesFromStreamingAssets("Client_GamePlay.dll"));
-        client_UI = Assembly.Load(ReadBytesFromStreamingAssets("Client_UI.dll"));
-#else
-        client_Logic = System.AppDomain.CurrentDomain.GetAssemblies().First(a => a.GetName().Name == "Client_Logic");
-        client_GamePlay = System.AppDomain.CurrentDomain.GetAssemblies()
-            .First(a => a.GetName().Name == "Client_GamePlay");
-        client_UI = System.AppDomain.CurrentDomain.GetAssemblies().First(a => a.GetName().Name == "Client_UI");
-#endif
+        //LoadMetadataForAOTAssemblies();
+// #if !UNITY_EDITOR
+        Assembly.Load(ReadBytesFromStreamingAssets("Client_Logic.dll"));
+        Assembly.Load(ReadBytesFromStreamingAssets("Client_GamePlay.dll"));
+        Assembly.Load(ReadBytesFromStreamingAssets("Client_UI.dll"));
+// #else
+//         client_Logic = System.AppDomain.CurrentDomain.GetAssemblies().First(a => a.GetName().Name == "Client_Logic");
+//         client_GamePlay = System.AppDomain.CurrentDomain.GetAssemblies()
+//             .First(a => a.GetName().Name == "Client_GamePlay");
+//         client_UI = System.AppDomain.CurrentDomain.GetAssemblies().First(a => a.GetName().Name == "Client_UI");
+// #endif
     }
 
     /// <summary>

@@ -163,7 +163,7 @@ MonoBehaviour:
         CollectorGUID: 99675685dcc11bd41b6c11db6d328980
         CollectorType: 0
         AddressRuleName: AddressByFileName
-        PackRuleName: PackDirectory
+        PackRuleName: PackRawFile
         FilterRuleName: CollectAll
         AssetTags: 
         UserData: 

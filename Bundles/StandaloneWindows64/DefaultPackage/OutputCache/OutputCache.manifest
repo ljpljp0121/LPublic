@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 3769712372
+CRC: 2481171452
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
@@ -12,20 +12,15 @@ AssetBundleManifest:
       Name: defaultpackage_assets_bundle_hotupdatedll_client_ui_dll_bytes.rawfile
       Dependencies: {}
     Info_3:
-      Name: defaultpackage_assets_bundle_hotupdatedll_mscorlib_dll_bytes.rawfile
-      Dependencies: {}
+      Name: defaultpackage_assets_bundle_prefab.bundle
+      Dependencies:
+        Dependency_0: defaultpackage_share_assets_textmesh_pro_examples_&_extras_fonts.bundle
     Info_4:
-      Name: defaultpackage_assets_bundle_hotupdatedll_system_core_dll_bytes.rawfile
+      Name: defaultpackage_assets_bundle_scenes.bundle
       Dependencies: {}
     Info_5:
-      Name: defaultpackage_assets_bundle_hotupdatedll_system_dll_bytes.rawfile
+      Name: defaultpackage_assets_bundle_aotdll.bundle
       Dependencies: {}
     Info_6:
-      Name: defaultpackage_assets_bundle_prefab_new_folder.bundle
-      Dependencies: {}
-    Info_7:
-      Name: defaultpackage_assets_bundle_prefab_new_folder_1.bundle
-      Dependencies: {}
-    Info_8:
-      Name: defaultpackage_assets_bundle_scenes.bundle
+      Name: defaultpackage_share_assets_textmesh_pro_examples_&_extras_fonts.bundle
       Dependencies: {}

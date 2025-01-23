@@ -1,22 +1,23 @@
 ManifestFileVersion: 0
-CRC: 4147351981
+CRC: 1021807295
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: defaultpackage_assets_bundle_dll_client_gameplay_dll.bundle
+      Name: defaultpackage_assets_bundle_hotupdatedll_client_gameplay_dll_bytes.rawfile
       Dependencies: {}
     Info_1:
-      Name: defaultpackage_assets_bundle_dll_client_logic_dll.bundle
+      Name: defaultpackage_assets_bundle_hotupdatedll_client_logic_dll_bytes.rawfile
       Dependencies: {}
     Info_2:
-      Name: defaultpackage_assets_bundle_dll_client_ui_dll.bundle
+      Name: defaultpackage_assets_bundle_hotupdatedll_client_ui_dll_bytes.rawfile
       Dependencies: {}
     Info_3:
-      Name: defaultpackage_assets_bundle_dll_mscorlib_dll.bundle
-      Dependencies: {}
+      Name: defaultpackage_assets_bundle_prefab.bundle
+      Dependencies:
+        Dependency_0: defaultpackage_share_assets_textmesh_pro_examples_&_extras_fonts.bundle
     Info_4:
-      Name: defaultpackage_assets_bundle_dll_system_core_dll.bundle
+      Name: defaultpackage_assets_bundle_aotdll.bundle
       Dependencies: {}
     Info_5:
-      Name: defaultpackage_assets_bundle_dll_system_dll.bundle
+      Name: defaultpackage_share_assets_textmesh_pro_examples_&_extras_fonts.bundle
       Dependencies: {}

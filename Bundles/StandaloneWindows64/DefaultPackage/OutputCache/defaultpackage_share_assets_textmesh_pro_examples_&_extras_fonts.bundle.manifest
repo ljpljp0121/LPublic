@@ -1,0 +1,26 @@
+ManifestFileVersion: 0
+CRC: 3538694507
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: e4e8abe48fb8967a7fc0cf8dd458f368
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 9372662e05ede815898c391bbc5766da
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: e4e8abe48fb8967a7fc0cf8dd458f368
+HashAppended: 0
+ClassTypes:
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 128
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/TextMesh Pro/Examples & Extras/Fonts/Anton.ttf
+Dependencies: []

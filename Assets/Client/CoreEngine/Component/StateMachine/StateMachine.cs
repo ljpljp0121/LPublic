@@ -144,7 +144,7 @@ public class StateMachine
 
     public void AddShareData(string key, object data)
     {
-        stateShareDataDic.Add(key, data);
+        stateShareDataDic[key] = data;
     }
 
     public bool RemoveShareData(string key)
