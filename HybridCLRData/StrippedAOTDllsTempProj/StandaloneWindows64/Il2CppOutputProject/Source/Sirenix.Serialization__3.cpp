@@ -7312,7 +7312,7 @@ IL_02df_1:
 				Assembly_t* L_149 = V_4;
 				NullCheck(L_149);
 				AssemblyName_t555F1570F523D87D970C6E7F27B1B44C83EADDD2* L_150;
-				L_150 = VirtualFuncInvoker0< AssemblyName_t555F1570F523D87D970C6E7F27B1B44C83EADDD2* >::Invoke(20, L_149);
+				L_150 = VirtualFuncInvoker0< AssemblyName_t555F1570F523D87D970C6E7F27B1B44C83EADDD2* >::Invoke(21, L_149);
 				NullCheck(L_150);
 				String_t* L_151;
 				L_151 = AssemblyName_get_Name_m7899B9B3F289EEBAF62AEAB51D1CA91DA92C4E6A_inline(L_150, NULL);
@@ -7400,7 +7400,7 @@ CATCH_0378_1:
 					Assembly_t* L_176 = V_4;
 					NullCheck(L_176);
 					AssemblyName_t555F1570F523D87D970C6E7F27B1B44C83EADDD2* L_177;
-					L_177 = VirtualFuncInvoker0< AssemblyName_t555F1570F523D87D970C6E7F27B1B44C83EADDD2* >::Invoke(20, L_176);
+					L_177 = VirtualFuncInvoker0< AssemblyName_t555F1570F523D87D970C6E7F27B1B44C83EADDD2* >::Invoke(21, L_176);
 					NullCheck(L_177);
 					String_t* L_178;
 					L_178 = AssemblyName_get_Name_m7899B9B3F289EEBAF62AEAB51D1CA91DA92C4E6A_inline(L_177, NULL);
@@ -7511,7 +7511,7 @@ CATCH_03f1_1:
 					Assembly_t* L_198 = V_4;
 					NullCheck(L_198);
 					AssemblyName_t555F1570F523D87D970C6E7F27B1B44C83EADDD2* L_199;
-					L_199 = VirtualFuncInvoker0< AssemblyName_t555F1570F523D87D970C6E7F27B1B44C83EADDD2* >::Invoke(20, L_198);
+					L_199 = VirtualFuncInvoker0< AssemblyName_t555F1570F523D87D970C6E7F27B1B44C83EADDD2* >::Invoke(21, L_198);
 					NullCheck(L_199);
 					String_t* L_200;
 					L_200 = AssemblyName_get_Name_m7899B9B3F289EEBAF62AEAB51D1CA91DA92C4E6A_inline(L_199, NULL);
@@ -7780,7 +7780,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DictionaryKeyUtility_LogInvalidKeyPathPr
 		Assembly_t* L_7 = ___1_assembly;
 		NullCheck(L_7);
 		AssemblyName_t555F1570F523D87D970C6E7F27B1B44C83EADDD2* L_8;
-		L_8 = VirtualFuncInvoker0< AssemblyName_t555F1570F523D87D970C6E7F27B1B44C83EADDD2* >::Invoke(20, L_7);
+		L_8 = VirtualFuncInvoker0< AssemblyName_t555F1570F523D87D970C6E7F27B1B44C83EADDD2* >::Invoke(21, L_7);
 		NullCheck(L_8);
 		String_t* L_9;
 		L_9 = AssemblyName_get_Name_m7899B9B3F289EEBAF62AEAB51D1CA91DA92C4E6A_inline(L_8, NULL);
@@ -20473,7 +20473,7 @@ IL_00d0:
 		L_46 = VirtualFuncInvoker0< Assembly_t* >::Invoke(26, L_45);
 		NullCheck(L_46);
 		AssemblyName_t555F1570F523D87D970C6E7F27B1B44C83EADDD2* L_47;
-		L_47 = VirtualFuncInvoker0< AssemblyName_t555F1570F523D87D970C6E7F27B1B44C83EADDD2* >::Invoke(20, L_46);
+		L_47 = VirtualFuncInvoker0< AssemblyName_t555F1570F523D87D970C6E7F27B1B44C83EADDD2* >::Invoke(21, L_46);
 		NullCheck(L_47);
 		String_t* L_48;
 		L_48 = AssemblyName_get_Name_m7899B9B3F289EEBAF62AEAB51D1CA91DA92C4E6A_inline(L_47, NULL);
@@ -20492,7 +20492,7 @@ IL_00d0:
 		L_51 = VirtualFuncInvoker0< Assembly_t* >::Invoke(26, L_50);
 		NullCheck(L_51);
 		AssemblyName_t555F1570F523D87D970C6E7F27B1B44C83EADDD2* L_52;
-		L_52 = VirtualFuncInvoker0< AssemblyName_t555F1570F523D87D970C6E7F27B1B44C83EADDD2* >::Invoke(20, L_51);
+		L_52 = VirtualFuncInvoker0< AssemblyName_t555F1570F523D87D970C6E7F27B1B44C83EADDD2* >::Invoke(21, L_51);
 		NullCheck(L_52);
 		String_t* L_53;
 		L_53 = AssemblyName_get_Name_m7899B9B3F289EEBAF62AEAB51D1CA91DA92C4E6A_inline(L_52, NULL);
@@ -21374,7 +21374,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UnitySerializationUtility__cctor_m1ABFE7
 		L_2 = VirtualFuncInvoker0< Assembly_t* >::Invoke(26, L_1);
 		NullCheck(L_2);
 		Type_t* L_3;
-		L_3 = VirtualFuncInvoker1< Type_t*, String_t* >::Invoke(18, L_2, _stringLiteralC9691DB075D5A62764E8115F4A8F8F3AE674F6CD);
+		L_3 = VirtualFuncInvoker1< Type_t*, String_t* >::Invoke(19, L_2, _stringLiteralC9691DB075D5A62764E8115F4A8F8F3AE674F6CD);
 		((UnitySerializationUtility_tC060F043DB74E647C599BD28FA0B23846642D7D5_StaticFields*)il2cpp_codegen_static_fields_for(UnitySerializationUtility_tC060F043DB74E647C599BD28FA0B23846642D7D5_il2cpp_TypeInfo_var))->___SerializeReferenceAttributeType = L_3;
 		Il2CppCodeGenWriteBarrier((void**)(&((UnitySerializationUtility_tC060F043DB74E647C599BD28FA0B23846642D7D5_StaticFields*)il2cpp_codegen_static_fields_for(UnitySerializationUtility_tC060F043DB74E647C599BD28FA0B23846642D7D5_il2cpp_TypeInfo_var))->___SerializeReferenceAttributeType), (void*)L_3);
 		RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B L_4 = { reinterpret_cast<intptr_t> (String_t_0_0_0_var) };

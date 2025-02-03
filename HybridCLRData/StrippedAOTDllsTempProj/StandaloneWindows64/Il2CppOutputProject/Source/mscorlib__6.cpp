@@ -10995,7 +10995,7 @@ IL_0026:
 		String_t* L_16 = __this->___type;
 		NullCheck(L_15);
 		Type_t* L_17;
-		L_17 = VirtualFuncInvoker1< Type_t*, String_t* >::Invoke(18, L_15, L_16);
+		L_17 = VirtualFuncInvoker1< Type_t*, String_t* >::Invoke(19, L_15, L_16);
 		V_3 = L_17;
 		RuntimeObject* L_18 = V_0;
 		if (!L_18)
@@ -11058,7 +11058,7 @@ IL_009b:
 		String_t* L_37 = __this->___targetTypeName;
 		NullCheck(L_36);
 		Type_t* L_38;
-		L_38 = VirtualFuncInvoker1< Type_t*, String_t* >::Invoke(18, L_36, L_37);
+		L_38 = VirtualFuncInvoker1< Type_t*, String_t* >::Invoke(19, L_36, L_37);
 		V_4 = L_38;
 		Type_t* L_39 = V_3;
 		Type_t* L_40 = V_4;
@@ -18629,7 +18629,7 @@ IL_0077:
 		bool L_28 = ___2_ignoreCase;
 		NullCheck(L_23);
 		Type_t* L_29;
-		L_29 = VirtualFuncInvoker3< Type_t*, String_t*, bool, bool >::Invoke(22, L_23, L_26, L_27, L_28);
+		L_29 = VirtualFuncInvoker3< Type_t*, String_t*, bool, bool >::Invoke(23, L_23, L_26, L_27, L_28);
 		return ((RuntimeType_tB1A69257E7A00D07AB0CABD8D5BA7D83E0DC9EC1*)CastclassClass((RuntimeObject*)L_29, RuntimeType_tB1A69257E7A00D07AB0CABD8D5BA7D83E0DC9EC1_il2cpp_TypeInfo_var));
 	}
 
@@ -26644,7 +26644,7 @@ IL_008a:
 		bool L_31 = ___3_ignoreCase;
 		NullCheck(L_28);
 		Type_t* L_32;
-		L_32 = VirtualFuncInvoker3< Type_t*, String_t*, bool, bool >::Invoke(22, L_28, L_30, (bool)0, L_31);
+		L_32 = VirtualFuncInvoker3< Type_t*, String_t*, bool, bool >::Invoke(23, L_28, L_30, (bool)0, L_31);
 		V_1 = L_32;
 	}
 

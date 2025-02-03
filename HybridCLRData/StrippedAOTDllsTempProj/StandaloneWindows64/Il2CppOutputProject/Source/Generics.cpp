@@ -375,10 +375,10 @@ struct U3CU3Ec__DisplayClass16_0_1_tD0A9898C9E19E62E77151DC5E22071554FA9FC5B;
 struct U3CU3Ec__DisplayClass17_0_1_t6571EA472738995BBF9888074E44759AD48A958F;
 struct U3CU3Ec__DisplayClass17_0_1_tA3758B77FA6B0BFD61C7D62F359880AC0725E026;
 struct U3CU3Ec__DisplayClass17_0_2_tDF076AFBD2E68D4536A0D96A2746FBA4E3686A27;
-struct U3CU3Ec__DisplayClass18_0_1_tA2F84A57C050A9A95A5D74CEAF8285047DC2171F;
 struct U3CU3Ec__DisplayClass18_0_2_t61254F3AEB281D3DBD73AFFA04C3870780B0939C;
 struct U3CU3Ec__DisplayClass18_0_2_t0EBE526CB8DF3C83F10773761241C31EE0404C91;
 struct U3CU3Ec__DisplayClass18_0_2_tB29B7FD0DC1FDCF8FD5277504DA84E69701EF5D8;
+struct U3CU3Ec__DisplayClass19_0_1_tC1CA168CCEFAAE919E80BA86E4C05D9A3CFCD99E;
 struct U3CU3Ec__DisplayClass19_0_1_t004614D2406D7FB840F2B210E6EA201C634EB31E;
 struct U3CU3Ec__DisplayClass19_0_2_t4F6ED712416786B119D8A43C8A6B104001D99C6C;
 struct U3CU3Ec__DisplayClass19_0_2_tF54470B361D38C0C0EEEB4826485D8D6000815F5;
@@ -1260,10 +1260,6 @@ struct U3CU3Ec__DisplayClass17_0_2_tDF076AFBD2E68D4536A0D96A2746FBA4E3686A27  : 
 {
 	Action_2_t1D42C7D8DCD2DEB7C556FB3783F0EDAFF694E5E8* ___func;
 };
-struct U3CU3Ec__DisplayClass18_0_1_tA2F84A57C050A9A95A5D74CEAF8285047DC2171F  : public RuntimeObject
-{
-	Action_1_t6F9EB113EB3F16226AEF811A2744F4111C116C87* ___callback;
-};
 struct U3CU3Ec__DisplayClass18_0_2_t61254F3AEB281D3DBD73AFFA04C3870780B0939C  : public RuntimeObject
 {
 	Action_2_t1D42C7D8DCD2DEB7C556FB3783F0EDAFF694E5E8* ___func;
@@ -1275,6 +1271,10 @@ struct U3CU3Ec__DisplayClass18_0_2_t0EBE526CB8DF3C83F10773761241C31EE0404C91  : 
 struct U3CU3Ec__DisplayClass18_0_2_tB29B7FD0DC1FDCF8FD5277504DA84E69701EF5D8  : public RuntimeObject
 {
 	PropertyInfo_t* ___propertyInfo;
+};
+struct U3CU3Ec__DisplayClass19_0_1_tC1CA168CCEFAAE919E80BA86E4C05D9A3CFCD99E  : public RuntimeObject
+{
+	Action_1_t6F9EB113EB3F16226AEF811A2744F4111C116C87* ___callback;
 };
 struct U3CU3Ec__DisplayClass19_0_1_t004614D2406D7FB840F2B210E6EA201C634EB31E  : public RuntimeObject
 {
@@ -10547,50 +10547,6 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec__DisplayClass17_0_2_U3CCreateWea
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec__DisplayClass18_0_1__ctor_mCF8AD5D656676C900E0660862F1B6FAF8B1D5EF2_gshared (U3CU3Ec__DisplayClass18_0_1_tA2F84A57C050A9A95A5D74CEAF8285047DC2171F* __this, const RuntimeMethod* method) 
-{
-	{
-		Object__ctor_mE837C6B9FA8C6D5D109F4B2EC885D79919AC0EA2((RuntimeObject*)__this, NULL);
-		return;
-	}
-}
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec__DisplayClass18_0_1_U3CLoadAssetAsyncU3Eb__0_m24774D88D5F64BD704F21B4483E8E81CDC6FDF24_gshared (U3CU3Ec__DisplayClass18_0_1_tA2F84A57C050A9A95A5D74CEAF8285047DC2171F* __this, AssetHandle_tA226E2C9CFE7231AF71DFADFCBF947D4D1CC2AF3* ___0_obj, const RuntimeMethod* method) 
-{
-	Action_1_t6F9EB113EB3F16226AEF811A2744F4111C116C87* G_B2_0 = NULL;
-	Action_1_t6F9EB113EB3F16226AEF811A2744F4111C116C87* G_B1_0 = NULL;
-	{
-		Action_1_t6F9EB113EB3F16226AEF811A2744F4111C116C87* L_0 = __this->___callback;
-		Action_1_t6F9EB113EB3F16226AEF811A2744F4111C116C87* L_1 = L_0;
-		if (L_1)
-		{
-			G_B2_0 = L_1;
-			goto IL_000b;
-		}
-		G_B1_0 = L_1;
-	}
-	{
-		return;
-	}
-
-IL_000b:
-	{
-		AssetHandle_tA226E2C9CFE7231AF71DFADFCBF947D4D1CC2AF3* L_2 = ___0_obj;
-		NullCheck(L_2);
-		Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C* L_3;
-		L_3 = AssetHandle_get_AssetObject_mDB40AA493209F594A94232EAADA774B6889DAF86(L_2, NULL);
-		NullCheck(G_B2_0);
-		Action_1_Invoke_mF2422B2DD29F74CE66F791C3F68E288EC7C3DB9E_inline(G_B2_0, ((RuntimeObject*)Castclass((RuntimeObject*)((RuntimeObject*)IsInst((RuntimeObject*)L_3, il2cpp_rgctx_data(method->klass->rgctx_data, 2))), il2cpp_rgctx_data(method->klass->rgctx_data, 2))), il2cpp_rgctx_method(method->klass->rgctx_data, 3));
-		return;
-	}
-}
-#ifdef __clang__
-#pragma clang diagnostic pop
-#endif
-#ifdef __clang__
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Winvalid-offsetof"
-#pragma clang diagnostic ignored "-Wunused-variable"
-#endif
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec__DisplayClass18_0_2__ctor_m66C263C9D1E7B1AE33321DA4417E2529847B0896_gshared (U3CU3Ec__DisplayClass18_0_2_t61254F3AEB281D3DBD73AFFA04C3870780B0939C* __this, const RuntimeMethod* method) 
 {
 	{
@@ -10763,6 +10719,50 @@ IL_003d:
 		RuntimeObject* L_19 = Box(il2cpp_rgctx_data_no_init(method->klass->rgctx_data, 4), L_18);
 		NullCheck(L_14);
 		VirtualActionInvoker3< RuntimeObject*, RuntimeObject*, ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* >::Invoke(28, L_14, L_17, L_19, (ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)NULL);
+		return;
+	}
+}
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec__DisplayClass19_0_1__ctor_m9DCAA81C01B18DEEE95DE71D8894D824A7176459_gshared (U3CU3Ec__DisplayClass19_0_1_tC1CA168CCEFAAE919E80BA86E4C05D9A3CFCD99E* __this, const RuntimeMethod* method) 
+{
+	{
+		Object__ctor_mE837C6B9FA8C6D5D109F4B2EC885D79919AC0EA2((RuntimeObject*)__this, NULL);
+		return;
+	}
+}
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec__DisplayClass19_0_1_U3CLoadAssetAsyncU3Eb__0_m5FCC1634523C6896CD4939DBD275C62D8F03B004_gshared (U3CU3Ec__DisplayClass19_0_1_tC1CA168CCEFAAE919E80BA86E4C05D9A3CFCD99E* __this, AssetHandle_tA226E2C9CFE7231AF71DFADFCBF947D4D1CC2AF3* ___0_obj, const RuntimeMethod* method) 
+{
+	Action_1_t6F9EB113EB3F16226AEF811A2744F4111C116C87* G_B2_0 = NULL;
+	Action_1_t6F9EB113EB3F16226AEF811A2744F4111C116C87* G_B1_0 = NULL;
+	{
+		Action_1_t6F9EB113EB3F16226AEF811A2744F4111C116C87* L_0 = __this->___callback;
+		Action_1_t6F9EB113EB3F16226AEF811A2744F4111C116C87* L_1 = L_0;
+		if (L_1)
+		{
+			G_B2_0 = L_1;
+			goto IL_000b;
+		}
+		G_B1_0 = L_1;
+	}
+	{
+		return;
+	}
+
+IL_000b:
+	{
+		AssetHandle_tA226E2C9CFE7231AF71DFADFCBF947D4D1CC2AF3* L_2 = ___0_obj;
+		NullCheck(L_2);
+		Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C* L_3;
+		L_3 = AssetHandle_get_AssetObject_mDB40AA493209F594A94232EAADA774B6889DAF86(L_2, NULL);
+		NullCheck(G_B2_0);
+		Action_1_Invoke_mF2422B2DD29F74CE66F791C3F68E288EC7C3DB9E_inline(G_B2_0, ((RuntimeObject*)Castclass((RuntimeObject*)((RuntimeObject*)IsInst((RuntimeObject*)L_3, il2cpp_rgctx_data(method->klass->rgctx_data, 2))), il2cpp_rgctx_data(method->klass->rgctx_data, 2))), il2cpp_rgctx_method(method->klass->rgctx_data, 3));
 		return;
 	}
 }

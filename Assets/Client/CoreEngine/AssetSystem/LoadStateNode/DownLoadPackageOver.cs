@@ -14,5 +14,9 @@ public class DownLoadPackageOver : StateBase
         {
             stateMachine.ChangeState<LoadPackageDll>();
         }
+        else
+        {
+            stateMachine.ChangeState<ClearPackageCache>();
+        }
     }
 }

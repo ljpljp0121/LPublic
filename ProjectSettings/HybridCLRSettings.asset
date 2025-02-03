@@ -26,9 +26,6 @@ MonoBehaviour:
   externalHotUpdateAssembliyDirs: []
   strippedAOTDllOutputRootDir: HybridCLRData/AssembliesPostIl2CppStrip
   patchAOTAssemblies:
-  - CoreEngine
-  - YooAsset
-  - Luban.Runtime
   - System
   - System.Core
   - mscorlib

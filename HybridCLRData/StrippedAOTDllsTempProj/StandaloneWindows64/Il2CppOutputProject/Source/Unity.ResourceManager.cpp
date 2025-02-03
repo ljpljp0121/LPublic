@@ -12151,7 +12151,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* TypeSerializer_Deserialize_mB4
 			String_t* L_15 = V_1;
 			NullCheck(L_14);
 			Type_t* L_16;
-			L_16 = VirtualFuncInvoker1< Type_t*, String_t* >::Invoke(18, L_14, L_15);
+			L_16 = VirtualFuncInvoker1< Type_t*, String_t* >::Invoke(19, L_14, L_15);
 			G_B3_0 = L_16;
 			goto IL_0040_1;
 		}
@@ -16993,7 +16993,7 @@ IL_001e_1:
 			String_t* L_11 = __this->___m_ClassName;
 			NullCheck(L_10);
 			Type_t* L_12;
-			L_12 = VirtualFuncInvoker1< Type_t*, String_t* >::Invoke(18, L_10, L_11);
+			L_12 = VirtualFuncInvoker1< Type_t*, String_t* >::Invoke(19, L_10, L_11);
 			__this->___m_CachedType = L_12;
 			Il2CppCodeGenWriteBarrier((void**)(&__this->___m_CachedType), (void*)L_12);
 		}

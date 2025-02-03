@@ -29,7 +29,14 @@ public class CreatePackageDownloader : StateBase
         if (downloader.TotalDownloadCount == 0)
         {
             LogSystem.Log("Not found any download files !");
-            stateMachine.ChangeState<ClearPackageCache>();
+            if (packageName == "DllPackage")
+            {
+                stateMachine.ChangeState<LoadPackageDll>();
+            }
+            else
+            {
+                stateMachine.ChangeState<ClearPackageCache>();
+            }
         }
         else
         {

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mime;
 using System.Text;
+using HybridCLR;
 using UnityEngine;
 using YooAsset;
 
@@ -77,10 +78,6 @@ public class LoadPackageDll : StateBase
 
     private void LoadAOTMetadata(string assetName, byte[] dllData)
     {
-#if UNITY_EDITOR || !HYBRIDCLR_ENABLED
-        Debug.LogWarning("HybridCLR 未启用或当前为编辑器环境，跳过 AOT 元数据加载");
-        return;
-#else
     try
     {
         // 使用 HybridCLR 的 API 加载 AOT 元数据
@@ -92,7 +89,6 @@ public class LoadPackageDll : StateBase
     {
         Debug.LogError($"AOT 元数据加载失败: {assetName}, 错误: {e}");
     }
-#endif
     }
 
     private void LoadHotUpdateAssemblies()
@@ -113,4 +109,5 @@ public class LoadPackageDll : StateBase
             }
         }
     }
+    
 }

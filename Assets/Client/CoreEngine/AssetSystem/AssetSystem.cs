@@ -11,13 +11,29 @@ public static class AssetSystem
 
     private static string assetPath = "Assets/Bundle/";
 
-    public static IEnumerator Init(string packageName, EPlayMode playMode)
+    public static IEnumerator InitDll(string packageName, EPlayMode playMode)
     {
         //初始化资源系统
         YooAssets.Initialize();
         //加载更新界面
         var go = Resources.Load<GameObject>("PatchWindow");
         GameObject.Instantiate(go);
+
+        //开始补丁更新流程
+        PatchOperation operation = new PatchOperation(packageName, playMode);
+        YooAssets.StartOperation(operation);
+        yield return operation;
+
+        // //设置默认的资源包
+        // package = YooAssets.GetPackage(packageName);
+        // YooAssets.SetDefaultPackage(package);
+    }
+
+    public static IEnumerator InitResource(string packageName, EPlayMode playMode)
+    {
+        //初始化资源系统
+        if (!YooAssets.Initialized)
+            YooAssets.Initialize();
 
         //开始补丁更新流程
         PatchOperation operation = new PatchOperation(packageName, playMode);
@@ -198,6 +214,7 @@ public static class AssetSystem
                 go.transform.OnReleaseAsset(AutomaticReleaseAssetAction);
             }
         }
+
         return go;
     }
 
@@ -224,6 +241,7 @@ public static class AssetSystem
                 {
                     go.transform.OnReleaseAsset(AutomaticReleaseAssetAction);
                 }
+
                 callback?.Invoke(go);
             };
         }

@@ -11,6 +11,8 @@ Library: D:\Unity\UnityProjects\LPublic\Temp\BurstOutput\Data\Plugins\x86_64\lib
 --float-mode=Fast
 --assembly-defines=Assembly-CSharp;
 --assembly-defines=CoreEngine;
+--assembly-defines=HybridCLR.Runtime;
+--assembly-defines=IngameDebugConsole.Runtime;
 --assembly-defines=Luban.Runtime;
 --assembly-defines=Mono.Security;
 --assembly-defines=mscorlib;
@@ -56,6 +58,8 @@ Library: D:\Unity\UnityProjects\LPublic\Temp\BurstOutput\Data\Plugins\x86_64\lib
 --float-mode=Fast
 --assembly-defines=Assembly-CSharp;
 --assembly-defines=CoreEngine;
+--assembly-defines=HybridCLR.Runtime;
+--assembly-defines=IngameDebugConsole.Runtime;
 --assembly-defines=Luban.Runtime;
 --assembly-defines=Mono.Security;
 --assembly-defines=mscorlib;
@@ -99,6 +103,8 @@ Library: D:\Unity\UnityProjects\LPublic\Temp\BurstOutput\Data\Plugins\x86_64\lib
 --target-framework=NetFramework
 --assembly-defines=Assembly-CSharp;
 --assembly-defines=CoreEngine;
+--assembly-defines=HybridCLR.Runtime;
+--assembly-defines=IngameDebugConsole.Runtime;
 --assembly-defines=Luban.Runtime;
 --assembly-defines=Mono.Security;
 --assembly-defines=mscorlib;
@@ -148,6 +154,8 @@ Library: D:\Unity\UnityProjects\LPublic\Temp\BurstOutput\Data\Plugins\x86_64\lib
 --target-framework=NetFramework
 --assembly-defines=Assembly-CSharp;
 --assembly-defines=CoreEngine;
+--assembly-defines=HybridCLR.Runtime;
+--assembly-defines=IngameDebugConsole.Runtime;
 --assembly-defines=Luban.Runtime;
 --assembly-defines=Mono.Security;
 --assembly-defines=mscorlib;

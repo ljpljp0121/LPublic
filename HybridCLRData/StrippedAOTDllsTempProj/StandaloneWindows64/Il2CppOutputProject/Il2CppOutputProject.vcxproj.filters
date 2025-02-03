@@ -832,6 +832,9 @@
     <ClCompile Include="Source\Generics__9.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="Source\HybridCLR.Runtime.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
     <ClCompile Include="Source\Il2CppCCalculateFieldValues.cpp">
       <Filter>Source</Filter>
     </ClCompile>
@@ -866,6 +869,9 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Source\Il2CppUnresolvedIndirectCallStubs.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\IngameDebugConsole.Runtime.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Source\Luban.Runtime.cpp">
@@ -1141,6 +1147,9 @@
     <ClCompile Include="Source\UnityEngine.CoreModule__3.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="Source\UnityEngine.CoreModule__4.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
     <ClCompile Include="Source\UnityEngine.cpp">
       <Filter>Source</Filter>
     </ClCompile>
@@ -1312,6 +1321,9 @@
     <ClCompile Include="Source\CoreEngine_CodeGen.c">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="Source\HybridCLR.Runtime_CodeGen.c">
+      <Filter>Source</Filter>
+    </ClCompile>
     <ClCompile Include="Source\Il2CppGenericAdjustorThunkTable.c">
       <Filter>Source</Filter>
     </ClCompile>
@@ -1340,6 +1352,9 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Source\Il2CppTypeDefinitions.c">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\IngameDebugConsole.Runtime_CodeGen.c">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Source\Luban.Runtime_CodeGen.c">

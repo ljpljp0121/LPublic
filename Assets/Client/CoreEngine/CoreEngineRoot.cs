@@ -50,8 +50,8 @@ public class CoreEngineRoot : MonoBehaviour
         MonoSystem.Init();
         TableSystem.Init();
         AudioSystem.Init();
-        yield return AssetSystem.Init(DllPackageName, PlayMode);
-        yield return AssetSystem.Init(ResourcePackageName, PlayMode);
+        yield return AssetSystem.InitDll(DllPackageName, PlayMode);
+        yield return AssetSystem.InitResource(ResourcePackageName, PlayMode);
         SceneSystem.LoadSceneAsync("GameScene");
     }
 }
