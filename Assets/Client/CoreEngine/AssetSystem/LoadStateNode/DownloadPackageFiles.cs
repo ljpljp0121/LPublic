@@ -16,7 +16,7 @@ public class DownloadPackageFiles : StateBase
 
     private IEnumerator BeginDownload()
     {
-        if (TryGetShareData("Downloader", out ResourceDownloaderOperation downloader))
+        if (!TryGetShareData("Downloader", out ResourceDownloaderOperation downloader))
         {
             LogSystem.Error("没找到资源下载句柄!");
         }

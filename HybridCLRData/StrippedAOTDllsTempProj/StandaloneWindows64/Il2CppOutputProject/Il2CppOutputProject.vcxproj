@@ -234,13 +234,9 @@
     </ClCompile>
     <ClCompile Include="Source\Generics__76.cpp">
     </ClCompile>
-    <ClCompile Include="Source\Generics__77.cpp">
-    </ClCompile>
     <ClCompile Include="Source\Generics__8.cpp">
     </ClCompile>
     <ClCompile Include="Source\Generics__9.cpp">
-    </ClCompile>
-    <ClCompile Include="Source\HybridCLR.Runtime.cpp">
     </ClCompile>
     <ClCompile Include="Source\Il2CppCCalculateFieldValues.cpp">
     </ClCompile>
@@ -291,8 +287,6 @@
     <ClCompile Include="Source\mscorlib__17.cpp">
     </ClCompile>
     <ClCompile Include="Source\mscorlib__18.cpp">
-    </ClCompile>
-    <ClCompile Include="Source\mscorlib__19.cpp">
     </ClCompile>
     <ClCompile Include="Source\mscorlib__2.cpp">
     </ClCompile>
@@ -345,10 +339,6 @@
     <ClCompile Include="Source\System__2.cpp">
     </ClCompile>
     <ClCompile Include="Source\System__3.cpp">
-    </ClCompile>
-    <ClCompile Include="Source\Unity.Addressables.cpp">
-    </ClCompile>
-    <ClCompile Include="Source\Unity.Addressables__1.cpp">
     </ClCompile>
     <ClCompile Include="Source\Unity.Burst.cpp">
     </ClCompile>
@@ -568,8 +558,6 @@
     </ClCompile>
     <ClCompile Include="Source\CoreEngine_CodeGen.c">
     </ClCompile>
-    <ClCompile Include="Source\HybridCLR.Runtime_CodeGen.c">
-    </ClCompile>
     <ClCompile Include="Source\Il2CppGenericAdjustorThunkTable.c">
     </ClCompile>
     <ClCompile Include="Source\Il2CppGenericClassTable.c">
@@ -615,8 +603,6 @@
     <ClCompile Include="Source\System.Xml_CodeGen.c">
     </ClCompile>
     <ClCompile Include="Source\System_CodeGen.c">
-    </ClCompile>
-    <ClCompile Include="Source\Unity.Addressables_CodeGen.c">
     </ClCompile>
     <ClCompile Include="Source\Unity.Burst.Unsafe_CodeGen.c">
     </ClCompile>

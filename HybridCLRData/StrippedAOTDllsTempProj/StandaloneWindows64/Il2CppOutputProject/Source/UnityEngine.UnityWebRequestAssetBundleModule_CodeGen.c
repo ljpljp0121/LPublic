@@ -12,9 +12,7 @@
 
 
 
-extern void UnityWebRequestAssetBundle_GetAssetBundle_mA08565578A5E7A07140D4C6327FD9B51E14D99F9 (void);
 extern void UnityWebRequestAssetBundle_GetAssetBundle_m9045968CDEE1AEF16CA76EFA17061D9D4C21FE30 (void);
-extern void UnityWebRequestAssetBundle_GetAssetBundle_m1701951B58D909D4FE4C62B86F4BF86C101DAB6B (void);
 extern void UnityWebRequestAssetBundle_GetAssetBundle_m6F1692B41861FA9CAD924EDC0D48E94532A002AC (void);
 extern void UnityWebRequestAssetBundle_GetAssetBundle_m54C9037C71250E352D7A1947E4594C927A4E0925 (void);
 extern void DownloadHandlerAssetBundle_Create_mAE1EAD7D5059AB28C1271055B8010DC7121E61C6 (void);
@@ -31,11 +29,9 @@ extern void DownloadHandlerAssetBundle_get_autoLoadAssetBundle_m2639C74CDA9554AD
 extern void DownloadHandlerAssetBundle_set_autoLoadAssetBundle_m33EFE2889EEC8AC2C81066DB7FF415AA315B53AE (void);
 extern void DownloadHandlerAssetBundle_get_isDownloadComplete_mBB1BB4E3CE2DD3096D7B7D08D126A7CF5F6E4D9A (void);
 extern void DownloadHandlerAssetBundle_CreateCached_Injected_mC703DBCA3F725338364D3E9B37AF916E4272F250 (void);
-static Il2CppMethodPointer s_methodPointers[19] = 
+static Il2CppMethodPointer s_methodPointers[17] = 
 {
-	UnityWebRequestAssetBundle_GetAssetBundle_mA08565578A5E7A07140D4C6327FD9B51E14D99F9,
 	UnityWebRequestAssetBundle_GetAssetBundle_m9045968CDEE1AEF16CA76EFA17061D9D4C21FE30,
-	UnityWebRequestAssetBundle_GetAssetBundle_m1701951B58D909D4FE4C62B86F4BF86C101DAB6B,
 	UnityWebRequestAssetBundle_GetAssetBundle_m6F1692B41861FA9CAD924EDC0D48E94532A002AC,
 	UnityWebRequestAssetBundle_GetAssetBundle_m54C9037C71250E352D7A1947E4594C927A4E0925,
 	DownloadHandlerAssetBundle_Create_mAE1EAD7D5059AB28C1271055B8010DC7121E61C6,
@@ -53,33 +49,31 @@ static Il2CppMethodPointer s_methodPointers[19] =
 	DownloadHandlerAssetBundle_get_isDownloadComplete_mBB1BB4E3CE2DD3096D7B7D08D126A7CF5F6E4D9A,
 	DownloadHandlerAssetBundle_CreateCached_Injected_mC703DBCA3F725338364D3E9B37AF916E4272F250,
 };
-static const int32_t s_InvokerIndices[19] = 
+static const int32_t s_InvokerIndices[17] = 
 {
-	12162,
-	12162,
-	10679,
-	10679,
-	9586,
-	9541,
-	8328,
-	3347,
-	1153,
-	3347,
-	1686,
-	1682,
-	7458,
-	7458,
-	7458,
-	7354,
-	5908,
-	7354,
-	8327,
+	11945,
+	10476,
+	9394,
+	9350,
+	8158,
+	3255,
+	1121,
+	3255,
+	1632,
+	1628,
+	7294,
+	7294,
+	7294,
+	7190,
+	5763,
+	7190,
+	8157,
 };
 IL2CPP_EXTERN_C const Il2CppCodeGenModule g_UnityEngine_UnityWebRequestAssetBundleModule_CodeGenModule;
 const Il2CppCodeGenModule g_UnityEngine_UnityWebRequestAssetBundleModule_CodeGenModule = 
 {
 	"UnityEngine.UnityWebRequestAssetBundleModule.dll",
-	19,
+	17,
 	s_methodPointers,
 	0,
 	NULL,

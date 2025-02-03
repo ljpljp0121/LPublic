@@ -826,16 +826,10 @@
     <ClCompile Include="Source\Generics__76.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Generics__77.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Generics__8.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Source\Generics__9.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\HybridCLR.Runtime.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Source\Il2CppCCalculateFieldValues.cpp">
@@ -911,9 +905,6 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Source\mscorlib__18.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\mscorlib__19.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Source\mscorlib__2.cpp">
@@ -992,12 +983,6 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Source\System__3.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Unity.Addressables.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Unity.Addressables__1.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Source\Unity.Burst.cpp">
@@ -1327,9 +1312,6 @@
     <ClCompile Include="Source\CoreEngine_CodeGen.c">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="Source\HybridCLR.Runtime_CodeGen.c">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Il2CppGenericAdjustorThunkTable.c">
       <Filter>Source</Filter>
     </ClCompile>
@@ -1397,9 +1379,6 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Source\System_CodeGen.c">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Unity.Addressables_CodeGen.c">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Source\Unity.Burst.Unsafe_CodeGen.c">

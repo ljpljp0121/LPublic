@@ -19,6 +19,7 @@ public class CreatePackageDownloader : StateBase
         {
             LogSystem.Error("设置的资源包名称不存在");
         }
+
         var package = YooAssets.GetPackage(packageName);
         int downloadingMaxNum = 10;
         int failedTryAgain = 3;
@@ -28,7 +29,7 @@ public class CreatePackageDownloader : StateBase
         if (downloader.TotalDownloadCount == 0)
         {
             LogSystem.Log("Not found any download files !");
-            stateMachine.ChangeState<LoadPackageDll>();
+            stateMachine.ChangeState<ClearPackageCache>();
         }
         else
         {

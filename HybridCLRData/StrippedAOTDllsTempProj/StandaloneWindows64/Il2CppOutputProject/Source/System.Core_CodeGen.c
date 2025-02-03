@@ -34,7 +34,7 @@ extern void BitHelper__ctor_m795A92E9A03F57547FD78A8E50F730C2778DDD19 (void);
 extern void BitHelper_MarkBit_m12EFF71C5444F4E4D076F514C0C0723B39E50F86 (void);
 extern void BitHelper_IsMarked_m0A02826959B4EF6381B8F6C7DF0EDBFC55EE8EF2 (void);
 extern void BitHelper_ToIntArrayLength_m59204C3775D26A8B9532246C2F384C92D02E713C (void);
-static Il2CppMethodPointer s_methodPointers[242] = 
+static Il2CppMethodPointer s_methodPointers[239] = 
 {
 	Error_ArgumentNull_m1141D2C9AF8AB6ACC45E7488789598C5283D4EEE,
 	Error_ArgumentOutOfRange_m7B22062E664153625DA782374A7CB9CBD3B2C01D,
@@ -275,17 +275,14 @@ static Il2CppMethodPointer s_methodPointers[242] =
 	NULL,
 	NULL,
 	NULL,
-	NULL,
-	NULL,
-	NULL,
 };
-static const int32_t s_InvokerIndices[242] = 
+static const int32_t s_InvokerIndices[239] = 
 {
-	12162,
-	12162,
-	13263,
-	13263,
-	13263,
+	11945,
+	11945,
+	13040,
+	13040,
+	13040,
 	0,
 	0,
 	0,
@@ -318,8 +315,8 @@ static const int32_t s_InvokerIndices[242] =
 	0,
 	0,
 	0,
-	10653,
-	10653,
+	10450,
+	10450,
 	0,
 	0,
 	0,
@@ -328,8 +325,8 @@ static const int32_t s_InvokerIndices[242] =
 	0,
 	0,
 	0,
-	12051,
-	12051,
+	11834,
+	11834,
 	0,
 	0,
 	0,
@@ -433,14 +430,14 @@ static const int32_t s_InvokerIndices[242] =
 	0,
 	0,
 	0,
-	5981,
-	7601,
-	7354,
-	7423,
-	7601,
-	7458,
-	7458,
-	7458,
+	5836,
+	7436,
+	7190,
+	7259,
+	7436,
+	7294,
+	7294,
+	7294,
 	0,
 	0,
 	0,
@@ -471,14 +468,11 @@ static const int32_t s_InvokerIndices[242] =
 	0,
 	0,
 	0,
-	2715,
-	3323,
-	5981,
-	4325,
-	12047,
-	0,
-	0,
-	0,
+	2630,
+	3231,
+	5836,
+	4200,
+	11830,
 	0,
 	0,
 	0,
@@ -549,8 +543,8 @@ static const Il2CppTokenRangePair s_rgctxIndices[73] =
 	{ 0x0200001B, { 513, 5 } },
 	{ 0x0200001C, { 518, 15 } },
 	{ 0x0200001D, { 533, 11 } },
-	{ 0x0200001F, { 544, 54 } },
-	{ 0x02000022, { 598, 7 } },
+	{ 0x0200001F, { 544, 51 } },
+	{ 0x02000022, { 595, 7 } },
 	{ 0x06000006, { 0, 12 } },
 	{ 0x06000007, { 12, 14 } },
 	{ 0x06000008, { 26, 5 } },
@@ -1182,9 +1176,6 @@ extern const uint32_t g_rgctx_IEqualityComparer_1_t66DFFD1D981BA05FF20035307F86B
 extern const uint32_t g_rgctx_SlotU5BU5D_tCF3C9EE13C54F730A642AD5F260A5A7D2F9F73F7;
 extern const uint32_t g_rgctx_IEnumerable_1_GetEnumerator_mD059A216A04E59863006CEE9F7C3BD8AA41F1D5C;
 extern const uint32_t g_rgctx_IEnumerator_1_get_Current_m149653A74BD91288C695A04557C5D768E16EA745;
-extern const uint32_t g_rgctx_HashSet_1_Clear_mBCB831BE78A9259AAEFB3051763BAE40121F9D11;
-extern const uint32_t g_rgctx_HashSet_1_IntersectWithHashSetWithSameEC_m44EC438AB13789AE47C1FE321760937D6B93586F;
-extern const uint32_t g_rgctx_HashSet_1_IntersectWithEnumerable_m7A0EB45FE7BD56851D687DBFA37C331E4CE25E77;
 extern const uint32_t g_rgctx_HashSet_1_get_Count_mF76AC662D895CC68C20E848F79874EAB1A79DA31;
 extern const uint32_t g_rgctx_HashSet_1_ContainsAllElements_mCF6E110D72174582EF10330832B7D5A28D3183F0;
 extern const uint32_t g_rgctx_HashSet_1_CheckUniqueAndUnfoundElements_mEA361D87EEB7BAD67D2F3CE429595DEFA932A5DE;
@@ -1205,7 +1196,7 @@ extern const uint32_t g_rgctx_SlotU5BU5D_t60EAC05F1274FA013F450CFD354680AA56C10E
 extern const uint32_t g_rgctx_Slot_t58F6F802D1D0CF12016B76609C3A54B33273FD13;
 extern const uint32_t g_rgctx_Enumerator_get_Current_m6F22509C5AEA1EA15942F7F9C9866256CB3EA347;
 extern const uint32_t g_rgctx_Enumerator_tB091A59F0E047A76EF2099D441944326FE3C0B97;
-static const Il2CppRGCTXDefinition s_rgctxValues[605] = 
+static const Il2CppRGCTXDefinition s_rgctxValues[602] = 
 {
 	{ (Il2CppRGCTXDataType)2, (const void *)&g_rgctx_IEnumerable_1_t3AF8F557A5415169D4617DBCB1364D33309B7891 },
 	{ (Il2CppRGCTXDataType)2, (const void *)&g_rgctx_Func_2_tD2F5833EE6E6464E0A5DF0D394FCC308F9B20D62 },
@@ -1789,9 +1780,6 @@ static const Il2CppRGCTXDefinition s_rgctxValues[605] =
 	{ (Il2CppRGCTXDataType)2, (const void *)&g_rgctx_SlotU5BU5D_tCF3C9EE13C54F730A642AD5F260A5A7D2F9F73F7 },
 	{ (Il2CppRGCTXDataType)3, (const void *)&g_rgctx_IEnumerable_1_GetEnumerator_mD059A216A04E59863006CEE9F7C3BD8AA41F1D5C },
 	{ (Il2CppRGCTXDataType)3, (const void *)&g_rgctx_IEnumerator_1_get_Current_m149653A74BD91288C695A04557C5D768E16EA745 },
-	{ (Il2CppRGCTXDataType)3, (const void *)&g_rgctx_HashSet_1_Clear_mBCB831BE78A9259AAEFB3051763BAE40121F9D11 },
-	{ (Il2CppRGCTXDataType)3, (const void *)&g_rgctx_HashSet_1_IntersectWithHashSetWithSameEC_m44EC438AB13789AE47C1FE321760937D6B93586F },
-	{ (Il2CppRGCTXDataType)3, (const void *)&g_rgctx_HashSet_1_IntersectWithEnumerable_m7A0EB45FE7BD56851D687DBFA37C331E4CE25E77 },
 	{ (Il2CppRGCTXDataType)3, (const void *)&g_rgctx_HashSet_1_get_Count_mF76AC662D895CC68C20E848F79874EAB1A79DA31 },
 	{ (Il2CppRGCTXDataType)3, (const void *)&g_rgctx_HashSet_1_ContainsAllElements_mCF6E110D72174582EF10330832B7D5A28D3183F0 },
 	{ (Il2CppRGCTXDataType)3, (const void *)&g_rgctx_HashSet_1_CheckUniqueAndUnfoundElements_mEA361D87EEB7BAD67D2F3CE429595DEFA932A5DE },
@@ -1817,7 +1805,7 @@ IL2CPP_EXTERN_C const Il2CppCodeGenModule g_System_Core_CodeGenModule;
 const Il2CppCodeGenModule g_System_Core_CodeGenModule = 
 {
 	"System.Core.dll",
-	242,
+	239,
 	s_methodPointers,
 	0,
 	NULL,
@@ -1826,7 +1814,7 @@ const Il2CppCodeGenModule g_System_Core_CodeGenModule =
 	NULL,
 	73,
 	s_rgctxIndices,
-	605,
+	602,
 	s_rgctxValues,
 	NULL,
 	NULL,

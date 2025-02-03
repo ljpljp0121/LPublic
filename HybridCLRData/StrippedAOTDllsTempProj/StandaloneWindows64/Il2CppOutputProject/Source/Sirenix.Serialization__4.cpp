@@ -1682,7 +1682,7 @@ IL_0109:
 		Type_t* L_27 = __this->___U3CcurrentTypeU3E5__2;
 		NullCheck(L_27);
 		Type_t* L_28;
-		L_28 = VirtualFuncInvoker0< Type_t* >::Invoke(112, L_27);
+		L_28 = VirtualFuncInvoker0< Type_t* >::Invoke(111, L_27);
 		__this->___U3CcurrentTypeU3E5__2 = L_28;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CcurrentTypeU3E5__2), (void*)L_28);
 		Type_t* L_29 = __this->___U3CcurrentTypeU3E5__2;
@@ -2169,7 +2169,7 @@ IL_001b:
 		Type_t* L_4 = __this->___type;
 		NullCheck(L_4);
 		Type_t* L_5;
-		L_5 = VirtualFuncInvoker0< Type_t* >::Invoke(112, L_4);
+		L_5 = VirtualFuncInvoker0< Type_t* >::Invoke(111, L_4);
 		il2cpp_codegen_runtime_class_init_inline(Type_t_il2cpp_TypeInfo_var);
 		bool L_6;
 		L_6 = Type_op_Equality_m99930A0E44E420A685FABA60E60BA1CC5FA0EBDC(L_5, (Type_t*)NULL, NULL);
@@ -2210,7 +2210,7 @@ IL_0069:
 		Type_t* L_9 = __this->___type;
 		NullCheck(L_9);
 		Type_t* L_10;
-		L_10 = VirtualFuncInvoker0< Type_t* >::Invoke(112, L_9);
+		L_10 = VirtualFuncInvoker0< Type_t* >::Invoke(111, L_9);
 		__this->___U3CcurrentU3E5__2 = L_10;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CcurrentU3E5__2), (void*)L_10);
 		goto IL_00a9;
@@ -2231,7 +2231,7 @@ IL_0091:
 		Type_t* L_12 = __this->___U3CcurrentU3E5__2;
 		NullCheck(L_12);
 		Type_t* L_13;
-		L_13 = VirtualFuncInvoker0< Type_t* >::Invoke(112, L_12);
+		L_13 = VirtualFuncInvoker0< Type_t* >::Invoke(111, L_12);
 		__this->___U3CcurrentU3E5__2 = L_13;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CcurrentU3E5__2), (void*)L_13);
 	}

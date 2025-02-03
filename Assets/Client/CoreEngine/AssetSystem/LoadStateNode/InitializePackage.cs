@@ -19,6 +19,7 @@ public class InitializePackage : StateBase
         {
             LogSystem.Error("没有设置对应的资源运行类型");
         }
+
         if (!TryGetShareData("PackageName", out string packageName))
         {
             LogSystem.Error("设置的资源包名称不存在");
@@ -55,8 +56,8 @@ public class InitializePackage : StateBase
         if (playMode == EPlayMode.HostPlayMode)
         {
             LogSystem.Log("联机运行模式！！！");
-            string defaultHostServer = GetHostServerURL();
-            string fallbackHostServer = GetHostServerURL();
+            string defaultHostServer = GetHostServerURL(packageName);
+            string fallbackHostServer = GetHostServerURL(packageName);
             IRemoteServices remoteServices = new RemoteServices(defaultHostServer, fallbackHostServer);
             var createParameters = new HostPlayModeParameters();
             createParameters.BuildinFileSystemParameters =
@@ -83,30 +84,33 @@ public class InitializePackage : StateBase
     /// <summary>
     /// 获取资源服务器地址
     /// </summary>
-    private string GetHostServerURL()
+    private string GetHostServerURL(string packageName)
     {
-        //string hostServerIP = "http://127.0.0.1:8088"; //安卓模拟器地址
-        string hostServerIP = "http://127.0.0.1:8088";
-        string appVersion = "v1.0";
+        string bucketName = "unity-2540297235";
+        string endpoint = "oss-cn-hangzhou.aliyuncs.com";
+        string version = "v1.0.0";
+        string hostServerIP = $"https://{bucketName}.{endpoint}/LPublic/{version}/{packageName}";
+
+        return hostServerIP;
 
 #if UNITY_EDITOR
         if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.Android)
-            return $"{hostServerIP}/LPublic/Android";
+            return $"{hostServerIP}";
         else if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.iOS)
-            return $"{hostServerIP}/LPublic/IPhone";
+            return $"{hostServerIP}";
         else if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.WebGL)
-            return $"{hostServerIP}/LPublic/WebGL";
+            return $"{hostServerIP}";
         else
-            return $"{hostServerIP}/LPublic/PC";
+            return $"{hostServerIP}";
 #else
         if (Application.platform == RuntimePlatform.Android)
-            return $"{hostServerIP}/LPublic/Android";
+            return $"{hostServerIP}";
         else if (Application.platform == RuntimePlatform.IPhonePlayer)
-            return $"{hostServerIP}/LPublic/IPhone";
+            return $"{hostServerIP}";
         else if (Application.platform == RuntimePlatform.WebGLPlayer)
-            return $"{hostServerIP}/LPublic/WebGL";
+            return $"{hostServerIP}";
         else
-            return $"{hostServerIP}/LPublic/PC";
+            return $"{hostServerIP}";
 #endif
     }
 }
