@@ -58,7 +58,7 @@ public class PatchWindow : MonoBehaviour
     {
         slider = transform.Find("UIWindow/Slider").GetComponent<Slider>();
         tips = transform.Find("UIWindow/Slider/txt_tips").GetComponent<Text>();
-        tips.text = "Initializing the game world !";
+        tips.text = "开始初始化世界";
         messageBoxObj = transform.Find("UIWindow/MessgeBox").gameObject;
         messageBoxObj.SetActive(false);
 
@@ -113,7 +113,7 @@ public class PatchWindow : MonoBehaviour
     /// </summary>
     private void OnInitializeFailed(InitializeFailed obj)
     {
-        ShowMessageBox($"Failed to initialize package !",
+        ShowMessageBox($"初始化失败，点击重新初始化",
             () => { EventSystem.DispatchEvent<UserTryInitialize>(new UserTryInitialize()); });
     }
 
@@ -133,8 +133,7 @@ public class PatchWindow : MonoBehaviour
         float sizeMB = obj.TotalSizeBytes / 1048576f;
         sizeMB = Mathf.Clamp(sizeMB, 0.1f, float.MaxValue);
         string totalSizeMB = sizeMB.ToString("f1");
-        ShowMessageBox($"Found update patch files, Total count {obj.TotalCount} Total szie {totalSizeMB}MB",
-            () => { EventSystem.DispatchEvent<UserBeginDownloadWebFiles>(new UserBeginDownloadWebFiles()); });
+        EventSystem.DispatchEvent<UserBeginDownloadWebFiles>(new UserBeginDownloadWebFiles());
     }
 
     /// <summary>
@@ -153,7 +152,7 @@ public class PatchWindow : MonoBehaviour
     /// </summary>
     private void OnPackageVersionUpdateFailed(PackageVersionUpdateFailed obj)
     {
-        ShowMessageBox($"Failed to update static version, please check the network status.",
+        ShowMessageBox($"资源版本号更新失败，请检查网络",
             () => { EventSystem.DispatchEvent<UserTryUpdatePackageVersion>(new UserTryUpdatePackageVersion()); });
     }
 
@@ -162,7 +161,7 @@ public class PatchWindow : MonoBehaviour
     /// </summary>
     private void OnPatchManifestUpdateFailed(PatchManifestUpdateFailed obj)
     {
-        ShowMessageBox($"Failed to update patch manifest, please check the network status.",
+        ShowMessageBox($"补丁清单更新失败，请检查网络",
             () => { EventSystem.DispatchEvent<UserTryUpdatePatchManifest>(new UserTryUpdatePatchManifest()); });
     }
 
@@ -171,7 +170,7 @@ public class PatchWindow : MonoBehaviour
     /// </summary>
     private void OnWebFileDownloadFailed(WebFileDownloadFailed obj)
     {
-        ShowMessageBox($"Failed to download file : {obj.FileName}",
+        ShowMessageBox($"文件下载失败，点击重新下载",
             () => { EventSystem.DispatchEvent<UserTryDownloadWebFiles>(new UserTryDownloadWebFiles()); });
     }
 

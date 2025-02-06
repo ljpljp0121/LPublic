@@ -9,7 +9,7 @@ public class InitializePackage : StateBase
 {
     public override void Enter()
     {
-        EventSystem.DispatchEvent<PatchStatesChange>(new PatchStatesChange("初始化资源包!"));
+        EventSystem.DispatchEvent<PatchStatesChange>(new PatchStatesChange("初始化游戏资源!"));
         MonoSystem.BeginCoroutine(InitPackage());
     }
 

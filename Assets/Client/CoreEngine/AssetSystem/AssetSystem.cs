@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
+using System.IO;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using YooAsset;
 
@@ -11,38 +13,52 @@ public static class AssetSystem
 
     private static string assetPath = "Assets/Bundle/";
 
-    public static IEnumerator InitDll(string packageName, EPlayMode playMode)
+    public static IEnumerator Init(string dllPackageName, string resourcePackageName, EPlayMode playMode)
     {
         //初始化资源系统
         YooAssets.Initialize();
-        //加载更新界面
         var go = Resources.Load<GameObject>("PatchWindow");
         GameObject.Instantiate(go);
-
-        //开始补丁更新流程
-        PatchOperation operation = new PatchOperation(packageName, playMode);
-        YooAssets.StartOperation(operation);
-        yield return operation;
-
-        // //设置默认的资源包
-        // package = YooAssets.GetPackage(packageName);
-        // YooAssets.SetDefaultPackage(package);
+        // yield return InitPatchWindow();
+        yield return InitDll(dllPackageName, playMode);
+        yield return InitResource(resourcePackageName, playMode);
+        //设置默认的资源包
+        package = YooAssets.GetPackage(resourcePackageName);
+        YooAssets.SetDefaultPackage(package);
     }
 
-    public static IEnumerator InitResource(string packageName, EPlayMode playMode)
+    private static IEnumerator InitPatchWindow()
     {
-        //初始化资源系统
-        if (!YooAssets.Initialized)
-            YooAssets.Initialize();
+        string patchWindowPath = Path.Combine(Application.streamingAssetsPath, "PatchWindow.prefab");
+        UnityWebRequest request = UnityWebRequest.Get(patchWindowPath);
+        yield return request.SendWebRequest();
 
+        if (request.result == UnityWebRequest.Result.Success)
+        {
+            // 加载预制体
+            GameObject patchWindowPrefab = JsonUtility.FromJson<GameObject>(request.downloadHandler.text);
+            GameObject.Instantiate(patchWindowPrefab);
+        }
+        else
+        {
+            Debug.LogError("加载 PatchWindow 失败: " + request.error);
+        }
+    }
+
+    private static IEnumerator InitDll(string packageName, EPlayMode playMode)
+    {
         //开始补丁更新流程
         PatchOperation operation = new PatchOperation(packageName, playMode);
         YooAssets.StartOperation(operation);
         yield return operation;
+    }
 
-        //设置默认的资源包
-        package = YooAssets.GetPackage(packageName);
-        YooAssets.SetDefaultPackage(package);
+    private static IEnumerator InitResource(string packageName, EPlayMode playMode)
+    {
+        //开始补丁更新流程
+        PatchOperation operation = new PatchOperation(packageName, playMode);
+        YooAssets.StartOperation(operation);
+        yield return operation;
     }
 
     #region 普通Class对象
