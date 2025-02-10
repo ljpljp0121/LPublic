@@ -6,8 +6,9 @@ namespace hybridclr
 	{
 		//!!!{{PLACE_HOLDER
 		"Client_UI",
-		"Client_Logic",
 		"Client_GamePlay",
+		"Client_Logic",
+		"Client_Base",
 
 		//!!!}}PLACE_HOLDER
 		nullptr,

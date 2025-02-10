@@ -11,7 +11,7 @@ using YooAsset;
 /// 核心框架根节点
 /// 所有系统的初始化都在这里
 /// </summary>
-[DefaultExecutionOrder(-100)]
+[DefaultExecutionOrder(-200)]
 public class CoreEngineRoot : MonoBehaviour
 {
     /// <summary>
@@ -21,6 +21,7 @@ public class CoreEngineRoot : MonoBehaviour
 
     public string ResourcePackageName = "ResourcePackage";
     public string DllPackageName = "DllPackage";
+    public static string Version = "v1.0.0";
 
     private static CoreEngineRoot Instance { get; set; }
     public static Transform RootTransform { get; private set; }
@@ -48,9 +49,9 @@ public class CoreEngineRoot : MonoBehaviour
         PoolSystem.Init();
         EventSystem.Init();
         MonoSystem.Init();
-        TableSystem.Init();
         AudioSystem.Init();
-        yield return AssetSystem.Init(DllPackageName,ResourcePackageName,PlayMode);
+        yield return AssetSystem.Init(DllPackageName, ResourcePackageName, PlayMode);
+        TableSystem.Init();
         SceneSystem.LoadSceneAsync("GameScene");
     }
 }

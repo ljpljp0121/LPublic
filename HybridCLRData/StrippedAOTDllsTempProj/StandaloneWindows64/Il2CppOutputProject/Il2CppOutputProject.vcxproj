@@ -68,6 +68,8 @@
     </ClCompile>
     <ClCompile Include="Source\GenericMethods__17.cpp">
     </ClCompile>
+    <ClCompile Include="Source\GenericMethods__18.cpp">
+    </ClCompile>
     <ClCompile Include="Source\GenericMethods__2.cpp">
     </ClCompile>
     <ClCompile Include="Source\GenericMethods__3.cpp">
@@ -234,6 +236,10 @@
     </ClCompile>
     <ClCompile Include="Source\Generics__76.cpp">
     </ClCompile>
+    <ClCompile Include="Source\Generics__77.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__78.cpp">
+    </ClCompile>
     <ClCompile Include="Source\Generics__8.cpp">
     </ClCompile>
     <ClCompile Include="Source\Generics__9.cpp">
@@ -292,6 +298,8 @@
     </ClCompile>
     <ClCompile Include="Source\mscorlib__18.cpp">
     </ClCompile>
+    <ClCompile Include="Source\mscorlib__19.cpp">
+    </ClCompile>
     <ClCompile Include="Source\mscorlib__2.cpp">
     </ClCompile>
     <ClCompile Include="Source\mscorlib__3.cpp">
@@ -343,6 +351,10 @@
     <ClCompile Include="Source\System__2.cpp">
     </ClCompile>
     <ClCompile Include="Source\System__3.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Unity.Addressables.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Unity.Addressables__1.cpp">
     </ClCompile>
     <ClCompile Include="Source\Unity.Burst.cpp">
     </ClCompile>
@@ -447,8 +459,6 @@
     <ClCompile Include="Source\UnityEngine.CoreModule__2.cpp">
     </ClCompile>
     <ClCompile Include="Source\UnityEngine.CoreModule__3.cpp">
-    </ClCompile>
-    <ClCompile Include="Source\UnityEngine.CoreModule__4.cpp">
     </ClCompile>
     <ClCompile Include="Source\UnityEngine.cpp">
     </ClCompile>
@@ -613,6 +623,8 @@
     <ClCompile Include="Source\System.Xml_CodeGen.c">
     </ClCompile>
     <ClCompile Include="Source\System_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\Unity.Addressables_CodeGen.c">
     </ClCompile>
     <ClCompile Include="Source\Unity.Burst.Unsafe_CodeGen.c">
     </ClCompile>

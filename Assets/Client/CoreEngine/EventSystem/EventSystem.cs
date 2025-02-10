@@ -238,25 +238,29 @@ public static class EventSystem
 
     #region 类型事件
 
-    public static void RegisterEvent<T>(Action<T> action)
+    public static void RegisterEvent<T>(Action<T> action) where T : BaseEvent
     {
         RegisterEvent<T>(typeof(T).Name, action);
     }
 
-    public static void RemoveEvent<T>(Action<T> action)
+    public static void RemoveEvent<T>(Action<T> action) where T : BaseEvent
     {
         RemoveEvent(typeof(T).Name, action);
     }
 
-    public static void RemoveEvent<T>()
+    public static void RemoveEvent<T>() where T : BaseEvent
     {
         RemoveEvent(typeof(T).Name);
     }
 
-    public static void DispatchEvent<T>(T arg)
+    public static void DispatchEvent<T>(T arg) where T : BaseEvent
     {
         DispatchEvent(typeof(T).Name, arg);
     }
 
     #endregion
+}
+
+public class BaseEvent
+{
 }

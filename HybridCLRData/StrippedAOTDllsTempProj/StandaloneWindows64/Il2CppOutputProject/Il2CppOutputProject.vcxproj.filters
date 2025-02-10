@@ -577,6 +577,9 @@
     <ClCompile Include="Source\GenericMethods__17.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="Source\GenericMethods__18.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
     <ClCompile Include="Source\GenericMethods__2.cpp">
       <Filter>Source</Filter>
     </ClCompile>
@@ -826,6 +829,12 @@
     <ClCompile Include="Source\Generics__76.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Generics__77.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Generics__78.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
     <ClCompile Include="Source\Generics__8.cpp">
       <Filter>Source</Filter>
     </ClCompile>
@@ -913,6 +922,9 @@
     <ClCompile Include="Source\mscorlib__18.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="Source\mscorlib__19.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
     <ClCompile Include="Source\mscorlib__2.cpp">
       <Filter>Source</Filter>
     </ClCompile>
@@ -989,6 +1001,12 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Source\System__3.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Unity.Addressables.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Unity.Addressables__1.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Source\Unity.Burst.cpp">
@@ -1145,9 +1163,6 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Source\UnityEngine.CoreModule__3.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\UnityEngine.CoreModule__4.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Source\UnityEngine.cpp">
@@ -1394,6 +1409,9 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Source\System_CodeGen.c">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Unity.Addressables_CodeGen.c">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Source\Unity.Burst.Unsafe_CodeGen.c">

@@ -13,17 +13,19 @@ MonoBehaviour:
   m_Name: BuildinCatalog
   m_EditorClassIdentifier: 
   PackageName: DllPackage
-  PackageVersion: 2025-02-03-1435
+  PackageVersion: v1.0.0
   Wrappers:
-  - BundleGUID: 11f701a769aceab29b2ac7d28bf8b4e2
-    FileName: 11f701a769aceab29b2ac7d28bf8b4e2.rawfile
-  - BundleGUID: a3d127213582779de412466b8447b5e0
-    FileName: a3d127213582779de412466b8447b5e0.rawfile
-  - BundleGUID: a6cab4999ad06182703a11f21392d417
-    FileName: a6cab4999ad06182703a11f21392d417.rawfile
-  - BundleGUID: b7c19a45742c8d7d176c2c624be3b06b
-    FileName: b7c19a45742c8d7d176c2c624be3b06b.rawfile
-  - BundleGUID: c069f026b65811dd643051ce13926d30
-    FileName: c069f026b65811dd643051ce13926d30.rawfile
-  - BundleGUID: ea113abe80ff1ee97e31e9a25eed9417
-    FileName: ea113abe80ff1ee97e31e9a25eed9417.rawfile
+  - BundleGUID: 0edd92b63d6f158e0d75a78bc64fdd7a
+    FileName: 0edd92b63d6f158e0d75a78bc64fdd7a.rawfile
+  - BundleGUID: 6f4f4e9701f0be08adb0fee34b9db8e6
+    FileName: 6f4f4e9701f0be08adb0fee34b9db8e6.rawfile
+  - BundleGUID: 7cba8ea0032294712afb2b99a8e4dcfa
+    FileName: 7cba8ea0032294712afb2b99a8e4dcfa.rawfile
+  - BundleGUID: b47793433aa3044dea749bf242ab247b
+    FileName: b47793433aa3044dea749bf242ab247b.rawfile
+  - BundleGUID: c2e10aeb2f14fddc537a4e48a0963734
+    FileName: c2e10aeb2f14fddc537a4e48a0963734.rawfile
+  - BundleGUID: e5b69dcd5d28ce44116e8f4de7d3dd98
+    FileName: e5b69dcd5d28ce44116e8f4de7d3dd98.rawfile
+  - BundleGUID: ff95a5dca3c654b313a13ca48e274adb
+    FileName: ff95a5dca3c654b313a13ca48e274adb.rawfile

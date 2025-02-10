@@ -2,7 +2,10 @@
     "name": "Client_Editor",
     "rootNamespace": "",
     "references": [
-        "GUID:2373f786d14518f44b0f475db77ba4de"
+        "GUID:2373f786d14518f44b0f475db77ba4de",
+        "GUID:4d1926c9df5b052469a1c63448b7609a",
+        "GUID:e34a5702dd353724aa315fb8011f08c3",
+        "GUID:0f1a01b1055ba2b46a4501f8db73ea13"
     ],
     "includePlatforms": [
         "Editor"

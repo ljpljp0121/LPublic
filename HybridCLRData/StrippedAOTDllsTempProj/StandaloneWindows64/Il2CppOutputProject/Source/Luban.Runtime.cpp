@@ -159,6 +159,7 @@ struct PropertyInfoU5BU5D_tD81C248B41D0C76207C42DB9C332DC79F490B1D7;
 struct StackTraceU5BU5D_t32FBCB20930EAF5BAE3F450FF75228E5450DA0DF;
 struct StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248;
 struct TypeU5BU5D_t97234E1129B564EB38B8D85CAC2AD8B5B9522FFB;
+struct AsyncCallback_t7FEF460CBDCFB9C5FA2EF776984778B9A4145F4C;
 struct BeanBase_tE882EE5D0CEB6587A1AB19056B5EA531600AAD67;
 struct BinaryReader_t9A6D85F0FE9AE4EBB5E8D66997DFD1D84939E158;
 struct BinaryWriter_tFB94D67EDFA3F6A34744A163BDABE287FDF2ED1E;
@@ -182,6 +183,7 @@ struct Exception_t;
 struct FieldInfo_t;
 struct FileInfo_t62782BBAFA832A78724E4CF2EE96548B8466AB1C;
 struct FileStream_t07C7222EE10B75F352B89B76E60820160FF10AD8;
+struct IAsyncResult_t7B9B5A0ECB35DCEC31B8A8122C37D687369253B5;
 struct IDictionary_t6D03155AF1FA9083817AA5B6AD7DEEACC26AB220;
 struct IEnumerator_t7B609C2FFA6EB5167D9C62A0C32A21DE2F666DAA;
 struct IFormatProvider_tC202922D43BFF3525109ABF3FB79625F5646AB52;
@@ -18018,7 +18020,7 @@ IL_0011:
 		L_12 = ByteBuf_get_WriterIndex_m3D2597337189BE996EAF99B2134E6686E22AC384_inline(__this, NULL);
 		NullCheck(L_7);
 		int32_t L_13;
-		L_13 = VirtualFuncInvoker5< int32_t, String_t*, int32_t, int32_t, ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*, int32_t >::Invoke(17, L_7, L_8, 0, L_10, L_11, L_12);
+		L_13 = VirtualFuncInvoker5< int32_t, String_t*, int32_t, int32_t, ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*, int32_t >::Invoke(18, L_7, L_8, 0, L_10, L_11, L_12);
 		int32_t L_14;
 		L_14 = ByteBuf_get_WriterIndex_m3D2597337189BE996EAF99B2134E6686E22AC384_inline(__this, NULL);
 		int32_t L_15 = V_0;
@@ -18098,7 +18100,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* ByteBuf_ReadString_mD7DBE7EC503A7B5
 		int32_t L_7 = V_0;
 		NullCheck(L_4);
 		String_t* L_8;
-		L_8 = VirtualFuncInvoker3< String_t*, ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*, int32_t, int32_t >::Invoke(33, L_4, L_5, L_6, L_7);
+		L_8 = VirtualFuncInvoker3< String_t*, ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*, int32_t, int32_t >::Invoke(34, L_4, L_5, L_6, L_7);
 		V_1 = L_8;
 		goto IL_004b;
 	}
@@ -19967,12 +19969,12 @@ IL_0010:
 		FieldInfo_t* L_8 = V_2;
 		NullCheck(L_8);
 		String_t* L_9;
-		L_9 = VirtualFuncInvoker0< String_t* >::Invoke(7, L_8);
+		L_9 = VirtualFuncInvoker0< String_t* >::Invoke(12, L_8);
 		FieldInfo_t* L_10 = V_2;
 		RuntimeObject* L_11 = ___0_o;
 		NullCheck(L_10);
 		RuntimeObject* L_12;
-		L_12 = VirtualFuncInvoker1< RuntimeObject*, RuntimeObject* >::Invoke(24, L_10, L_11);
+		L_12 = VirtualFuncInvoker1< RuntimeObject*, RuntimeObject* >::Invoke(33, L_10, L_11);
 		String_t* L_13;
 		L_13 = String_Format_mFB7DA489BD99F4670881FF50EC017BFB0A5C0987(_stringLiteral84EB7C8735C3D4B90710CDE305A398AD9236D507, L_9, L_12, NULL);
 		NullCheck(L_7);
@@ -20017,7 +20019,7 @@ IL_004c:
 		PropertyInfo_t* L_26 = V_4;
 		NullCheck(L_26);
 		String_t* L_27;
-		L_27 = VirtualFuncInvoker0< String_t* >::Invoke(7, L_26);
+		L_27 = VirtualFuncInvoker0< String_t* >::Invoke(12, L_26);
 		PropertyInfo_t* L_28 = V_4;
 		RuntimeObject* L_29 = ___0_o;
 		NullCheck(L_28);

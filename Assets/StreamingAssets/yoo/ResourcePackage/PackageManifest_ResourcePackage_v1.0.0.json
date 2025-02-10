@@ -1,0 +1,33 @@
+{
+    "FileVersion": "2.2.5",
+    "EnableAddressable": false,
+    "LocationToLower": false,
+    "IncludeAssetGUID": false,
+    "OutputNameStyle": 0,
+    "BuildBundleType": 2,
+    "BuildPipeline": "BuiltinBuildPipeline",
+    "PackageName": "ResourcePackage",
+    "PackageVersion": "v1.0.0",
+    "PackageNote": "2025/2/10 23:38:17",
+    "AssetList": [
+        {
+            "Address": "",
+            "AssetPath": "Assets/Bundle/Scenes/GameScene.unity",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 0
+        }
+    ],
+    "BundleList": [
+        {
+            "BundleName": "resourcepackage_assets_bundle_scenes.bundle",
+            "UnityCRC": 3411693916,
+            "FileHash": "bb5cb4d8590bcb2be59e8da57284b196",
+            "FileCRC": "32865b76",
+            "FileSize": 120189,
+            "Encrypted": false,
+            "Tags": [],
+            "DependIDs": []
+        }
+    ]
+}
