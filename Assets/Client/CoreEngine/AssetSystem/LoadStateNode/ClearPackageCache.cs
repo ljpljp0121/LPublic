@@ -4,7 +4,7 @@ public class ClearPackageCache : StateBase
 {
     public override void Enter()
     {
-        EventSystem.DispatchEvent<PatchStatesChange>(new PatchStatesChange("清理未使用的缓存文件!"));
+        StartLoading.SetProgress("清理资源缓存", 100);
         if (!TryGetShareData("PackageName", out string packageName))
         {
             LogSystem.Error("设置的资源包名称不存在");

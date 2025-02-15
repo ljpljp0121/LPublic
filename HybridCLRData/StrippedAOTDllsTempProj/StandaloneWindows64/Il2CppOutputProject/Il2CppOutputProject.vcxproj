@@ -240,7 +240,17 @@
     </ClCompile>
     <ClCompile Include="Source\Generics__78.cpp">
     </ClCompile>
+    <ClCompile Include="Source\Generics__79.cpp">
+    </ClCompile>
     <ClCompile Include="Source\Generics__8.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__80.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__81.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__82.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__83.cpp">
     </ClCompile>
     <ClCompile Include="Source\Generics__9.cpp">
     </ClCompile>
@@ -459,6 +469,8 @@
     <ClCompile Include="Source\UnityEngine.CoreModule__2.cpp">
     </ClCompile>
     <ClCompile Include="Source\UnityEngine.CoreModule__3.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.CoreModule__4.cpp">
     </ClCompile>
     <ClCompile Include="Source\UnityEngine.cpp">
     </ClCompile>

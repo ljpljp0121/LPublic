@@ -8,7 +8,7 @@
     "BuildPipeline": "RawFileBuildPipeline",
     "PackageName": "DllPackage",
     "PackageVersion": "v1.0.0",
-    "PackageNote": "2025/2/10 23:38:16",
+    "PackageNote": "2025/2/11 23:20:38",
     "AssetList": [
         {
             "Address": "",
@@ -64,9 +64,9 @@
         {
             "BundleName": "dllpackage_assets_bundle_aotdll_mscorlib_dll_bytes.rawfile",
             "UnityCRC": 0,
-            "FileHash": "7cba8ea0032294712afb2b99a8e4dcfa",
-            "FileCRC": "053d668f",
-            "FileSize": 1965056,
+            "FileHash": "088b777897ddb036b7aa77a84cd16e80",
+            "FileCRC": "ee775b54",
+            "FileSize": 1981952,
             "Encrypted": false,
             "Tags": [],
             "DependIDs": []
@@ -84,9 +84,9 @@
         {
             "BundleName": "dllpackage_assets_bundle_aotdll_system_dll_bytes.rawfile",
             "UnityCRC": 0,
-            "FileHash": "ff95a5dca3c654b313a13ca48e274adb",
-            "FileCRC": "67273a12",
-            "FileSize": 204288,
+            "FileHash": "e2df1829227e1391eb82a3e4f228b32a",
+            "FileCRC": "c78f14ac",
+            "FileSize": 205824,
             "Encrypted": false,
             "Tags": [],
             "DependIDs": []
@@ -94,9 +94,9 @@
         {
             "BundleName": "dllpackage_assets_bundle_hotupdatedll_client_base_dll_bytes.rawfile",
             "UnityCRC": 0,
-            "FileHash": "6f4f4e9701f0be08adb0fee34b9db8e6",
-            "FileCRC": "2b5d8f23",
-            "FileSize": 8192,
+            "FileHash": "07c89f9525393e7852b4d1c578ef04a5",
+            "FileCRC": "224fb89f",
+            "FileSize": 12288,
             "Encrypted": false,
             "Tags": [],
             "DependIDs": []
@@ -104,8 +104,8 @@
         {
             "BundleName": "dllpackage_assets_bundle_hotupdatedll_client_gameplay_dll_bytes.rawfile",
             "UnityCRC": 0,
-            "FileHash": "c2e10aeb2f14fddc537a4e48a0963734",
-            "FileCRC": "a5332c9c",
+            "FileHash": "b250c72944619fc3fbd022b379b25abf",
+            "FileCRC": "3514558d",
             "FileSize": 4608,
             "Encrypted": false,
             "Tags": [],
@@ -114,9 +114,9 @@
         {
             "BundleName": "dllpackage_assets_bundle_hotupdatedll_client_logic_dll_bytes.rawfile",
             "UnityCRC": 0,
-            "FileHash": "e5b69dcd5d28ce44116e8f4de7d3dd98",
-            "FileCRC": "34d58016",
-            "FileSize": 5120,
+            "FileHash": "301cef07bddca78ad185e2dc9413aa69",
+            "FileCRC": "c249238e",
+            "FileSize": 4608,
             "Encrypted": false,
             "Tags": [],
             "DependIDs": []
@@ -124,8 +124,8 @@
         {
             "BundleName": "dllpackage_assets_bundle_hotupdatedll_client_ui_dll_bytes.rawfile",
             "UnityCRC": 0,
-            "FileHash": "b47793433aa3044dea749bf242ab247b",
-            "FileCRC": "e0b15b5f",
+            "FileHash": "f20cc289661a7d1e1fdf9d8e22970ceb",
+            "FileCRC": "f2035c76",
             "FileSize": 4608,
             "Encrypted": false,
             "Tags": [],

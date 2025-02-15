@@ -17,32 +17,12 @@ public static class AssetSystem
     {
         //初始化资源系统
         YooAssets.Initialize();
-        var go = Resources.Load<GameObject>("PatchWindow");
-        GameObject.Instantiate(go);
-        // yield return InitPatchWindow();
+        
         yield return InitDll(dllPackageName, playMode);
         yield return InitResource(resourcePackageName, playMode);
         //设置默认的资源包
         package = YooAssets.GetPackage(resourcePackageName);
         YooAssets.SetDefaultPackage(package);
-    }
-
-    private static IEnumerator InitPatchWindow()
-    {
-        string patchWindowPath = Path.Combine(Application.streamingAssetsPath, "PatchWindow.prefab");
-        UnityWebRequest request = UnityWebRequest.Get(patchWindowPath);
-        yield return request.SendWebRequest();
-
-        if (request.result == UnityWebRequest.Result.Success)
-        {
-            // 加载预制体
-            GameObject patchWindowPrefab = JsonUtility.FromJson<GameObject>(request.downloadHandler.text);
-            GameObject.Instantiate(patchWindowPrefab);
-        }
-        else
-        {
-            Debug.LogError("加载 PatchWindow 失败: " + request.error);
-        }
     }
 
     private static IEnumerator InitDll(string packageName, EPlayMode playMode)

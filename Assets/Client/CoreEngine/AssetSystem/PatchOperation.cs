@@ -17,7 +17,6 @@ public class PatchOperation : GameAsyncOperation, IStateMachineOwner
     {
         this.packageName = packageName;
         EventSystem.RegisterEvent<UserTryInitialize>(OnUserTryInitialize);
-        EventSystem.RegisterEvent<UserBeginDownloadWebFiles>(OnUserBeginDownloadWebFiles);
         EventSystem.RegisterEvent<UserTryUpdatePackageVersion>(OnUserTryUpdatePackageVersion);
         EventSystem.RegisterEvent<UserTryUpdatePatchManifest>(OnUserTryUpdatePatchManifest);
         EventSystem.RegisterEvent<UserTryDownloadWebFiles>(OnUserTryDownloadWebFiles);
@@ -54,10 +53,10 @@ public class PatchOperation : GameAsyncOperation, IStateMachineOwner
         steps = ESteps.Done;
         Status = EOperationStatus.Succeed;
         EventSystem.RemoveEvent<UserTryInitialize>();
-        EventSystem.RemoveEvent<UserBeginDownloadWebFiles>();
         EventSystem.RemoveEvent<UserTryUpdatePackageVersion>();
         EventSystem.RemoveEvent<UserTryUpdatePatchManifest>();
         EventSystem.RemoveEvent<UserTryDownloadWebFiles>();
+        
         LogSystem.Log($"Package {packageName} patch done !");
     }
 
@@ -70,14 +69,7 @@ public class PatchOperation : GameAsyncOperation, IStateMachineOwner
     {
         stateMachine.ChangeState<InitializePackage>();
     }
-
-    /// <summary>
-    /// 用户开始下载网络文件
-    /// </summary>
-    private void OnUserBeginDownloadWebFiles(UserBeginDownloadWebFiles obj)
-    {
-        stateMachine.ChangeState<DownloadPackageFiles>();
-    }
+    
 
     /// <summary>
     /// 用户尝试再次更新静态版本

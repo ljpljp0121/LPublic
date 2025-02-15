@@ -8,7 +8,7 @@ public class UpdatePackageVersion : StateBase
 {
     public override void Enter()
     {
-        EventSystem.DispatchEvent<PatchStatesChange>(new PatchStatesChange("获取最新的资源版本!"));
+        StartLoading.SetProgress("获取最新的资源版本!", 20);
         MonoSystem.BeginCoroutine(UpdateVersion());
     }
 
@@ -27,7 +27,7 @@ public class UpdatePackageVersion : StateBase
         if (operation.Status != EOperationStatus.Succeed)
         {
             LogSystem.Error(operation.Error);
-            EventSystem.DispatchEvent<PackageVersionUpdateFailed>(new PackageVersionUpdateFailed());
+            EventSystem.DispatchEvent<UserTryUpdatePackageVersion>(new UserTryUpdatePackageVersion());
         }
         else
         {

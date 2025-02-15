@@ -8,7 +8,7 @@ public class UpdatePackageManifest : StateBase
 {
     public override void Enter()
     {
-        EventSystem.DispatchEvent<PatchStatesChange>(new PatchStatesChange("更新资源清单!"));
+        StartLoading.SetProgress("更新资源清单", 30);
         MonoSystem.BeginCoroutine(UpdateManifest());
     }
 
@@ -30,7 +30,7 @@ public class UpdatePackageManifest : StateBase
         if (operation.Status != EOperationStatus.Succeed)
         {
             LogSystem.Error(operation.Error);
-            EventSystem.DispatchEvent<PatchManifestUpdateFailed>(new PatchManifestUpdateFailed());
+            EventSystem.DispatchEvent<UserTryUpdatePatchManifest>(new UserTryUpdatePatchManifest());
         }
         else
         {

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 /// <summary>
@@ -17,6 +18,16 @@ public static class LogSystem
     public static void Error(string message)
     {
         Debug.LogError(message);
+    }
+
+    public static void Error(Exception e)
+    {
+        Debug.LogError(e);
+    }
+
+    public static void Error(string message, Exception e)
+    {
+        Debug.LogError(string.Format(message, e));
     }
 
     public static void Warning(string message)

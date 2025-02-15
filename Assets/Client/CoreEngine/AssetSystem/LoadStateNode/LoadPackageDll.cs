@@ -26,9 +26,11 @@ public class LoadPackageDll : StateBase
 
     public Dictionary<string, byte[]> assetDataDic = new Dictionary<string, byte[]>();
 
+    private int progress = 70;
+
     public override void Enter()
     {
-        EventSystem.DispatchEvent<PatchStatesChange>(new PatchStatesChange("补充元数据!"));
+        StartLoading.SetProgress("加载热更DLL", progress);
         MonoSystem.BeginCoroutine(LoadDll());
     }
 
@@ -65,7 +67,7 @@ public class LoadPackageDll : StateBase
             byte[] fileData = handle.GetRawFileData();
             assetDataDic[asset] = fileData;
             Debug.Log($"{asset} 加载成功，大小: {fileData.Length}");
-
+            StartLoading.SetProgress($"加载热更DLL: {asset}", progress++);
             // 如果是 AOT 元数据，需要加载到 HybridCLR 运行时
             if (isAOTMetadata)
             {
@@ -78,17 +80,18 @@ public class LoadPackageDll : StateBase
 
     private void LoadAOTMetadata(string assetName, byte[] dllData)
     {
-    try
-    {
-        // 使用 HybridCLR 的 API 加载 AOT 元数据
-        HomologousImageMode mode = HomologousImageMode.SuperSet;
-        RuntimeApi.LoadMetadataForAOTAssembly(dllData, mode);
-        Debug.Log($"AOT 元数据加载成功: {assetName}");
-    }
-    catch (Exception e)
-    {
-        Debug.LogError($"AOT 元数据加载失败: {assetName}, 错误: {e}");
-    }
+        try
+        {
+            // 使用 HybridCLR 的 API 加载 AOT 元数据
+            HomologousImageMode mode = HomologousImageMode.SuperSet;
+            RuntimeApi.LoadMetadataForAOTAssembly(dllData, mode);
+            Debug.Log($"AOT 元数据加载成功: {assetName}");
+            StartLoading.SetProgress($"加载AOT: {assetName}", progress++);
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"AOT 元数据加载失败: {assetName}, 错误: {e}");
+        }
     }
 
     private void LoadHotUpdateAssemblies()
@@ -109,5 +112,4 @@ public class LoadPackageDll : StateBase
             }
         }
     }
-    
 }

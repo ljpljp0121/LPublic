@@ -9374,7 +9374,7 @@ IL_0007:
 		String_t* L_10 = ___0_commandName;
 		NullCheck(L_5);
 		int32_t L_11;
-		L_11 = VirtualFuncInvoker3< int32_t, String_t*, String_t*, int32_t >::Invoke(11, L_5, L_9, L_10, 3);
+		L_11 = VirtualFuncInvoker3< int32_t, String_t*, String_t*, int32_t >::Invoke(12, L_5, L_9, L_10, 3);
 		if ((((int32_t)L_11) < ((int32_t)0)))
 		{
 			goto IL_0049;
@@ -9618,7 +9618,7 @@ IL_000f:
 		int32_t L_32 = V_5;
 		NullCheck(L_27);
 		int32_t L_33;
-		L_33 = VirtualFuncInvoker5< int32_t, String_t*, String_t*, int32_t, int32_t, int32_t >::Invoke(12, L_27, L_28, L_30, ((int32_t)il2cpp_codegen_add(L_31, 1)), L_32, 3);
+		L_33 = VirtualFuncInvoker5< int32_t, String_t*, String_t*, int32_t, int32_t, int32_t >::Invoke(14, L_27, L_28, L_30, ((int32_t)il2cpp_codegen_add(L_31, 1)), L_32, 3);
 		int32_t L_34 = V_2;
 		if ((((int32_t)L_33) == ((int32_t)((int32_t)il2cpp_codegen_add(L_34, 1)))))
 		{
@@ -9771,7 +9771,7 @@ IL_00f5:
 		int32_t L_76 = V_7;
 		NullCheck(L_71);
 		int32_t L_77;
-		L_77 = VirtualFuncInvoker5< int32_t, String_t*, String_t*, int32_t, int32_t, int32_t >::Invoke(12, L_71, L_72, L_74, L_75, L_76, 3);
+		L_77 = VirtualFuncInvoker5< int32_t, String_t*, String_t*, int32_t, int32_t, int32_t >::Invoke(14, L_71, L_72, L_74, L_75, L_76, 3);
 		int32_t L_78 = V_2;
 		if ((((int32_t)L_77) == ((int32_t)L_78)))
 		{
@@ -13911,7 +13911,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool DebugLogEntry_MatchesSearchTerm_m2A8682D
 		String_t* L_3 = ___0_searchTerm;
 		NullCheck(L_1);
 		int32_t L_4;
-		L_4 = VirtualFuncInvoker3< int32_t, String_t*, String_t*, int32_t >::Invoke(11, L_1, L_2, L_3, 3);
+		L_4 = VirtualFuncInvoker3< int32_t, String_t*, String_t*, int32_t >::Invoke(12, L_1, L_2, L_3, 3);
 		if ((((int32_t)L_4) >= ((int32_t)0)))
 		{
 			goto IL_0040;
@@ -13933,7 +13933,7 @@ IL_001d:
 		String_t* L_8 = ___0_searchTerm;
 		NullCheck(L_6);
 		int32_t L_9;
-		L_9 = VirtualFuncInvoker3< int32_t, String_t*, String_t*, int32_t >::Invoke(11, L_6, L_7, L_8, 3);
+		L_9 = VirtualFuncInvoker3< int32_t, String_t*, String_t*, int32_t >::Invoke(12, L_6, L_7, L_8, 3);
 		return (bool)((((int32_t)((((int32_t)L_9) < ((int32_t)0))? 1 : 0)) == ((int32_t)0))? 1 : 0);
 	}
 
@@ -14180,7 +14180,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool QueuedDebugLogEntry_MatchesSearchTerm_m4
 		String_t* L_3 = ___0_searchTerm;
 		NullCheck(L_1);
 		int32_t L_4;
-		L_4 = VirtualFuncInvoker3< int32_t, String_t*, String_t*, int32_t >::Invoke(11, L_1, L_2, L_3, 3);
+		L_4 = VirtualFuncInvoker3< int32_t, String_t*, String_t*, int32_t >::Invoke(12, L_1, L_2, L_3, 3);
 		if ((((int32_t)L_4) >= ((int32_t)0)))
 		{
 			goto IL_0040;
@@ -14202,7 +14202,7 @@ IL_001d:
 		String_t* L_8 = ___0_searchTerm;
 		NullCheck(L_6);
 		int32_t L_9;
-		L_9 = VirtualFuncInvoker3< int32_t, String_t*, String_t*, int32_t >::Invoke(11, L_6, L_7, L_8, 3);
+		L_9 = VirtualFuncInvoker3< int32_t, String_t*, String_t*, int32_t >::Invoke(12, L_6, L_7, L_8, 3);
 		return (bool)((((int32_t)((((int32_t)L_9) < ((int32_t)0))? 1 : 0)) == ((int32_t)0))? 1 : 0);
 	}
 

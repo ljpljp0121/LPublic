@@ -2,7 +2,10 @@
     "name": "Client_Base",
     "rootNamespace": "",
     "references": [
-        "GUID:0f1a01b1055ba2b46a4501f8db73ea13"
+        "GUID:0f1a01b1055ba2b46a4501f8db73ea13",
+        "GUID:2a81c6962524d424a8ef5072bd3b0fa0",
+        "GUID:3de88c88fbbb8f944b9210d496af9762",
+        "GUID:15fc0a57446b3144c949da3e2b9737a9"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

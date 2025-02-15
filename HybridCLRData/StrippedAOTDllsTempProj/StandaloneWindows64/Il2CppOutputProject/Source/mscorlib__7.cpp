@@ -6441,7 +6441,7 @@ IL_0005:
 		int32_t L_4 = L_3;
 		RuntimeObject* L_5 = Box(TermInfoStrings_tDFC81E7EFAE2197D35B982C79DC007E46F35A9D4_il2cpp_TypeInfo_var, &L_4);
 		NullCheck(L_1);
-		VirtualActionInvoker2< RuntimeObject*, RuntimeObject* >::Invoke(24, L_1, (RuntimeObject*)L_2, L_5);
+		VirtualActionInvoker2< RuntimeObject*, RuntimeObject* >::Invoke(29, L_1, (RuntimeObject*)L_2, L_5);
 		Hashtable_tEFC3B6496E6747787D8BB761B51F2AE3A8CFFE2D* L_6 = __this->___starts;
 		ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* L_7 = ___1_val;
 		NullCheck(L_7);
@@ -6452,7 +6452,7 @@ IL_0005:
 		bool L_12 = ((bool)1);
 		RuntimeObject* L_13 = Box(Boolean_t09A6377A54BE2F9E6985A8149F19234FD7DDFE22_il2cpp_TypeInfo_var, &L_12);
 		NullCheck(L_6);
-		VirtualActionInvoker2< RuntimeObject*, RuntimeObject* >::Invoke(24, L_6, L_11, L_13);
+		VirtualActionInvoker2< RuntimeObject*, RuntimeObject* >::Invoke(29, L_6, L_11, L_13);
 		return;
 	}
 }
@@ -6477,7 +6477,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ByteMatcher_StartsWith_mBD6EC6027734E3D4
 		RuntimeObject* L_3 = Box(Int32_t680FF22E76F6EFAD4375103CBBFFA0421349384C_il2cpp_TypeInfo_var, &L_2);
 		NullCheck(L_0);
 		RuntimeObject* L_4;
-		L_4 = VirtualFuncInvoker1< RuntimeObject*, RuntimeObject* >::Invoke(23, L_0, L_3);
+		L_4 = VirtualFuncInvoker1< RuntimeObject*, RuntimeObject* >::Invoke(28, L_0, L_3);
 		return (bool)((!(((RuntimeObject*)(RuntimeObject*)L_4) <= ((RuntimeObject*)(RuntimeObject*)NULL)))? 1 : 0);
 	}
 }
@@ -6502,7 +6502,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t ByteMatcher_Match_m5D0DDD8358AD99CC67
 		Hashtable_tEFC3B6496E6747787D8BB761B51F2AE3A8CFFE2D* L_0 = __this->___map;
 		NullCheck(L_0);
 		RuntimeObject* L_1;
-		L_1 = VirtualFuncInvoker0< RuntimeObject* >::Invoke(29, L_0);
+		L_1 = VirtualFuncInvoker0< RuntimeObject* >::Invoke(36, L_0);
 		NullCheck(L_1);
 		RuntimeObject* L_2;
 		L_2 = InterfaceFuncInvoker0< RuntimeObject* >::Invoke(0, IEnumerable_t6331596D5DD37C462B1B8D49CF6B319B00AB7131_il2cpp_TypeInfo_var, L_1);
@@ -6588,7 +6588,7 @@ IL_0023_1:
 				ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* L_22 = V_1;
 				NullCheck(L_21);
 				RuntimeObject* L_23;
-				L_23 = VirtualFuncInvoker1< RuntimeObject*, RuntimeObject* >::Invoke(23, L_21, (RuntimeObject*)L_22);
+				L_23 = VirtualFuncInvoker1< RuntimeObject*, RuntimeObject* >::Invoke(28, L_21, (RuntimeObject*)L_22);
 				V_3 = ((*(int32_t*)((int32_t*)(int32_t*)UnBox(L_23, TermInfoStrings_tDFC81E7EFAE2197D35B982C79DC007E46F35A9D4_il2cpp_TypeInfo_var))));
 				goto IL_0081;
 			}

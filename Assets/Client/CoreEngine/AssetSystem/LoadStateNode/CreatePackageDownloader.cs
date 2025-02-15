@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEngine;
 using YooAsset;
 
 /// <summary>
@@ -8,7 +9,7 @@ public class CreatePackageDownloader : StateBase
 {
     public override void Enter()
     {
-        EventSystem.DispatchEvent<PatchStatesChange>(new PatchStatesChange("创建补丁下载器！"));
+        StartLoading.SetProgress("创建补丁下载器！", 40);
         MonoSystem.BeginCoroutine(CreateDownloader());
     }
 
@@ -40,10 +41,7 @@ public class CreatePackageDownloader : StateBase
         }
         else
         {
-            // 注意：开发者需要在下载前检测磁盘空间不足
-            int totalDownloadCount = downloader.TotalDownloadCount;
-            long totalDownloadBytes = downloader.TotalDownloadBytes;
-            EventSystem.DispatchEvent<FoundUpdateFiles>(new FoundUpdateFiles(totalDownloadCount, totalDownloadBytes));
+            stateMachine.ChangeState<DownloadPackageFiles>();
         }
     }
 }

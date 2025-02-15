@@ -9,7 +9,7 @@ public class InitializePackage : StateBase
 {
     public override void Enter()
     {
-        EventSystem.DispatchEvent<PatchStatesChange>(new PatchStatesChange("初始化游戏资源!"));
+        StartLoading.SetProgress("初始化游戏资源!", 10);
         MonoSystem.BeginCoroutine(InitPackage());
     }
 
@@ -73,7 +73,7 @@ public class InitializePackage : StateBase
         if (initializationOperation.Status != EOperationStatus.Succeed)
         {
             LogSystem.Error($"{initializationOperation.Error}");
-            EventSystem.DispatchEvent<InitializeFailed>(new InitializeFailed());
+            EventSystem.DispatchEvent<UserTryInitialize>(new UserTryInitialize());
         }
         else
         {

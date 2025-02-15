@@ -8,7 +8,7 @@ dotnet %LUBAN_DLL% ^
     -c cs-simple-json ^
     -d json ^
     --conf %CONF_ROOT%\luban.conf ^
-    -x outputCodeDir=%WORKSPACE%\Assets\Client\CoreEngine\TableSystem\Tables ^
+    -x outputCodeDir=%WORKSPACE%\Assets\Client\Client_Base\TableSystem\Tables ^
     -x outputDataDir=%WORKSPACE%\Assets\Bundle\TableData
 
 pause

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,8 +51,26 @@ public class CoreEngineRoot : MonoBehaviour
         EventSystem.Init();
         MonoSystem.Init();
         AudioSystem.Init();
+        //生成加载窗口
+        var go = Resources.Load<GameObject>("StartLoading");
+        GameObject.Instantiate(go, RootTransform);
         yield return AssetSystem.Init(DllPackageName, ResourcePackageName, PlayMode);
-        TableSystem.Init();
-        SceneSystem.LoadSceneAsync("GameScene");
+        GameObject gameRoot = AssetSystem.LoadAsset<GameObject>("Prefab/GameRoot");
+        Instantiate(gameRoot, RootTransform);
+    }
+
+    private void Update()
+    {
+        TimeSystem.Instance.Update();
+    }
+
+    private void LateUpdate()
+    {
+        TimeSystem.Instance.LateUpdate();
+    }
+
+    private void FixedUpdate()
+    {
+        TimeSystem.Instance.FixedUpdate();
     }
 }

@@ -10,7 +10,6 @@ public class DownloadPackageFiles : StateBase
 {
     public override void Enter()
     {
-        EventSystem.DispatchEvent<PatchStatesChange>(new PatchStatesChange("开始下载补丁文件!"));
         MonoSystem.BeginCoroutine(BeginDownload());
     }
 
@@ -23,7 +22,7 @@ public class DownloadPackageFiles : StateBase
 
         downloader.DownloadErrorCallback = (data) =>
         {
-            EventSystem.DispatchEvent<WebFileDownloadFailed>(new WebFileDownloadFailed(data));
+            EventSystem.DispatchEvent<UserTryDownloadWebFiles>(new UserTryDownloadWebFiles());
             LogSystem.Log(string.Format("下载出错：文件名：{0}，错误信息：{1}", data.FileName, data.ErrorInfo));
         };
         downloader.DownloadUpdateCallback = (data) =>

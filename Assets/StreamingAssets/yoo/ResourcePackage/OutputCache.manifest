@@ -1,7 +1,10 @@
 ManifestFileVersion: 0
-CRC: 2521457215
+CRC: 3430180527
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
       Name: resourcepackage_assets_bundle_scenes.bundle
+      Dependencies: {}
+    Info_1:
+      Name: resourcepackage_assets_bundle_tabledata.bundle
       Dependencies: {}

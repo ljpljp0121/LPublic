@@ -81,6 +81,7 @@ public static class CoreEngineExtension
     {
         MonoSystem.RemoveFixedUpdate(action);
     }
+
     public static Coroutine StartCoroutine(this object obj, IEnumerator routine)
     {
         return MonoSystem.BeginCoroutine(obj, routine);
@@ -99,5 +100,25 @@ public static class CoreEngineExtension
     {
         MonoSystem.StopAllCoroutine(obj);
     }
+
+    #endregion
+
+    #region Unity通用拓展
+
+    public static void BroadcastMessage<T>(this GameObject obj, string message) where T : MonoBehaviour
+    {
+        T[] tList = obj.GetComponentsInChildren<T>(true);
+        foreach (var t in tList)
+        {
+            var func = t.GetType().GetMethod(message,
+                System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic |
+                System.Reflection.BindingFlags.Instance);
+            if (func != null)
+            {
+                func.Invoke(t, null);
+            }
+        }
+    }
+
     #endregion
 }
