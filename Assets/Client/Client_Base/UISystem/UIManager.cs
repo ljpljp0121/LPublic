@@ -116,7 +116,6 @@ public class UIManager : SingletonMono<UIManager>
     {
         return ShowUIByNameImp(name, args);
     }
-
     public Task ShowUIAsync<T>() where T : UIBase
     {
         return ShowUIByNameImp(typeof(T).Name);
