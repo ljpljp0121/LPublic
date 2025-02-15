@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b05c83971e3dca94f9fa460d396385e5, type: 3}
+  m_Name: BuildinCatalog
+  m_EditorClassIdentifier: 
+  PackageName: DllPackage
+  PackageVersion: v1.0.0
+  Wrappers:
+  - BundleGUID: 07c89f9525393e7852b4d1c578ef04a5
+    FileName: 07c89f9525393e7852b4d1c578ef04a5.rawfile
+  - BundleGUID: 088b777897ddb036b7aa77a84cd16e80
+    FileName: 088b777897ddb036b7aa77a84cd16e80.rawfile
+  - BundleGUID: 0edd92b63d6f158e0d75a78bc64fdd7a
+    FileName: 0edd92b63d6f158e0d75a78bc64fdd7a.rawfile
+  - BundleGUID: 301cef07bddca78ad185e2dc9413aa69
+    FileName: 301cef07bddca78ad185e2dc9413aa69.rawfile
+  - BundleGUID: b250c72944619fc3fbd022b379b25abf
+    FileName: b250c72944619fc3fbd022b379b25abf.rawfile
+  - BundleGUID: e2df1829227e1391eb82a3e4f228b32a
+    FileName: e2df1829227e1391eb82a3e4f228b32a.rawfile
+  - BundleGUID: f20cc289661a7d1e1fdf9d8e22970ceb
+    FileName: f20cc289661a7d1e1fdf9d8e22970ceb.rawfile

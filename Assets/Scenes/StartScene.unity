@@ -827,7 +827,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e21a189ff6a1412f93e4dc366e394e81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayMode: 0
+  PlayMode: 2
   ResourcePackageName: ResourcePackage
   DllPackageName: DllPackage
 --- !u!4 &1983769445

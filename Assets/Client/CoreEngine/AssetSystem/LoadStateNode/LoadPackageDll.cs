@@ -19,6 +19,7 @@ public class LoadPackageDll : StateBase
 
     public List<string> HotUpdateAssets { get; } = new List<string>()
     {
+        "Client_Base.dll",
         "Client_Logic.dll",
         "Client_GamePlay.dll",
         "Client_UI.dll",

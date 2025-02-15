@@ -1,0 +1,50 @@
+{
+    "FileVersion": "2.2.5",
+    "EnableAddressable": false,
+    "LocationToLower": false,
+    "IncludeAssetGUID": false,
+    "OutputNameStyle": 0,
+    "BuildBundleType": 2,
+    "BuildPipeline": "BuiltinBuildPipeline",
+    "PackageName": "ResourcePackage",
+    "PackageVersion": "v1.0.0",
+    "PackageNote": "2025/2/11 23:20:39",
+    "AssetList": [
+        {
+            "Address": "",
+            "AssetPath": "Assets/Bundle/Scenes/GameScene.unity",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 0
+        },
+        {
+            "Address": "",
+            "AssetPath": "Assets/Bundle/TableData/tbuiwnd.json",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 1
+        }
+    ],
+    "BundleList": [
+        {
+            "BundleName": "resourcepackage_assets_bundle_scenes.bundle",
+            "UnityCRC": 3411693916,
+            "FileHash": "bb5cb4d8590bcb2be59e8da57284b196",
+            "FileCRC": "32865b76",
+            "FileSize": 120189,
+            "Encrypted": false,
+            "Tags": [],
+            "DependIDs": []
+        },
+        {
+            "BundleName": "resourcepackage_assets_bundle_tabledata.bundle",
+            "UnityCRC": 289218349,
+            "FileHash": "e5585e8ed9c75daaa033ee6a3eadfbfb",
+            "FileCRC": "ceb079a4",
+            "FileSize": 1212,
+            "Encrypted": false,
+            "Tags": [],
+            "DependIDs": []
+        }
+    ]
+}

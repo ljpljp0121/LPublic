@@ -161,6 +161,7 @@ struct List_1_tA239CB83DE5615F348BB0507E45F490F4F7C9A8D;
 struct List_1_tF470A3BE5C1B5B68E1325EF3F109D172E60BD7CD;
 struct Predicate_1_t8342C85FF4E41CD1F7024AC0CDC3E5312A32CB12;
 struct Predicate_1_t7F48518B008C1472339EEEBABA3DE203FE1F26ED;
+struct TaskFactory_1_t0BEF06D58E44525B9135AB0B22D016856EE69FF3;
 struct Task_1_t824317F4B958F7512E8F7300511752937A6C6043;
 struct Task_1_t4C228DE57804012969575431CFF12D57C875552D;
 struct ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031;
@@ -981,6 +982,7 @@ struct FileStreamAsyncResult_t63112633BC368A3723281F1E7B27E0AFD372F215  : public
 	RuntimeObject* ___state;
 	ManualResetEvent_t63959486AA41A113A4353D0BF4A68E77EBA0A158* ___wh;
 	AsyncCallback_t7FEF460CBDCFB9C5FA2EF776984778B9A4145F4C* ___cb;
+	bool ___completedSynch;
 	int32_t ___Count;
 	int32_t ___OriginalCount;
 	int32_t ___BytesRead;
@@ -2275,6 +2277,10 @@ struct U3CU3Ec_t344B8D212D63762A10C160636704AC716088D1B2_StaticFields
 {
 	U3CU3Ec_t344B8D212D63762A10C160636704AC716088D1B2* ___U3CU3E9;
 	Func_1_t328B609953FC8D505C1A79B2070BF2B2D70FFF31* ___U3CU3E9__12_0;
+};
+struct Task_1_t4C228DE57804012969575431CFF12D57C875552D_StaticFields
+{
+	TaskFactory_1_t0BEF06D58E44525B9135AB0B22D016856EE69FF3* ___s_defaultFactory;
 };
 struct ArrayPoolEventSource_tDB6CA549DFC2FBEB134C71EB85DBD6D943E5C888_StaticFields
 {
@@ -8019,7 +8025,7 @@ IL_004d:
 IL_006c:
 	{
 		String_t* L_17;
-		L_17 = VirtualFuncInvoker0< String_t* >::Invoke(9, __this);
+		L_17 = VirtualFuncInvoker0< String_t* >::Invoke(10, __this);
 		if (!L_17)
 		{
 			goto IL_0086;
@@ -8030,7 +8036,7 @@ IL_006c:
 		String_t* L_19;
 		L_19 = Environment_get_NewLine_m8BF68A4EFDAFFB66500984CE779629811BA98FFF(NULL);
 		String_t* L_20;
-		L_20 = VirtualFuncInvoker0< String_t* >::Invoke(9, __this);
+		L_20 = VirtualFuncInvoker0< String_t* >::Invoke(10, __this);
 		String_t* L_21;
 		L_21 = String_Concat_m8855A6DE10F84DA7F4EC113CADDB59873A25573B(L_18, L_19, L_20, NULL);
 		V_0 = L_21;
@@ -8388,7 +8394,7 @@ IL_004d:
 IL_006c:
 	{
 		String_t* L_17;
-		L_17 = VirtualFuncInvoker0< String_t* >::Invoke(9, __this);
+		L_17 = VirtualFuncInvoker0< String_t* >::Invoke(10, __this);
 		if (!L_17)
 		{
 			goto IL_0086;
@@ -8399,7 +8405,7 @@ IL_006c:
 		String_t* L_19;
 		L_19 = Environment_get_NewLine_m8BF68A4EFDAFFB66500984CE779629811BA98FFF(NULL);
 		String_t* L_20;
-		L_20 = VirtualFuncInvoker0< String_t* >::Invoke(9, __this);
+		L_20 = VirtualFuncInvoker0< String_t* >::Invoke(10, __this);
 		String_t* L_21;
 		L_21 = String_Concat_m8855A6DE10F84DA7F4EC113CADDB59873A25573B(L_18, L_19, L_20, NULL);
 		V_0 = L_21;
@@ -11788,7 +11794,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void StreamReader_Init_mA0A33EEB35E8570B3D4CA
 		Encoding_t65CDEF28CF20A7B8C92E85A4E808920C2465F095* L_2 = ___1_encoding;
 		NullCheck(L_2);
 		Decoder_tE16E789E38B25DD304004FC630EA8B21000ECBBC* L_3;
-		L_3 = VirtualFuncInvoker0< Decoder_tE16E789E38B25DD304004FC630EA8B21000ECBBC* >::Invoke(29, L_2);
+		L_3 = VirtualFuncInvoker0< Decoder_tE16E789E38B25DD304004FC630EA8B21000ECBBC* >::Invoke(28, L_2);
 		__this->____decoder = L_3;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->____decoder), (void*)L_3);
 		int32_t L_4 = ___3_bufferSize;
@@ -11811,7 +11817,7 @@ IL_002a:
 		int32_t L_8 = ___3_bufferSize;
 		NullCheck(L_7);
 		int32_t L_9;
-		L_9 = VirtualFuncInvoker1< int32_t, int32_t >::Invoke(32, L_7, L_8);
+		L_9 = VirtualFuncInvoker1< int32_t, int32_t >::Invoke(31, L_7, L_8);
 		__this->____maxCharsPerBuffer = L_9;
 		int32_t L_10 = __this->____maxCharsPerBuffer;
 		CharU5BU5D_t799905CF001DD5F13F7DBB310181FC4D8B7D0AAB* L_11 = (CharU5BU5D_t799905CF001DD5F13F7DBB310181FC4D8B7D0AAB*)(CharU5BU5D_t799905CF001DD5F13F7DBB310181FC4D8B7D0AAB*)SZArrayNew(CharU5BU5D_t799905CF001DD5F13F7DBB310181FC4D8B7D0AAB_il2cpp_TypeInfo_var, (uint32_t)L_10);
@@ -12647,7 +12653,7 @@ IL_0166:
 		Encoding_t65CDEF28CF20A7B8C92E85A4E808920C2465F095* L_50 = __this->____encoding;
 		NullCheck(L_50);
 		Decoder_tE16E789E38B25DD304004FC630EA8B21000ECBBC* L_51;
-		L_51 = VirtualFuncInvoker0< Decoder_tE16E789E38B25DD304004FC630EA8B21000ECBBC* >::Invoke(29, L_50);
+		L_51 = VirtualFuncInvoker0< Decoder_tE16E789E38B25DD304004FC630EA8B21000ECBBC* >::Invoke(28, L_50);
 		__this->____decoder = L_51;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->____decoder), (void*)L_51);
 		Encoding_t65CDEF28CF20A7B8C92E85A4E808920C2465F095* L_52 = __this->____encoding;
@@ -12655,7 +12661,7 @@ IL_0166:
 		NullCheck(L_53);
 		NullCheck(L_52);
 		int32_t L_54;
-		L_54 = VirtualFuncInvoker1< int32_t, int32_t >::Invoke(32, L_52, ((int32_t)(((RuntimeArray*)L_53)->max_length)));
+		L_54 = VirtualFuncInvoker1< int32_t, int32_t >::Invoke(31, L_52, ((int32_t)(((RuntimeArray*)L_53)->max_length)));
 		V_1 = L_54;
 		int32_t L_55 = V_1;
 		int32_t L_56 = __this->____maxCharsPerBuffer;
@@ -13894,7 +13900,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void StreamWriter_Init_m87624EC42F9CD27B6D438
 		Encoding_t65CDEF28CF20A7B8C92E85A4E808920C2465F095* L_2 = __this->____encoding;
 		NullCheck(L_2);
 		Encoder_tAF9067231A76315584BDF4CD27990E2F485A78FA* L_3;
-		L_3 = VirtualFuncInvoker0< Encoder_tAF9067231A76315584BDF4CD27990E2F485A78FA* >::Invoke(30, L_2);
+		L_3 = VirtualFuncInvoker0< Encoder_tAF9067231A76315584BDF4CD27990E2F485A78FA* >::Invoke(29, L_2);
 		__this->____encoder = L_3;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->____encoder), (void*)L_3);
 		int32_t L_4 = ___2_bufferSize;
@@ -13917,7 +13923,7 @@ IL_002e:
 		int32_t L_8 = ___2_bufferSize;
 		NullCheck(L_7);
 		int32_t L_9;
-		L_9 = VirtualFuncInvoker1< int32_t, int32_t >::Invoke(31, L_7, L_8);
+		L_9 = VirtualFuncInvoker1< int32_t, int32_t >::Invoke(30, L_7, L_8);
 		ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* L_10 = (ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*)(ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*)SZArrayNew(ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031_il2cpp_TypeInfo_var, (uint32_t)L_9);
 		__this->____byteBuffer = L_10;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->____byteBuffer), (void*)L_10);
@@ -15628,24 +15634,6 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UnmanagedMemoryStream__ctor_mDB35C953C2B
 		Stream__ctor_mE8B074A0EBEB026FFF14062AB4B8A78E17EFFBF0(__this, NULL);
 		__this->____mem = (uint8_t*)((uintptr_t)0);
 		__this->____isOpen = (bool)0;
-		return;
-	}
-}
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UnmanagedMemoryStream__ctor_mBDBE61F9FD55A6F5C937E57F0FA854B12A2B5105 (UnmanagedMemoryStream_t83B223BCEF722E04E3AB3A7F6B73416F59BE630D* __this, uint8_t* ___0_pointer, int64_t ___1_length, const RuntimeMethod* method) 
-{
-	static bool s_Il2CppMethodInitialized;
-	if (!s_Il2CppMethodInitialized)
-	{
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Stream_tF844051B786E8F7F4244DBD218D74E8617B9A2DE_il2cpp_TypeInfo_var);
-		s_Il2CppMethodInitialized = true;
-	}
-	{
-		il2cpp_codegen_runtime_class_init_inline(Stream_tF844051B786E8F7F4244DBD218D74E8617B9A2DE_il2cpp_TypeInfo_var);
-		Stream__ctor_mE8B074A0EBEB026FFF14062AB4B8A78E17EFFBF0(__this, NULL);
-		uint8_t* L_0 = ___0_pointer;
-		int64_t L_1 = ___1_length;
-		int64_t L_2 = ___1_length;
-		UnmanagedMemoryStream_Initialize_mEBB2616A4DD8C041E399C467AB5B73EBDB1E329C(__this, L_0, L_1, L_2, 1, NULL);
 		return;
 	}
 }
@@ -22066,6 +22054,12 @@ IL_0025:
 		return L_6;
 	}
 }
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool SynchronousAsyncResult_get_CompletedSynchronously_mA2993A25DF45E56CB37D2CD31AB2A63F43B93C09 (SynchronousAsyncResult_t20E2A7A82EA7AA4DB6744726C632CA89232A6A30* __this, const RuntimeMethod* method) 
+{
+	{
+		return (bool)1;
+	}
+}
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SynchronousAsyncResult_ThrowIfError_m70F659FE27A3A9804B410B19CFBEF3FB1EB633C8 (SynchronousAsyncResult_t20E2A7A82EA7AA4DB6744726C632CA89232A6A30* __this, const RuntimeMethod* method) 
 {
 	{
@@ -23186,18 +23180,18 @@ IL_003a:
 		Encoding_t65CDEF28CF20A7B8C92E85A4E808920C2465F095* L_9 = ___1_encoding;
 		NullCheck(L_9);
 		Decoder_tE16E789E38B25DD304004FC630EA8B21000ECBBC* L_10;
-		L_10 = VirtualFuncInvoker0< Decoder_tE16E789E38B25DD304004FC630EA8B21000ECBBC* >::Invoke(29, L_9);
+		L_10 = VirtualFuncInvoker0< Decoder_tE16E789E38B25DD304004FC630EA8B21000ECBBC* >::Invoke(28, L_9);
 		__this->___m_decoder = L_10;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_decoder), (void*)L_10);
 		Encoding_t65CDEF28CF20A7B8C92E85A4E808920C2465F095* L_11 = ___1_encoding;
 		NullCheck(L_11);
 		int32_t L_12;
-		L_12 = VirtualFuncInvoker1< int32_t, int32_t >::Invoke(32, L_11, ((int32_t)128));
+		L_12 = VirtualFuncInvoker1< int32_t, int32_t >::Invoke(31, L_11, ((int32_t)128));
 		__this->___m_maxCharsSize = L_12;
 		Encoding_t65CDEF28CF20A7B8C92E85A4E808920C2465F095* L_13 = ___1_encoding;
 		NullCheck(L_13);
 		int32_t L_14;
-		L_14 = VirtualFuncInvoker1< int32_t, int32_t >::Invoke(31, L_13, 1);
+		L_14 = VirtualFuncInvoker1< int32_t, int32_t >::Invoke(30, L_13, 1);
 		V_0 = L_14;
 		int32_t L_15 = V_0;
 		if ((((int32_t)L_15) >= ((int32_t)((int32_t)16))))
@@ -25007,7 +25001,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BinaryWriter__ctor_m860E1F386330088B80E5
 		Encoding_t65CDEF28CF20A7B8C92E85A4E808920C2465F095* L_3 = __this->____encoding;
 		NullCheck(L_3);
 		Encoder_tAF9067231A76315584BDF4CD27990E2F485A78FA* L_4;
-		L_4 = VirtualFuncInvoker0< Encoder_tAF9067231A76315584BDF4CD27990E2F485A78FA* >::Invoke(30, L_3);
+		L_4 = VirtualFuncInvoker0< Encoder_tAF9067231A76315584BDF4CD27990E2F485A78FA* >::Invoke(29, L_3);
 		__this->____encoder = L_4;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->____encoder), (void*)L_4);
 		return;
@@ -25107,7 +25101,7 @@ IL_003a:
 		Encoding_t65CDEF28CF20A7B8C92E85A4E808920C2465F095* L_11 = __this->____encoding;
 		NullCheck(L_11);
 		Encoder_tAF9067231A76315584BDF4CD27990E2F485A78FA* L_12;
-		L_12 = VirtualFuncInvoker0< Encoder_tAF9067231A76315584BDF4CD27990E2F485A78FA* >::Invoke(30, L_11);
+		L_12 = VirtualFuncInvoker0< Encoder_tAF9067231A76315584BDF4CD27990E2F485A78FA* >::Invoke(29, L_11);
 		__this->____encoder = L_12;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->____encoder), (void*)L_12);
 		bool L_13 = ___2_leaveOpen;
@@ -25365,7 +25359,7 @@ IL_000e:
 		NullCheck(L_4);
 		NullCheck(L_2);
 		ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* L_5;
-		L_5 = VirtualFuncInvoker3< ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*, CharU5BU5D_t799905CF001DD5F13F7DBB310181FC4D8B7D0AAB*, int32_t, int32_t >::Invoke(15, L_2, L_3, 0, ((int32_t)(((RuntimeArray*)L_4)->max_length)));
+		L_5 = VirtualFuncInvoker3< ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*, CharU5BU5D_t799905CF001DD5F13F7DBB310181FC4D8B7D0AAB*, int32_t, int32_t >::Invoke(14, L_2, L_3, 0, ((int32_t)(((RuntimeArray*)L_4)->max_length)));
 		V_0 = L_5;
 		Stream_tF844051B786E8F7F4244DBD218D74E8617B9A2DE* L_6 = __this->___OutStream;
 		ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* L_7 = V_0;
@@ -25629,7 +25623,7 @@ IL_000e:
 		Encoding_t65CDEF28CF20A7B8C92E85A4E808920C2465F095* L_9 = __this->____encoding;
 		NullCheck(L_9);
 		int32_t L_10;
-		L_10 = VirtualFuncInvoker1< int32_t, int32_t >::Invoke(31, L_9, 1);
+		L_10 = VirtualFuncInvoker1< int32_t, int32_t >::Invoke(30, L_9, 1);
 		__this->____maxChars = ((int32_t)(((int32_t)(((RuntimeArray*)L_8)->max_length))/L_10));
 	}
 
@@ -25653,7 +25647,7 @@ IL_0055:
 		ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* L_17 = __this->____largeByteBuffer;
 		NullCheck(L_13);
 		int32_t L_18;
-		L_18 = VirtualFuncInvoker5< int32_t, String_t*, int32_t, int32_t, ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*, int32_t >::Invoke(18, L_13, L_14, 0, L_16, L_17, 0);
+		L_18 = VirtualFuncInvoker5< int32_t, String_t*, int32_t, int32_t, ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*, int32_t >::Invoke(17, L_13, L_14, 0, L_16, L_17, 0);
 		Stream_tF844051B786E8F7F4244DBD218D74E8617B9A2DE* L_19 = __this->___OutStream;
 		ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* L_20 = __this->____largeByteBuffer;
 		int32_t L_21 = V_0;
@@ -27652,7 +27646,7 @@ IL_0037:
 	{
 		NullCheck(G_B6_0);
 		RuntimeObject* L_8;
-		L_8 = VirtualFuncInvoker0< RuntimeObject* >::Invoke(13, G_B6_0);
+		L_8 = VirtualFuncInvoker0< RuntimeObject* >::Invoke(14, G_B6_0);
 		ReadDelegate_tA1467DDB23ACEC2E32F06F86F7906D1B1AA67C98* L_9 = ((ReadDelegate_tA1467DDB23ACEC2E32F06F86F7906D1B1AA67C98*)IsInstSealed((RuntimeObject*)L_8, ReadDelegate_tA1467DDB23ACEC2E32F06F86F7906D1B1AA67C98_il2cpp_TypeInfo_var));
 		if (L_9)
 		{
@@ -28171,7 +28165,7 @@ IL_0037:
 	{
 		NullCheck(G_B6_0);
 		RuntimeObject* L_7;
-		L_7 = VirtualFuncInvoker0< RuntimeObject* >::Invoke(13, G_B6_0);
+		L_7 = VirtualFuncInvoker0< RuntimeObject* >::Invoke(14, G_B6_0);
 		WriteDelegate_tACBC1C867E4248D4A20626FCBFB1C886993FA3BA* L_8 = ((WriteDelegate_tACBC1C867E4248D4A20626FCBFB1C886993FA3BA*)IsInstSealed((RuntimeObject*)L_7, WriteDelegate_tACBC1C867E4248D4A20626FCBFB1C886993FA3BA_il2cpp_TypeInfo_var));
 		if (L_8)
 		{

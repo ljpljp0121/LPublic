@@ -334,6 +334,7 @@ struct TaskCompletionSource_1_t1CC46E6FFAF00F08BFB98C6822E0537C12BFFB73;
 struct TaskCompletionSource_1_tB4EF81F69CCF7C4F0D956F9B26127C0634A24A37;
 struct TaskCompletionSource_1_t7C1CD87A194C54DCB5120C736220882401D7DB2D;
 struct TaskCompletionSource_1_t2B9064F62AF3EDA7973A19D42D18B4C977E59E55;
+struct TaskFactory_1_t6F188FE70F3006B0386002E392B799D85100732B;
 struct Task_1_t0C4CD3A5BB93A184420D73218644C56C70FDA7E2;
 struct ValueCollection_tDCB4CF9C156291A1F8D5AB82313E637DE112D1BA;
 struct ValueCollection_tA0553E3DE991CADF59BEBDBEF830DDE8A3B81F24;
@@ -3434,6 +3435,10 @@ struct U3CU3Ec_t854FAF3C7DBD858A53E53BA5E1DE74F692E5D8A7_StaticFields
 	U3CU3Ec_t854FAF3C7DBD858A53E53BA5E1DE74F692E5D8A7* ___U3CU3E9;
 	Func_2_t136DBA50E926A84967E67704CB0AED266D692EF3* ___U3CU3E9__8_0;
 	Action_1_tA2A828A12168D2E827F3385FAC1C25CBD4DD5D8F* ___U3CU3E9__11_0;
+};
+struct Task_1_t0C4CD3A5BB93A184420D73218644C56C70FDA7E2_StaticFields
+{
+	TaskFactory_1_t6F188FE70F3006B0386002E392B799D85100732B* ___s_defaultFactory;
 };
 struct Boolean_t09A6377A54BE2F9E6985A8149F19234FD7DDFE22_StaticFields
 {
@@ -12153,7 +12158,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* TypeSerializer_Deserialize_mB4
 			String_t* L_15 = V_1;
 			NullCheck(L_14);
 			Type_t* L_16;
-			L_16 = VirtualFuncInvoker1< Type_t*, String_t* >::Invoke(33, L_14, L_15);
+			L_16 = VirtualFuncInvoker1< Type_t*, String_t* >::Invoke(19, L_14, L_15);
 			G_B3_0 = L_16;
 			goto IL_0040_1;
 		}
@@ -12231,7 +12236,7 @@ IL_0005:
 		L_5 = VirtualFuncInvoker0< Assembly_t* >::Invoke(41, L_4);
 		NullCheck(L_5);
 		String_t* L_6;
-		L_6 = VirtualFuncInvoker0< String_t* >::Invoke(12, L_5);
+		L_6 = VirtualFuncInvoker0< String_t* >::Invoke(8, L_5);
 		NullCheck(L_3);
 		uint32_t L_7;
 		L_7 = Writer_WriteString_m64238E7AF7A22461C56670D5CABDD9CB885A124E(L_3, L_6, ((int32_t)46), NULL);
@@ -13874,7 +13879,7 @@ IL_0005:
 		String_t* L_2 = ___0_val;
 		NullCheck(L_1);
 		ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* L_3;
-		L_3 = VirtualFuncInvoker1< ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*, String_t* >::Invoke(17, L_1, L_2);
+		L_3 = VirtualFuncInvoker1< ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*, String_t* >::Invoke(16, L_1, L_2);
 		V_0 = L_3;
 		ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* L_4 = V_0;
 		ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* L_5 = L_4;
@@ -16995,7 +17000,7 @@ IL_001e_1:
 			String_t* L_11 = __this->___m_ClassName;
 			NullCheck(L_10);
 			Type_t* L_12;
-			L_12 = VirtualFuncInvoker1< Type_t*, String_t* >::Invoke(33, L_10, L_11);
+			L_12 = VirtualFuncInvoker1< Type_t*, String_t* >::Invoke(19, L_10, L_11);
 			__this->___m_CachedType = L_12;
 			Il2CppCodeGenWriteBarrier((void**)(&__this->___m_CachedType), (void*)L_12);
 		}
@@ -17092,7 +17097,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SerializedType_set_Value_m1AB236ECAE27E6
 		L_3 = VirtualFuncInvoker0< Assembly_t* >::Invoke(41, L_2);
 		NullCheck(L_3);
 		String_t* L_4;
-		L_4 = VirtualFuncInvoker0< String_t* >::Invoke(12, L_3);
+		L_4 = VirtualFuncInvoker0< String_t* >::Invoke(8, L_3);
 		__this->___m_AssemblyName = L_4;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_AssemblyName), (void*)L_4);
 		Type_t* L_5 = ___0_value;
@@ -27948,7 +27953,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A8261
 		L_4 = JsonUtility_ToJson_m28CC6843B9D3723D88AD13EA3829B71FDE7826BA(L_3, NULL);
 		NullCheck(L_0);
 		ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* L_5;
-		L_5 = VirtualFuncInvoker1< ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*, String_t* >::Invoke(17, L_0, L_4);
+		L_5 = VirtualFuncInvoker1< ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*, String_t* >::Invoke(16, L_0, L_4);
 		return L_5;
 	}
 }
@@ -27975,7 +27980,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR DiagnosticEvent_t33E1175DA005D137D20535AB25AC
 		ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* L_1 = ___0_data;
 		NullCheck(L_0);
 		String_t* L_2;
-		L_2 = VirtualFuncInvoker1< String_t*, ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* >::Invoke(33, L_0, L_1);
+		L_2 = VirtualFuncInvoker1< String_t*, ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* >::Invoke(32, L_0, L_1);
 		DiagnosticEvent_t33E1175DA005D137D20535AB25ACE16837A3A274 L_3;
 		L_3 = JsonUtility_FromJson_TisDiagnosticEvent_t33E1175DA005D137D20535AB25ACE16837A3A274_m9CA1E919F54481CA3964DE66D4F3D415CBC66A64(L_2, JsonUtility_FromJson_TisDiagnosticEvent_t33E1175DA005D137D20535AB25ACE16837A3A274_m9CA1E919F54481CA3964DE66D4F3D415CBC66A64_RuntimeMethod_var);
 		return L_3;

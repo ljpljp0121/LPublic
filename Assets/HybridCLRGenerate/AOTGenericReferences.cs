@@ -6,7 +6,6 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	public static readonly IReadOnlyList<string> PatchedAOTAssemblyList = new List<string>
 	{
 		"CoreEngine.dll",
-		"System.Core.dll",
 		"UnityEngine.CoreModule.dll",
 		"YooAsset.dll",
 		"mscorlib.dll",
@@ -17,6 +16,8 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// }} 
 
 	// {{ AOT generic types
+	// SingletonMono<object>
+	// System.Action<object,object>
 	// System.Action<object>
 	// System.Collections.Generic.ArraySortHelper<object>
 	// System.Collections.Generic.Comparer<object>
@@ -43,22 +44,44 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.ObjectEqualityComparer<object>
 	// System.Collections.ObjectModel.ReadOnlyCollection<object>
 	// System.Comparison<object>
+	// System.Func<System.Threading.Tasks.VoidTaskResult>
+	// System.Func<byte>
+	// System.Func<object,System.Threading.Tasks.VoidTaskResult>
 	// System.Func<object,byte>
 	// System.Func<object,object>
-	// System.Linq.Enumerable.Iterator<object>
-	// System.Linq.Enumerable.WhereArrayIterator<object>
-	// System.Linq.Enumerable.WhereEnumerableIterator<object>
-	// System.Linq.Enumerable.WhereListIterator<object>
+	// System.Func<object>
 	// System.Predicate<object>
+	// System.Runtime.CompilerServices.AsyncTaskMethodBuilder<System.Threading.Tasks.VoidTaskResult>
+	// System.Runtime.CompilerServices.ConfiguredTaskAwaitable.ConfiguredTaskAwaiter<System.Threading.Tasks.VoidTaskResult>
+	// System.Runtime.CompilerServices.ConfiguredTaskAwaitable.ConfiguredTaskAwaiter<byte>
+	// System.Runtime.CompilerServices.ConfiguredTaskAwaitable<System.Threading.Tasks.VoidTaskResult>
+	// System.Runtime.CompilerServices.ConfiguredTaskAwaitable<byte>
+	// System.Runtime.CompilerServices.TaskAwaiter<System.Threading.Tasks.VoidTaskResult>
+	// System.Runtime.CompilerServices.TaskAwaiter<byte>
+	// System.Threading.Tasks.ContinuationTaskFromResultTask<System.Threading.Tasks.VoidTaskResult>
+	// System.Threading.Tasks.ContinuationTaskFromResultTask<byte>
+	// System.Threading.Tasks.Task<System.Threading.Tasks.VoidTaskResult>
+	// System.Threading.Tasks.Task<byte>
+	// System.Threading.Tasks.TaskCompletionSource<byte>
+	// System.Threading.Tasks.TaskFactory<System.Threading.Tasks.VoidTaskResult>
+	// System.Threading.Tasks.TaskFactory<byte>
 	// }}
 
 	public void RefMethods()
 	{
 		// object AssetSystem.LoadAsset<object>(string)
-		// bool System.Linq.Enumerable.Any<object>(System.Collections.Generic.IEnumerable<object>)
-		// System.Collections.Generic.IEnumerable<object> System.Linq.Enumerable.Where<object>(System.Collections.Generic.IEnumerable<object>,System.Func<object,bool>)
+		// object[] System.Array.Empty<object>()
+		// System.Void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<System.Runtime.CompilerServices.TaskAwaiter,UIBase.<Show>d__10>(System.Runtime.CompilerServices.TaskAwaiter&,UIBase.<Show>d__10&)
+		// System.Void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<System.Runtime.CompilerServices.TaskAwaiter,UIManager.<>c__DisplayClass19_1.<<ShowUIByNameImp>b__2>d>(System.Runtime.CompilerServices.TaskAwaiter&,UIManager.<>c__DisplayClass19_1.<<ShowUIByNameImp>b__2>d&)
+		// System.Void System.Runtime.CompilerServices.AsyncTaskMethodBuilder<System.Threading.Tasks.VoidTaskResult>.AwaitUnsafeOnCompleted<System.Runtime.CompilerServices.TaskAwaiter,UIBase.<Show>d__10>(System.Runtime.CompilerServices.TaskAwaiter&,UIBase.<Show>d__10&)
+		// System.Void System.Runtime.CompilerServices.AsyncTaskMethodBuilder<System.Threading.Tasks.VoidTaskResult>.AwaitUnsafeOnCompleted<System.Runtime.CompilerServices.TaskAwaiter,UIManager.<>c__DisplayClass19_1.<<ShowUIByNameImp>b__2>d>(System.Runtime.CompilerServices.TaskAwaiter&,UIManager.<>c__DisplayClass19_1.<<ShowUIByNameImp>b__2>d&)
+		// System.Void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.Start<UIBase.<Show>d__10>(UIBase.<Show>d__10&)
+		// System.Void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.Start<UIManager.<>c__DisplayClass19_1.<<ShowUIByNameImp>b__2>d>(UIManager.<>c__DisplayClass19_1.<<ShowUIByNameImp>b__2>d&)
 		// object UnityEngine.Component.GetComponent<object>()
+		// object UnityEngine.GameObject.AddComponent<object>()
 		// object UnityEngine.GameObject.GetComponent<object>()
+		// object UnityEngine.Object.Instantiate<object>(object,UnityEngine.Transform)
+		// object UnityEngine.Object.Instantiate<object>(object,UnityEngine.Transform,bool)
 		// YooAsset.AssetHandle YooAsset.ResourcePackage.LoadAssetSync<object>(string)
 		// YooAsset.AssetHandle YooAsset.YooAssets.LoadAssetSync<object>(string)
 	}

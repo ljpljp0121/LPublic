@@ -2,6 +2,18 @@
 <linker>
   <assembly fullname="CoreEngine">
     <type fullname="AssetSystem" preserve="all" />
+    <type fullname="CoreEngineRoot" preserve="all" />
+    <type fullname="InitEngineOnLoad" preserve="all" />
+    <type fullname="InitOnLoadAttribute" preserve="all" />
+    <type fullname="InitOnLoadMethodManager" preserve="all" />
+    <type fullname="LogSystem" preserve="all" />
+    <type fullname="Ref`1" preserve="all" />
+    <type fullname="SingletonMono`1" preserve="all" />
+    <type fullname="StartLoading" preserve="all" />
+    <type fullname="TaskUtil" preserve="all" />
+  </assembly>
+  <assembly fullname="IngameDebugConsole.Runtime">
+    <type fullname="IngameDebugConsole.DebugLogManager" preserve="all" />
   </assembly>
   <assembly fullname="Luban.Runtime">
     <type fullname="Luban.BeanBase" preserve="all" />
@@ -9,26 +21,41 @@
     <type fullname="SimpleJSON.JSON" preserve="all" />
     <type fullname="SimpleJSON.JSONNode" preserve="all" />
   </assembly>
+  <assembly fullname="Unity.RenderPipelines.Universal.Runtime">
+    <type fullname="UnityEngine.Rendering.Universal.CameraExtensions" preserve="all" />
+    <type fullname="UnityEngine.Rendering.Universal.CameraRenderType" preserve="all" />
+    <type fullname="UnityEngine.Rendering.Universal.UniversalAdditionalCameraData" preserve="all" />
+  </assembly>
   <assembly fullname="UnityEngine.CoreModule">
     <type fullname="UnityEngine.Camera" preserve="all" />
+    <type fullname="UnityEngine.CameraClearFlags" preserve="all" />
     <type fullname="UnityEngine.Component" preserve="all" />
     <type fullname="UnityEngine.Debug" preserve="all" />
     <type fullname="UnityEngine.DefaultExecutionOrder" preserve="all" />
     <type fullname="UnityEngine.GameObject" preserve="all" />
+    <type fullname="UnityEngine.LayerMask" preserve="all" />
     <type fullname="UnityEngine.MonoBehaviour" preserve="all" />
     <type fullname="UnityEngine.Object" preserve="all" />
+    <type fullname="UnityEngine.Quaternion" preserve="all" />
     <type fullname="UnityEngine.RectTransform" preserve="all" />
     <type fullname="UnityEngine.TextAsset" preserve="all" />
     <type fullname="UnityEngine.Transform" preserve="all" />
     <type fullname="UnityEngine.Vector2" preserve="all" />
     <type fullname="UnityEngine.Vector3" preserve="all" />
   </assembly>
+  <assembly fullname="UnityEngine.UI">
+    <type fullname="UnityEngine.UI.CanvasScaler" preserve="all" />
+    <type fullname="UnityEngine.UI.CanvasScaler/ScaleMode" preserve="all" />
+    <type fullname="UnityEngine.UI.CanvasScaler/ScreenMatchMode" preserve="all" />
+    <type fullname="UnityEngine.UI.GraphicRaycaster" preserve="all" />
+  </assembly>
+  <assembly fullname="UnityEngine.UIModule">
+    <type fullname="UnityEngine.Canvas" preserve="all" />
+    <type fullname="UnityEngine.RenderMode" preserve="all" />
+  </assembly>
   <assembly fullname="netstandard">
-    <type fullname="System.AppDomain" preserve="all" />
+    <type fullname="System.Action`1" preserve="all" />
     <type fullname="System.Array" preserve="all" />
-    <type fullname="System.Attribute" preserve="all" />
-    <type fullname="System.AttributeTargets" preserve="all" />
-    <type fullname="System.AttributeUsageAttribute" preserve="all" />
     <type fullname="System.Boolean" preserve="all" />
     <type fullname="System.Byte" preserve="all" />
     <type fullname="System.CodeDom.Compiler.GeneratedCodeAttribute" preserve="all" />
@@ -42,25 +69,31 @@
     <type fullname="System.ComponentModel.EditorBrowsableState" preserve="all" />
     <type fullname="System.Diagnostics.DebuggableAttribute" preserve="all" />
     <type fullname="System.Diagnostics.DebuggableAttribute/DebuggingModes" preserve="all" />
+    <type fullname="System.Diagnostics.DebuggerHiddenAttribute" preserve="all" />
+    <type fullname="System.Exception" preserve="all" />
+    <type fullname="System.Func`1" preserve="all" />
     <type fullname="System.Func`2" preserve="all" />
     <type fullname="System.IDisposable" preserve="all" />
     <type fullname="System.Int32" preserve="all" />
-    <type fullname="System.Linq.Enumerable" preserve="all" />
     <type fullname="System.Object" preserve="all" />
-    <type fullname="System.Reflection.Assembly" preserve="all" />
-    <type fullname="System.Reflection.BindingFlags" preserve="all" />
+    <type fullname="System.ParamArrayAttribute" preserve="all" />
     <type fullname="System.Reflection.DefaultMemberAttribute" preserve="all" />
     <type fullname="System.Reflection.MemberInfo" preserve="all" />
-    <type fullname="System.Reflection.MethodBase" preserve="all" />
-    <type fullname="System.Reflection.MethodInfo" preserve="all" />
+    <type fullname="System.Runtime.CompilerServices.AsyncStateMachineAttribute" preserve="all" />
+    <type fullname="System.Runtime.CompilerServices.AsyncTaskMethodBuilder" preserve="all" />
     <type fullname="System.Runtime.CompilerServices.CompilationRelaxationsAttribute" preserve="all" />
     <type fullname="System.Runtime.CompilerServices.CompilerGeneratedAttribute" preserve="all" />
+    <type fullname="System.Runtime.CompilerServices.IAsyncStateMachine" preserve="all" />
     <type fullname="System.Runtime.CompilerServices.RuntimeCompatibilityAttribute" preserve="all" />
     <type fullname="System.Runtime.CompilerServices.RuntimeHelpers" preserve="all" />
+    <type fullname="System.Runtime.CompilerServices.TaskAwaiter" preserve="all" />
     <type fullname="System.RuntimeFieldHandle" preserve="all" />
     <type fullname="System.RuntimeTypeHandle" preserve="all" />
     <type fullname="System.Single" preserve="all" />
     <type fullname="System.String" preserve="all" />
+    <type fullname="System.Threading.Tasks.Task" preserve="all" />
+    <type fullname="System.Threading.Tasks.TaskCompletionSource`1" preserve="all" />
+    <type fullname="System.Threading.Tasks.Task`1" preserve="all" />
     <type fullname="System.Type" preserve="all" />
     <type fullname="System.ValueType" preserve="all" />
   </assembly>

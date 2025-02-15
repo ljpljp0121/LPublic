@@ -18020,7 +18020,7 @@ IL_0011:
 		L_12 = ByteBuf_get_WriterIndex_m3D2597337189BE996EAF99B2134E6686E22AC384_inline(__this, NULL);
 		NullCheck(L_7);
 		int32_t L_13;
-		L_13 = VirtualFuncInvoker5< int32_t, String_t*, int32_t, int32_t, ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*, int32_t >::Invoke(18, L_7, L_8, 0, L_10, L_11, L_12);
+		L_13 = VirtualFuncInvoker5< int32_t, String_t*, int32_t, int32_t, ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*, int32_t >::Invoke(17, L_7, L_8, 0, L_10, L_11, L_12);
 		int32_t L_14;
 		L_14 = ByteBuf_get_WriterIndex_m3D2597337189BE996EAF99B2134E6686E22AC384_inline(__this, NULL);
 		int32_t L_15 = V_0;
@@ -18100,7 +18100,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* ByteBuf_ReadString_mD7DBE7EC503A7B5
 		int32_t L_7 = V_0;
 		NullCheck(L_4);
 		String_t* L_8;
-		L_8 = VirtualFuncInvoker3< String_t*, ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*, int32_t, int32_t >::Invoke(34, L_4, L_5, L_6, L_7);
+		L_8 = VirtualFuncInvoker3< String_t*, ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*, int32_t, int32_t >::Invoke(33, L_4, L_5, L_6, L_7);
 		V_1 = L_8;
 		goto IL_004b;
 	}

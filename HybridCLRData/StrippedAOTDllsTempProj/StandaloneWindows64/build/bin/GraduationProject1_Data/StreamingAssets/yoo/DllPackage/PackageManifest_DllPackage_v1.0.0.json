@@ -1,0 +1,135 @@
+{
+    "FileVersion": "2.2.5",
+    "EnableAddressable": false,
+    "LocationToLower": false,
+    "IncludeAssetGUID": false,
+    "OutputNameStyle": 0,
+    "BuildBundleType": 3,
+    "BuildPipeline": "RawFileBuildPipeline",
+    "PackageName": "DllPackage",
+    "PackageVersion": "v1.0.0",
+    "PackageNote": "2025/2/11 23:20:38",
+    "AssetList": [
+        {
+            "Address": "",
+            "AssetPath": "Assets/Bundle/AOTDll/mscorlib.dll.bytes",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 0
+        },
+        {
+            "Address": "",
+            "AssetPath": "Assets/Bundle/AOTDll/System.Core.dll.bytes",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 1
+        },
+        {
+            "Address": "",
+            "AssetPath": "Assets/Bundle/AOTDll/System.dll.bytes",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 2
+        },
+        {
+            "Address": "",
+            "AssetPath": "Assets/Bundle/HotUpdateDll/Client_Base.dll.bytes",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 3
+        },
+        {
+            "Address": "",
+            "AssetPath": "Assets/Bundle/HotUpdateDll/Client_GamePlay.dll.bytes",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 4
+        },
+        {
+            "Address": "",
+            "AssetPath": "Assets/Bundle/HotUpdateDll/Client_Logic.dll.bytes",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 5
+        },
+        {
+            "Address": "",
+            "AssetPath": "Assets/Bundle/HotUpdateDll/Client_UI.dll.bytes",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 6
+        }
+    ],
+    "BundleList": [
+        {
+            "BundleName": "dllpackage_assets_bundle_aotdll_mscorlib_dll_bytes.rawfile",
+            "UnityCRC": 0,
+            "FileHash": "088b777897ddb036b7aa77a84cd16e80",
+            "FileCRC": "ee775b54",
+            "FileSize": 1981952,
+            "Encrypted": false,
+            "Tags": [],
+            "DependIDs": []
+        },
+        {
+            "BundleName": "dllpackage_assets_bundle_aotdll_system_core_dll_bytes.rawfile",
+            "UnityCRC": 0,
+            "FileHash": "0edd92b63d6f158e0d75a78bc64fdd7a",
+            "FileCRC": "eb0f3c9e",
+            "FileSize": 93184,
+            "Encrypted": false,
+            "Tags": [],
+            "DependIDs": []
+        },
+        {
+            "BundleName": "dllpackage_assets_bundle_aotdll_system_dll_bytes.rawfile",
+            "UnityCRC": 0,
+            "FileHash": "e2df1829227e1391eb82a3e4f228b32a",
+            "FileCRC": "c78f14ac",
+            "FileSize": 205824,
+            "Encrypted": false,
+            "Tags": [],
+            "DependIDs": []
+        },
+        {
+            "BundleName": "dllpackage_assets_bundle_hotupdatedll_client_base_dll_bytes.rawfile",
+            "UnityCRC": 0,
+            "FileHash": "07c89f9525393e7852b4d1c578ef04a5",
+            "FileCRC": "224fb89f",
+            "FileSize": 12288,
+            "Encrypted": false,
+            "Tags": [],
+            "DependIDs": []
+        },
+        {
+            "BundleName": "dllpackage_assets_bundle_hotupdatedll_client_gameplay_dll_bytes.rawfile",
+            "UnityCRC": 0,
+            "FileHash": "b250c72944619fc3fbd022b379b25abf",
+            "FileCRC": "3514558d",
+            "FileSize": 4608,
+            "Encrypted": false,
+            "Tags": [],
+            "DependIDs": []
+        },
+        {
+            "BundleName": "dllpackage_assets_bundle_hotupdatedll_client_logic_dll_bytes.rawfile",
+            "UnityCRC": 0,
+            "FileHash": "301cef07bddca78ad185e2dc9413aa69",
+            "FileCRC": "c249238e",
+            "FileSize": 4608,
+            "Encrypted": false,
+            "Tags": [],
+            "DependIDs": []
+        },
+        {
+            "BundleName": "dllpackage_assets_bundle_hotupdatedll_client_ui_dll_bytes.rawfile",
+            "UnityCRC": 0,
+            "FileHash": "f20cc289661a7d1e1fdf9d8e22970ceb",
+            "FileCRC": "f2035c76",
+            "FileSize": 4608,
+            "Encrypted": false,
+            "Tags": [],
+            "DependIDs": []
+        }
+    ]
+}
