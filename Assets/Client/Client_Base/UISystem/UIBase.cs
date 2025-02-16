@@ -24,6 +24,9 @@ public abstract class UIBase : MonoBehaviour
         }
         canvas.renderMode = RenderMode.ScreenSpaceCamera;
         canvas.worldCamera = UIManager.Instance.UICamera;
+        canvas.overrideSorting = true;
+        canvas.sortingLayerID = SortingLayer.NameToID("UI");
+        canvas.sortingOrder = WndInfo.Layer;
 
         if (gameObject.GetComponent<GraphicRaycaster>() == null)
         {

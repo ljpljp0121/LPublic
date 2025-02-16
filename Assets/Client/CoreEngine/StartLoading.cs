@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -46,9 +47,14 @@ public class StartLoading : MonoBehaviour
         if (hasError)
             return;
         InfoText.text = info.ToUpper();
-        float p = progress * 0.01f;
-        ProgressBar.value = p;
-        ProgressText.text = $"{progress}%";
+        DOTween.Kill(ProgressBar);
+        float targetValue = progress * 0.01f;
+        DOTween.To(() => ProgressBar.value, x => ProgressBar.value = x, targetValue, 0.3f)
+            .SetEase((Ease.OutQuad))
+            .OnUpdate(() =>
+            {
+                ProgressText.text = $"{progress}%";
+            });
     }
 
     void SetErrorImp(string error)

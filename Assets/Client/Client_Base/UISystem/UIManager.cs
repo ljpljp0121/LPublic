@@ -26,7 +26,10 @@ public class UIManager : SingletonMono<UIManager>
         InitUICamera();
         InitUICanvas();
         DealInGameDebug();
+        DealStartLoading();
     }
+
+    #region 初始化
 
     private void FindMainCamera()
     {
@@ -69,26 +72,25 @@ public class UIManager : SingletonMono<UIManager>
         var rootCanvas = uiCanvas.gameObject.AddComponent<Canvas>();
         rootCanvas.renderMode = RenderMode.ScreenSpaceCamera;
         rootCanvas.worldCamera = uiCamera;
+        rootCanvas.sortingLayerID = SortingLayer.NameToID("UI");
 
         var canvasScaler = uiCanvas.gameObject.AddComponent<CanvasScaler>();
         canvasScaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
         canvasScaler.referenceResolution = new Vector2(1920, 1080);
         canvasScaler.screenMatchMode = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
         canvasScaler.matchWidthOrHeight = 0.5f;
-
-        for (int i = 1; i <= 10; i++)
-        {
-            var layerGroup = new GameObject($"Layer_{i}").transform;
-            layerGroup.SetParent(uiRoot);
-        }
     }
 
     private void DealInGameDebug()
     {
+        IngameDebugConsole.DebugLogManager.Instance.transform.SetParent(uiRoot);
+
         var canvas = IngameDebugConsole.DebugLogManager.Instance.GetComponent<Canvas>();
         canvas.renderMode = RenderMode.ScreenSpaceCamera;
         canvas.worldCamera = uiCamera;
-        canvas.sortingOrder = 30001;
+        canvas.overrideSorting = true;
+        canvas.sortingLayerID = SortingLayer.NameToID("UI");
+        canvas.sortingOrder = 30002;
 
         var canvasScaler = IngameDebugConsole.DebugLogManager.Instance.GetComponent<CanvasScaler>();
         canvasScaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
@@ -96,6 +98,22 @@ public class UIManager : SingletonMono<UIManager>
         canvasScaler.screenMatchMode = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
         canvasScaler.matchWidthOrHeight = 1f;
     }
+
+    private void DealStartLoading()
+    {
+        StartLoading.Instance.transform.SetParent(uiRoot);
+        StartLoading.Instance.transform.GetChild(1).GetComponent<Canvas>().overrideSorting = false;
+        Destroy(StartLoading.Instance.transform.GetChild(0).gameObject);
+        var canvas = StartLoading.Instance.GetComponent<Canvas>();
+        canvas.renderMode = RenderMode.ScreenSpaceCamera;
+        canvas.worldCamera = uiCamera;
+        canvas.overrideSorting = true;
+        canvas.sortingLayerID = SortingLayer.NameToID("UI");
+        canvas.sortingOrder = 30001;
+    }
+
+    #endregion
+
 
     public void ShowUIByName(string name, params object[] args)
     {
@@ -116,6 +134,7 @@ public class UIManager : SingletonMono<UIManager>
     {
         return ShowUIByNameImp(name, args);
     }
+
     public Task ShowUIAsync<T>() where T : UIBase
     {
         return ShowUIByNameImp(typeof(T).Name);
@@ -152,6 +171,29 @@ public class UIManager : SingletonMono<UIManager>
         return tcs.Task;
     }
 
+    public void HideUI(string uiName)
+    {
+        if (loadedUIs.TryGetValue(uiName, out var ui))
+        {
+            ui.Hide();
+
+            // 如果配置为隐藏后销毁，则从字典中移除
+            if (ui.WndInfo.DestroyOnHide)
+            {
+                loadedUIs.Remove(uiName);
+            }
+        }
+    }
+
+    public void DestroyUI(string uiName)
+    {
+        if (loadedUIs.TryGetValue(uiName, out var ui))
+        {
+            ui.Destroy();
+            loadedUIs.Remove(uiName);
+        }
+    }
+
     private void LoadUI(string name, Action<UIBase> ret)
     {
         var wndInfo = TableSystem.Table.TbUIWnd.Get(name);
@@ -181,29 +223,6 @@ public class UIManager : SingletonMono<UIManager>
         if (ret != null)
         {
             ret(uiInstance);
-        }
-    }
-
-    public void HideUI(string uiName)
-    {
-        if (loadedUIs.TryGetValue(uiName, out var ui))
-        {
-            ui.Hide();
-
-            // 如果配置为隐藏后销毁，则从字典中移除
-            if (ui.WndInfo.DestroyOnHide)
-            {
-                loadedUIs.Remove(uiName);
-            }
-        }
-    }
-
-    public void DestroyUI(string uiName)
-    {
-        if (loadedUIs.TryGetValue(uiName, out var ui))
-        {
-            ui.Destroy();
-            loadedUIs.Remove(uiName);
         }
     }
 }
