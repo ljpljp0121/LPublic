@@ -2,18 +2,23 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using UnityEngine;
 
+/// <summary>
+/// 本地存储工具
+/// </summary>
 public static class IOTool
 {
     private static BinaryFormatter binaryFormatter = new BinaryFormatter();
-    
+
     /// <summary>
     /// 保存Json
     /// </summary>
-    /// <param name="jsonString">Json的字符串</param>
+    /// <param name="saveObj">保存的类</param>
     /// <param name="path">路径</param>
-    public static void SaveJson(string jsonString, string path)
+    public static void SaveJson(object saveObj, string path)
     {
-        File.WriteAllText(path, jsonString);
+        string jsonData = JsonUtility.ToJson(saveObj);
+        string encryptedData = EncryptionUtility.Encrypt(jsonData);
+        File.WriteAllText(path, jsonData);
     }
     
     /// <summary>
@@ -25,7 +30,9 @@ public static class IOTool
         {
             return null;
         }
-        return JsonUtility.FromJson<T>(File.ReadAllText(path));
+        string encryptedData = File.ReadAllText(path);
+        string jsonData = EncryptionUtility.Decrypt(encryptedData);
+        return JsonUtility.FromJson<T>(jsonData);
     }
     
     /// <summary>

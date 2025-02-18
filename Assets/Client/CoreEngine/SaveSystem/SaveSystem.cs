@@ -15,7 +15,7 @@ public enum SaveSystemType
 }
 
 /// <summary>
-/// 一个存档的数据
+/// 单个存档的数据
 /// </summary>
 [Serializable]
 public class SaveItem
@@ -385,7 +385,7 @@ public static class SaveSystem
     /// <typeparam name="T">要返回的实际类型</typeparam>
     /// <param name="saveFileName">文件名称</param>
     /// <param name="saveID">存档ID</param>
-    public static T LoadObject<T>(string saveFileName, int saveID = 0) where T : class
+    public static T LoadObject<T>(string saveFileName, int saveID = 0) where T : class, IMigratable
     {
         T obj = GetCache<T>(saveID, saveFileName);
         if (obj == null)
@@ -396,6 +396,14 @@ public static class SaveSystem
             // 具体的对象要保存的路径
             string savePath = dirPath + "/" + saveFileName;
             obj = LoadFile<T>(savePath);
+            if (obj != null)
+            {
+                bool migrationSuccess = MigrationManager.TryMigrate(obj as T);
+                if (migrationSuccess)
+                {
+                    SaveFile(obj, savePath);
+                }
+            }
             SetCache(saveID, saveFileName, obj);
         }
         return obj;
@@ -541,7 +549,7 @@ public static class SaveSystem
     private static string GetSavePath(int saveID, bool createDir = true)
     {
         // 验证是否有某个存档
-        if (GetSaveItem(saveID) == null) throw new Exception("JK:saveID 存档不存在！");
+        if (GetSaveItem(saveID) == null) throw new Exception("SaveID 存档不存在！");
 
         string saveDir = saveDirPath + "/" + saveID;
         // 确定文件夹是否存在
@@ -567,6 +575,13 @@ public static class SaveSystem
     /// <param name="path">保存的路径</param>
     private static void SaveFile(object saveObject, string path)
     {
+        if (saveObject is IMigratable migratable)
+        {
+            Type type = saveObject.GetType();
+            int currentVersion = MigrationManager.GetCurrentVersion(type);
+            migratable.DataVersion = currentVersion;
+        }
+
         switch (CoreEngineRoot.Instance.SaveSystemType)
         {
             case SaveSystemType.Binary:
@@ -579,8 +594,7 @@ public static class SaveSystem
                 }
                 break;
             case SaveSystemType.Json:
-                string jsonData = JsonUtility.ToJson(saveObject);
-                IOTool.SaveJson(jsonData, path);
+                IOTool.SaveJson(saveObject, path);
                 break;
         }
     }
@@ -595,7 +609,6 @@ public static class SaveSystem
         switch (CoreEngineRoot.Instance.SaveSystemType)
         {
             case SaveSystemType.Binary:
-                // 避免框架内部的数据类型也使用外部序列化工具序列化，这一般都会出现问题
                 if (binarySerializer == null || typeof(T) == typeof(SaveSystemData)) return IOTool.LoadFile<T>(path);
                 else
                 {
