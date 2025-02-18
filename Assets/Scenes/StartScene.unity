@@ -828,6 +828,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayMode: 0
+  SaveSystemType: 1
   ResourcePackageName: ResourcePackage
   DllPackageName: DllPackage
 --- !u!4 &1983769445
