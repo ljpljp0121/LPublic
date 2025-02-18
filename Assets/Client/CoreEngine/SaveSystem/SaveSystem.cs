@@ -347,7 +347,7 @@ public static class SaveSystem
     /// <param name="saveObject">要保存的对象</param>
     /// <param name="saveFileName">保存的文件名称</param>
     /// <param name="saveID">存档的ID</param>
-    public static void SaveObject(object saveObject, string saveFileName, int saveID = 0)
+    public static void SaveObject(IMigratable saveObject, string saveFileName, int saveID = 0)
     {
         // 存档所在的文件夹路径
         string dirPath = GetSavePath(saveID, true);
@@ -364,17 +364,17 @@ public static class SaveSystem
         SetCache(saveID, saveFileName, saveObject);
     }
 
-    public static void SaveObject(object saveObject, string saveFileName, SaveItem saveItem)
+    public static void SaveObject(IMigratable saveObject, string saveFileName, SaveItem saveItem)
     {
         SaveObject(saveObject, saveFileName, saveItem.SaveID);
     }
 
-    public static void SaveObject(object saveObject, int saveID = 0)
+    public static void SaveObject(IMigratable saveObject, int saveID = 0)
     {
         SaveObject(saveObject, saveObject.GetType().Name, saveID);
     }
 
-    public static void SaveObject(object saveObject, SaveItem saveItem)
+    public static void SaveObject(IMigratable saveObject, SaveItem saveItem)
     {
         SaveObject(saveObject, saveObject.GetType().Name, saveItem);
     }
@@ -409,17 +409,17 @@ public static class SaveSystem
         return obj;
     }
 
-    public static T LoadObject<T>(string saveFileName, SaveItem saveItem) where T : class
+    public static T LoadObject<T>(string saveFileName, SaveItem saveItem) where T : class , IMigratable
     {
         return LoadObject<T>(saveFileName, saveItem.SaveID);
     }
 
-    public static T LoadObject<T>(int saveID = 0) where T : class
+    public static T LoadObject<T>(int saveID = 0) where T : class, IMigratable
     {
         return LoadObject<T>(typeof(T).Name, saveID);
     }
 
-    public static T LoadObject<T>(SaveItem saveItem) where T : class
+    public static T LoadObject<T>(SaveItem saveItem) where T : class, IMigratable
     {
         return LoadObject<T>(typeof(T).Name, saveItem.SaveID);
     }
@@ -429,7 +429,7 @@ public static class SaveSystem
     /// </summary>
     /// <param name="saveFileName">文件名称</param>
     /// <param name="saveID">存档的ID</param>
-    public static void DeleteObject<T>(string saveFileName, int saveID) where T : class
+    public static void DeleteObject<T>(string saveFileName, int saveID) where T : class, IMigratable
     {
         //清空缓存中对象
         if (GetCache<T>(saveID, saveFileName) != null)
@@ -443,17 +443,17 @@ public static class SaveSystem
         File.Delete(savePath);
     }
 
-    public static void DeleteObject<T>(string saveFileName, SaveItem saveItem) where T : class
+    public static void DeleteObject<T>(string saveFileName, SaveItem saveItem) where T : class, IMigratable
     {
         DeleteObject<T>(saveFileName, saveItem.SaveID);
     }
 
-    public static void DeleteObject<T>(int saveID) where T : class
+    public static void DeleteObject<T>(int saveID) where T : class, IMigratable
     {
         DeleteObject<T>(typeof(T).Name, saveID);
     }
 
-    public static void DeleteObject<T>(SaveItem saveItem) where T : class
+    public static void DeleteObject<T>(SaveItem saveItem) where T : class, IMigratable
     {
         DeleteObject<T>(typeof(T).Name, saveItem.SaveID);
     }
