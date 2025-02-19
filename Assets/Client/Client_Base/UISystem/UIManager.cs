@@ -53,9 +53,9 @@ public class UIManager : SingletonMono<UIManager>
         cameraGo.transform.SetParent(uiRoot);
         uiCamera = cameraGo.AddComponent<Camera>();
         uiCamera.orthographic = true;
-        uiCamera.orthographicSize = 5;
+        uiCamera.orthographicSize = 10;
         uiCamera.nearClipPlane = 0.0f;
-        uiCamera.farClipPlane = 2000f;
+        uiCamera.farClipPlane = 100f;
         uiCamera.cullingMask = 1 << LayerMask.NameToLayer("UI");
         uiCamera.clearFlags = CameraClearFlags.Depth;
         uiCamera.depth = mainCamera != null ? mainCamera.depth + 1 : 1;
@@ -72,7 +72,6 @@ public class UIManager : SingletonMono<UIManager>
         var rootCanvas = uiCanvas.gameObject.AddComponent<Canvas>();
         rootCanvas.renderMode = RenderMode.ScreenSpaceCamera;
         rootCanvas.worldCamera = uiCamera;
-        rootCanvas.sortingLayerID = SortingLayer.NameToID("UI");
 
         var canvasScaler = uiCanvas.gameObject.AddComponent<CanvasScaler>();
         canvasScaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
@@ -86,10 +85,8 @@ public class UIManager : SingletonMono<UIManager>
         IngameDebugConsole.DebugLogManager.Instance.transform.SetParent(uiRoot);
 
         var canvas = IngameDebugConsole.DebugLogManager.Instance.GetComponent<Canvas>();
-        canvas.renderMode = RenderMode.ScreenSpaceCamera;
-        canvas.worldCamera = uiCamera;
+        canvas.renderMode = RenderMode.ScreenSpaceOverlay;
         canvas.overrideSorting = true;
-        canvas.sortingLayerID = SortingLayer.NameToID("UI");
         canvas.sortingOrder = 30002;
 
         var canvasScaler = IngameDebugConsole.DebugLogManager.Instance.GetComponent<CanvasScaler>();
@@ -105,10 +102,7 @@ public class UIManager : SingletonMono<UIManager>
         StartLoading.Instance.transform.GetChild(1).GetComponent<Canvas>().overrideSorting = false;
         Destroy(StartLoading.Instance.transform.GetChild(0).gameObject);
         var canvas = StartLoading.Instance.GetComponent<Canvas>();
-        canvas.renderMode = RenderMode.ScreenSpaceCamera;
-        canvas.worldCamera = uiCamera;
         canvas.overrideSorting = true;
-        canvas.sortingLayerID = SortingLayer.NameToID("UI");
         canvas.sortingOrder = 30001;
     }
 
