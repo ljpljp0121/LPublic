@@ -9,6 +9,15 @@ using UnityEngine;
 using YooAsset;
 
 /// <summary>
+/// 存档系统类型
+/// </summary>
+public enum SaveSystemType
+{
+    Binary,
+    Json
+}
+
+/// <summary>
 /// 核心框架根节点
 /// 所有系统的初始化都在这里
 /// </summary>
@@ -52,22 +61,13 @@ public class CoreEngineRoot : MonoBehaviour
         EventSystem.Init();
         MonoSystem.Init();
         AudioSystem.Init();
-        SaveSystem.Init();
         //生成加载窗口
         var go = Resources.Load<GameObject>("StartLoading");
         GameObject.Instantiate(go, RootTransform);
         yield return AssetSystem.Init(DllPackageName, ResourcePackageName, PlayMode);
         GameObject gameRoot = AssetSystem.LoadAsset<GameObject>("Prefab/GameRoot");
         Instantiate(gameRoot, RootTransform);
-        TestData data = SaveSystem.LoadObject<TestData>(0);
-        Debug.Log($"{data.Name} {data.Age} {data.Height}");
-    }
-
-    private class TestData
-    {
-        public string Name;
-        public int Age;
-        public float Height;
+       
     }
 
     private void Update()

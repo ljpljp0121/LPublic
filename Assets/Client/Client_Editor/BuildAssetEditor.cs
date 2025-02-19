@@ -40,7 +40,7 @@ public class BuildAssetEditor : EditorWindow
     private bool foolMode = true;
 
 
-    [MenuItem("Project/Build")]
+    [MenuItem("Project/打包")]
     public static void ShowWindow()
     {
         GetWindow<BuildAssetEditor>("打包机");
