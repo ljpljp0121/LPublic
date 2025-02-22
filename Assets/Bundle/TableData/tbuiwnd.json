@@ -3,6 +3,7 @@
     "Name": "StartPanel",
     "Path": "MainUI/StartPanel",
     "Layer": 1,
-    "DestroyOnHide": false
+    "DestroyOnHide": false,
+    "nini": 1
   }
 ]

@@ -83,27 +83,11 @@ public class UIManager : SingletonMono<UIManager>
     private void DealInGameDebug()
     {
         IngameDebugConsole.DebugLogManager.Instance.transform.SetParent(uiRoot);
-
-        var canvas = IngameDebugConsole.DebugLogManager.Instance.GetComponent<Canvas>();
-        canvas.renderMode = RenderMode.ScreenSpaceOverlay;
-        canvas.overrideSorting = true;
-        canvas.sortingOrder = 30002;
-
-        var canvasScaler = IngameDebugConsole.DebugLogManager.Instance.GetComponent<CanvasScaler>();
-        canvasScaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
-        canvasScaler.referenceResolution = new Vector2(1920, 1080);
-        canvasScaler.screenMatchMode = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
-        canvasScaler.matchWidthOrHeight = 1f;
     }
 
     private void DealStartLoading()
     {
         StartLoading.Instance.transform.SetParent(uiRoot);
-        StartLoading.Instance.transform.GetChild(1).GetComponent<Canvas>().overrideSorting = false;
-        Destroy(StartLoading.Instance.transform.GetChild(0).gameObject);
-        var canvas = StartLoading.Instance.GetComponent<Canvas>();
-        canvas.overrideSorting = true;
-        canvas.sortingOrder = 30001;
     }
 
     #endregion
@@ -190,7 +174,7 @@ public class UIManager : SingletonMono<UIManager>
 
     private void LoadUI(string name, Action<UIBase> ret)
     {
-        var wndInfo = TableSystem.Table.TbUIWnd.Get(name);
+        var wndInfo = TableSystem.GetVOData<TbUIWnd>().Get(name);
         if (wndInfo == null)
         {
             Debug.LogError($"UI 配置未找到: {name}");

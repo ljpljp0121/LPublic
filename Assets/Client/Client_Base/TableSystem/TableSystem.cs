@@ -1,21 +1,23 @@
+using System.Collections.Generic;
 using cfg;
-using SimpleJSON;
 using UnityEngine;
 
 public static class TableSystem
 {
-    public static Tables Table;
+    private static Dictionary<string, IVOFun> tables = new Dictionary<string, IVOFun>();
 
-    [InitOnLoad]
-    public static void Init()
+    public static T GetVOData<T>() where T : IVOFun, new()
     {
-        Table = new Tables(LoadTable);
-        Debug.Log("表初始化成功");
-    }
-
-    private static JSONNode LoadTable(string tableName)
-    {
-        var textAsset = AssetSystem.LoadAsset<TextAsset>($"TableData/{tableName}.json");
-        return JSON.Parse(textAsset.text);
+        if (tables.ContainsKey(typeof(T).Name))
+        {
+            return (T)tables[typeof(T).Name];
+        }
+        else
+        {
+            var table = new T();
+            table._LoadData();
+            tables.Add(typeof(T).Name, table);
+            return (T)table;
+        }
     }
 }

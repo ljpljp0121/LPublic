@@ -9,27 +9,20 @@
 
 using Luban;
 using SimpleJSON;
+using UnityEngine;
 
 
 namespace cfg
 {
-public partial class TbUIWnd
+public partial class TbUIWnd : IVOFun
 {
     private readonly System.Collections.Generic.Dictionary<string, UIWnd> _dataMap;
     private readonly System.Collections.Generic.List<UIWnd> _dataList;
     
-    public TbUIWnd(JSONNode _buf)
+    public TbUIWnd()
     {
         _dataMap = new System.Collections.Generic.Dictionary<string, UIWnd>();
         _dataList = new System.Collections.Generic.List<UIWnd>();
-        
-        foreach(JSONNode _ele in _buf.Children)
-        {
-            UIWnd _v;
-            { if(!_ele.IsObject) { throw new SerializationException(); }  _v = UIWnd.DeserializeUIWnd(_ele);  }
-            _dataList.Add(_v);
-            _dataMap.Add(_v.Name, _v);
-        }
     }
 
     public System.Collections.Generic.Dictionary<string, UIWnd> DataMap => _dataMap;
@@ -47,6 +40,25 @@ public partial class TbUIWnd
         }
     }
 
+
+    public void _LoadData()
+    {
+        
+        JSONNode _buf = JSON.Parse(GetJson("tbuiwnd"));
+        foreach(JSONNode _ele in _buf.Children)
+        {
+            UIWnd _v;
+            { if(!_ele.IsObject) { throw new SerializationException(); }  _v = UIWnd.DeserializeUIWnd(_ele);  }
+            _dataList.Add(_v);
+            _dataMap.Add(_v.Name, _v);
+        }
+    }
+
+    private string GetJson(string fileName)
+    {
+        var textAsset = AssetSystem.LoadAsset<TextAsset>($"TableData/{fileName}.json");
+        return textAsset.text;
+    }
 }
 
 }

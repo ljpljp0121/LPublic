@@ -12,15 +12,17 @@ using SimpleJSON;
 
 namespace cfg
 {
+
+public interface IVOFun
+{
+    void _LoadData();
+}
+
 public partial class Tables
 {
     public TbUIWnd TbUIWnd {get; }
 
-    public Tables(System.Func<string, JSONNode> loader)
-    {
-        TbUIWnd = new TbUIWnd(loader("tbuiwnd"));
-        ResolveRef();
-    }
+    public Tables(){}
     
     private void ResolveRef()
     {

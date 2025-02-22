@@ -14,7 +14,7 @@ public abstract class UIBase : MonoBehaviour
 
     public void Init()
     {
-        WndInfo = TableSystem.Table.TbUIWnd.Get(this.GetType().Name);
+        WndInfo = TableSystem.GetVOData<TbUIWnd>().Get(this.GetType().Name);
         gameObject.SetActive(false);
 
         canvas = gameObject.GetComponent<Canvas>();
