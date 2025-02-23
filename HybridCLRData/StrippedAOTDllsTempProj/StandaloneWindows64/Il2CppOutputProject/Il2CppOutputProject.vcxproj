@@ -42,11 +42,19 @@
     <UnityPlayerConfiguration>Master</UnityPlayerConfiguration>
   </PropertyGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Assembly-CSharp-firstpass.cpp">
+    </ClCompile>
     <ClCompile Include="Source\Assembly-CSharp.cpp">
     </ClCompile>
     <ClCompile Include="Source\Assembly-CSharp__1.cpp">
     </ClCompile>
     <ClCompile Include="Source\CoreEngine.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\DOTween.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\DOTween__1.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\DOTween__2.cpp">
     </ClCompile>
     <ClCompile Include="Source\GenericMethods.cpp">
     </ClCompile>
@@ -70,7 +78,13 @@
     </ClCompile>
     <ClCompile Include="Source\GenericMethods__18.cpp">
     </ClCompile>
+    <ClCompile Include="Source\GenericMethods__19.cpp">
+    </ClCompile>
     <ClCompile Include="Source\GenericMethods__2.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\GenericMethods__20.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\GenericMethods__21.cpp">
     </ClCompile>
     <ClCompile Include="Source\GenericMethods__3.cpp">
     </ClCompile>
@@ -252,6 +266,10 @@
     </ClCompile>
     <ClCompile Include="Source\Generics__83.cpp">
     </ClCompile>
+    <ClCompile Include="Source\Generics__84.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__85.cpp">
+    </ClCompile>
     <ClCompile Include="Source\Generics__9.cpp">
     </ClCompile>
     <ClCompile Include="Source\HybridCLR.Runtime.cpp">
@@ -311,6 +329,16 @@
     <ClCompile Include="Source\mscorlib__19.cpp">
     </ClCompile>
     <ClCompile Include="Source\mscorlib__2.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\mscorlib__20.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\mscorlib__21.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\mscorlib__22.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\mscorlib__23.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\mscorlib__24.cpp">
     </ClCompile>
     <ClCompile Include="Source\mscorlib__3.cpp">
     </ClCompile>
@@ -582,9 +610,13 @@
     </ClCompile>
     <ClCompile Include="Source\__Generated.cpp">
     </ClCompile>
+    <ClCompile Include="Source\Assembly-CSharp-firstpass_CodeGen.c">
+    </ClCompile>
     <ClCompile Include="Source\Assembly-CSharp_CodeGen.c">
     </ClCompile>
     <ClCompile Include="Source\CoreEngine_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\DOTween_CodeGen.c">
     </ClCompile>
     <ClCompile Include="Source\HybridCLR.Runtime_CodeGen.c">
     </ClCompile>

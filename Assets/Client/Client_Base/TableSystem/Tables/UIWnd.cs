@@ -29,21 +29,9 @@ public sealed partial class UIWnd : Luban.BeanBase
         return new UIWnd(_buf);
     }
 
-    /// <summary>
-    /// ui名称
-    /// </summary>
     public readonly string Name;
-    /// <summary>
-    /// 预制体路径
-    /// </summary>
     public readonly string Path;
-    /// <summary>
-    /// 层级
-    /// </summary>
     public readonly int Layer;
-    /// <summary>
-    /// 隐藏后销毁
-    /// </summary>
     public readonly bool DestroyOnHide;
     public readonly short Nini;
    

@@ -2622,6 +2622,7 @@ struct TextReader_tB8D43017CB6BE1633E5A86D64E7757366507C1F7_StaticFields
 struct AppDomain_tFF7010567CBABAEEA7BB19835234D6485E16AD5F_StaticFields
 {
 	String_t* ____process_guid;
+	AppDomain_tFF7010567CBABAEEA7BB19835234D6485E16AD5F* ___default_domain;
 };
 struct AppDomain_tFF7010567CBABAEEA7BB19835234D6485E16AD5F_ThreadStaticFields
 {
@@ -4525,7 +4526,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void JsonDataWriter_FlushToStream_mE3A41FA547
 		ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* L_2 = __this->___buffer;
 		int32_t L_3 = __this->___bufferIndex;
 		NullCheck(L_1);
-		VirtualActionInvoker3< ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*, int32_t, int32_t >::Invoke(25, L_1, L_2, 0, L_3);
+		VirtualActionInvoker3< ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*, int32_t, int32_t >::Invoke(38, L_1, L_2, 0, L_3);
 		__this->___bufferIndex = 0;
 	}
 
@@ -5260,7 +5261,7 @@ IL_0026:
 		L_4 = VirtualFuncInvoker0< Stream_tF844051B786E8F7F4244DBD218D74E8617B9A2DE* >::Invoke(44, __this);
 		NullCheck(L_4);
 		int64_t L_5;
-		L_5 = VirtualFuncInvoker0< int64_t >::Invoke(11, L_4);
+		L_5 = VirtualFuncInvoker0< int64_t >::Invoke(12, L_4);
 		V_0 = L_5;
 		int64_t L_6 = V_0;
 		if ((int64_t)(L_6) > INTPTR_MAX) IL2CPP_RAISE_MANAGED_EXCEPTION(il2cpp_codegen_get_overflow_exception(), JsonDataWriter_GetDataDump_m74960786856533C263B574CA5A06D06FFCA03CB3_RuntimeMethod_var);
@@ -5269,19 +5270,19 @@ IL_0026:
 		Stream_tF844051B786E8F7F4244DBD218D74E8617B9A2DE* L_8;
 		L_8 = VirtualFuncInvoker0< Stream_tF844051B786E8F7F4244DBD218D74E8617B9A2DE* >::Invoke(44, __this);
 		NullCheck(L_8);
-		VirtualActionInvoker1< int64_t >::Invoke(12, L_8, ((int64_t)0));
+		VirtualActionInvoker1< int64_t >::Invoke(13, L_8, ((int64_t)0));
 		Stream_tF844051B786E8F7F4244DBD218D74E8617B9A2DE* L_9;
 		L_9 = VirtualFuncInvoker0< Stream_tF844051B786E8F7F4244DBD218D74E8617B9A2DE* >::Invoke(44, __this);
 		ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* L_10 = V_1;
 		int64_t L_11 = V_0;
 		NullCheck(L_9);
 		int32_t L_12;
-		L_12 = VirtualFuncInvoker3< int32_t, ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*, int32_t, int32_t >::Invoke(22, L_9, L_10, 0, ((int32_t)L_11));
+		L_12 = VirtualFuncInvoker3< int32_t, ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*, int32_t, int32_t >::Invoke(35, L_9, L_10, 0, ((int32_t)L_11));
 		Stream_tF844051B786E8F7F4244DBD218D74E8617B9A2DE* L_13;
 		L_13 = VirtualFuncInvoker0< Stream_tF844051B786E8F7F4244DBD218D74E8617B9A2DE* >::Invoke(44, __this);
 		int64_t L_14 = V_0;
 		NullCheck(L_13);
-		VirtualActionInvoker1< int64_t >::Invoke(12, L_13, L_14);
+		VirtualActionInvoker1< int64_t >::Invoke(13, L_13, L_14);
 		Encoding_t65CDEF28CF20A7B8C92E85A4E808920C2465F095* L_15;
 		L_15 = Encoding_get_UTF8_m9FA98A53CE96FD6D02982625C5246DD36C1235C9(NULL);
 		ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* L_16 = V_1;
@@ -5289,7 +5290,7 @@ IL_0026:
 		NullCheck(L_17);
 		NullCheck(L_15);
 		String_t* L_18;
-		L_18 = VirtualFuncInvoker3< String_t*, ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*, int32_t, int32_t >::Invoke(33, L_15, L_16, 0, ((int32_t)(((RuntimeArray*)L_17)->max_length)));
+		L_18 = VirtualFuncInvoker3< String_t*, ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*, int32_t, int32_t >::Invoke(48, L_15, L_16, 0, ((int32_t)(((RuntimeArray*)L_17)->max_length)));
 		String_t* L_19;
 		L_19 = String_Concat_m9E3155FB84015C823606188F53B47CB44C444991(_stringLiteralAEA66752969DF536D122A474196D1FCAB0304258, L_18, NULL);
 		return L_19;
@@ -6834,10 +6835,10 @@ IL_016e:
 		StreamReader_t81027449065C1B0C339DB46241D8001A6F61130B* L_55 = __this->___reader;
 		NullCheck(L_55);
 		Stream_tF844051B786E8F7F4244DBD218D74E8617B9A2DE* L_56;
-		L_56 = VirtualFuncInvoker0< Stream_tF844051B786E8F7F4244DBD218D74E8617B9A2DE* >::Invoke(13, L_55);
+		L_56 = VirtualFuncInvoker0< Stream_tF844051B786E8F7F4244DBD218D74E8617B9A2DE* >::Invoke(19, L_55);
 		NullCheck(L_56);
 		int64_t L_57;
-		L_57 = VirtualFuncInvoker0< int64_t >::Invoke(11, L_56);
+		L_57 = VirtualFuncInvoker0< int64_t >::Invoke(12, L_56);
 		V_12 = L_57;
 		String_t* L_58;
 		L_58 = Int64_ToString_m284E4E55662818E38654309A41C2B07CD436F36B((&V_12), NULL);

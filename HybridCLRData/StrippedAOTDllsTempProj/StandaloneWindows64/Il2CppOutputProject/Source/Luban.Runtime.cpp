@@ -5239,11 +5239,11 @@ IL_002c:
 			JSONNode_SaveToBinaryStream_m9FBE642E4E98BB877F6184E413DDA42E1BB69045(__this, L_3, NULL);
 			MemoryStream_tAAED1B42172E3390584E4194308AB878E786AAC2* L_4 = V_0;
 			NullCheck(L_4);
-			VirtualActionInvoker1< int64_t >::Invoke(12, L_4, ((int64_t)0));
+			VirtualActionInvoker1< int64_t >::Invoke(13, L_4, ((int64_t)0));
 			MemoryStream_tAAED1B42172E3390584E4194308AB878E786AAC2* L_5 = V_0;
 			NullCheck(L_5);
 			ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* L_6;
-			L_6 = VirtualFuncInvoker0< ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* >::Invoke(31, L_5);
+			L_6 = VirtualFuncInvoker0< ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* >::Invoke(46, L_5);
 			il2cpp_codegen_runtime_class_init_inline(Convert_t7097FF336D592F7C06D88A98349A44646F91EFFC_il2cpp_TypeInfo_var);
 			String_t* L_7;
 			L_7 = Convert_ToBase64String_mD0680EF77270244071965AFA1207921C73EEA323(L_6, NULL);
@@ -5637,7 +5637,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR JSONNode_t971AD14718D1E9D3B7242FC4E314DA952A7
 		MemoryStream__ctor_m662CA0D5A0004A2E3B475FE8DCD687B654870AA2(L_2, L_1, NULL);
 		MemoryStream_tAAED1B42172E3390584E4194308AB878E786AAC2* L_3 = L_2;
 		NullCheck(L_3);
-		VirtualActionInvoker1< int64_t >::Invoke(12, L_3, ((int64_t)0));
+		VirtualActionInvoker1< int64_t >::Invoke(13, L_3, ((int64_t)0));
 		il2cpp_codegen_runtime_class_init_inline(JSONNode_t971AD14718D1E9D3B7242FC4E314DA952A7B39AA_il2cpp_TypeInfo_var);
 		JSONNode_t971AD14718D1E9D3B7242FC4E314DA952A7B39AA* L_4;
 		L_4 = JSONNode_LoadFromBinaryStream_m5A6953AE41F4D245C876902FA7E091EA013FB286(L_3, NULL);
@@ -17989,7 +17989,7 @@ IL_0006:
 		String_t* L_2 = ___0_x;
 		NullCheck(L_1);
 		int32_t L_3;
-		L_3 = VirtualFuncInvoker1< int32_t, String_t* >::Invoke(10, L_1, L_2);
+		L_3 = VirtualFuncInvoker1< int32_t, String_t* >::Invoke(20, L_1, L_2);
 		G_B3_0 = L_3;
 	}
 
@@ -18020,7 +18020,7 @@ IL_0011:
 		L_12 = ByteBuf_get_WriterIndex_m3D2597337189BE996EAF99B2134E6686E22AC384_inline(__this, NULL);
 		NullCheck(L_7);
 		int32_t L_13;
-		L_13 = VirtualFuncInvoker5< int32_t, String_t*, int32_t, int32_t, ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*, int32_t >::Invoke(17, L_7, L_8, 0, L_10, L_11, L_12);
+		L_13 = VirtualFuncInvoker5< int32_t, String_t*, int32_t, int32_t, ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*, int32_t >::Invoke(28, L_7, L_8, 0, L_10, L_11, L_12);
 		int32_t L_14;
 		L_14 = ByteBuf_get_WriterIndex_m3D2597337189BE996EAF99B2134E6686E22AC384_inline(__this, NULL);
 		int32_t L_15 = V_0;
@@ -18100,7 +18100,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* ByteBuf_ReadString_mD7DBE7EC503A7B5
 		int32_t L_7 = V_0;
 		NullCheck(L_4);
 		String_t* L_8;
-		L_8 = VirtualFuncInvoker3< String_t*, ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*, int32_t, int32_t >::Invoke(33, L_4, L_5, L_6, L_7);
+		L_8 = VirtualFuncInvoker3< String_t*, ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*, int32_t, int32_t >::Invoke(48, L_4, L_5, L_6, L_7);
 		V_1 = L_8;
 		goto IL_004b;
 	}
@@ -19974,7 +19974,7 @@ IL_0010:
 		RuntimeObject* L_11 = ___0_o;
 		NullCheck(L_10);
 		RuntimeObject* L_12;
-		L_12 = VirtualFuncInvoker1< RuntimeObject*, RuntimeObject* >::Invoke(33, L_10, L_11);
+		L_12 = VirtualFuncInvoker1< RuntimeObject*, RuntimeObject* >::Invoke(47, L_10, L_11);
 		String_t* L_13;
 		L_13 = String_Format_mFB7DA489BD99F4670881FF50EC017BFB0A5C0987(_stringLiteral84EB7C8735C3D4B90710CDE305A398AD9236D507, L_9, L_12, NULL);
 		NullCheck(L_7);

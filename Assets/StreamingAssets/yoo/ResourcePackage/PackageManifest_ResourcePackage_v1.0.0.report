@@ -2,14 +2,14 @@
     "Summary": {
         "YooVersion": "2.2.9",
         "UnityVersion": "2022.3.27f1c1",
-        "BuildDate": "2025/2/11 23:20:51",
-        "BuildSeconds": 11,
+        "BuildDate": "2025/2/23 1:10:26",
+        "BuildSeconds": 1,
         "BuildTarget": 19,
         "BuildPipeline": "BuiltinBuildPipeline",
         "BuildBundleType": 2,
         "BuildPackageName": "ResourcePackage",
         "BuildPackageVersion": "v1.0.0",
-        "BuildPackageNote": "2025/2/11 23:20:39",
+        "BuildPackageNote": "2025/2/23 1:10:24",
         "UniqueBundleName": true,
         "EnableAddressable": false,
         "LocationToLower": false,
@@ -24,21 +24,43 @@
         "CompressOption": 2,
         "DisableWriteTypeTree": false,
         "IgnoreTypeTreeChanges": true,
-        "AssetFileTotalCount": 2,
-        "MainAssetTotalCount": 2,
-        "AllBundleTotalCount": 2,
-        "AllBundleTotalSize": 121401,
+        "AssetFileTotalCount": 7,
+        "MainAssetTotalCount": 4,
+        "AllBundleTotalCount": 6,
+        "AllBundleTotalSize": 3732259,
         "EncryptedBundleTotalCount": 0,
         "EncryptedBundleTotalSize": 0
     },
     "AssetInfos": [
         {
             "Address": "",
+            "AssetPath": "Assets/Bundle/Prefab/GameRoot.prefab",
+            "AssetGUID": "efe8693cb71f4fa4796cf468ce28f572",
+            "AssetTags": [],
+            "MainBundleName": "resourcepackage_assets_bundle_prefab.bundle",
+            "MainBundleSize": 2326,
+            "DependAssets": []
+        },
+        {
+            "Address": "",
+            "AssetPath": "Assets/Bundle/Prefab/UI/MainUI/StartPanel.prefab",
+            "AssetGUID": "50cc57e5e91ce4047a474683f933882b",
+            "AssetTags": [],
+            "MainBundleName": "resourcepackage_assets_bundle_prefab_ui_mainui.bundle",
+            "MainBundleSize": 12932,
+            "DependAssets": [
+                "Assets/GameRes/Fonts/STXINWEI SDF.asset",
+                "Assets/GameRes/Fonts/STXINWEI.TTF",
+                "Assets/TextMesh Pro/Shaders/TMP_SDF.shader"
+            ]
+        },
+        {
+            "Address": "",
             "AssetPath": "Assets/Bundle/Scenes/GameScene.unity",
             "AssetGUID": "624655d5be2e6654aa5d71e938a205c8",
             "AssetTags": [],
             "MainBundleName": "resourcepackage_assets_bundle_scenes.bundle",
-            "MainBundleSize": 120189,
+            "MainBundleSize": 120310,
             "DependAssets": []
         },
         {
@@ -47,17 +69,46 @@
             "AssetGUID": "81c527d98509e0b41bf55fdf79f12198",
             "AssetTags": [],
             "MainBundleName": "resourcepackage_assets_bundle_tabledata.bundle",
-            "MainBundleSize": 1212,
+            "MainBundleSize": 1332,
             "DependAssets": []
         }
     ],
     "BundleInfos": [
         {
+            "BundleName": "resourcepackage_assets_bundle_prefab.bundle",
+            "FileName": "2daf6154b30735e235a062bcac20b362.bundle",
+            "FileHash": "2daf6154b30735e235a062bcac20b362",
+            "FileCRC": "23ef764f",
+            "FileSize": 2326,
+            "Encrypted": false,
+            "Tags": [],
+            "DependBundles": [],
+            "AllBuiltinAssets": [
+                "Assets/Bundle/Prefab/GameRoot.prefab"
+            ]
+        },
+        {
+            "BundleName": "resourcepackage_assets_bundle_prefab_ui_mainui.bundle",
+            "FileName": "824f582c969b094e694e2b3c56ac779b.bundle",
+            "FileHash": "824f582c969b094e694e2b3c56ac779b",
+            "FileCRC": "f9ec9713",
+            "FileSize": 12932,
+            "Encrypted": false,
+            "Tags": [],
+            "DependBundles": [
+                "resourcepackage_share_assets_gameres_fonts.bundle",
+                "resourcepackage_unityshaders.bundle"
+            ],
+            "AllBuiltinAssets": [
+                "Assets/Bundle/Prefab/UI/MainUI/StartPanel.prefab"
+            ]
+        },
+        {
             "BundleName": "resourcepackage_assets_bundle_scenes.bundle",
-            "FileName": "bb5cb4d8590bcb2be59e8da57284b196.bundle",
-            "FileHash": "bb5cb4d8590bcb2be59e8da57284b196",
-            "FileCRC": "32865b76",
-            "FileSize": 120189,
+            "FileName": "07e90457a02593eb451c7c33a44c42a4.bundle",
+            "FileHash": "07e90457a02593eb451c7c33a44c42a4",
+            "FileCRC": "2b59fb69",
+            "FileSize": 120310,
             "Encrypted": false,
             "Tags": [],
             "DependBundles": [],
@@ -67,15 +118,44 @@
         },
         {
             "BundleName": "resourcepackage_assets_bundle_tabledata.bundle",
-            "FileName": "e5585e8ed9c75daaa033ee6a3eadfbfb.bundle",
-            "FileHash": "e5585e8ed9c75daaa033ee6a3eadfbfb",
-            "FileCRC": "ceb079a4",
-            "FileSize": 1212,
+            "FileName": "bbb49db3d887fbb8b9bff6e21c4ead97.bundle",
+            "FileHash": "bbb49db3d887fbb8b9bff6e21c4ead97",
+            "FileCRC": "b64561c8",
+            "FileSize": 1332,
             "Encrypted": false,
             "Tags": [],
             "DependBundles": [],
             "AllBuiltinAssets": [
                 "Assets/Bundle/TableData/tbuiwnd.json"
+            ]
+        },
+        {
+            "BundleName": "resourcepackage_share_assets_gameres_fonts.bundle",
+            "FileName": "ce5a90a34f13c0162b882a0d891af786.bundle",
+            "FileHash": "ce5a90a34f13c0162b882a0d891af786",
+            "FileCRC": "4941fc29",
+            "FileSize": 3571813,
+            "Encrypted": false,
+            "Tags": [],
+            "DependBundles": [
+                "resourcepackage_unityshaders.bundle"
+            ],
+            "AllBuiltinAssets": [
+                "Assets/GameRes/Fonts/STXINWEI SDF.asset",
+                "Assets/GameRes/Fonts/STXINWEI.TTF"
+            ]
+        },
+        {
+            "BundleName": "resourcepackage_unityshaders.bundle",
+            "FileName": "00222226346a1cf0b433bcc21ad2b1ad.bundle",
+            "FileHash": "00222226346a1cf0b433bcc21ad2b1ad",
+            "FileCRC": "d0c77d9a",
+            "FileSize": 23546,
+            "Encrypted": false,
+            "Tags": [],
+            "DependBundles": [],
+            "AllBuiltinAssets": [
+                "Assets/TextMesh Pro/Shaders/TMP_SDF.shader"
             ]
         }
     ],

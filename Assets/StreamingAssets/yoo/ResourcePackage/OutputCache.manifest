@@ -1,10 +1,24 @@
 ManifestFileVersion: 0
-CRC: 3430180527
+CRC: 3684826647
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: resourcepackage_assets_bundle_scenes.bundle
+      Name: resourcepackage_assets_bundle_prefab.bundle
       Dependencies: {}
     Info_1:
+      Name: resourcepackage_assets_bundle_prefab_ui_mainui.bundle
+      Dependencies:
+        Dependency_0: resourcepackage_share_assets_gameres_fonts.bundle
+    Info_2:
+      Name: resourcepackage_assets_bundle_scenes.bundle
+      Dependencies: {}
+    Info_3:
       Name: resourcepackage_assets_bundle_tabledata.bundle
+      Dependencies: {}
+    Info_4:
+      Name: resourcepackage_share_assets_gameres_fonts.bundle
+      Dependencies:
+        Dependency_0: resourcepackage_unityshaders.bundle
+    Info_5:
+      Name: resourcepackage_unityshaders.bundle
       Dependencies: {}

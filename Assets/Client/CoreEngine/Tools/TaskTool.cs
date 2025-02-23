@@ -88,4 +88,17 @@ public static class TaskUtil
         }, null, ms / 1000.0f);
         return tcs.Task;
     }
+
+    public static Task Return(CancellationTokenSource cancel = null)
+    {
+        TaskCompletionSource<bool> tcs = new TaskCompletionSource<bool>();
+        TimeSystem.Instance.AddTimer((obj) =>
+        {
+            if (cancel != null && cancel.IsCancellationRequested)
+                tcs.SetException(new OperationCanceledException());
+            else
+                tcs.SetResult(true);
+        }, null);
+        return tcs.Task;
+    }
 }

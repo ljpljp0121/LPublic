@@ -270,7 +270,7 @@
 //     //给Button的onClick函数调用
 //     public void HideUI_ByName(string uiName)
 //     {
-//         HideUI(uiName);
+//         HideUIByName(uiName);
 //     }
 //
 //     protected async Task ShowImp(params object[] args)
@@ -902,7 +902,7 @@
 //         return tcs.Task;
 //     }
 //
-//     public static void HideUI(string name, bool force = false)
+//     public static void HideUIByName(string name, bool force = false)
 //     {
 //         UIBehavior uiBehaviour = null;
 //         if (uiBehaviourDict.TryGetValue(name, out uiBehaviour))
@@ -911,16 +911,16 @@
 //         }
 //         else
 //         {
-//             FrameworkLog.Warn($"HideUI {name} not found!");
+//             FrameworkLog.Warn($"HideUIByName {name} not found!");
 //         }
 //     }
-//     public static void HideUI<T>() where T : UIBehavior
+//     public static void HideUIByName<T>() where T : UIBehavior
 //     {
-//         HideUI(typeof(T).Name, false);
+//         HideUIByName(typeof(T).Name, false);
 //     }
-//     public static void HideUI<T>(bool force = false) where T : UIBehavior
+//     public static void HideUIByName<T>(bool force = false) where T : UIBehavior
 //     {
-//         HideUI(typeof(T).Name, force);
+//         HideUIByName(typeof(T).Name, force);
 //     }
 //
 //     public static bool IsShow(string name)

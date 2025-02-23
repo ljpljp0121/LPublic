@@ -538,6 +538,9 @@
     <Filter Include="IL2CPP\libmono">
       <UniqueIdentifier>{130ea70e-f388-26fc-5b2c-208e276f0f5e}</UniqueIdentifier>
     </Filter>
+    <ClCompile Include="Source\Assembly-CSharp-firstpass.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
     <ClCompile Include="Source\Assembly-CSharp.cpp">
       <Filter>Source</Filter>
     </ClCompile>
@@ -545,6 +548,15 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Source\CoreEngine.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\DOTween.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\DOTween__1.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\DOTween__2.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Source\GenericMethods.cpp">
@@ -580,7 +592,16 @@
     <ClCompile Include="Source\GenericMethods__18.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="Source\GenericMethods__19.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
     <ClCompile Include="Source\GenericMethods__2.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GenericMethods__20.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GenericMethods__21.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Source\GenericMethods__3.cpp">
@@ -853,6 +874,12 @@
     <ClCompile Include="Source\Generics__83.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Generics__84.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Generics__85.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
     <ClCompile Include="Source\Generics__9.cpp">
       <Filter>Source</Filter>
     </ClCompile>
@@ -941,6 +968,21 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Source\mscorlib__2.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\mscorlib__20.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\mscorlib__21.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\mscorlib__22.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\mscorlib__23.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\mscorlib__24.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Source\mscorlib__3.cpp">
@@ -1348,10 +1390,16 @@
     <ClCompile Include="Source\__Generated.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Assembly-CSharp-firstpass_CodeGen.c">
+      <Filter>Source</Filter>
+    </ClCompile>
     <ClCompile Include="Source\Assembly-CSharp_CodeGen.c">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Source\CoreEngine_CodeGen.c">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\DOTween_CodeGen.c">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Source\HybridCLR.Runtime_CodeGen.c">

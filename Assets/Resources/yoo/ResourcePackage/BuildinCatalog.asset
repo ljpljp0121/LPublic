@@ -15,7 +15,15 @@ MonoBehaviour:
   PackageName: ResourcePackage
   PackageVersion: v1.0.0
   Wrappers:
-  - BundleGUID: bb5cb4d8590bcb2be59e8da57284b196
-    FileName: bb5cb4d8590bcb2be59e8da57284b196.bundle
-  - BundleGUID: e5585e8ed9c75daaa033ee6a3eadfbfb
-    FileName: e5585e8ed9c75daaa033ee6a3eadfbfb.bundle
+  - BundleGUID: 00222226346a1cf0b433bcc21ad2b1ad
+    FileName: 00222226346a1cf0b433bcc21ad2b1ad.bundle
+  - BundleGUID: 07e90457a02593eb451c7c33a44c42a4
+    FileName: 07e90457a02593eb451c7c33a44c42a4.bundle
+  - BundleGUID: 2daf6154b30735e235a062bcac20b362
+    FileName: 2daf6154b30735e235a062bcac20b362.bundle
+  - BundleGUID: 824f582c969b094e694e2b3c56ac779b
+    FileName: 824f582c969b094e694e2b3c56ac779b.bundle
+  - BundleGUID: bbb49db3d887fbb8b9bff6e21c4ead97
+    FileName: bbb49db3d887fbb8b9bff6e21c4ead97.bundle
+  - BundleGUID: ce5a90a34f13c0162b882a0d891af786
+    FileName: ce5a90a34f13c0162b882a0d891af786.bundle

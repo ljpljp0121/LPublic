@@ -5,5 +5,12 @@
     "Layer": 1,
     "DestroyOnHide": false,
     "nini": 1
+  },
+  {
+    "Name": "CommonPanel",
+    "Path": "MainUI/StartPanel",
+    "Layer": 1,
+    "DestroyOnHide": false,
+    "nini": 2
   }
 ]

@@ -13,7 +13,8 @@ public class UIManager : SingletonMono<UIManager>
     private Camera mainCamera;
     private Camera uiCamera;
 
-    private readonly Dictionary<string, UIBase> loadedUIs = new();
+    public readonly Dictionary<string, UIBase> activeUIDic = new();
+    public 
 
     public Camera UICamera => uiCamera;
 
@@ -92,6 +93,7 @@ public class UIManager : SingletonMono<UIManager>
 
     #endregion
 
+    #region ShowUI
 
     public void ShowUIByName(string name, params object[] args)
     {
@@ -138,7 +140,7 @@ public class UIManager : SingletonMono<UIManager>
         }
 
         UIBase uiBase = null;
-        if (loadedUIs.TryGetValue(name, out uiBase))
+        if (activeUIDic.TryGetValue(name, out uiBase))
         {
             ShowUIBase(uiBase);
         }
@@ -147,29 +149,6 @@ public class UIManager : SingletonMono<UIManager>
             LoadUI(name, (uibase) => { ShowUIBase(uibase); });
         }
         return tcs.Task;
-    }
-
-    public void HideUI(string uiName)
-    {
-        if (loadedUIs.TryGetValue(uiName, out var ui))
-        {
-            ui.Hide();
-
-            // 如果配置为隐藏后销毁，则从字典中移除
-            if (ui.WndInfo.DestroyOnHide)
-            {
-                loadedUIs.Remove(uiName);
-            }
-        }
-    }
-
-    public void DestroyUI(string uiName)
-    {
-        if (loadedUIs.TryGetValue(uiName, out var ui))
-        {
-            ui.Destroy();
-            loadedUIs.Remove(uiName);
-        }
     }
 
     private void LoadUI(string name, Action<UIBase> ret)
@@ -197,10 +176,113 @@ public class UIManager : SingletonMono<UIManager>
         }
 
         uiInstance.Init();
-        loadedUIs.Add(wndInfo.Name, uiInstance);
+        activeUIDic.Add(wndInfo.Name, uiInstance);
         if (ret != null)
         {
             ret(uiInstance);
         }
     }
+
+    #endregion
+
+    #region HideUIByName
+
+    public void HideUIByName(string uiName)
+    {
+        if (activeUIDic.TryGetValue(uiName, out var ui))
+        {
+            ui.Hide();
+
+            // 如果配置为隐藏后销毁，则从字典中移除
+            if (ui.WndInfo.DestroyOnHide)
+            {
+                DestroyUI(uiName);
+            }
+        }
+    }
+
+    public void HideUI<T>() where T : UIBase
+    {
+        HideUIByName(typeof(T).Name);
+    }
+
+    private void DestroyUI(string uiName)
+    {
+        if (activeUIDic.TryGetValue(uiName, out var ui))
+        {
+            ui.Destroy();
+            activeUIDic.Remove(uiName);
+        }
+    }
+
+    #endregion
+
+    #region 是否显示UI
+
+    public bool IsShow<T>() where T : UIBase
+    {
+        return IsShow(typeof(T).Name);
+    }
+
+    public bool IsShow(string name)
+    {
+        UIBase uiBase = null;
+        if (activeUIDic.TryGetValue(name, out uiBase))
+        {
+            return uiBase.IsVisible;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    #endregion
+
+    #region 获取存活的UI
+
+    public UIBase GetUIBase(string name, GameObject uiObj = null)
+    {
+        UIBase uiBase = null;
+        if (activeUIDic.TryGetValue(name, out uiBase))
+        {
+            return uiBase;
+        }
+
+        if (uiObj)
+        {
+            uiBase = uiObj.GetComponent<UIBase>();
+            if (uiBase == null)
+            {
+                var monos = uiObj.GetComponentsInChildren<UIBase>(true);
+                if (monos.Length > 0)
+                    uiBase = monos[0];
+            }
+            if (uiBase == null)
+            {
+                LogSystem.Error("error ：GetUIBase cant find " + name + " UI");
+            }
+        }
+        if (uiBase != null)
+        {
+            if (!activeUIDic.ContainsKey(name))
+                activeUIDic.Add(name, uiBase);
+        }
+
+        return uiBase;
+    }
+
+    public T GetUIBase<T>(GameObject uiObj = null) where T : UIBase
+    {
+        return GetUIBase(typeof(T).Name, uiObj) as T;
+    }
+
+    #endregion
+
+    #region 设置层级
+
+    private const int LAYER_OFFSET = 2000;
+    private const int ORDER_OFFSET = 100;
+
+    #endregion
 }

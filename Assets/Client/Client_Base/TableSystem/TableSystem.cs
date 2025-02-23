@@ -6,7 +6,7 @@ public static class TableSystem
 {
     private static Dictionary<string, IVOFun> tables = new Dictionary<string, IVOFun>();
 
-    public static T GetVOData<T>() where T : IVOFun, new()
+    public static T GetVOData<T>() where T : IVOFun,new()
     {
         if (tables.ContainsKey(typeof(T).Name))
         {

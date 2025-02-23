@@ -2056,7 +2056,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Type_t* FieldMember_get_ValueType_m76238497CE
 		FieldInfo_t* L_0 = __this->___m_FieldInfo;
 		NullCheck(L_0);
 		Type_t* L_1;
-		L_1 = VirtualFuncInvoker0< Type_t* >::Invoke(25, L_0);
+		L_1 = VirtualFuncInvoker0< Type_t* >::Invoke(30, L_0);
 		return L_1;
 	}
 }
@@ -5918,7 +5918,7 @@ IL_001d:
 		FieldInfo_t* L_8 = V_0;
 		NullCheck(L_8);
 		Type_t* L_9;
-		L_9 = VirtualFuncInvoker0< Type_t* >::Invoke(25, L_8);
+		L_9 = VirtualFuncInvoker0< Type_t* >::Invoke(30, L_8);
 		bool L_10;
 		L_10 = ReflectedPropertyBagProvider_IsValidPropertyType_mFBA6F8CF9F5B94652229D6A151B5302C460F05BF(L_9, NULL);
 		G_B7_0 = ((int32_t)(L_10));

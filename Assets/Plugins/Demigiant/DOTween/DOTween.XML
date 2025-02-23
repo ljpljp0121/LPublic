@@ -1537,7 +1537,7 @@
             <summary>Returns the elapsed percentage (0 to 1) of this tween (delays exluded),
             based on a single loop, and calculating eventual backwards Yoyo loops as 1 to 0 instead of 0 to 1</summary>
         </member>
-        <member name="M:DG.Tweening.TweenExtensions.IsActive(DG.Tweening.Tween)">
+        <member name="M:DG.Tweening.TweenExtensions.IsVisible(DG.Tweening.Tween)">
             <summary>Returns FALSE if this tween has been killed or is NULL, TRUE otherwise.
             <para>BEWARE: if this tween is recyclable it might have been spawned again for another use and thus return TRUE anyway.</para>
             When working with recyclable tweens you should take care to know when a tween has been killed and manually set your references to NULL.

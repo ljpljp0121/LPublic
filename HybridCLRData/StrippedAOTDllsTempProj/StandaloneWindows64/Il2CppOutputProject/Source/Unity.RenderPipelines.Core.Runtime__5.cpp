@@ -9361,7 +9361,7 @@ IL_003d_1:
 				FieldInfo_t* L_15 = V_1;
 				NullCheck(L_15);
 				Type_t* L_16;
-				L_16 = VirtualFuncInvoker0< Type_t* >::Invoke(25, L_15);
+				L_16 = VirtualFuncInvoker0< Type_t* >::Invoke(30, L_15);
 				RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B L_17 = { reinterpret_cast<intptr_t> (VolumeParameter_t95994C89644D2CC4C11F666571492420D16BED72_0_0_0_var) };
 				il2cpp_codegen_runtime_class_init_inline(Type_t_il2cpp_TypeInfo_var);
 				Type_t* L_18;
@@ -9408,7 +9408,7 @@ IL_0068_1:
 				RuntimeObject* L_25 = ___0_o;
 				NullCheck(L_24);
 				RuntimeObject* L_26;
-				L_26 = VirtualFuncInvoker1< RuntimeObject*, RuntimeObject* >::Invoke(33, L_24, L_25);
+				L_26 = VirtualFuncInvoker1< RuntimeObject*, RuntimeObject* >::Invoke(47, L_24, L_25);
 				V_2 = ((VolumeParameter_t95994C89644D2CC4C11F666571492420D16BED72*)CastclassClass((RuntimeObject*)L_26, VolumeParameter_t95994C89644D2CC4C11F666571492420D16BED72_il2cpp_TypeInfo_var));
 				List_1_tD19F7E0FCBD7C3E8D363733582EF93B341DD3039* L_27 = ___1_parameters;
 				VolumeParameter_t95994C89644D2CC4C11F666571492420D16BED72* L_28 = V_2;
@@ -9422,7 +9422,7 @@ IL_0080_1:
 				FieldInfo_t* L_29 = V_1;
 				NullCheck(L_29);
 				Type_t* L_30;
-				L_30 = VirtualFuncInvoker0< Type_t* >::Invoke(25, L_29);
+				L_30 = VirtualFuncInvoker0< Type_t* >::Invoke(30, L_29);
 				NullCheck(L_30);
 				bool L_31;
 				L_31 = Type_get_IsArray_mB9B8CA713B2AA9D6AFECC24E05AF78D22532B673(L_30, NULL);
@@ -9435,7 +9435,7 @@ IL_0080_1:
 				FieldInfo_t* L_32 = V_1;
 				NullCheck(L_32);
 				Type_t* L_33;
-				L_33 = VirtualFuncInvoker0< Type_t* >::Invoke(25, L_32);
+				L_33 = VirtualFuncInvoker0< Type_t* >::Invoke(30, L_32);
 				NullCheck(L_33);
 				bool L_34;
 				L_34 = Type_get_IsClass_mACC1E0E79C9996ADE9973F81971B740132B64549(L_33, NULL);
@@ -9449,7 +9449,7 @@ IL_0080_1:
 				RuntimeObject* L_36 = ___0_o;
 				NullCheck(L_35);
 				RuntimeObject* L_37;
-				L_37 = VirtualFuncInvoker1< RuntimeObject*, RuntimeObject* >::Invoke(33, L_35, L_36);
+				L_37 = VirtualFuncInvoker1< RuntimeObject*, RuntimeObject* >::Invoke(47, L_35, L_36);
 				List_1_tD19F7E0FCBD7C3E8D363733582EF93B341DD3039* L_38 = ___1_parameters;
 				Func_2_t03668587D04B8ECC3E6CE9EF3B2852118286E630* L_39 = ___2_filter;
 				VolumeComponent_FindParameters_m70EDD225C076FCC061E09D01F54933E380460C6B(L_37, L_38, L_39, NULL);

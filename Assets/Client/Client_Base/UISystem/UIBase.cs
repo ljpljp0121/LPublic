@@ -3,18 +3,38 @@ using cfg;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Canvas), typeof(GraphicRaycaster))]
 public abstract class UIBase : MonoBehaviour
 {
-    public UIWnd WndInfo;
+    public enum UIState
+    {
+        PreInit,
+        Init,
+        Showing,
+        Visible,
+        Hiding,
+        Hidden,
+        Destroying
+    }
+
+    private UIWnd wndInfo;
     private Canvas canvas;
+    private UIState curState = UIState.PreInit;
     private int baseOrder;
 
-    public bool IsVisible { get; private set; } = false;
-    public int Layer => WndInfo.Layer;
+    public bool IsVisible => curState == UIState.Visible;
+    public int Layer => wndInfo.Layer;
+
+    protected virtual void Awake()
+    {
+        wndInfo = TableSystem.GetVOData<TbUIWnd>().Get(this.GetType().Name);
+        canvas = gameObject.GetComponent<Canvas>();
+
+    }
 
     public void Init()
     {
-        WndInfo = TableSystem.GetVOData<TbUIWnd>().Get(this.GetType().Name);
+
         gameObject.SetActive(false);
 
         canvas = gameObject.GetComponent<Canvas>();
@@ -25,7 +45,7 @@ public abstract class UIBase : MonoBehaviour
         canvas.renderMode = RenderMode.ScreenSpaceCamera;
         canvas.worldCamera = UIManager.Instance.UICamera;
         canvas.overrideSorting = true;
-        canvas.sortingOrder = WndInfo.Layer;
+        canvas.sortingOrder = wndInfo.Layer;
 
         if (gameObject.GetComponent<GraphicRaycaster>() == null)
         {
@@ -53,12 +73,17 @@ public abstract class UIBase : MonoBehaviour
     {
         if (!IsVisible) return;
 
+        if (UIManager.Instance.activeUIDic.ContainsKey(wndInfo.Name))
+        {
+            UIManager.Instance.activeUIDic.Remove(wndInfo.Name);
+        }
+
         IsVisible = false;
         OnHide();
         gameObject.SetActive(false);
 
         // 如果配置为隐藏后销毁，则销毁 UI
-        if (WndInfo.DestroyOnHide)
+        if (wndInfo.DestroyOnHide)
         {
             Destroy();
         }

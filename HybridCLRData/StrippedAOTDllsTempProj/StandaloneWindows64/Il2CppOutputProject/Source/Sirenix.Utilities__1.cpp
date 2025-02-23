@@ -1138,7 +1138,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Type_t* MemberAliasFieldInfo_get_FieldType_m5
 		FieldInfo_t* L_0 = __this->___aliasedField;
 		NullCheck(L_0);
 		Type_t* L_1;
-		L_1 = VirtualFuncInvoker0< Type_t* >::Invoke(25, L_0);
+		L_1 = VirtualFuncInvoker0< Type_t* >::Invoke(30, L_0);
 		return L_1;
 	}
 }
@@ -1148,7 +1148,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeFieldHandle_t6E4C45B6D2EA12FC99185805A
 		FieldInfo_t* L_0 = __this->___aliasedField;
 		NullCheck(L_0);
 		RuntimeFieldHandle_t6E4C45B6D2EA12FC99185805A7E77527899B25C5 L_1;
-		L_1 = VirtualFuncInvoker0< RuntimeFieldHandle_t6E4C45B6D2EA12FC99185805A7E77527899B25C5 >::Invoke(32, L_0);
+		L_1 = VirtualFuncInvoker0< RuntimeFieldHandle_t6E4C45B6D2EA12FC99185805A7E77527899B25C5 >::Invoke(46, L_0);
 		return L_1;
 	}
 }
@@ -1158,7 +1158,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t MemberAliasFieldInfo_get_Attributes_m
 		FieldInfo_t* L_0 = __this->___aliasedField;
 		NullCheck(L_0);
 		int32_t L_1;
-		L_1 = VirtualFuncInvoker0< int32_t >::Invoke(24, L_0);
+		L_1 = VirtualFuncInvoker0< int32_t >::Invoke(29, L_0);
 		return L_1;
 	}
 }
@@ -1204,7 +1204,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* MemberAliasFieldInfo_GetValue_
 		RuntimeObject* L_1 = ___0_obj;
 		NullCheck(L_0);
 		RuntimeObject* L_2;
-		L_2 = VirtualFuncInvoker1< RuntimeObject*, RuntimeObject* >::Invoke(33, L_0, L_1);
+		L_2 = VirtualFuncInvoker1< RuntimeObject*, RuntimeObject* >::Invoke(47, L_0, L_1);
 		return L_2;
 	}
 }
@@ -1218,7 +1218,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MemberAliasFieldInfo_SetValue_m3C3E21C89
 		Binder_t91BFCE95A7057FADF4D8A1A342AFE52872246235* L_4 = ___3_binder;
 		CultureInfo_t9BA817D41AD55AC8BD07480DD8AC22F8FFA378E0* L_5 = ___4_culture;
 		NullCheck(L_0);
-		VirtualActionInvoker5< RuntimeObject*, RuntimeObject*, int32_t, Binder_t91BFCE95A7057FADF4D8A1A342AFE52872246235*, CultureInfo_t9BA817D41AD55AC8BD07480DD8AC22F8FFA378E0* >::Invoke(35, L_0, L_1, L_2, L_3, L_4, L_5);
+		VirtualActionInvoker5< RuntimeObject*, RuntimeObject*, int32_t, Binder_t91BFCE95A7057FADF4D8A1A342AFE52872246235*, CultureInfo_t9BA817D41AD55AC8BD07480DD8AC22F8FFA378E0* >::Invoke(49, L_0, L_1, L_2, L_3, L_4, L_5);
 		return;
 	}
 }
