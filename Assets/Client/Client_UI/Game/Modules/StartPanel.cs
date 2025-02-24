@@ -2,7 +2,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StartPanel : UIBase
+public class StartPanel : UIBehavior
 {
     [SerializeField] private Button StartBtn;
     [SerializeField] private Button ContinueBtn;
