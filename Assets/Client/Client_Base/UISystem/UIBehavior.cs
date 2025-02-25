@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Threading.Tasks;
 using cfg;
 using UnityEngine;
@@ -8,22 +9,18 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Canvas), typeof(GraphicRaycaster))]
 public abstract class UIBehavior : MonoBehaviour
 {
+    #region 静态管理系统
+
     private static Transform mRoot;
     private static RectTransform mRootRect;
     private static RectTransform uiRootRect;
     private static Camera uiCamera;
+    private static Dictionary<string, UIBehavior> uiBehaviorDic = new Dictionary<string, UIBehavior>();
+    private static Dictionary<string, GameObject> loadedUIPrefabDic = new Dictionary<string, GameObject>();
+    private static Stack<UIBehavior> uiStack = new Stack<UIBehavior>();
+    private static int globalSortingOrder = 1000;
 
-    public static Camera UICamera
-    {
-        get
-        {
-            if (uiCamera == null)
-            {
-                uiCamera = Root.Find("UICamera").GetComponent<Camera>();
-            }
-            return uiCamera;
-        }
-    }
+    public static Camera UICamera => uiCamera != null ? uiCamera : (uiCamera = Root.Find("UICamera").GetComponent<Camera>());
     public static Transform Root
     {
         get
@@ -38,7 +35,7 @@ public abstract class UIBehavior : MonoBehaviour
             return mRoot;
         }
     }
-    public static RectTransform RootRect => mRootRect;
+    public static RectTransform RootRect => mRootRect != null ? mRootRect : (mRootRect = Root.GetComponent<RectTransform>());
     public static RectTransform UIRoot
     {
         get
@@ -67,20 +64,121 @@ public abstract class UIBehavior : MonoBehaviour
         }
     }
 
+    #endregion
+
+    #region 实例属性
+
     private UIWnd wndInfo;
     private Canvas canvas;
-    private int baseOrder;
-    public int Layer => wndInfo.Layer;
+    private GraphicRaycaster rayCaster;
+    private float lastAccessTime;
 
-    protected async Task Show(params object[] args)
+    public Canvas Canvas => canvas != null ? canvas : canvas = GetComponent<Canvas>();
+    public GraphicRaycaster RayCaster => rayCaster != null ? rayCaster : (rayCaster = GetComponent<GraphicRaycaster>());
+    public int SortingOrder => Canvas.sortingOrder;
+    public bool IsVisible { get; private set; }
+    public bool IsActive => gameObject.activeInHierarchy;
+    public bool IsShowing => IsShow(wndInfo.Name);
+
+    #endregion
+
+    #region 生命周期管理
+
+    protected virtual void Awake()
+    {
+        Canvas.overrideSorting = true;
+        Canvas.sortingOrder = wndInfo.Layer * 2000;
+        rayCaster.enabled = false;
+        AutoBindComponents();
+    }
+
+    protected virtual void OnDestroy()
+    {
+        if (uiBehaviorDic.ContainsKey(name))
+            uiBehaviorDic.Remove(name);
+    }
+
+    #endregion
+
+    #region 事件管理
+
+    public static Func<GameObject, bool, Task> SetVisibleMethod;
+    public static Action<UIWnd> OnBeforeLoadPrefab;
+    public static Action<GameObject> OnLoadPrefab;
+
+    #endregion
+
+    #region 基础方法
+
+    public Task SetVisible(bool value)
+    {
+        IsVisible = value;
+        if (SetVisibleMethod != null && this.gameObject != null)
+        {
+            return SetVisibleMethod(this.gameObject, value);
+        }
+        return Task.CompletedTask;
+    }
+
+    #endregion
+
+    #region UI调用管理
+
+    protected virtual void OnShow(params object[] args) { }
+    protected virtual Task OnShowAsync(params object[] args) => Task.CompletedTask;
+    protected virtual Task OnPreShowAsync(params object[] args) => Task.CompletedTask;
+    protected virtual Task OnPostShowAsync(params object[] args) => Task.CompletedTask;
+
+    public virtual Animator GetAnim()
+    {
+        return this.transform.GetComponent<Animator>();
+    }
+
+    protected virtual void OnHide() { }
+
+    #endregion
+
+    #region 显示/隐藏实现
+
+    protected async Task ShowImp(params object[] args)
     {
         try
         {
-            gameObject.SetActive(true);
-            await OnPreShowAsync(args);
-            OnShow(args);
-            await OnShowAsync(args);
-            await OnPostShowAsync(args);
+            transform.localPosition = new Vector3(-50000, -50000, 0);
+            if (IsShowing)
+            {
+                try
+                {
+                    OnHide();
+                }
+                catch (Exception e)
+                {
+                    LogSystem.Error(e);
+                }
+                Debug.Log("UIBehavior ShowImp 1:" + transform.name);
+
+                await SetVisible(false);
+                gameObject.SetActive(false);
+            }
+
+            try
+            {
+                await OnPreShowAsync(args);
+                OnShow(args);
+                await OnShowAsync(args);
+                await OnPostShowAsync(args);
+            }
+            catch (Exception e)
+            {
+                LogSystem.Error("show wnd failed 1!{0}", e);
+            }
+
+            if (!IsVisible)
+            {
+                await SetVisible(true);
+            }
+
+            transform.localPosition = Vector3.zero;
         }
         catch (Exception e)
         {
@@ -88,7 +186,7 @@ public abstract class UIBehavior : MonoBehaviour
         }
     }
 
-    public void Hide()
+    public void HideImp()
     {
         try
         {
@@ -121,27 +219,6 @@ public abstract class UIBehavior : MonoBehaviour
         uiBehaviorDic.Remove(uiName);
         Destroy(gameObject);
     }
-
-    protected virtual void OnShow(params object[] args)
-    {
-    }
-
-    protected virtual Task OnShowAsync(params object[] args) => Task.CompletedTask;
-    protected virtual Task OnPreShowAsync(params object[] args) => Task.CompletedTask;
-    protected virtual Task OnPostShowAsync(params object[] args) => Task.CompletedTask;
-
-    // 子类实现：UI 隐藏时的逻辑
-    protected virtual void OnHide()
-    {
-    }
-
-    #region UI资源管理
-
-    public static Action<UIWnd> OnBeforeLoadPrefab;
-    public static Action<GameObject> OnLoadPrefab;
-
-    private static Dictionary<string, UIBehavior> uiBehaviorDic = new Dictionary<string, UIBehavior>();
-    private static Dictionary<string, GameObject> loadedUIPrefabDic = new Dictionary<string, GameObject>();
 
     public static void ShowUIByName(string name, params object[] args)
     {
@@ -182,13 +259,12 @@ public abstract class UIBehavior : MonoBehaviour
         {
             TaskUtil.Run(async () =>
             {
-                await uiBase.Show(args);
+                await uiBase.ShowImp(args);
                 tcs.SetResult(true);
             });
         }
 
-        UIBehavior uiBehavior = null;
-        if (uiBehaviorDic.TryGetValue(name, out uiBehavior))
+        if (uiBehaviorDic.TryGetValue(name, out var uiBehavior))
         {
             ShowUIBehavior(uiBehavior);
         }
@@ -201,10 +277,9 @@ public abstract class UIBehavior : MonoBehaviour
 
     public static void HideUI(string uiName, bool force = false)
     {
-        UIBehavior uiBehavior = null;
-        if (uiBehaviorDic.TryGetValue(uiName, out uiBehavior))
+        if (uiBehaviorDic.TryGetValue(uiName, out var uiBehavior))
         {
-            uiBehavior.Hide();
+            uiBehavior.HideImp();
         }
         else
         {
@@ -215,6 +290,54 @@ public abstract class UIBehavior : MonoBehaviour
     public static void HideUI<T>(bool force = false) where T : UIBehavior
     {
         HideUI(typeof(T).Name, force);
+    }
+
+    public static UIBehavior GetUIBehaviour(string name, GameObject uiGo = null)
+    {
+        UIBehavior uiBehavior = null;
+        if (uiBehaviorDic.TryGetValue(name, out uiBehavior))
+        {
+            return uiBehavior;
+        }
+
+        if (uiGo)
+        {
+            uiBehavior = uiGo.GetComponent<UIBehavior>(true);
+            if (uiBehavior == null)
+            {
+                var monos = uiGo.GetComponentsInChildren<UIBehavior>(true);
+                if (monos.Length > 0)
+                    uiBehavior = monos[0];
+            }
+            if (uiBehavior == null)
+            {
+                LogSystem.Error("error ：GetUIBehaviour cant find " + name + " UI");
+            }
+        }
+
+        if (uiBehavior != null)
+        {
+            uiBehaviorDic.TryAdd(name, uiBehavior);
+        }
+
+        return uiBehavior;
+    }
+
+    public static T GetUIBehaviour<T>(GameObject uiGO = null) where T : UIBehavior
+    {
+        return (T)GetUIBehaviour(typeof(T).Name, uiGO);
+    }
+
+    public static bool IsShow(string name)
+    {
+        if (uiBehaviorDic.TryGetValue(name, out var uiBehaviour))
+        {
+            return uiBehaviour.IsVisible;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     private static void LoadUI(string name, Action<UIBehavior> ret)
@@ -247,7 +370,7 @@ public abstract class UIBehavior : MonoBehaviour
         });
     }
 
-    public static void GetUIPrefabByUIBehaviourName(string uiName, Action<GameObject, UIWnd> callback)
+    private static void GetUIPrefabByUIBehaviourName(string uiName, Action<GameObject, UIWnd> callback)
     {
         GameObject returnValue;
         if (loadedUIPrefabDic.TryGetValue(uiName, out returnValue))
@@ -288,43 +411,79 @@ public abstract class UIBehavior : MonoBehaviour
         callback(null, null);
     }
 
-    public static UIBehavior GetUIBehaviour(string name, GameObject uiGo = null)
+
+    #endregion
+
+    #region 自动绑定
+
+    private void AutoBindComponents()
     {
-        UIBehavior uiBehavior = null;
-        if (uiBehaviorDic.TryGetValue(name, out uiBehavior))
+        var fields = GetType().GetFields(BindingFlags.NonPublic | BindingFlags.Instance);
+        foreach (var field in fields)
         {
-            return uiBehavior;
-        }
-
-        if (uiGo)
-        {
-            uiBehavior = uiGo.GetComponent<UIBehavior>(true);
-            if (uiBehavior == null)
+            var bindAttr = field.GetCustomAttribute<AutoBindAttribute>();
+            if (bindAttr != null)
             {
-                var monos = uiGo.GetComponentsInChildren<UIBehavior>(true);
-                if (monos.Length > 0)
-                    uiBehavior = monos[0];
-            }
-            if (uiBehavior == null)
-            {
-                LogSystem.Error("error ：GetUIBehaviour cant find " + name + " UI");
+                var component = FindComponent(field.FieldType, bindAttr.Path);
+                if (component != null)
+                {
+                    field.SetValue(this, component);
+                }
             }
         }
-
-        if (uiBehavior != null)
-        {
-            if (!uiBehaviorDic.ContainsKey(name))
-            {
-                uiBehaviorDic.Add(name, uiBehavior);
-            }
-        }
-
-        return uiBehavior;
     }
 
-    public static T GetUIBehaviour<T>(GameObject uiGO = null) where T : UIBehavior
+    private Component FindComponent(Type type, string path)
     {
-        return (T)GetUIBehaviour(typeof(T).Name, uiGO);
+        var targetTransform = string.IsNullOrEmpty(path) ?
+            transform.Find(type.Name) :
+            transform.Find(path);
+
+        return targetTransform?.GetComponent(type);
+    }
+
+    #endregion
+
+    #region 层级管理    
+
+    private void UpdateSortingOrder()
+    {
+        Canvas.sortingOrder = wndInfo.Layer * 2000 + GetLayerCount() * 100;
+    }
+
+    private int GetLayerCount()
+    {
+        int count = 0;
+        foreach (var ui in uiBehaviorDic.Values)
+        {
+            if (ui.wndInfo.Layer == wndInfo.Layer &&
+                ui.IsShowing &&
+                ui != this)
+            {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    #endregion
+
+    #region 额外方法
+
+    public void SetActive(GameObject obj, bool bol)
+    {
+        if (obj != null && obj.activeSelf != bol)
+            obj.SetActive(bol);
+    }
+
+    public T Fd<T>(string path, Transform tr = null) where T : Component
+    {
+        if (tr == null)
+            tr = transform;
+        var tran = tr.Find(path);
+        if (tran == null)
+            return null;
+        return tran.GetComponent<T>();
     }
 
     #endregion
