@@ -61,9 +61,6 @@ public class CoreEngineRoot : MonoBehaviour
         EventSystem.Init();
         MonoSystem.Init();
         AudioSystem.Init();
-        //生成加载窗口
-        var go = Resources.Load<GameObject>("StartLoading");
-        GameObject.Instantiate(go, RootTransform);
         yield return AssetSystem.Init(DllPackageName, ResourcePackageName, PlayMode);
         GameObject gameRoot = AssetSystem.LoadAsset<GameObject>("Prefab/GameRoot");
         Instantiate(gameRoot, RootTransform);

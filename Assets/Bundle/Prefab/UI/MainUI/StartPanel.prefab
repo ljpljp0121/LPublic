@@ -849,9 +849,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a54cf199c59e41a3bb2aa3cb7badae56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartBtn: {fileID: 0}
-  ContinueBtn: {fileID: 0}
-  QuitBtn: {fileID: 0}
+  StartBtn: {fileID: 7396103102258212585}
+  ContinueBtn: {fileID: 6988662174060664741}
+  QuitBtn: {fileID: 8268043578356884267}
 --- !u!223 &-4055494103190098779
 Canvas:
   m_ObjectHideFlags: 0

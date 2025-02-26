@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Loading_Main : UIBase
+public class Loading_Main : UIBehavior
 {
     [InitOnLoad]
     private static void Init()
