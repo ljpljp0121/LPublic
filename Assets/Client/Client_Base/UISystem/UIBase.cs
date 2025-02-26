@@ -43,7 +43,7 @@ public abstract class UIBase : MonoBehaviour
             canvas = gameObject.AddComponent<Canvas>();
         }
         canvas.renderMode = RenderMode.ScreenSpaceCamera;
-        canvas.worldCamera = UIManager.Instance.UICamera;
+        canvas.worldCamera = UISystem.Instance.UICamera;
         canvas.overrideSorting = true;
         canvas.sortingOrder = wndInfo.Layer;
 
@@ -57,7 +57,6 @@ public abstract class UIBase : MonoBehaviour
     {
         if (IsVisible) return;
 
-        IsVisible = true;
         gameObject.SetActive(true);
         transform.SetAsLastSibling();
         // UpdateSortingOrder();
@@ -73,12 +72,11 @@ public abstract class UIBase : MonoBehaviour
     {
         if (!IsVisible) return;
 
-        if (UIManager.Instance.activeUIDic.ContainsKey(wndInfo.Name))
+        if (UISystem.Instance.activeUIDic.ContainsKey(wndInfo.Name))
         {
-            UIManager.Instance.activeUIDic.Remove(wndInfo.Name);
+            UISystem.Instance.activeUIDic.Remove(wndInfo.Name);
         }
 
-        IsVisible = false;
         OnHide();
         gameObject.SetActive(false);
 

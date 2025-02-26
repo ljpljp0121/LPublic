@@ -18,9 +18,9 @@ public class Loading_Main : UIBase
         Debug.Log("E_CloseLoadingUI");
         TaskUtil.Run(async () =>
         {
-            while (!UIManager.Instance.IsShow<Loading_Main>())
-                await TaskUtil.Return();
-            UIManager.Instance.GetUIBase<Loading_Main>().Hide();
+            //while (!UISystem.Instance.IsShow<Loading_Main>())
+            //    await TaskUtil.Return();
+            //UISystem.Instance.GetUIBase<Loading_Main>().Hide();
         });
     }
 }

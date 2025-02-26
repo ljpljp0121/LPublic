@@ -32,6 +32,5 @@ public class GameRoot : MonoBehaviour
         InitUIOnLoad.Init();
         StartLoading.SetProgress("InitUIOnLoad.Init", 100);
 
-        UIManager.Instance.ShowUIByName("StartPanel");
     }
 }
