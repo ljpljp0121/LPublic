@@ -70,13 +70,12 @@ public abstract class UIBehavior : MonoBehaviour
     private Canvas canvas;
     private GraphicRaycaster rayCaster;
     private float lastAccessTime;
+    private UISystem uiSystem;
 
+    public UIWnd WndInfo { get => wndInfo; set => wndInfo = value; }
     public Canvas Canvas => canvas != null ? canvas : canvas = GetComponent<Canvas>();
     public GraphicRaycaster RayCaster => rayCaster != null ? rayCaster : (rayCaster = GetComponent<GraphicRaycaster>());
     public int SortingOrder => Canvas.sortingOrder;
-    public bool IsVisible { get; private set; }
-    public bool IsActive => gameObject.activeInHierarchy;
-    public bool IsShowing => IsShow(wndInfo.Name);
 
     #endregion
 
@@ -84,6 +83,7 @@ public abstract class UIBehavior : MonoBehaviour
 
     protected virtual void Awake()
     {
+        uiSystem = UISystem.Instance;
         Canvas.overrideSorting = true;
         Canvas.sortingOrder = wndInfo.Layer * 2000;
         rayCaster.enabled = false;
@@ -127,27 +127,11 @@ public abstract class UIBehavior : MonoBehaviour
 
     #region 显示/隐藏实现
 
-    protected async Task ShowImp(params object[] args)
+    public async Task ShowImp(params object[] args)
     {
         try
         {
             transform.localPosition = new Vector3(-50000, -50000, 0);
-            if (IsShowing)
-            {
-                try
-                {
-                    OnHide();
-                }
-                catch (Exception e)
-                {
-                    LogSystem.Error(e);
-                }
-                Debug.Log("UIBehavior ShowImp 1:" + transform.name);
-
-                await SetVisible(false);
-                gameObject.SetActive(false);
-            }
-
             try
             {
                 await OnPreShowAsync(args);
@@ -159,12 +143,6 @@ public abstract class UIBehavior : MonoBehaviour
             {
                 LogSystem.Error("show wnd failed 1!{0}", e);
             }
-
-            if (!IsVisible)
-            {
-                await SetVisible(true);
-            }
-
             transform.localPosition = Vector3.zero;
         }
         catch (Exception e)
