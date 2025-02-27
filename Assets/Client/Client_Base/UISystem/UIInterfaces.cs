@@ -6,15 +6,15 @@ using UnityEngine;
 /// </summary>
 public interface IUIStorage
 {
-    void RegisterUIDic(string key, UIBehavior uiBehavior);
-    bool TryGetFromUIDic(string key, out UIBehavior uiBehavior);
-    void UnRegisterUIDic(string key);
+    void ChangeOrAddUIDic(string uiName, UIBehavior uiBehavior);
+    bool TryGetFromUIDic(string uiName, out UIBehavior uiBehavior);
+    void TryRemoveUIDic(string uiName);
 
-    void RegisterPrefabDic(string key, GameObject prefab);
-    bool TryGetFromPrefabDic(string key, out GameObject prefab);
-    void UnRegisterPrefabDic(string key);
+    void ChangeOrAddPrefabDic(string uiName, GameObject prefab);
+    bool TryGetFromPrefabDic(string uiName, out GameObject prefab);
+    void TryRemovePrefabDic(string uiName);
 
     void PushUIStack(UIBehavior uiBehavior);
-    UIBehavior PopUIStack();
-    UIBehavior PeekUIStack();
+    UIBehavior TryPopUIStack();
+    UIBehavior TryPeekUIStack();
 }

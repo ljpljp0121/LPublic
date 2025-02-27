@@ -38,8 +38,8 @@ public abstract class UIBehavior : MonoBehaviour
 
     protected virtual void OnDestroy()
     {
-        uiSystem.UnRegisterPrefabDic(wndInfo.Name);
-        uiSystem.UnRegisterUIDic(wndInfo.Name);
+        uiSystem.TryRemovePrefabDic(wndInfo.Name);
+        uiSystem.TryRemoveUIDic(wndInfo.Name);
     }
 
     #endregion
@@ -59,14 +59,23 @@ public abstract class UIBehavior : MonoBehaviour
         return this.transform.GetComponent<Animator>();
     }
 
-    protected virtual void OnHide()
+    protected virtual void OnPreHide()
     {
+
+    }
+
+    protected virtual void OnPostHide()
+    {
+
     }
 
     #endregion
 
     #region 显示/隐藏实现
 
+    /// <summary>
+    /// 显示接口，uiSystem调用
+    /// </summary>
     public async Task ShowImp(params object[] args)
     {
         try
@@ -75,6 +84,7 @@ public abstract class UIBehavior : MonoBehaviour
             try
             {
                 await OnPreShowAsync(args);
+                gameObject.SetActive(true);
                 OnShow(args);
                 await OnShowAsync(args);
                 await OnPostShowAsync(args);
@@ -91,6 +101,9 @@ public abstract class UIBehavior : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 关闭接口，uiSystem调用
+    /// </summary>
     public void HideImp()
     {
         try
@@ -114,14 +127,14 @@ public abstract class UIBehavior : MonoBehaviour
         if (uiSystem.TryGetFromPrefabDic(uiName, out var prefab))
         {
             Destroy(prefab);
-            uiSystem.UnRegisterPrefabDic(uiName);
+            uiSystem.TryRemovePrefabDic(uiName);
             LogSystem.Log("-----Destroy Prefab:" + uiName);
         }
         else
         {
             LogSystem.Log("=====DestroyUI Can't find uibehaviourName:" + uiName);
         }
-        uiSystem.UnRegisterUIDic(uiName);
+        uiSystem.TryRemoveUIDic(uiName);
         Destroy(gameObject);
     }
 
@@ -151,6 +164,20 @@ public abstract class UIBehavior : MonoBehaviour
         var targetTransform = string.IsNullOrEmpty(path) ? transform.Find(type.Name) : transform.Find(path);
 
         return targetTransform?.GetComponent(type);
+    }
+
+    #endregion
+
+    #region 显示关闭其他UI
+
+    private void ShowUI<T>(params object[] args) where T : UIBehavior
+    {
+        uiSystem.ShowUI<T>(args);
+    }
+
+    private void HideUI<T>() where T : UIBehavior
+    {
+        uiSystem.HideUI<T>();
     }
 
     #endregion

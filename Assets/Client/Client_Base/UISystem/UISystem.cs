@@ -6,6 +6,9 @@ using UnityEngine;
 
 public class UISystem : SingletonMono<UISystem>, IUIStorage
 {
+    private const int LAYER_BASE_INTERVAL = 2000;
+    private const int LAYER_ORDER_STEP = 100;
+
     #region 组件对象
 
     private Transform uiRoot;
@@ -51,6 +54,8 @@ public class UISystem : SingletonMono<UISystem>, IUIStorage
     private readonly Dictionary<string, GameObject> loadedUIPrefabDic = new Dictionary<string, GameObject>();
     //UI实例栈,存储已经打开的UI
     private readonly Stack<UIBehavior> uiBehaviorStack = new Stack<UIBehavior>();
+    //UI层级字典,存储UI的层级信息
+    private readonly Dictionary<int, int> uiLayerDic = new Dictionary<int, int>();
 
     #region 生命周期管理
 
@@ -66,41 +71,41 @@ public class UISystem : SingletonMono<UISystem>, IUIStorage
 
     #region 数据修改接口
 
-    public void RegisterUIDic(string key, UIBehavior uiBehavior)
+    public void ChangeOrAddUIDic(string uiName, UIBehavior uiBehavior)
     {
-        uiBehaviorDic[key] = uiBehavior;
+        uiBehaviorDic[uiName] = uiBehavior;
     }
 
-    public bool TryGetFromUIDic(string key, out UIBehavior uiBehavior)
+    public bool TryGetFromUIDic(string uiName, out UIBehavior uiBehavior)
     {
-        return uiBehaviorDic.TryGetValue(key, out uiBehavior);
+        return uiBehaviorDic.TryGetValue(uiName, out uiBehavior);
     }
 
-    public void UnRegisterUIDic(string key)
+    public void TryRemoveUIDic(string uiName)
     {
-        bool removed = uiBehaviorDic.Remove(key);
+        bool removed = uiBehaviorDic.Remove(uiName);
         if (!removed)
         {
-            LogSystem.Warning($"Key {key} not found in UIBehaviorDic");
+            LogSystem.Warning($"Key {uiName} not found in UIBehaviorDic");
         }
     }
 
-    public void RegisterPrefabDic(string key, GameObject prefab)
+    public void ChangeOrAddPrefabDic(string uiName, GameObject prefab)
     {
-        loadedUIPrefabDic[key] = prefab;
+        loadedUIPrefabDic[uiName] = prefab;
     }
 
-    public bool TryGetFromPrefabDic(string key, out GameObject prefab)
+    public bool TryGetFromPrefabDic(string uiName, out GameObject prefab)
     {
-        return loadedUIPrefabDic.TryGetValue(key, out prefab);
+        return loadedUIPrefabDic.TryGetValue(uiName, out prefab);
     }
 
-    public void UnRegisterPrefabDic(string key)
+    public void TryRemovePrefabDic(string uiName)
     {
-        bool removed = loadedUIPrefabDic.Remove(key);
+        bool removed = loadedUIPrefabDic.Remove(uiName);
         if (!removed)
         {
-            LogSystem.Warning($"Key {key} not found in LoadedUIPrefabDic");
+            LogSystem.Warning($"Key {uiName} not found in LoadedUIPrefabDic");
         }
     }
 
@@ -109,7 +114,7 @@ public class UISystem : SingletonMono<UISystem>, IUIStorage
         uiBehaviorStack.Push(uiBehavior);
     }
 
-    public UIBehavior PopUIStack()
+    public UIBehavior TryPopUIStack()
     {
         if (uiBehaviorStack.Count != 0)
             return uiBehaviorStack.Pop();
@@ -117,7 +122,7 @@ public class UISystem : SingletonMono<UISystem>, IUIStorage
         return null;
     }
 
-    public UIBehavior PeekUIStack()
+    public UIBehavior TryPeekUIStack()
     {
         if (uiBehaviorStack.Count != 0)
             return uiBehaviorStack.Peek();
@@ -127,7 +132,7 @@ public class UISystem : SingletonMono<UISystem>, IUIStorage
 
     #endregion
 
-    #region UI开启关闭
+    #region UI调用对外接口
 
     public void ShowUIByName(string uiName, params object[] args)
     {
@@ -171,7 +176,7 @@ public class UISystem : SingletonMono<UISystem>, IUIStorage
 
     #endregion
 
-    #region 私有方法
+    #region UI调用内部接口
 
     protected Task ShowUIByNameImp(string uiName, params object[] args)
     {
@@ -182,6 +187,7 @@ public class UISystem : SingletonMono<UISystem>, IUIStorage
         {
             TaskUtil.Run(async () =>
             {
+                UpdateSortingLayer(uiBase,true);
                 await uiBase.ShowImp(args);
                 tcs.SetResult(true);
             });
@@ -202,6 +208,7 @@ public class UISystem : SingletonMono<UISystem>, IUIStorage
     {
         if (uiBehaviorDic.TryGetValue(uiName, out var uiBehavior))
         {
+            UpdateSortingLayer(uiBehavior, false);
             uiBehavior.HideImp();
         }
         else
@@ -321,5 +328,37 @@ public class UISystem : SingletonMono<UISystem>, IUIStorage
 
     #endregion
 
+    #region 层级管理    
 
+    private void UpdateSortingLayer(UIBehavior uiBehavior,bool isShow)
+    {
+        if (uiBehavior.WndInfo == null)
+        {
+            LogSystem.Error("! ! ! Can't find in UI config. " + uiBehavior.name);
+            return;
+        }
+        int layer = uiBehavior.WndInfo.Layer;
+        if (layer < 1 || layer > 5)
+        {
+            LogSystem.Error($"Invalid UI layer: {layer}");
+            layer = Mathf.Clamp(layer, 1, 5);
+        }
+
+        if (!uiLayerDic.ContainsKey(layer))
+        {
+            uiLayerDic[layer] = layer * LAYER_BASE_INTERVAL;
+        }
+
+        int baseOrder = layer * LAYER_BASE_INTERVAL;
+        uiLayerDic[layer] += LAYER_ORDER_STEP;
+
+        if (uiLayerDic[layer] >= (layer + 1) * LAYER_BASE_INTERVAL)
+        {
+            uiLayerDic[layer] = baseOrder + LAYER_ORDER_STEP;
+        }
+
+        uiBehavior.Canvas.sortingOrder = uiLayerDic[layer];
+    }
+
+    #endregion
 }
