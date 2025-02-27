@@ -346,7 +346,14 @@ public class UISystem : SingletonMono<UISystem>, IUIStorage
 
         if (!uiLayerDic.ContainsKey(layer))
         {
-            uiLayerDic[layer] = layer * LAYER_BASE_INTERVAL;
+            if (!isShow)
+            {
+                LogSystem.Error("Hide UI，But cant find layer in uiLayerDic");
+            }
+            else
+            {
+                uiLayerDic[layer] = layer * LAYER_BASE_INTERVAL;
+            }
         }
 
         int baseOrder = layer * LAYER_BASE_INTERVAL;
