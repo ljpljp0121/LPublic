@@ -51,10 +51,7 @@ public class StartLoading : MonoBehaviour
         float targetValue = progress * 0.01f;
         DOTween.To(() => ProgressBar.value, x => ProgressBar.value = x, targetValue, 0.3f)
             .SetEase((Ease.OutQuad))
-            .OnUpdate(() =>
-            {
-                ProgressText.text = $"{progress}%";
-            });
+            .OnUpdate(() => { ProgressText.text = $"{progress}%"; });
     }
 
     void SetErrorImp(string error)

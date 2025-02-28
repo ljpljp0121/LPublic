@@ -4,7 +4,6 @@
         <var name="Path" type="string"/>
         <var name="Layer" type="int"/>
         <var name="DestroyOnHide" type="bool"/>
-        <var name="nini" type="short"/>
     </bean>
 
     <table name="TbUIWnd" value="UIWnd"  input="UIWnd.xlsx"/>

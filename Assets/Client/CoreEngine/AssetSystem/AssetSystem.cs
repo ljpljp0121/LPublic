@@ -17,7 +17,6 @@ public static class AssetSystem
     {
         //初始化资源系统
         YooAssets.Initialize();
-        
         yield return InitDll(dllPackageName, playMode);
         yield return InitResource(resourcePackageName, playMode);
         //设置默认的资源包

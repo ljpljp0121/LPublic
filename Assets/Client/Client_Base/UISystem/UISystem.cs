@@ -54,8 +54,8 @@ public class UISystem : SingletonMono<UISystem>, IUIStorage
     private readonly Dictionary<string, GameObject> loadedUIPrefabDic = new Dictionary<string, GameObject>();
     //UI实例栈,存储已经打开的UI
     private readonly Stack<UIBehavior> uiBehaviorStack = new Stack<UIBehavior>();
-    //UI层级字典,存储UI的层级信息
-    private readonly Dictionary<int, int> uiLayerDic = new Dictionary<int, int>();
+    //窗口排序值记录字典
+    private readonly Dictionary<int, SortedSet<int>> layerOrders = new Dictionary<int, SortedSet<int>>();
 
     #region 生命周期管理
 
@@ -187,7 +187,7 @@ public class UISystem : SingletonMono<UISystem>, IUIStorage
         {
             TaskUtil.Run(async () =>
             {
-                UpdateSortingLayer(uiBase,true);
+                UpdateSortingLayer(uiBase, true);
                 await uiBase.ShowImp(args);
                 tcs.SetResult(true);
             });
@@ -274,8 +274,8 @@ public class UISystem : SingletonMono<UISystem>, IUIStorage
             return (null, null);
         }
 
-        if (loadedUIPrefabDic.ContainsKey(uiName))
-            return (loadedUIPrefabDic[uiName], wndInfo);
+        if (loadedUIPrefabDic.TryGetValue(uiName, out var value))
+            return (value, wndInfo);
 
         var uiPrefab = AssetSystem.LoadAsset<GameObject>($"Prefab/UI/{prefabDir}");
         if (uiPrefab == null)
@@ -283,7 +283,7 @@ public class UISystem : SingletonMono<UISystem>, IUIStorage
             LogSystem.Error("! ! ! Can't find UI Prefab ! ! ! prefabDir：" + prefabDir);
             return (null, null);
         }
-        GameObject go = GameObject.Instantiate(uiPrefab, WindowRoot.transform) as GameObject;
+        GameObject go = GameObject.Instantiate(uiPrefab, WindowRoot.transform);
         go.transform.Reset();
         loadedUIPrefabDic.Add(uiName, go);
         LogSystem.Log("-----Add Prefab:" + uiName);
@@ -292,8 +292,7 @@ public class UISystem : SingletonMono<UISystem>, IUIStorage
 
     private UIBehavior GetUIBehaviour(string uiName, GameObject uiGo = null)
     {
-        UIBehavior uiBehavior = null;
-        if (uiBehaviorDic.TryGetValue(uiName, out uiBehavior))
+        if (uiBehaviorDic.TryGetValue(uiName, out var uiBehavior))
         {
             return uiBehavior;
         }
@@ -328,9 +327,9 @@ public class UISystem : SingletonMono<UISystem>, IUIStorage
 
     #endregion
 
-    #region 层级管理    
+    #region 层级管理
 
-    private void UpdateSortingLayer(UIBehavior uiBehavior,bool isShow)
+    private void UpdateSortingLayer(UIBehavior uiBehavior, bool isShowing)
     {
         if (uiBehavior.WndInfo == null)
         {
@@ -344,27 +343,24 @@ public class UISystem : SingletonMono<UISystem>, IUIStorage
             layer = Mathf.Clamp(layer, 1, 5);
         }
 
-        if (!uiLayerDic.ContainsKey(layer))
+        if (!layerOrders.TryGetValue(layer, out var orders))
         {
-            if (!isShow)
-            {
-                LogSystem.Error("Hide UI，But cant find layer in uiLayerDic");
-            }
-            else
-            {
-                uiLayerDic[layer] = layer * LAYER_BASE_INTERVAL;
-            }
+            orders = new SortedSet<int>();
+            layerOrders[layer] = orders;
         }
 
-        int baseOrder = layer * LAYER_BASE_INTERVAL;
-        uiLayerDic[layer] += LAYER_ORDER_STEP;
-
-        if (uiLayerDic[layer] >= (layer + 1) * LAYER_BASE_INTERVAL)
+        if (isShowing)
         {
-            uiLayerDic[layer] = baseOrder + LAYER_ORDER_STEP;
-        }
+            int baseOrder = layer * LAYER_BASE_INTERVAL;
+            int newOrder = orders.Count > 0 ? orders.Max + LAYER_ORDER_STEP : baseOrder;
 
-        uiBehavior.Canvas.sortingOrder = uiLayerDic[layer];
+            orders.Add(newOrder);
+            uiBehavior.Canvas.sortingOrder = newOrder;
+        }
+        else
+        {
+            orders.Remove(uiBehavior.Canvas.sortingOrder);
+        }
     }
 
     #endregion

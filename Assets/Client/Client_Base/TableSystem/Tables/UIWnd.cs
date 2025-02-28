@@ -21,7 +21,6 @@ public sealed partial class UIWnd : Luban.BeanBase
         { if(!_buf["Path"].IsString) { throw new SerializationException(); }  Path = _buf["Path"]; }
         { if(!_buf["Layer"].IsNumber) { throw new SerializationException(); }  Layer = _buf["Layer"]; }
         { if(!_buf["DestroyOnHide"].IsBoolean) { throw new SerializationException(); }  DestroyOnHide = _buf["DestroyOnHide"]; }
-        { if(!_buf["nini"].IsNumber) { throw new SerializationException(); }  Nini = _buf["nini"]; }
     }
 
     public static UIWnd DeserializeUIWnd(JSONNode _buf)
@@ -33,7 +32,6 @@ public sealed partial class UIWnd : Luban.BeanBase
     public readonly string Path;
     public readonly int Layer;
     public readonly bool DestroyOnHide;
-    public readonly short Nini;
    
     public const int __ID__ = 80761145;
     public override int GetTypeId() => __ID__;
@@ -49,7 +47,6 @@ public sealed partial class UIWnd : Luban.BeanBase
         + "Path:" + Path + ","
         + "Layer:" + Layer + ","
         + "DestroyOnHide:" + DestroyOnHide + ","
-        + "nini:" + Nini + ","
         + "}";
     }
 }

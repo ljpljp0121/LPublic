@@ -3,14 +3,12 @@
     "Name": "StartPanel",
     "Path": "MainUI/StartPanel",
     "Layer": 1,
-    "DestroyOnHide": false,
-    "nini": 1
+    "DestroyOnHide": true
   },
   {
     "Name": "CommonPanel",
     "Path": "MainUI/StartPanel",
     "Layer": 1,
-    "DestroyOnHide": false,
-    "nini": 2
+    "DestroyOnHide": false
   }
 ]
