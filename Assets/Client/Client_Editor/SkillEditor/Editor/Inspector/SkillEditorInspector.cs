@@ -74,9 +74,9 @@ public class SkillEditorInspector : Editor
         {
             eventDataInspector = new SkillEffectEventInspector();
         }
-        else if (itemType == typeof(AttackDetectionTrackItem))
+        else if (itemType == typeof(ColliderTrackItem))
         {
-            eventDataInspector = new SkillAttackDetectionEventInspector();
+            eventDataInspector = new SkillColliderEventInspector();
         }
         else if (itemType == typeof(CustomEventTrackItem))
         {

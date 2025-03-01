@@ -18,28 +18,36 @@ public class SkillAnimationEventInspector : SkillEventDataInspectorBase<Animatio
     public override void OnDraw()
     {
         //动画资源
-        ObjectField animationClipAssetField = new ObjectField("动画资源");
-        animationClipAssetField.objectType = typeof(AnimationClip);
-        animationClipAssetField.value = trackItem.AnimationEvent.AnimationClip;
+        ObjectField animationClipAssetField = new ObjectField("动画资源")
+        {
+            objectType = typeof(AnimationClip),
+            value = trackItem.AnimationEvent.AnimationClip
+        };
         animationClipAssetField.RegisterValueChangedCallback(AnimationClipAssetFieldValueChanged);
         root.Add(animationClipAssetField);
 
         //根运动
-        rootMotionToggle = new Toggle("应用根运动");
-        rootMotionToggle.value = trackItem.AnimationEvent.ApplyRootMotion;
+        rootMotionToggle = new Toggle("应用根运动")
+        {
+            value = trackItem.AnimationEvent.ApplyRootMotion
+        };
         rootMotionToggle.RegisterValueChangedCallback(RootMotionToggleValueChanged);
         root.Add(rootMotionToggle);
 
         //轨道长度
-        trackLengthField = new IntegerField("轨道长度(帧数)");
-        trackLengthField.value = trackItem.AnimationEvent.DurationFrame;
+        trackLengthField = new IntegerField("轨道长度(帧数)")
+        {
+            value = trackItem.AnimationEvent.DurationFrame
+        };
         trackLengthField.RegisterCallback<FocusInEvent>(TrackLengthFieldFocusIn);
         trackLengthField.RegisterCallback<FocusOutEvent>(TrackLengthFieldFocusOut);
         root.Add(trackLengthField);
 
         //过渡时间
-        transitionTimeField = new FloatField("过渡时间");
-        transitionTimeField.value = trackItem.AnimationEvent.TransitionTime;
+        transitionTimeField = new FloatField("过渡时间")
+        {
+            value = trackItem.AnimationEvent.TransitionTime
+        };
         transitionTimeField.RegisterCallback<FocusInEvent>(TransitionTimeFieldFocusIn);
         transitionTimeField.RegisterCallback<FocusOutEvent>(TransitionTimeFieldFocusOut);
         root.Add(transitionTimeField);
@@ -52,13 +60,20 @@ public class SkillAnimationEventInspector : SkillEventDataInspectorBase<Animatio
         isLoopLabel = new Label("循环动画:" + isLoop);
 
         //删除
-        Button deleteBtn = new Button(DeleteAnimationTrackItemButtonClick);
-        deleteBtn.text = "删除";
-        deleteBtn.style.backgroundColor = new Color(1, 0, 0, 0.5f);
+        Button deleteBtn = new Button(DeleteAnimationTrackItemButtonClick)
+        {
+            text = "删除",
+            style =
+            {
+                backgroundColor = new Color(1, 0, 0, 0.5f)
+            }
+        };
 
         //设置持续帧数至选中帧
-        Button setFrameBtn = new Button(SetAnimationFrameBtnClick);
-        setFrameBtn.text = "设置持续帧数至选中帧";
+        Button setFrameBtn = new Button(SetAnimationFrameBtnClick)
+        {
+            text = "设置持续帧数至选中帧"
+        };
         root.Add(setFrameBtn);
 
         root.Add(clipFrameCountLabel);
@@ -66,14 +81,17 @@ public class SkillAnimationEventInspector : SkillEventDataInspectorBase<Animatio
         root.Add(deleteBtn);
     }
 
-    private void AnimationClipAssetFieldValueChanged(ChangeEvent<UnityEngine.Object> evt)
+    private void AnimationClipAssetFieldValueChanged(ChangeEvent<Object> evt)
     {
         AnimationClip clip = evt.newValue as AnimationClip;
         //修改自身显示效果
-        clipFrameCountLabel.text = "动画资源长度:" + (int)(clip.length * clip.frameRate);
-        isLoopLabel.text = "循环动画:" + clip.isLooping;
-        //保存到配置
-        trackItem.AnimationEvent.AnimationClip = clip;
+        if (clip != null)
+        {
+            clipFrameCountLabel.text = "动画资源长度:" + (int)(clip.length * clip.frameRate);
+            isLoopLabel.text = "循环动画:" + clip.isLooping;
+            //保存到配置
+            trackItem.AnimationEvent.AnimationClip = clip;
+        }
         trackItem.ResetView();
         SkillEditorWindow.Instance.TickSkill();
     }

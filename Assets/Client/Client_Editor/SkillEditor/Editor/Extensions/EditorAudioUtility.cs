@@ -17,7 +17,7 @@ public static class EditorAudioUtility
         Type utilClassType = editorAssembly.GetType("UnityEditor.AudioUtil");
         PlayClipMethodInfo = utilClassType.GetMethod("PlayPreviewClip",
             BindingFlags.Static | BindingFlags.Public, null,
-            new Type[] { typeof(AudioClip), typeof(int), typeof(bool) }, null);
+            new[] { typeof(AudioClip), typeof(int), typeof(bool) }, null);
         StopAllClipMethodInfo = utilClassType.GetMethod("StopAllPreviewClips",
             BindingFlags.Static | BindingFlags.Public);
     }

@@ -21,7 +21,6 @@ public static class SkillGizmosTool
         {
             case SkillColliderType.Weapon:
                 WeaponCollider weaponDetection = (WeaponCollider)attackDetectionEvent.SkillColliderData;
-                //TODO 武器范围绘制
                 if (!string.IsNullOrEmpty(weaponDetection.weaponName)
                     && skillPlayer.WeaponDic.TryGetValue(weaponDetection.weaponName, out GameObject weapon))
                 {
@@ -57,7 +56,7 @@ public static class SkillGizmosTool
                 FanSkillCollider fanDetection = (FanSkillCollider)attackDetectionEvent.SkillColliderData;
                 Vector3 fanPos = modelTransform.TransformPoint(fanDetection.Position);
                 Quaternion fanRot = modelTransform.rotation * Quaternion.Euler(fanDetection.Rotation);
-                Mesh mesh = MeshGenerator.GenarteFanMesh(fanDetection.InsideRadius,
+                Mesh mesh = MeshGenerator.GenerateFanMesh(fanDetection.InsideRadius,
                     fanDetection.OutsideRadius, fanDetection.Height, fanDetection.Angle);
                 Gizmos.DrawMesh(mesh, fanPos, fanRot);
                 break;

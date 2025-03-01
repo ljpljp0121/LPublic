@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 
-public class AttackDetectionTrackItem : TrackItemBase<AttackDetectionTrack>
+public class ColliderTrackItem : TrackItemBase<ColliderTrack>
 {
     private SkillColliderTrackItemStyle trackItemStyle;
     private SkillMultiLineTrackStyle.ChildTrack childTrackStyle;
@@ -13,7 +13,7 @@ public class AttackDetectionTrackItem : TrackItemBase<AttackDetectionTrack>
     /// <summary>
     /// 初始化攻击检测轨道片段
     /// </summary>
-    public void Init(AttackDetectionTrack track, float frameUnitWidth, SkillColliderEvent attackDetectionEvent,
+    public void Init(ColliderTrack track, float frameUnitWidth, SkillColliderEvent attackDetectionEvent,
         SkillMultiLineTrackStyle.ChildTrack childTrackStyle)
     {
         this.track = track;
@@ -163,9 +163,8 @@ public class AttackDetectionTrackItem : TrackItemBase<AttackDetectionTrack>
     /// </summary>
     public void DrawGizmos()
     {
-        //TODO 绘制攻击检测范围
-        // SkillGizmosTool.DrawDetection(colliderEvent,
-        //     SkillEditorWindow.Instance.PreviewCharacterObj.GetComponent<SkillPlayerComponent>());
+        SkillGizmosTool.DrawDetection(colliderEvent,
+            SkillEditorWindow.Instance.PreviewCharacterObj.GetComponent<SkillEditorPlayer>());
     }
 
     /// <summary>

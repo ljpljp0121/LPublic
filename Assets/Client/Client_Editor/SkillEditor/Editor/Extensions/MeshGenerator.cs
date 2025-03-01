@@ -8,7 +8,7 @@ public static class MeshGenerator
     /// <summary>
     /// 生成扇形网格
     /// </summary>
-    public static Mesh GenarteFanMesh(float insideRadius, float outsideRadius, float height, float angle)
+    public static Mesh GenerateFanMesh(float insideRadius, float outsideRadius, float height, float angle)
     {
         Mesh fanmesh = new Mesh();
         Vector3 centerPos = Vector3.zero;

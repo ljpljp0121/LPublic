@@ -6,7 +6,7 @@ using UnityEngine.Animations;
 using UnityEngine.Playables;
 
 
-public class AnimationEditorPlayer : MonoBehaviour
+public class AnimationComponent : MonoBehaviour
 {
     private Animator animator;
     private PlayableGraph graph;

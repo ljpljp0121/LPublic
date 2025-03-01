@@ -4,10 +4,10 @@ using UnityEngine.UIElements;
 /// <summary>
 /// 攻击检测轨道类
 /// </summary>
-public class AttackDetectionTrack : SkillTrackBase
+public class ColliderTrack : SkillTrackBase
 {
     private SkillMultiLineTrackStyle trackStyle;
-    private List<AttackDetectionTrackItem> trackItemList = new List<AttackDetectionTrackItem>();
+    private List<ColliderTrackItem> trackItemList = new List<ColliderTrackItem>();
 
     /// <summary>
     /// 当前配置文件中的攻击检测数据
@@ -28,7 +28,7 @@ public class AttackDetectionTrack : SkillTrackBase
     {
         base.ResetView(frameWidth);
         //销毁当前的
-        foreach (AttackDetectionTrackItem item in trackItemList)
+        foreach (ColliderTrackItem item in trackItemList)
         {
             item.Destroy();
         }
@@ -51,7 +51,7 @@ public class AttackDetectionTrack : SkillTrackBase
     /// </summary>
     private void CreateItem(SkillColliderEvent skillColliderEvent)
     {
-        AttackDetectionTrackItem item = new AttackDetectionTrackItem();
+        ColliderTrackItem item = new ColliderTrackItem();
         item.Init(this, frameWidth, skillColliderEvent, trackStyle.AddChildTrack());
         item.SetTrackName(skillColliderEvent.TrackName);
         trackItemList.Add(item);

@@ -9,7 +9,7 @@ using UnityEngine.UIElements;
 /// 攻击检测片段Inspector窗口类
 /// </summary>
 public class
-    SkillAttackDetectionEventInspector : SkillEventDataInspectorBase<AttackDetectionTrackItem, AttackDetectionTrack>
+    SkillColliderEventInspector : SkillEventDataInspectorBase<ColliderTrackItem, ColliderTrack>
 {
     public override void OnDraw()
     {
@@ -29,8 +29,10 @@ public class
 
     private void DrawDetection()
     {
-        durationFrameField = new IntegerField("持续帧数");
-        durationFrameField.value = trackItem.ColliderEvent.DurationFrame;
+        durationFrameField = new IntegerField("持续帧数")
+        {
+            value = trackItem.ColliderEvent.DurationFrame
+        };
         durationFrameField.RegisterCallback<FocusInEvent>(DetectionDurationFrameFieldFocusIn);
         durationFrameField.RegisterCallback<FocusOutEvent>(DetectionDurationFrameFieldFocusOut);
         root.Add(durationFrameField);
@@ -130,8 +132,10 @@ public class
         }
 
         //设置持续帧数至选中帧
-        Button setFrameBtn = new Button(SetDetectionFrameBtnClick);
-        setFrameBtn.text = "设置持续帧数至选中帧";
+        Button setFrameBtn = new Button(SetDetectionFrameBtnClick)
+        {
+            text = "设置持续帧数至选中帧"
+        };
         root.Add(setFrameBtn);
     }
 
