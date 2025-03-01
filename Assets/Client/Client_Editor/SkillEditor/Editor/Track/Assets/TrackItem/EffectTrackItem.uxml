@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:Label tabindex="-1" text="EffectClip" parse-escape-sequences="true" display-tooltip-when-elided="true" name="EffectTrackItem" style="flex-direction: row; height: 100%; width: 200px; -unity-text-align: middle-center; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; background-color: rgb(64, 158, 255); white-space: normal; justify-content: space-between; position: absolute; -unity-text-outline-width: 0; -unity-text-outline-color: rgba(0, 0, 0, 0); border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; -unity-font-style: bold; font-size: 15px; color: rgb(0, 5, 255);">
+        <ui:VisualElement name="AudioOverLine" style="flex-grow: 0; flex-shrink: 0; height: 100%; width: 2px; background-color: rgb(229, 255, 0); position: absolute; left: auto; display: none;" />
+        <ui:VisualElement name="MainDragArea" style="flex-grow: 0; flex-shrink: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0);" />
+    </ui:Label>
+</ui:UXML>

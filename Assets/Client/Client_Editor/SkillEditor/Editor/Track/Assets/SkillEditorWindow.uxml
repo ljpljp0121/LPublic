@@ -1,0 +1,38 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Assets/Client/Client_Editor/SkillEditor/Editor/Track/Assets/SkillEditorWindow.uss?fileID=7433441132597879392&amp;guid=aec0d0fa9fd8fff409f760ea6bd67eeb&amp;type=3#SkillEditorWindow" />
+    <ui:VisualElement name="TopMenu" style="flex-grow: 0; width: auto; height: 45px; align-items: auto; align-self: auto; flex-shrink: 0; flex-basis: 45px; flex-direction: row; min-width: auto; min-height: 45px; border-left-color: rgb(91, 79, 79); border-bottom-width: 2px; border-bottom-color: rgb(91, 79, 79); border-right-color: rgb(91, 79, 79); border-top-color: rgb(91, 79, 79); margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 0;">
+        <ui:Button text="加载编辑器场景" parse-escape-sequences="true" display-tooltip-when-elided="true" name="LoadEditorSceneBtn" style="width: 85px; flex-shrink: 0; flex-grow: 1; align-items: center; justify-content: space-around; height: auto; text-overflow: clip; align-self: stretch; flex-direction: row; flex-wrap: nowrap; white-space: normal;" />
+        <ui:Button text="返回旧场景" parse-escape-sequences="true" display-tooltip-when-elided="true" name="LoadOldSceneBtn" style="width: 70px; flex-grow: 1; flex-shrink: 0; justify-content: space-around; align-items: center; flex-direction: row; align-self: stretch; white-space: normal;" />
+        <ui:Button text="技能基本信息" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SkillBasicBtn" style="width: 70px; flex-shrink: 0; flex-grow: 1; justify-content: space-around; align-items: center; flex-direction: row; align-self: stretch; white-space: normal;" />
+        <ui:Button text="适配轨道长度" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ResetTrackBtn" focusable="false" style="flex-grow: 1; width: 70px; flex-direction: row; align-items: center; justify-content: space-around; align-self: stretch; white-space: normal;" />
+        <uie:ObjectField label="演示角色" name="PreviewCharacterField" type="UnityEngine.GameObject, UnityEngine.CoreModule" allow-scene-objects="true" style="align-items: center; font-size: 14px; align-self: stretch; flex-shrink: 1; flex-grow: 1; -unity-text-align: middle-center; justify-content: space-between;" />
+        <uie:ObjectField label="技能配&#10;置文件" name="SkillConfigField" allow-scene-objects="false" style="align-items: center; font-size: 14px; align-self: stretch; flex-shrink: 1; margin-left: 15px; flex-grow: 1; -unity-text-align: middle-center; justify-content: flex-end;" />
+    </ui:VisualElement>
+    <ui:VisualElement name="Content" style="flex-grow: 0; flex-shrink: 1; min-width: auto; min-height: auto; height: auto; flex-direction: row;">
+        <ui:VisualElement name="Left" style="flex-grow: 0.1; min-width: auto; flex-shrink: 0; border-right-width: 0.5px; border-left-color: rgb(91, 79, 79); border-right-color: rgb(91, 79, 79); border-top-color: rgb(91, 79, 79); border-bottom-color: rgb(91, 79, 79);">
+            <ui:VisualElement name="Controller" style="flex-grow: 0; height: 30px; min-height: 30px; border-left-color: rgb(91, 79, 79); border-right-color: rgb(91, 79, 79); border-top-color: rgb(91, 79, 79); border-bottom-color: rgb(91, 79, 79); border-bottom-width: 0.5px; flex-direction: row; flex-shrink: 0.5; justify-content: space-between;">
+                <ui:VisualElement name="PlayController" style="flex-grow: 0; flex-direction: row; flex-shrink: 1; justify-content: flex-start;">
+                    <ui:Button text="&lt;" parse-escape-sequences="true" display-tooltip-when-elided="true" name="PrevFrameBtn" style="font-size: 15px;" />
+                    <ui:Button text="▶" parse-escape-sequences="true" display-tooltip-when-elided="true" name="PlayBtn" style="font-size: 14px;" />
+                    <ui:Button text="&gt;" parse-escape-sequences="true" display-tooltip-when-elided="true" name="NextFrameBtn" style="font-size: 15px;" />
+                </ui:VisualElement>
+                <ui:Toggle label="IsLoop" name="IsLoopToggle" style="-unity-text-align: middle-right; max-height: none; height: 100%; width: 20px; position: relative; justify-content: flex-end; align-items: stretch; max-width: none; flex-shrink: 0; flex-grow: 1; opacity: 1; display: flex; visibility: visible; overflow: hidden; min-width: auto;" />
+                <ui:VisualElement name="FrameController" style="flex-grow: 0; flex-direction: row; justify-content: flex-end; align-items: stretch; align-self: stretch;">
+                    <ui:IntegerField value="0" name="CurrentFrameField" style="min-width: 30px; -unity-text-align: upper-right;" />
+                    <ui:Label tabindex="-1" text="/" parse-escape-sequences="false" display-tooltip-when-elided="true" enable-rich-text="false" style="-unity-font-style: bold; font-size: 20px; justify-content: flex-start; align-items: stretch; align-self: auto; -unity-text-align: middle-center;" />
+                    <ui:IntegerField value="0" name="FrameCountField" style="min-width: 30px; -unity-text-align: upper-right;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:ScrollView name="TrackMenuScroll" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Hidden" style="flex-grow: 1;">
+                <ui:VisualElement name="TrackMenuList" style="flex-grow: 1; max-width: none; max-height: none; width: auto; height: auto; padding-left: 4px; min-height: 2000px;" />
+            </ui:ScrollView>
+        </ui:VisualElement>
+        <ui:VisualElement name="Right" style="flex-grow: 1; padding-top: 0; padding-left: 10px; padding-right: 5px; flex-shrink: 1;">
+            <ui:IMGUIContainer name="TimeShaft" style="height: 30px; min-height: 30px; border-left-color: rgb(91, 79, 79); border-right-color: rgb(91, 79, 79); border-top-color: rgb(91, 79, 79); border-bottom-color: rgb(91, 79, 79); border-bottom-width: 0.5px; margin-right: 13px;" />
+            <ui:ScrollView name="MainContentScroll" mode="VerticalAndHorizontal" horizontal-scroller-visibility="Auto" nested-interaction-kind="Default" vertical-scroller-visibility="Auto" vertical-page-size="-1" style="flex-grow: 1; align-items: stretch; justify-content: flex-start; align-self: auto; width: auto; min-height: auto; min-width: auto; flex-shrink: 1; flex-direction: column;">
+                <ui:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ContentListView" style="min-height: 2000px; min-width: auto; width: auto; height: auto; flex-shrink: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+            </ui:ScrollView>
+            <ui:IMGUIContainer name="SelectLine" style="position: absolute; left: 10px;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
