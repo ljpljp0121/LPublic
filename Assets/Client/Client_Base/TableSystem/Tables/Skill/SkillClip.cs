@@ -19,6 +19,7 @@ public sealed partial class SkillClip : Luban.BeanBase
     {
         { if(!_buf["SkillID"].IsNumber) { throw new SerializationException(); }  SkillID = _buf["SkillID"]; }
         { if(!_buf["SkillName"].IsString) { throw new SerializationException(); }  SkillName = _buf["SkillName"]; }
+        { if(!_buf["FrameCount"].IsNumber) { throw new SerializationException(); }  FrameCount = _buf["FrameCount"]; }
         { if(!_buf["FrameRate"].IsNumber) { throw new SerializationException(); }  FrameRate = _buf["FrameRate"]; }
         { var __json0 = _buf["CustomEvent"]; if(!__json0.IsArray) { throw new SerializationException(); } CustomEvent = new System.Collections.Generic.Dictionary<int, Skill.SkillCustomEvent>(__json0.Count); foreach(JSONNode __e0 in __json0.Children) { int _k0;  { if(!__e0[0].IsNumber) { throw new SerializationException(); }  _k0 = __e0[0]; } Skill.SkillCustomEvent _v0;  { if(!__e0[1].IsObject) { throw new SerializationException(); }  _v0 = Skill.SkillCustomEvent.DeserializeSkillCustomEvent(__e0[1]);  }  CustomEvent.Add(_k0, _v0); }   }
         { var __json0 = _buf["AnimationEvent"]; if(!__json0.IsArray) { throw new SerializationException(); } AnimationEvent = new System.Collections.Generic.Dictionary<int, Skill.SkillAnimationEvent>(__json0.Count); foreach(JSONNode __e0 in __json0.Children) { int _k0;  { if(!__e0[0].IsNumber) { throw new SerializationException(); }  _k0 = __e0[0]; } Skill.SkillAnimationEvent _v0;  { if(!__e0[1].IsObject) { throw new SerializationException(); }  _v0 = Skill.SkillAnimationEvent.DeserializeSkillAnimationEvent(__e0[1]);  }  AnimationEvent.Add(_k0, _v0); }   }
@@ -34,6 +35,7 @@ public sealed partial class SkillClip : Luban.BeanBase
 
     public readonly int SkillID;
     public readonly string SkillName;
+    public readonly int FrameCount;
     public readonly int FrameRate;
     public readonly System.Collections.Generic.Dictionary<int, Skill.SkillCustomEvent> CustomEvent;
     public readonly System.Collections.Generic.Dictionary<int, Skill.SkillAnimationEvent> AnimationEvent;
@@ -58,6 +60,7 @@ public sealed partial class SkillClip : Luban.BeanBase
         return "{ "
         + "SkillID:" + SkillID + ","
         + "SkillName:" + SkillName + ","
+        + "FrameCount:" + FrameCount + ","
         + "FrameRate:" + FrameRate + ","
         + "CustomEvent:" + Luban.StringUtil.CollectionToString(CustomEvent) + ","
         + "AnimationEvent:" + Luban.StringUtil.CollectionToString(AnimationEvent) + ","

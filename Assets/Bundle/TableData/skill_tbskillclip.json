@@ -2,6 +2,7 @@
   {
     "SkillID": 1001,
     "SkillName": "技能1",
+    "FrameCount": 137,
     "FrameRate": 30,
     "CustomEvent": [
       [
