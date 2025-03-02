@@ -14,14 +14,4 @@
 		<var name="z" type="float"/>
 		<var name="w" type="float"/>
 	</bean>
-	<bean name="TestType">
-		<var name ="item_id" type ="int"/>
-		<var name ="count" type ="int"/>
-		<var name ="desc" type="string"/>
-	</bean>
-	<enum name="ItemQuality">
-		<var name="WHITE" alias="白" value="0"/>
-		<var name="GREEN" alias="绿" value="1"/>
-		<var name="RED" alias="红" value="2"/>
-	</enum>
 </module>

@@ -18,11 +18,6 @@ public class SkillAudioEventInspector : SkillEventDataInspectorBase<AudioTrackIt
         audioClipAssetField.RegisterValueChangedCallback(AudioClipAssetFieldValueChanged);
         root.Add(audioClipAssetField);
 
-        voluemField = new FloatField("音量");
-        voluemField.value = trackItem.AudioEvent.Volume;
-        voluemField.RegisterCallback<FocusInEvent>(VolumeTimeFieldFocusIn);
-        voluemField.RegisterCallback<FocusOutEvent>(VolumeFieldFocusOut);
-
         root.Add(voluemField);
     }
     
@@ -31,18 +26,6 @@ public class SkillAudioEventInspector : SkillEventDataInspectorBase<AudioTrackIt
         AudioClip audioClip = evt.newValue as AudioClip;
         trackItem.AudioEvent.AudioClip = audioClip;
         trackItem.ResetView();
-    }
-    float oldVolume;
-    private void VolumeTimeFieldFocusIn(FocusInEvent evt)
-    {
-        oldVolume = voluemField.value;
-    }
-    private void VolumeFieldFocusOut(FocusOutEvent evt)
-    {
-        if (!Mathf.Approximately(voluemField.value, oldVolume))
-        {
-            trackItem.AudioEvent.Volume = voluemField.value;
-        }
     }
 
 }

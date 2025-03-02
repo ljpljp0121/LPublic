@@ -20,12 +20,14 @@ public interface IVOFun
 
 public partial class Tables
 {
-    public TbUIWnd TbUIWnd {get; }
+    public Skill.TbSkillClip TbSkillClip {get; }
+    public UI.TbUIWnd TbUIWnd {get; }
 
     public Tables(){}
     
     private void ResolveRef()
     {
+        TbSkillClip.ResolveRef(this);
         TbUIWnd.ResolveRef(this);
     }
 }

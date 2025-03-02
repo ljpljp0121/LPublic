@@ -1,8 +1,7 @@
 using System;
-using System.Collections.Generic;
 using System.Reflection;
 using System.Threading.Tasks;
-using cfg;
+using cfg.UI;
 using UnityEngine;
 using UnityEngine.UI;
 

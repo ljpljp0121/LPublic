@@ -5,11 +5,11 @@ using Sirenix.Serialization;
 using UnityEngine;
 
 [Serializable]
-public class SkillEditorPlayer : MonoBehaviour
+public class SkillEditorPlayer : SerializedMonoBehaviour
 {
     public Transform ModelTransform { get; set; }
 
     [NonSerialized, OdinSerialize] [DictionaryDrawerSettings(KeyLabel = "武器ID", ValueLabel = "预制体")]
-    private Dictionary<string, GameObject> weaponDic = new Dictionary<string, GameObject>();
-    public Dictionary<string, GameObject> WeaponDic => weaponDic;
+    private Dictionary<string, Collider> weaponDic = new ();
+    public Dictionary<string, Collider> WeaponDic => weaponDic;
 }

@@ -1,0 +1,94 @@
+[
+  {
+    "SkillID": 1001,
+    "SkillName": "技能1",
+    "FrameRate": 30,
+    "CustomEvent": [
+      [
+        20,
+        {
+          "EventType": 1
+        }
+      ],
+      [
+        30,
+        {
+          "EventType": 2
+        }
+      ]
+    ],
+    "AnimationEvent": [
+      [
+        20,
+        {
+          "AnimationClip": "动画路径",
+          "TransitionTime": 0.25
+        }
+      ],
+      [
+        30,
+        {
+          "AnimationClip": "动画路径2",
+          "TransitionTime": 0.25
+        }
+      ]
+    ],
+    "AudioEvent": [
+      {
+        "FrameIndex": 1,
+        "AudioClip": "你好"
+      },
+      {
+        "FrameIndex": 2,
+        "AudioClip": "不好"
+      }
+    ],
+    "EffectEvent": [
+      {
+        "FrameIndex": 1,
+        "EffectPrefab": "你hi奥",
+        "Position": {
+          "x": 1,
+          "y": 2,
+          "z": 3
+        },
+        "Rotation": {
+          "x": 4,
+          "y": 5,
+          "z": 6
+        },
+        "Scale": {
+          "x": 7,
+          "y": 8,
+          "z": 9
+        },
+        "Duration": 100,
+        "AutoDestroy": false
+      }
+    ],
+    "ColliderEvent": [
+      {
+        "FrameIndex": 10,
+        "DurationFrame": 20,
+        "ColliderData": {
+          "$type": "BoxCollider",
+          "Position": {
+            "x": 1,
+            "y": 2,
+            "z": 3
+          },
+          "Rotation": {
+            "x": 4,
+            "y": 5,
+            "z": 6
+          },
+          "Scale": {
+            "x": 7,
+            "y": 8,
+            "z": 9
+          }
+        }
+      }
+    ]
+  }
+]

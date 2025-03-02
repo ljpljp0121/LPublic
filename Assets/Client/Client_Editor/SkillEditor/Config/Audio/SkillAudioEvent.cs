@@ -13,5 +13,4 @@ public class SkillAudioEvent : SkillFrameEventBase
 #endif
     public int FrameIndex;//事件开始帧
     public AudioClip AudioClip; //音效片段
-    public float Volume = 1; //音效音量
 }

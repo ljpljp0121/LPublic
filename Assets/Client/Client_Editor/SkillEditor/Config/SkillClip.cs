@@ -9,6 +9,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Config/Skill/SkillClip", fileName = "SkillClip")]
 public class SkillClip : SerializedScriptableObject
 {
+    [LabelText("技能ID")] public int SkillID;
     [LabelText("技能名称")] public string SkillName;
     [LabelText("帧率上限")] public int FrameCount = 100;
     [LabelText("帧率")] public int FrameRate = 30;

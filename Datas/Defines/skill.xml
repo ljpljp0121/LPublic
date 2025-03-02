@@ -1,0 +1,92 @@
+<module name="Skill">
+    <enum name="SkillEventType">
+        <var name="Custom" alias="自定义事件"/>
+        <var name="CanSkillRelease" alias="可打断技能事件"/>
+        <var name="CanRotate" alias="可技能时旋转事件"/>
+        <var name="CanNotRotate" alias="不可技能时旋转事件"/>
+    </enum>
+
+    <!-- 自定义事件 -->
+    <bean name="SkillCustomEvent">
+        <var name="EventType" type="SkillEventType" alias="事件类型"/>
+    </bean>
+
+    <!-- 动画事件 -->
+    <bean name="SkillAnimationEvent">
+        <var name="AnimationClip" type="string" alias="动画片段"/>
+        <var name="TransitionTime" type="float" alias="过渡时间"/>
+    </bean>
+
+    <!-- 音频事件 -->
+    <bean name="SkillAudioEvent">
+        <var name="FrameIndex" type="int" alias="帧索引"/>
+        <var name="AudioClip" type="string" alias="音频片段"/>
+    </bean>
+
+    <!-- 特效事件 -->
+    <bean name="SkillEffectEvent">
+        <var name="FrameIndex" type="int" alias="帧索引"/>
+        <var name="EffectPrefab" type="string" alias="特效预制体"/>
+        <var name="Position" type="vector3" alias="特效位置"/>
+        <var name="Rotation" type="vector3" alias="播放旋转"/>
+        <var name="Scale" type="vector3" alias="缩放大小"/>
+        <var name="Duration" type="int" alias="特效持续时间"/>
+        <var name="AutoDestroy" type="bool" alias="自动销毁"/>
+    </bean>
+
+    <!-- 碰撞盒事件 -->
+    <bean name="SkillColliderEvent">
+        <var name="FrameIndex" type="int" alias="帧索引"/>
+        <var name="DurationFrame" type="int" alias="持续帧数"/>
+        <var name="ColliderData" type="(ColliderBase#sep=/)" alias="碰撞盒属性"/>
+    </bean>
+
+    <!-- 碰撞盒基类 -->
+    <bean name="ColliderBase">
+    </bean>
+
+    <!-- 武器碰撞盒 -->
+    <bean name="WeaponCollider" parent="ColliderBase">
+        <var name="WeaponName" type="string" alias="武器Key"/>
+    </bean>
+
+    <!-- 形状碰撞盒 -->
+    <bean name="ShapeCollider" parent="ColliderBase">
+        <var name="Position" type="vector3" alias="位置"/>
+    </bean>
+
+    <!-- 矩形碰撞盒 -->
+    <bean name="BoxCollider" parent="ShapeCollider">
+        <var name="Rotation" type="vector3" alias="旋转"/>
+        <var name="Scale" type="vector3" alias="缩放"/>
+    </bean>
+
+    <!-- 圆形碰撞盒 -->
+    <bean name="CircleCollider" parent="ShapeCollider">
+        <var name="Radius" type="float" alias="半径"/>
+    </bean>
+
+    <!-- 扇形碰撞盒 -->
+    <bean name="FanCollider" parent="ShapeCollider">
+        <var name="Rotation" type="vector3" alias="旋转"/>
+        <var name="InsideRadius" type="float" alias="内半径"/>
+        <var name="OutsideRadius" type="float" alias="外半径"/>
+        <var name="Angle" type="float" alias="角度"/>
+        <var name="Height" type="float" alias="高度"/>
+    </bean>
+
+    <!-- 技能片段 -->
+    <bean name="SkillClip">
+        <var name="SkillID" type="int" alias="技能ID"/>
+        <var name="SkillName" type="string" alias="技能名称"/>
+        <var name="FrameCount" type="int" alias="技能总帧数"/>
+        <var name="FrameRate" type="int" alias="帧率"/>
+        <var name="CustomEvent" type="(map#sep=;|),int,SkillCustomEvent" alias="自定义事件"/>
+        <var name="AnimationEvent" type="(map#sep=;|),int,SkillAnimationEvent" alias="动画事件"/>
+        <var name="AudioEvent" type="(list#sep=|),(SkillAudioEvent#sep=;)" alias="音频事件"/>
+        <var name="EffectEvent" type="(list#sep=|),(SkillEffectEvent#sep=;)" alias="特效事件"/>
+        <var name="ColliderEvent" type="(list#sep=|),(SkillColliderEvent#sep=;)" alias="碰撞事件"/>
+    </bean>
+
+    <table name="TbSkillClip" index="SkillID" value="SkillClip" input="SkillClip.xlsx"/>
+</module>

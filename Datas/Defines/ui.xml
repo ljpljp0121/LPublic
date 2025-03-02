@@ -1,4 +1,4 @@
-<module name="">
+<module name="UI">
     <bean name="UIWnd">
         <var name="Name" type="string" alias="名称" />
         <var name="Path" type="string"/>

@@ -212,7 +212,6 @@ public class AudioTrackItem : TrackItemBase<AudioTrack>
             //构建默认的音效数据
             audioEvent.AudioClip = clips[0];
             audioEvent.FrameIndex = selectFrameIndex;
-            audioEvent.Volume = 1;
             this.frameIndex = selectFrameIndex;
             ResetView();
             SkillEditorWindow.Instance.SaveClip();

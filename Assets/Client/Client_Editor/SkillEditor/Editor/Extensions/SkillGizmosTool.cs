@@ -22,10 +22,10 @@ public static class SkillGizmosTool
             case SkillColliderType.Weapon:
                 WeaponCollider weaponDetection = (WeaponCollider)attackDetectionEvent.SkillColliderData;
                 if (!string.IsNullOrEmpty(weaponDetection.weaponName)
-                    && skillPlayer.WeaponDic.TryGetValue(weaponDetection.weaponName, out GameObject weapon))
+                    && skillPlayer.WeaponDic.TryGetValue(weaponDetection.weaponName, out Collider collider))
                 {
-                    Collider collider = weapon.GetComponent<Collider>();
-                    rotateAndPositionMat.SetTRS(collider.transform.position, collider.transform.rotation, collider.transform.localScale);
+                    rotateAndPositionMat.SetTRS(collider.transform.position, collider.transform.rotation,
+                        collider.transform.localScale);
                     Gizmos.matrix = rotateAndPositionMat;
                     if (collider is BoxCollider)
                     {

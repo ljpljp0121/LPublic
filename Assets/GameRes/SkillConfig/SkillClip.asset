@@ -17,7 +17,9 @@ MonoBehaviour:
     SerializedBytes: 
     ReferencedUnityObjects:
     - {fileID: 1827226128182048838, guid: 9e2d2fd71c5141d4d9dca13c753005b4, type: 3}
+    - {fileID: 7400000, guid: acd6daf17cd0a4643ba9c5543879e59c, type: 2}
     - {fileID: 8300000, guid: 2eb0e25f8b7e9ec40a17a8a8d9f8a069, type: 3}
+    - {fileID: 6922743098465838680, guid: 0982be895684b544d8e0626273b3bf5c, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -82,7 +84,7 @@ MonoBehaviour:
       Data: 2
     - Name: 
       Entry: 12
-      Data: 1
+      Data: 2
     - Name: 
       Entry: 7
       Data: 
@@ -111,6 +113,33 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 17
+    - Name: $v
+      Entry: 7
+      Data: 7|SkillAnimationEvent, Client_Editor
+    - Name: AnimationClip
+      Entry: 10
+      Data: 1
+    - Name: ApplyRootMotion
+      Entry: 5
+      Data: false
+    - Name: TransitionTime
+      Entry: 4
+      Data: 0.25
+    - Name: DurationFrame
+      Entry: 3
+      Data: 120
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
       Entry: 13
       Data: 
     - Name: 
@@ -121,17 +150,17 @@ MonoBehaviour:
       Data: 
     - Name: SkillAudioData
       Entry: 7
-      Data: 7|SkillAudioData, Client_Editor
+      Data: 8|SkillAudioData, Client_Editor
     - Name: FrameData
       Entry: 7
-      Data: 8|System.Collections.Generic.List`1[[SkillAudioEvent, Client_Editor]],
+      Data: 9|System.Collections.Generic.List`1[[SkillAudioEvent, Client_Editor]],
         mscorlib
     - Name: 
       Entry: 12
       Data: 1
     - Name: 
       Entry: 7
-      Data: 9|SkillAudioEvent, Client_Editor
+      Data: 10|SkillAudioEvent, Client_Editor
     - Name: TrackName
       Entry: 1
       Data: "\u97F3\u6548\u8F68\u9053"
@@ -140,10 +169,7 @@ MonoBehaviour:
       Data: 17
     - Name: AudioClip
       Entry: 10
-      Data: 1
-    - Name: Volume
-      Entry: 4
-      Data: 1
+      Data: 2
     - Name: 
       Entry: 8
       Data: 
@@ -158,14 +184,80 @@ MonoBehaviour:
       Data: 
     - Name: SkillEffectData
       Entry: 7
-      Data: 10|SkillEffectData, Client_Editor
+      Data: 11|SkillEffectData, Client_Editor
     - Name: FrameData
       Entry: 7
-      Data: 11|System.Collections.Generic.List`1[[SkillEffectEvent, Client_Editor]],
+      Data: 12|System.Collections.Generic.List`1[[SkillEffectEvent, Client_Editor]],
         mscorlib
     - Name: 
       Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 13|SkillEffectEvent, Client_Editor
+    - Name: TrackName
+      Entry: 1
+      Data: "\u7279\u6548\u8F68\u9053"
+    - Name: FrameIndex
+      Entry: 3
+      Data: 1
+    - Name: EffectPrefab
+      Entry: 10
+      Data: 3
+    - Name: Position
+      Entry: 7
+      Data: UnityEngine.Vector3, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
       Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Rotation
+      Entry: 7
+      Data: UnityEngine.Vector3, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Scale
+      Entry: 7
+      Data: UnityEngine.Vector3, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Duration
+      Entry: 3
+      Data: 30
+    - Name: AutoDestroy
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 13
       Data: 
@@ -177,17 +269,17 @@ MonoBehaviour:
       Data: 
     - Name: SkillColliderData
       Entry: 7
-      Data: 12|SkillColliderData, Client_Editor
+      Data: 14|SkillColliderData, Client_Editor
     - Name: FrameData
       Entry: 7
-      Data: 13|System.Collections.Generic.List`1[[SkillColliderEvent, Client_Editor]],
+      Data: 15|System.Collections.Generic.List`1[[SkillColliderEvent, Client_Editor]],
         mscorlib
     - Name: 
       Entry: 12
       Data: 1
     - Name: 
       Entry: 7
-      Data: 14|SkillColliderEvent, Client_Editor
+      Data: 16|SkillColliderEvent, Client_Editor
     - Name: TrackName
       Entry: 1
       Data: "\u653B\u51FB\u68C0\u6D4B\u8F68\u9053"
@@ -199,10 +291,10 @@ MonoBehaviour:
       Data: 10
     - Name: SkillColliderData
       Entry: 7
-      Data: 15|WeaponCollider, Client_Editor
+      Data: 17|WeaponCollider, Client_Editor
     - Name: weaponName
       Entry: 1
-      Data: weapon3
+      Data: weapon1
     - Name: 
       Entry: 8
       Data: 
@@ -218,6 +310,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  SkillName: 
-  FrameCount: 2706
+  SkillID: 1001
+  SkillName: "\u6280\u80FD1"
+  FrameCount: 137
   FrameRate: 30
