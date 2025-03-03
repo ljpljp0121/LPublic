@@ -134,6 +134,56 @@ public class SkillClipExporter : EditorWindow
                 sb.Append($"{data.Key};{AssetDatabase.GetAssetPath(data.Value.AnimationClip)};{data.Value.DurationFrame}|");
             }
             workSheet.Cells[5 + i, 7].Value = sb.ToString();
+            //音频事件
+            sb.Clear();
+            foreach (var data in clip.SkillAudioData.FrameData)
+            {
+                sb.Append($"{data.FrameIndex};{AssetDatabase.GetAssetPath(data.AudioClip)}|");
+            }
+            workSheet.Cells[5 + i, 8].Value = sb.ToString();
+            //特效事件
+            sb.Clear();
+            foreach (var data in clip.SkillEffectData.FrameData)
+            {
+                sb.Append($"{data.FrameIndex};{AssetDatabase.GetAssetPath(data.EffectPrefab)};" +
+                          $"{data.Position.x},{data.Position.y},{data.Position.z};" +
+                          $"{data.Rotation.x},{data.Rotation.y},{data.Rotation.z};" +
+                          $"{data.Scale.x},{data.Scale.y},{data.Scale.z};" +
+                          $"{data.Duration};{data.AutoDestroy}|");
+            }
+            workSheet.Cells[5 + i, 9].Value = sb.ToString();
+            //碰撞事件
+            sb.Clear();
+            foreach (var data in clip.SkillColliderData.FrameData)
+            {
+                sb.Append($"{data.FrameIndex};{data.DurationFrame};");
+                if (data.SkillColliderData is WeaponCollider weaponCollider)
+                {
+                    sb.Append($"{nameof(WeaponCollider)}/{weaponCollider.weaponName}|");
+                }
+                else if (data.SkillColliderData is BoxSkillCollider boxCollider)
+                {
+                    sb.Append($"{nameof(BoxSkillCollider)}/" +
+                              $"{boxCollider.Position.x},{boxCollider.Position.y},{boxCollider.Position.z}/" +
+                              $"{boxCollider.Rotation.x},{boxCollider.Rotation.y},{boxCollider.Rotation.z}/" +
+                              $"{boxCollider.Scale.x},{boxCollider.Scale.y},{boxCollider.Scale.z}|");
+                }
+                else if (data.SkillColliderData is SphereSkillCollider sphereCollider)
+                {
+                    sb.Append($"{nameof(SphereSkillCollider)}/" +
+                              $"{sphereCollider.Position.x},{sphereCollider.Position.y},{sphereCollider.Position.z}/" +
+                              $"{sphereCollider.Radius}|");
+                }
+                else if (data.SkillColliderData is FanSkillCollider fanCollider)
+                {
+                    sb.Append($"{nameof(FanSkillCollider)}/" +
+                              $"{fanCollider.Position.x},{fanCollider.Position.y},{fanCollider.Position.z}/" +
+                              $"{fanCollider.Rotation.x},{fanCollider.Rotation.y},{fanCollider.Rotation.z}/" +
+                              $"{fanCollider.InsideRadius}/{fanCollider.OutsideRadius}/" +
+                              $"{fanCollider.Height}/{fanCollider.Angle}");
+                }
+            }
+            workSheet.Cells[5 + i, 10].Value = sb.ToString();
         }
     }
 
