@@ -13,21 +13,23 @@ using SimpleJSON;
 
 namespace cfg.Skill
 {
-public sealed partial class CircleCollider : ShapeCollider
+public sealed partial class BoxSkillCollider : ShapeCollider
 {
-    public CircleCollider(JSONNode _buf)  : base(_buf) 
+    public BoxSkillCollider(JSONNode _buf)  : base(_buf) 
     {
-        { if(!_buf["Radius"].IsNumber) { throw new SerializationException(); }  Radius = _buf["Radius"]; }
+        { if(!_buf["Rotation"].IsObject) { throw new SerializationException(); }  Rotation = vector3.Deserializevector3(_buf["Rotation"]);  }
+        { if(!_buf["Scale"].IsObject) { throw new SerializationException(); }  Scale = vector3.Deserializevector3(_buf["Scale"]);  }
     }
 
-    public static CircleCollider DeserializeCircleCollider(JSONNode _buf)
+    public static BoxSkillCollider DeserializeBoxSkillCollider(JSONNode _buf)
     {
-        return new Skill.CircleCollider(_buf);
+        return new Skill.BoxSkillCollider(_buf);
     }
 
-    public readonly float Radius;
+    public readonly vector3 Rotation;
+    public readonly vector3 Scale;
    
-    public const int __ID__ = 1688742497;
+    public const int __ID__ = 669413271;
     public override int GetTypeId() => __ID__;
 
     public override void ResolveRef(Tables tables)
@@ -39,7 +41,8 @@ public sealed partial class CircleCollider : ShapeCollider
     {
         return "{ "
         + "Position:" + Position + ","
-        + "Radius:" + Radius + ","
+        + "Rotation:" + Rotation + ","
+        + "Scale:" + Scale + ","
         + "}";
     }
 }

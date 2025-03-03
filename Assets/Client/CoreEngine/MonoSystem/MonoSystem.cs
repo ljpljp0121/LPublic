@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,9 +10,12 @@ using UnityEngine;
 public class MonoSystem : MonoBehaviour
 {
     private static MonoSystem instance;
-    private Action updateEvent;
-    private Action lateUpdateEvent;
-    private Action fixedUpdateEvent;
+    private List<Action> updateActionList = new();
+    private List<Action> lateUpdateActionList = new();
+    private List<Action> fixedUpdateActionList = new();
+    
+    private readonly ConcurrentDictionary<object, List<Coroutine>> coroutineDic = new();
+    private static readonly ObjectPoolModule PoolModule = new();
 
     public static void Init()
     {
@@ -20,64 +24,94 @@ public class MonoSystem : MonoBehaviour
         {
             instance = CoreEngineRoot.RootTransform.gameObject.AddComponent<MonoSystem>();
         }
-        instance.updateEvent = null;
-        instance.lateUpdateEvent = null;
-        instance.fixedUpdateEvent = null;
+        instance.updateActionList = new List<Action>();
+        instance.lateUpdateActionList = new List<Action>();
+        instance.fixedUpdateActionList = new List<Action>();
     }
 
     #region 生命周期函数
 
     public static void AddUpdate(Action action)
     {
-        instance.updateEvent += action;
+        if (!instance.updateActionList.Contains(action))
+            instance.updateActionList.Add(action);
     }
 
     public static void RemoveUpdate(Action action)
     {
-        instance.updateEvent -= action;
+        instance.updateActionList.Remove(action);
     }
 
     public static void AddLateUpdate(Action action)
     {
-        instance.lateUpdateEvent += action;
+        if (!instance.lateUpdateActionList.Contains(action))
+            instance.lateUpdateActionList.Add(action);
     }
 
     public static void RemoveLateUpdate(Action action)
     {
-        instance.lateUpdateEvent -= action;
+        instance.lateUpdateActionList.Remove(action);
     }
 
     public static void AddFixedUpdate(Action action)
     {
-        instance.fixedUpdateEvent += action;
+        if (!instance.fixedUpdateActionList.Contains(action))
+            instance.fixedUpdateActionList.Add(action);
     }
 
     public static void RemoveFixedUpdate(Action action)
     {
-        instance.fixedUpdateEvent -= action;
+        instance.fixedUpdateActionList.Remove(action);
     }
 
     private void Update()
     {
-        updateEvent?.Invoke();
+        foreach (var action in updateActionList)
+        {
+            try
+            {
+                action?.Invoke();
+            }
+            catch (Exception e)
+            {
+                LogSystem.Error($"Update Error: {e}");
+            }
+        }
     }
 
     private void LateUpdate()
     {
-        lateUpdateEvent?.Invoke();
+        foreach (var action in lateUpdateActionList)
+        {
+            try
+            {
+                action?.Invoke();
+            }
+            catch (Exception e)
+            {
+                LogSystem.Error($"Update Error: {e}");
+            }
+        }
     }
 
     private void FixedUpdate()
     {
-        fixedUpdateEvent?.Invoke();
+        foreach (var action in fixedUpdateActionList)
+        {
+            try
+            {
+                action?.Invoke();
+            }
+            catch (Exception e)
+            {
+                LogSystem.Error($"Update Error: {e}");
+            }
+        }
     }
 
     #endregion
 
     #region 协程
-
-    private Dictionary<object, List<Coroutine>> coroutineDic = new Dictionary<object, List<Coroutine>>();
-    private static ObjectPoolModule poolModule = new ObjectPoolModule();
 
     public static Coroutine BeginCoroutine(IEnumerator coroutine)
     {
@@ -86,15 +120,23 @@ public class MonoSystem : MonoBehaviour
 
     public static Coroutine BeginCoroutine(object obj, IEnumerator coroutine)
     {
-        Coroutine _coroutine = instance.StartCoroutine(coroutine);
-        if (!instance.coroutineDic.TryGetValue(obj, out List<Coroutine> _coroutineList))
+        List<Coroutine> corList = instance.coroutineDic.GetOrAdd(obj, _ =>
+            PoolModule.GetObject<List<Coroutine>>() ?? new List<Coroutine>()
+        );
+        Coroutine wrapperCor = null;
+
+        IEnumerator Wrapper()
         {
-            _coroutineList = poolModule.GetObject<List<Coroutine>>();
-            if (_coroutineList == null) _coroutineList = new List<Coroutine>();
-            instance.coroutineDic.Add(obj, _coroutineList);
+            yield return instance.StartCoroutine(coroutine);
+            corList.Remove(wrapperCor); // 通过闭包移除协程实例
+            if (corList.Count == 0)
+                instance.coroutineDic.TryRemove(obj, out _);
         }
-        _coroutineList.Add(_coroutine);
-        return _coroutine;
+
+        wrapperCor = instance.StartCoroutine(Wrapper());
+        corList.Add(wrapperCor);
+
+        return wrapperCor;
     }
 
     /// <summary>
@@ -102,10 +144,11 @@ public class MonoSystem : MonoBehaviour
     /// </summary>
     public static void EndCoroutine(object obj, Coroutine routine)
     {
-        if (instance.coroutineDic.TryGetValue(obj, out List<Coroutine> _coroutineList))
+        if (instance.coroutineDic.TryRemove(obj, out var list))
         {
-            instance.StopCoroutine(routine);
-            _coroutineList.Remove(routine);
+            foreach (var cor in list) instance.StopCoroutine(cor);
+            list.Clear();
+            PoolModule.PushObject(list);
         }
     }
 
@@ -129,7 +172,7 @@ public class MonoSystem : MonoBehaviour
                 instance.StopCoroutine(_coroutineList[i]);
             }
             _coroutineList.Clear();
-            poolModule.PushObject(_coroutineList);
+            PoolModule.PushObject(_coroutineList);
         }
     }
 
@@ -142,7 +185,7 @@ public class MonoSystem : MonoBehaviour
         foreach (List<Coroutine> _item in instance.coroutineDic.Values)
         {
             _item.Clear();
-            poolModule.PushObject(_item);
+            PoolModule.PushObject(_item);
         }
         instance.coroutineDic.Clear();
         instance.StopAllCoroutines();

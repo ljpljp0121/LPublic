@@ -6,88 +6,64 @@
     "FrameRate": 30,
     "CustomEvent": [
       [
-        20,
+        45,
         {
-          "EventType": 1
-        }
-      ],
-      [
-        30,
-        {
-          "EventType": 2
+          "EventType": 0
         }
       ]
     ],
     "AnimationEvent": [
       [
-        20,
+        0,
         {
-          "AnimationClip": "动画路径",
-          "TransitionTime": 0.25
+          "AnimationClip": "Assets/GameRes/ZZZModel/Export_fbx/Action/K_Attack_02.FBX",
+          "TransitionTime": 17
         }
       ],
       [
-        30,
+        17,
         {
-          "AnimationClip": "动画路径2",
-          "TransitionTime": 0.25
+          "AnimationClip": "Assets/GameRes/ZZZModel/Export_fbx/Animation/A01_Idle.anim",
+          "TransitionTime": 120
         }
       ]
     ],
     "AudioEvent": [
       {
-        "FrameIndex": 1,
-        "AudioClip": "你好"
-      },
-      {
-        "FrameIndex": 2,
-        "AudioClip": "不好"
+        "FrameIndex": 17,
+        "AudioClip": "Assets/GameRes/Res/Audio/AnBi/安比入鞘.wav"
       }
     ],
     "EffectEvent": [
       {
         "FrameIndex": 1,
-        "EffectPrefab": "你hi奥",
+        "EffectPrefab": "Assets/GameRes/Res/FX_slash_15.prefab",
         "Position": {
-          "x": 1,
-          "y": 2,
-          "z": 3
+          "x": 0,
+          "y": 0,
+          "z": 0
         },
         "Rotation": {
-          "x": 4,
-          "y": 5,
-          "z": 6
+          "x": 0,
+          "y": 0,
+          "z": 0
         },
         "Scale": {
-          "x": 7,
-          "y": 8,
-          "z": 9
+          "x": 1,
+          "y": 1,
+          "z": 1
         },
-        "Duration": 100,
-        "AutoDestroy": false
+        "Duration": 30,
+        "AutoDestroy": true
       }
     ],
     "ColliderEvent": [
       {
-        "FrameIndex": 10,
-        "DurationFrame": 20,
+        "FrameIndex": 4,
+        "DurationFrame": 10,
         "ColliderData": {
-          "$type": "BoxCollider",
-          "Position": {
-            "x": 1,
-            "y": 2,
-            "z": 3
-          },
-          "Rotation": {
-            "x": 4,
-            "y": 5,
-            "z": 6
-          },
-          "Scale": {
-            "x": 7,
-            "y": 8,
-            "z": 9
-          }
+          "$type": "WeaponCollider",
+          "WeaponName": "weapon1"
         }
       }
     ]

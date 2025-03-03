@@ -24,16 +24,14 @@ public class SkillClipExporter : EditorWindow
 
     private static void ExportExcel()
     {
-        using (var package = new ExcelPackage())
-        {
-            var workSheet = package.Workbook.Worksheets.Add("SkillClips");
+        using var package = new ExcelPackage();
+        var workSheet = package.Workbook.Worksheets.Add("SkillClips");
 
-            XmlNode root = xmlDoc.DocumentElement;
-            var skillClipNode = root?.SelectSingleNode("//bean[@name='SkillClip']");
-            InitExcelHead(skillClipNode, workSheet);
-            InitExcelData(workSheet);
-            SaveExcel(package);
-        }
+        XmlNode root = xmlDoc.DocumentElement;
+        var skillClipNode = root?.SelectSingleNode("//bean[@name='SkillClip']");
+        InitExcelHead(skillClipNode, workSheet);
+        InitExcelData(workSheet);
+        SaveExcel(package);
     }
 
     /// <summary>
@@ -43,7 +41,7 @@ public class SkillClipExporter : EditorWindow
     {
         clipList.Clear();
         clipList = AssetDatabase
-            .FindAssets("t:SkillClip", new string[] { SKILL_CLIP_PATH })
+            .FindAssets("t:SkillClip", new[] { SKILL_CLIP_PATH })
             .Select(guid => AssetDatabase.LoadAssetAtPath<SkillClip>(AssetDatabase.GUIDToAssetPath(guid)))
             .Where(clip => clip != null)
             .ToList();
@@ -195,13 +193,12 @@ public class SkillClipExporter : EditorWindow
         string exportPath = EditorUtility.SaveFilePanel(
             "保存Excel文件",
             Path.Combine(Application.dataPath, "..", "Datas/Tables").Replace("\\", "/"),
-            "SkillClips.xlsx",
+            "SkillClip.xlsx",
             "xlsx");
 
         if (string.IsNullOrEmpty(exportPath))
         {
             Debug.Log("用户取消了保存操作");
-            return;
         }
         else
         {

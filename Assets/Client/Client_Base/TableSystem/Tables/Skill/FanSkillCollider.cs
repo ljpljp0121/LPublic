@@ -13,9 +13,9 @@ using SimpleJSON;
 
 namespace cfg.Skill
 {
-public sealed partial class FanCollider : ShapeCollider
+public sealed partial class FanSkillCollider : ShapeCollider
 {
-    public FanCollider(JSONNode _buf)  : base(_buf) 
+    public FanSkillCollider(JSONNode _buf)  : base(_buf) 
     {
         { if(!_buf["Rotation"].IsObject) { throw new SerializationException(); }  Rotation = vector3.Deserializevector3(_buf["Rotation"]);  }
         { if(!_buf["InsideRadius"].IsNumber) { throw new SerializationException(); }  InsideRadius = _buf["InsideRadius"]; }
@@ -24,9 +24,9 @@ public sealed partial class FanCollider : ShapeCollider
         { if(!_buf["Height"].IsNumber) { throw new SerializationException(); }  Height = _buf["Height"]; }
     }
 
-    public static FanCollider DeserializeFanCollider(JSONNode _buf)
+    public static FanSkillCollider DeserializeFanSkillCollider(JSONNode _buf)
     {
-        return new Skill.FanCollider(_buf);
+        return new Skill.FanSkillCollider(_buf);
     }
 
     public readonly vector3 Rotation;
@@ -35,7 +35,7 @@ public sealed partial class FanCollider : ShapeCollider
     public readonly float Angle;
     public readonly float Height;
    
-    public const int __ID__ = 1858223050;
+    public const int __ID__ = -242993329;
     public override int GetTypeId() => __ID__;
 
     public override void ResolveRef(Tables tables)

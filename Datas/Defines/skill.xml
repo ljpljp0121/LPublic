@@ -51,7 +51,7 @@
     </bean>
 
     <!-- 形状碰撞盒 -->
-    <bean name="ShapeSkillCollider" parent="ColliderBase">
+    <bean name="ShapeCollider" parent="ColliderBase">
         <var name="Position" type="vector3" alias="位置"/>
     </bean>
 

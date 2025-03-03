@@ -24,9 +24,9 @@ public abstract partial class ColliderBase : Luban.BeanBase
         switch ((string)_buf["$type"])
         {
             case "WeaponCollider": return new Skill.WeaponCollider(_buf);
-            case "BoxCollider": return new Skill.BoxCollider(_buf);
-            case "CircleCollider": return new Skill.CircleCollider(_buf);
-            case "FanCollider": return new Skill.FanCollider(_buf);
+            case "BoxSkillCollider": return new Skill.BoxSkillCollider(_buf);
+            case "CircleSkillCollider": return new Skill.CircleSkillCollider(_buf);
+            case "FanSkillCollider": return new Skill.FanSkillCollider(_buf);
             default: throw new SerializationException();
         }
     }
