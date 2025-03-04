@@ -34,7 +34,7 @@ public class UISystem : SingletonMono<UISystem>, IUIStorage
         {
             if (windowRoot == null)
             {
-                windowRoot = uiRoot.Find("WindowRoot").GetComponent<RectTransform>();
+                windowRoot = UIRoot.Find("WindowRoot").GetComponent<RectTransform>();
                 windowRoot.localPosition = Vector3.zero;
                 windowRoot.localScale = Vector3.one;
                 windowRoot.anchorMin = Vector2.zero;
