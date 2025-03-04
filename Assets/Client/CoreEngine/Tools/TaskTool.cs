@@ -79,7 +79,7 @@ public static class TaskUtil
     public static Task Delay(int ms, CancellationTokenSource cancel = null)
     {
         TaskCompletionSource<bool> tcs = new TaskCompletionSource<bool>();
-        TimeSystem.Instance.AddTimer((obj) =>
+        TimeSystem.AddTimer((obj) =>
         {
             if (cancel != null && cancel.IsCancellationRequested)
                 tcs.SetException(new OperationCanceledException());
@@ -92,7 +92,7 @@ public static class TaskUtil
     public static Task Return(CancellationTokenSource cancel = null)
     {
         TaskCompletionSource<bool> tcs = new TaskCompletionSource<bool>();
-        TimeSystem.Instance.AddTimer((obj) =>
+        TimeSystem.AddTimer((obj) =>
         {
             if (cancel != null && cancel.IsCancellationRequested)
                 tcs.SetException(new OperationCanceledException());

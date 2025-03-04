@@ -2,33 +2,40 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
-public class TimeSystem : Singleton<TimeSystem>
+public static class TimeSystem
 {
-    private DictionaryEx<int, TimerData> timers = new DictionaryEx<int, TimerData>();
-    private List<Action> updateList = new List<Action>();
-    private List<Action> lateUpdateList = new List<Action>();
-    private List<Action> fixedUpdateList = new List<Action>();
+    private static readonly DictionaryEx<int, TimerData> Timers = new DictionaryEx<int, TimerData>();
+    private static readonly List<Action> UpdateList = new List<Action>();
+    private static readonly List<Action> LateUpdateList = new List<Action>();
+    private static readonly List<Action> FixedUpdateList = new List<Action>();
 
-    public TimeSystem()
+    static TimeSystem()
     {
         stw.Start();
     }
 
-    private float realtimeSinceStartup = 0f;
-    private float realDeltaTime = 0f;
+    public static void Init()
+    {
+        MonoSystem.AddUpdate(Update, UpdatePriority.Critical);
+        MonoSystem.AddLateUpdate(LateUpdate, UpdatePriority.Critical);
+        MonoSystem.AddFixedUpdate(FixedUpdate, UpdatePriority.Critical);
+    }
 
-    private readonly Stopwatch stw = new Stopwatch();
+    private static float realtimeSinceStartup = 0f;
+    private static float realDeltaTime = 0f;
 
-    public void Update()
+    private static readonly Stopwatch stw = new Stopwatch();
+
+    public static void Update()
     {
         realDeltaTime = (float)stw.ElapsedMilliseconds / 1000 - realtimeSinceStartup;
         realtimeSinceStartup = (float)stw.ElapsedMilliseconds / 1000;
 
-        if (updateList.Count > 0)
+        if (UpdateList.Count > 0)
         {
-            for (int i = 0; i < updateList.Count; i++)
+            for (int i = 0; i < UpdateList.Count; i++)
             {
-                Action fun = updateList[i];
+                Action fun = UpdateList[i];
                 try
                 {
                     fun();
@@ -40,9 +47,9 @@ public class TimeSystem : Singleton<TimeSystem>
             }
         }
 
-        if (timers.Count > 0)
+        if (Timers.Count > 0)
         {
-            timers.Iterator((id, cbd) =>
+            Timers.Iterator((id, cbd) =>
             {
                 if (cbd.Interval == 0 || realtimeSinceStartup - cbd.LastTime >= cbd.Interval)
                 {
@@ -58,11 +65,11 @@ public class TimeSystem : Singleton<TimeSystem>
                     cbd.CurRepeat++;
                     if (cbd.LifeTime != 0 && realtimeSinceStartup - cbd.StartTime >= cbd.LifeTime)
                     {
-                        timers.Remove(cbd.Id);
+                        Timers.Remove(cbd.Id);
                     }
                     else if (cbd.Repeat != 0 && cbd.CurRepeat >= cbd.Repeat)
                     {
-                        timers.Remove(cbd.Id);
+                        Timers.Remove(cbd.Id);
                     }
                     else
                     {
@@ -73,13 +80,13 @@ public class TimeSystem : Singleton<TimeSystem>
         }
     }
 
-    public void LateUpdate()
+    public static void LateUpdate()
     {
-        if (lateUpdateList.Count > 0)
+        if (LateUpdateList.Count > 0)
         {
-            for (int i = 0; i < lateUpdateList.Count; i++)
+            for (int i = 0; i < LateUpdateList.Count; i++)
             {
-                Action fun = lateUpdateList[i];
+                Action fun = LateUpdateList[i];
                 try
                 {
                     fun();
@@ -92,13 +99,13 @@ public class TimeSystem : Singleton<TimeSystem>
         }
     }
 
-    public void FixedUpdate()
+    public static void FixedUpdate()
     {
-        if (fixedUpdateList.Count > 0)
+        if (FixedUpdateList.Count > 0)
         {
-            for (int i = 0; i < fixedUpdateList.Count; i++)
+            for (int i = 0; i < FixedUpdateList.Count; i++)
             {
-                Action fun = fixedUpdateList[i];
+                Action fun = FixedUpdateList[i];
                 try
                 {
                     fun();
@@ -133,46 +140,46 @@ public class TimeSystem : Singleton<TimeSystem>
         }
     }
 
-    public void AddUpdate(Action fun)
+    public static void AddUpdate(Action fun)
     {
-        if (updateList.Contains(fun))
+        if (UpdateList.Contains(fun))
             return;
 
-        updateList.Add(fun);
+        UpdateList.Add(fun);
     }
 
-    public void AddLateUpdate(Action fun)
+    public static void AddLateUpdate(Action fun)
     {
-        if (lateUpdateList.Contains(fun))
+        if (LateUpdateList.Contains(fun))
             return;
 
-        lateUpdateList.Add(fun);
+        LateUpdateList.Add(fun);
     }
 
-    public void AddFixedUpdate(Action fun)
+    public static void AddFixedUpdate(Action fun)
     {
-        if (fixedUpdateList.Contains(fun))
+        if (FixedUpdateList.Contains(fun))
             return;
 
-        fixedUpdateList.Add(fun);
+        FixedUpdateList.Add(fun);
     }
 
-    public void RemoveUpdate(Action fun)
+    public static void RemoveUpdate(Action fun)
     {
-        updateList.Remove(fun);
+        UpdateList.Remove(fun);
     }
 
-    public void RemoveLateUpdate(Action fun)
+    public static void RemoveLateUpdate(Action fun)
     {
-        lateUpdateList.Remove(fun);
+        LateUpdateList.Remove(fun);
     }
 
-    public void RemoveFixedUpdate(Action fun)
+    public static void RemoveFixedUpdate(Action fun)
     {
-        fixedUpdateList.Remove(fun);
+        FixedUpdateList.Remove(fun);
     }
 
-    public int AddTimer(Action<object> fun, object obj = null, float interval = 0, uint repeat = 1, float lifetime = 0)
+    public static int AddTimer(Action<object> fun, object obj = null, float interval = 0, uint repeat = 1, float lifetime = 0)
     {
         TimerData cbd = new TimerData();
         cbd.Fun = fun;
@@ -183,12 +190,12 @@ public class TimeSystem : Singleton<TimeSystem>
         cbd.Obj = obj;
 
         cbd.LastTime = realtimeSinceStartup;
-        timers.Add(cbd.Id, cbd);
+        Timers.Add(cbd.Id, cbd);
 
         return cbd.Id;
     }
 
-    public int CreateDelay(float delay, Action callback)
+    public static int CreateDelay(float delay, Action callback)
     {
         TimerData cbd = new TimerData();
 
@@ -205,16 +212,16 @@ public class TimeSystem : Singleton<TimeSystem>
         cbd.Obj = null;
 
         cbd.LastTime = realtimeSinceStartup;
-        timers.Add(cbd.Id, cbd);
+        Timers.Add(cbd.Id, cbd);
 
         return cbd.Id;
     }
 
-    public void RemoveTimer(int id)
+    public static void RemoveTimer(int id)
     {
-        if (timers.ContainsKey(id))
+        if (Timers.ContainsKey(id))
         {
-            timers.Remove(id);
+            Timers.Remove(id);
         }
     }
 }

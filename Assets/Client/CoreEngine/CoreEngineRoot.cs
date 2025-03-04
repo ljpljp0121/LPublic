@@ -61,25 +61,11 @@ public class CoreEngineRoot : MonoBehaviour
         EventSystem.Init();
         MonoSystem.Init();
         AudioSystem.Init();
+        TimeSystem.Init();
         var go = Resources.Load<GameObject>("StartLoading");
         GameObject.Instantiate(go, GameObject.Find("UIRoot").transform);
         yield return AssetSystem.Init(DllPackageName, ResourcePackageName, PlayMode);
         GameObject gameRoot = AssetSystem.LoadAsset<GameObject>("Prefab/GameRoot");
         Instantiate(gameRoot, RootTransform);
-    }
-
-    private void Update()
-    {
-        TimeSystem.Instance.Update();
-    }
-
-    private void LateUpdate()
-    {
-        TimeSystem.Instance.LateUpdate();
-    }
-
-    private void FixedUpdate()
-    {
-        TimeSystem.Instance.FixedUpdate();
     }
 }
