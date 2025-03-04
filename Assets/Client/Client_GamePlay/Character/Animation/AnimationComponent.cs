@@ -6,7 +6,8 @@ using UnityEngine.Animations;
 using UnityEngine.Playables;
 
 
-public class AnimationComponent : MonoBehaviour
+[InitializeOrder(100)]
+public class AnimationComponent : MonoBehaviour, IComponent, IRequire<Animator>
 {
     private Animator animator;
     private PlayableGraph graph;
@@ -30,9 +31,11 @@ public class AnimationComponent : MonoBehaviour
         }
     }
 
-    public void Init(Animator animator)
+    public void SetDependency(Animator dependency) => animator = dependency;
+
+    public void Init()
     {
-        this.animator = animator;
+        Debug.Log("数据管理器初始化完成");
         // 创建图
         graph = PlayableGraph.Create("AnimationPlayer");
         // 设置图的时间模式
@@ -44,7 +47,7 @@ public class AnimationComponent : MonoBehaviour
         // 让混合器链接上Output
         playableOutput.SetSourcePlayable(mixer);
     }
-
+    
     private void DestroyNode(AnimationNodeBase node)
     {
         if (node != null)

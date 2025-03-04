@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class SkillBehavior : MonoBehaviour
+public abstract class SkillBehaviorBase : MonoBehaviour
 {
 
+   
 }
