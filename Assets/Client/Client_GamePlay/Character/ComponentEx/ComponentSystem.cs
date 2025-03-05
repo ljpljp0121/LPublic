@@ -6,36 +6,128 @@ using System.Reflection;
 using UnityEngine;
 
 
+public class ComponentDestroyProxy : MonoBehaviour
+{
+    public event Action OnDestroyed;
+    private void OnDestroy() => OnDestroyed?.Invoke();
+}
+
 /// <summary>
 /// 组件系统
 /// </summary>
 public class ComponentSystem : MonoBehaviour
 {
-    private ComponentContainer container = new();
-    private List<IComponent> components = new();
+    private readonly ComponentContainer container = new();
+    private readonly LinkedList<IComponent> components = new();
+    private List<IUpdatable> updatableList = new();
+    private List<IFixedUpdatable> fixedUpdatableList = new();
+    private List<ILateUpdatable> lateUpdatableList = new();
 
     private void Awake() => Initialize();
 
+    private void OnDestroy()
+    {
+        foreach (var c in components.ToArray())
+            RemoveComponent(c);
+    }
+
     private void Initialize()
     {
-        components = GetComponentsInChildren<IComponent>(true)
+        var foundComponents = GetComponentsInChildren<IComponent>(true)
             .OrderBy(GetComponentPriority)
             .ToList();
-        components.ForEach(c => container.Register(c));
 
-        components.ForEach(c => DependencyInjector.InjectDependencies(c, container));
+        foreach (var c in foundComponents)
+            RegisterComponent(c);
 
-        components.ForEach(c =>
+        updatableList = components.OfType<IUpdatable>().ToList();
+        fixedUpdatableList = components.OfType<IFixedUpdatable>().ToList();
+        lateUpdatableList = components.OfType<ILateUpdatable>().ToList();
+        MonoSystem.AddUpdate(OnUpdate);
+        MonoSystem.AddFixedUpdate(OnFixedUpdate);
+        MonoSystem.AddLateUpdate(OnLateUpdate);
+    }
+
+    private void RegisterComponent(IComponent component)
+    {
+        if (component is MonoBehaviour mb && !mb.TryGetComponent<ComponentDestroyProxy>(out _))
+        {
+            var proxy = mb.gameObject.AddComponent<ComponentDestroyProxy>();
+            proxy.OnDestroyed += () => RemoveComponent(component);
+        }
+
+        var node = components.First;
+        while (node != null && GetComponentPriority(node.Value) <= GetComponentPriority(component))
+            node = node.Next;
+
+        if (node != null)
+            components.AddBefore(node, component);
+        else
+            components.AddLast(component);
+
+        try
+        {
+            container.Register(component);
+            DependencyInjector.InjectDependencies(component, container);
+            component.Init();
+            Debug.Log($"组件初始化成功!! {component.GetType().Name}");
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"{component.GetType().Name}初始化失败: {e}");
+        }
+
+        if (component is IUpdatable updatable)
+            updatableList.Add(updatable);
+        if (component is IFixedUpdatable fixedUpdatable)
+            fixedUpdatableList.Add(fixedUpdatable);
+        if (component is ILateUpdatable lateUpdatable)
+            lateUpdatableList.Add(lateUpdatable);
+    }
+
+    private void OnUpdate()
+    {
+        foreach (var t in updatableList)
         {
             try
             {
-                c.Init();
+                t.OnUpdate();
             }
             catch (Exception e)
             {
-                Debug.LogError($"{c.GetType().Name}初始化失败: {e}");
+                Debug.LogError($"{t.GetType().Name}更新失败 OnUpdate: {e}");
             }
-        });
+        }
+    }
+
+    private void OnFixedUpdate()
+    {
+        foreach (var t in fixedUpdatableList)
+        {
+            try
+            {
+                t.OnFixedUpdate();
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"{t.GetType().Name}更新失败 OnFixedUpdate: {e}");
+            }
+        }
+    }
+
+    private void OnLateUpdate()
+    {
+        foreach (var t in lateUpdatableList)
+        {
+            try
+            {
+                t.OnLateUpdate();
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"{t.GetType().Name}更新失败 OnLateUpdate: {e}");
+            }
+        }
     }
 
     private int GetComponentPriority(IComponent component)
@@ -44,6 +136,37 @@ public class ComponentSystem : MonoBehaviour
             .GetCustomAttribute<InitializeOrderAttribute>();
         return attr?.Order ?? int.MaxValue;
     }
+
+    #region 添加删除组件
+
+    /// <summary>
+    /// 添加组件
+    /// </summary>
+    public T AddComponent<T>(GameObject target = null) where T : MonoBehaviour, IComponent
+    {
+        target = target ?? gameObject;
+        var comp = target.AddComponent<T>();
+        RegisterComponent(comp);
+        return comp;
+    }
+
+    /// <summary>
+    /// 移除组件
+    /// </summary>
+    public void RemoveComponent(IComponent component)
+    {
+        if (component is MonoBehaviour mb)
+        {
+            components.Remove(component);
+            updatableList.Remove(component as IUpdatable);
+            fixedUpdatableList.Remove(component as IFixedUpdatable);
+            lateUpdatableList.Remove(component as ILateUpdatable);
+            container.Unregister(component);
+            Destroy(mb);
+        }
+    }
+
+    #endregion
 }
 
 /// <summary>
@@ -106,6 +229,34 @@ public class ComponentContainer
             interfaceMap[interfaceType].Add(implementType);
 
         RegisterType(interfaceType, component);
+    }
+
+    public void Unregister(object component)
+    {
+        var type = component.GetType();
+
+        // 清理具体类型
+        if (componentsDic.TryGetValue(type, out var set))
+        {
+            set.Remove(component);
+            if (set.Count == 0) componentsDic.Remove(type);
+        }
+
+        // 清理接口映射
+        foreach (var interfaceType in type.GetInterfaces())
+        {
+            if (interfaceMap.TryGetValue(interfaceType, out var implTypes))
+            {
+                foreach (var implType in implTypes.ToArray())
+                {
+                    if (componentsDic.TryGetValue(implType, out var implSet))
+                    {
+                        implSet.Remove(component);
+                        if (implSet.Count == 0) componentsDic.Remove(implType);
+                    }
+                }
+            }
+        }
     }
 }
 

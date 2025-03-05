@@ -35,7 +35,6 @@ public class AnimationComponent : MonoBehaviour, IComponent, IRequire<Animator>
 
     public void Init()
     {
-        Debug.Log("数据管理器初始化完成");
         // 创建图
         graph = PlayableGraph.Create("AnimationPlayer");
         // 设置图的时间模式
@@ -95,6 +94,8 @@ public class AnimationComponent : MonoBehaviour, IComponent, IRequire<Animator>
         transitionCoroutine = null;
     }
 
+    
+    
     /// <summary>
     /// 播放单个动画
     /// </summary>

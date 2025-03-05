@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SkillPlayer : MonoBehaviour
+public class SkillPlayer : MonoBehaviour, IComponent, IUpdatable, IRequire<AnimationComponent>
 {
     private AnimationComponent animationComponent;
 
@@ -10,9 +10,16 @@ public class SkillPlayer : MonoBehaviour
     private float playerTotalTime;
     private int frameRate;
 
-    public void Init(AnimationComponent animationComponent)
+    public void SetDependency(AnimationComponent dependency) => animationComponent = dependency;
+
+    public void Init()
     {
-        MonoSystem.AddUpdate(OnUpdate);
+        
+    }
+
+    void IUpdatable.OnUpdate()
+    {
+        OnUpdate();
     }
 
     public void UnInit()
