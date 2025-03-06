@@ -3,16 +3,19 @@ using UnityEngine;
 using UnityEngine.Serialization;
 
 
-public class Player : MonoBehaviour, IComponent, IStateMachineOwner, IRequire<AnimationComponent>
+public class Player : MonoBehaviour, IComponent, IStateMachineOwner, IRequire<AnimationCom>, IRequire<SkillPlayerCom>
 {
     private StateMachine stateMachine;
     private PlayerState playerState;
-    public AnimationComponent AniComponent;
+    private AnimationCom aniCom;
+    private SkillPlayerCom skillPlayerCom;
 
     #region 组件初始化
 
-    public void SetDependency(AnimationComponent dependency) => AniComponent = dependency;
-    
+    public void SetDependency(AnimationCom dependency) => aniCom = dependency;
+
+    public void SetDependency(SkillPlayerCom dependency) => skillPlayerCom = dependency;
+
     public void Init()
     {
         stateMachine = AssetSystem.GetOrNew<StateMachine>();
@@ -20,7 +23,7 @@ public class Player : MonoBehaviour, IComponent, IStateMachineOwner, IRequire<An
     }
 
     #endregion
-    
+
     public void ChangeState(PlayerState playerState, bool reCurState = false)
     {
         this.playerState = playerState;

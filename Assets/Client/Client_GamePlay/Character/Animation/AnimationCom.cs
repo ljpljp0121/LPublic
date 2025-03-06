@@ -7,8 +7,10 @@ using UnityEngine.Playables;
 
 
 [InitializeOrder(100)]
-public class AnimationComponent : MonoBehaviour, IComponent, IRequire<Animator>
+public class AnimationCom : MonoBehaviour, IComponent, IRequire<Animator>
 {
+    public Transform ModelTransform => this.transform;
+
     private Animator animator;
     private PlayableGraph graph;
     private AnimationMixerPlayable mixer;
@@ -46,7 +48,7 @@ public class AnimationComponent : MonoBehaviour, IComponent, IRequire<Animator>
         // 让混合器链接上Output
         playableOutput.SetSourcePlayable(mixer);
     }
-    
+
     private void DestroyNode(AnimationNodeBase node)
     {
         if (node != null)
@@ -94,8 +96,7 @@ public class AnimationComponent : MonoBehaviour, IComponent, IRequire<Animator>
         transitionCoroutine = null;
     }
 
-    
-    
+
     /// <summary>
     /// 播放单个动画
     /// </summary>

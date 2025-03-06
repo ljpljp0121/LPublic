@@ -6,6 +6,7 @@ public interface IComponent
     void Init();
 }
 
+
 public interface IUpdatable
 {
     void OnUpdate();
