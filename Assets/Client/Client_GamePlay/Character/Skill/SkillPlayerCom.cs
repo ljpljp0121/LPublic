@@ -3,17 +3,34 @@ using System.Collections.Generic;
 using cfg.Skill;
 using UnityEngine;
 
-public class SkillPlayerCom : MonoBehaviour, IComponent, IUpdatable, IRequire<AnimationCom>
+public class SkillPlayerCom : MonoBehaviour, IComponent, IUpdatable, IRequire<AnimationCom>, IRequire<IEnumerable<WeaponController>>
 {
-    private AnimationCom animComp;
+
+    #region 变量
 
     public bool IsPlaying { get; private set; }
+    public Transform ModelTransform => animComp.ModelTransform;
+
 
     private int currentFrameIndex;
     private float playerTotalTime;
     private int frameRate;
     private SkillClip skillClip;
+
+    #endregion
+
+    #region 组件
+
+    private AnimationCom animComp;
+    private Dictionary<string, WeaponController> weaponDic = new Dictionary<string, WeaponController>();
     public void SetDependency(AnimationCom dependency) => animComp = dependency;
+    public void SetDependency(IEnumerable<WeaponController> dependency)
+    {
+        foreach (var weaponController in dependency)
+        {
+            
+        }
+    }
 
     public void Init()
     {
@@ -34,6 +51,8 @@ public class SkillPlayerCom : MonoBehaviour, IComponent, IUpdatable, IRequire<An
             Clear();
         }
     }
+
+    #endregion
 
     public void PlaySkillClip(SkillClip clip)
     {
@@ -120,9 +139,9 @@ public class SkillPlayerCom : MonoBehaviour, IComponent, IUpdatable, IRequire<An
                     effectObj = Instantiate(prefab);
                     effectObj.name = effectEvent.EffectPrefab.Substring(effectEvent.EffectPrefab.LastIndexOf('/') + 1);
                 }
-                effectObj.transform.position = animComp.ModelTransform.TransformPoint(
+                effectObj.transform.position = ModelTransform.TransformPoint(
                     new Vector3(effectEvent.Position.X, effectEvent.Position.Y, effectEvent.Position.Z));
-                effectObj.transform.rotation = Quaternion.Euler(animComp.ModelTransform.eulerAngles + new Vector3(
+                effectObj.transform.rotation = Quaternion.Euler(ModelTransform.eulerAngles + new Vector3(
                     effectEvent.Rotation.X,
                     effectEvent.Rotation.Y, effectEvent.Rotation.Z));
                 effectObj.transform.localScale =
@@ -151,7 +170,17 @@ public class SkillPlayerCom : MonoBehaviour, IComponent, IUpdatable, IRequire<An
 #if UNITY_EDITOR
 
     [SerializeField] private bool IsDrawCollider;
-    // private List<>
+    private List<SkillColliderEvent> curColliderList = new List<SkillColliderEvent>();
+
+    private void OnDrawGizmos()
+    {
+        if (IsDrawCollider && curColliderList.Count != 0)
+        {
+            for (int i = 0; i < curColliderList.Count; i++)
+            {
+            }
+        }
+    }
 
 #endif
 }
