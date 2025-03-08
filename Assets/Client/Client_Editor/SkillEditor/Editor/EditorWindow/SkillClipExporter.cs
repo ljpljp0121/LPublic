@@ -129,25 +129,28 @@ public class SkillClipExporter : EditorWindow
             sb.Clear();
             foreach (var data in clip.SkillAnimationData.FrameData)
             {
-                sb.Append($"{data.Key};{AssetDatabase.GetAssetPath(data.Value.AnimationClip)};{data.Value.DurationFrame}|");
+                sb.Append(
+                    $"{data.Key};{AssetDatabase.GetAssetPath(data.Value.AnimationClip).Replace("Assets/Bundle/", "")};{data.Value.TransitionTime}|");
             }
             workSheet.Cells[5 + i, 7].Value = sb.ToString();
             //音频事件
             sb.Clear();
             foreach (var data in clip.SkillAudioData.FrameData)
             {
-                sb.Append($"{data.FrameIndex};{AssetDatabase.GetAssetPath(data.AudioClip)}|");
+                sb.Append(
+                    $"{data.FrameIndex};{AssetDatabase.GetAssetPath(data.AudioClip).Replace("Assets/Bundle/", "")}|");
             }
             workSheet.Cells[5 + i, 8].Value = sb.ToString();
             //特效事件
             sb.Clear();
             foreach (var data in clip.SkillEffectData.FrameData)
             {
-                sb.Append($"{data.FrameIndex};{AssetDatabase.GetAssetPath(data.EffectPrefab)};" +
-                          $"{data.Position.x},{data.Position.y},{data.Position.z};" +
-                          $"{data.Rotation.x},{data.Rotation.y},{data.Rotation.z};" +
-                          $"{data.Scale.x},{data.Scale.y},{data.Scale.z};" +
-                          $"{data.Duration};{data.AutoDestroy}|");
+                sb.Append(
+                    $"{data.FrameIndex};{AssetDatabase.GetAssetPath(data.EffectPrefab).Replace("Assets/Bundle/", "")};" +
+                    $"{data.Position.x},{data.Position.y},{data.Position.z};" +
+                    $"{data.Rotation.x},{data.Rotation.y},{data.Rotation.z};" +
+                    $"{data.Scale.x},{data.Scale.y},{data.Scale.z};" +
+                    $"{data.Duration};{data.AutoDestroy}|");
             }
             workSheet.Cells[5 + i, 9].Value = sb.ToString();
             //碰撞事件

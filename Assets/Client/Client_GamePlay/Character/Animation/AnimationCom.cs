@@ -37,6 +37,8 @@ public class AnimationCom : MonoBehaviour, IComponent, IRequire<Animator>
 
     public void Init()
     {
+        if (animator == null)
+            animator = GetComponent<Animator>();
         // 创建图
         graph = PlayableGraph.Create("AnimationPlayer");
         // 设置图的时间模式
@@ -125,6 +127,7 @@ public class AnimationCom : MonoBehaviour, IComponent, IRequire<Animator>
         this.speed = speed;
         currentNode = singleAnimationNode;
         if (graph.IsPlaying() == false) graph.Play();
+        Debug.Log($"开始播放动画: {animationClip.name}");
     }
 
     /// <summary>

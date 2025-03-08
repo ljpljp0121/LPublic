@@ -16,8 +16,8 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 1827226128182048838, guid: 9e2d2fd71c5141d4d9dca13c753005b4, type: 3}
-    - {fileID: 7400000, guid: acd6daf17cd0a4643ba9c5543879e59c, type: 2}
+    - {fileID: 7400000, guid: ab4be61a762f99f4b9b2fdd60eb64367, type: 2}
+    - {fileID: 7400000, guid: f68c0679896192046aaae8b0dad17651, type: 2}
     - {fileID: 8300000, guid: 2eb0e25f8b7e9ec40a17a8a8d9f8a069, type: 3}
     - {fileID: 6922743098465838680, guid: 0982be895684b544d8e0626273b3bf5c, type: 3}
     SerializedBytesString: 
@@ -90,7 +90,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 0
+      Data: 17
     - Name: $v
       Entry: 7
       Data: 6|SkillAnimationEvent, Client_Editor
@@ -105,7 +105,7 @@ MonoBehaviour:
       Data: 0.25
     - Name: DurationFrame
       Entry: 3
-      Data: 17
+      Data: 104
     - Name: 
       Entry: 8
       Data: 
@@ -117,7 +117,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 17
+      Data: 0
     - Name: $v
       Entry: 7
       Data: 7|SkillAnimationEvent, Client_Editor
@@ -132,7 +132,7 @@ MonoBehaviour:
       Data: 0.25
     - Name: DurationFrame
       Entry: 3
-      Data: 120
+      Data: 17
     - Name: 
       Entry: 8
       Data: 
@@ -285,7 +285,7 @@ MonoBehaviour:
       Data: "\u653B\u51FB\u68C0\u6D4B\u8F68\u9053"
     - Name: FrameIndex
       Entry: 3
-      Data: 4
+      Data: 2
     - Name: DurationFrame
       Entry: 3
       Data: 10
@@ -312,5 +312,5 @@ MonoBehaviour:
       Data: 
   SkillID: 1001
   SkillName: "\u6280\u80FD1"
-  FrameCount: 137
+  FrameCount: 121
   FrameRate: 30

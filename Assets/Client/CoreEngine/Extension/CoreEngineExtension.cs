@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
 
 public static class CoreEngineExtension
 {
@@ -27,6 +28,18 @@ public static class CoreEngineExtension
         else
         {
             PoolSystem.PushGameObject(go);
+        }
+    }
+
+    public static void GameObjectPushPool(this GameObject go, string poolName)
+    {
+        if (go.IsNull())
+        {
+            LogSystem.Error("将空物体放入对象池");
+        }
+        else
+        {
+            PoolSystem.PushGameObject(poolName, go);
         }
     }
 

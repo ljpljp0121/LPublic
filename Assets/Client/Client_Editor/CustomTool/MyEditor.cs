@@ -6,7 +6,6 @@ using UnityEngine;
 public enum ToolTab
 {
     FBXAnimationPanel,
-    AssetMigrationPanel,
 }
 
 public class MyEditor : EditorWindow
@@ -37,12 +36,6 @@ public class MyEditor : EditorWindow
                     DrawCurrentPanel();
                 currentTab = ToolTab.FBXAnimationPanel;
             }
-            if (GUILayout.Toggle(currentTab == ToolTab.AssetMigrationPanel, "资源迁移工具", EditorStyles.toolbarButton))
-            {
-                if (currentTab != ToolTab.AssetMigrationPanel)
-                    DrawCurrentPanel();
-                currentTab = ToolTab.AssetMigrationPanel;
-            }
         }
         EditorGUILayout.EndHorizontal();
     }
@@ -53,9 +46,6 @@ public class MyEditor : EditorWindow
         {
             case ToolTab.FBXAnimationPanel:
                 FBXAnimationPanel.Instance.OnGUI();
-                break;
-            case ToolTab.AssetMigrationPanel:
-                AssetMigrationPanel.Instance.OnGUI();
                 break;
         }
     }

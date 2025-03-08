@@ -143,7 +143,7 @@ public class SkillPlayerCom : MonoBehaviour, IComponent, IUpdatable, IRequire<An
                     return;
                 }
                 PoolSystem.PushObject(audioClip, audioEvent.AudioClip);
-                AudioSystem.PlayOneShot(audioClip, transform.position);
+                AudioSystem.PlayBgAudio(audioClip);
             }
         }
     }
@@ -173,16 +173,16 @@ public class SkillPlayerCom : MonoBehaviour, IComponent, IUpdatable, IRequire<An
                 if (effectEvent.AutoDestroy)
                 {
                     MonoSystem.BeginCoroutine(AutoDestroyEffectObj((float)effectEvent.Duration / skillClip.FrameRate,
-                        effectObj));
+                        effectObj, effectEvent.EffectPrefab));
                 }
             }
         }
     }
 
-    private IEnumerator AutoDestroyEffectObj(float time, GameObject obj)
+    private IEnumerator AutoDestroyEffectObj(float time, GameObject obj, string keyName)
     {
         yield return new WaitForSeconds(time);
-        obj.GameObjectPushPool();
+        obj.GameObjectPushPool(keyName);
     }
 
     private void TickCollider()
@@ -252,7 +252,6 @@ public class SkillPlayerCom : MonoBehaviour, IComponent, IUpdatable, IRequire<An
     #region Editor
 
 #if UNITY_EDITOR
-
     [SerializeField] private bool IsDrawCollider;
     private readonly List<SkillColliderEvent> curColliderList = new List<SkillColliderEvent>();
 

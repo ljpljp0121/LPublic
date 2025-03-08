@@ -35,12 +35,6 @@ public abstract class UIBehavior : MonoBehaviour
         AutoBindComponents();
     }
 
-    protected virtual void OnDestroy()
-    {
-        uiSystem.TryRemovePrefabDic(wndInfo.Name);
-        uiSystem.TryRemoveUIDic(wndInfo.Name);
-    }
-
     #endregion
 
     #region UI调用管理
