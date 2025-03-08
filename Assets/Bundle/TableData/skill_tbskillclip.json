@@ -67,5 +67,74 @@
         }
       }
     ]
+  },
+  {
+    "SkillID": 1002,
+    "SkillName": "技能2",
+    "FrameCount": 139,
+    "FrameRate": 30,
+    "CustomEvent": [
+      [
+        45,
+        {
+          "EventType": 0
+        }
+      ]
+    ],
+    "AnimationEvent": [
+      [
+        0,
+        {
+          "AnimationClip": "Assets/GameRes/ZZZModel/Export_fbx/Action/K_Attack_02.FBX",
+          "TransitionTime": 17
+        }
+      ],
+      [
+        17,
+        {
+          "AnimationClip": "Assets/GameRes/ZZZModel/Export_fbx/Animation/A01_Idle.anim",
+          "TransitionTime": 120
+        }
+      ]
+    ],
+    "AudioEvent": [
+      {
+        "FrameIndex": 17,
+        "AudioClip": "Assets/GameRes/Res/Audio/AnBi/安比入鞘.wav"
+      }
+    ],
+    "EffectEvent": [
+      {
+        "FrameIndex": 1,
+        "EffectPrefab": "Assets/GameRes/Res/FX_slash_15.prefab",
+        "Position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "Rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "Scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        },
+        "Duration": 30,
+        "AutoDestroy": true
+      }
+    ],
+    "ColliderEvent": [
+      {
+        "FrameIndex": 4,
+        "DurationFrame": 10,
+        "ColliderData": {
+          "$type": "WeaponCollider",
+          "WeaponName": "weapon1"
+        }
+      }
+    ]
   }
 ]

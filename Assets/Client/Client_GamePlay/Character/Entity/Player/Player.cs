@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 
 
-public class Player : MonoBehaviour, IComponent, IStateMachineOwner, IRequire<AnimationCom>, IRequire<SkillPlayerCom>
+public class Player : MonoBehaviour, IComponent, IStateMachineOwner,IUpdatable, IRequire<AnimationCom>, IRequire<SkillPlayerCom>
 {
     private StateMachine stateMachine;
     private PlayerState playerState;
@@ -35,6 +35,14 @@ public class Player : MonoBehaviour, IComponent, IStateMachineOwner, IRequire<An
             case PlayerState.Move:
                 stateMachine.ChangeState<PlayerMoveState>(reCurState);
                 break;
+        }
+    }
+
+    public void OnUpdate()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            skillPlayerCom.PlaySkillClip(1001);
         }
     }
 }

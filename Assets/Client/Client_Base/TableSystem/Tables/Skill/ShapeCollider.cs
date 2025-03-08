@@ -17,7 +17,7 @@ public abstract partial class ShapeCollider : ColliderBase
 {
     public ShapeCollider(JSONNode _buf)  : base(_buf) 
     {
-        { if(!_buf["Position"].IsObject) { throw new SerializationException(); }  Position = vector3.Deserializevector3(_buf["Position"]);  }
+        { if(!_buf["Position"].IsObject) { throw new SerializationException(); }  Position = ExternalTypeUtil.NewVector3(vector3.Deserializevector3(_buf["Position"]));  }
     }
 
     public static ShapeCollider DeserializeShapeCollider(JSONNode _buf)
@@ -31,7 +31,7 @@ public abstract partial class ShapeCollider : ColliderBase
         }
     }
 
-    public readonly vector3 Position;
+    public readonly UnityEngine.Vector3 Position;
    
 
     public override void ResolveRef(Tables tables)

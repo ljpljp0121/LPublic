@@ -17,7 +17,7 @@ public sealed partial class FanSkillCollider : ShapeCollider
 {
     public FanSkillCollider(JSONNode _buf)  : base(_buf) 
     {
-        { if(!_buf["Rotation"].IsObject) { throw new SerializationException(); }  Rotation = vector3.Deserializevector3(_buf["Rotation"]);  }
+        { if(!_buf["Rotation"].IsObject) { throw new SerializationException(); }  Rotation = ExternalTypeUtil.NewVector3(vector3.Deserializevector3(_buf["Rotation"]));  }
         { if(!_buf["InsideRadius"].IsNumber) { throw new SerializationException(); }  InsideRadius = _buf["InsideRadius"]; }
         { if(!_buf["OutsideRadius"].IsNumber) { throw new SerializationException(); }  OutsideRadius = _buf["OutsideRadius"]; }
         { if(!_buf["Angle"].IsNumber) { throw new SerializationException(); }  Angle = _buf["Angle"]; }
@@ -29,7 +29,7 @@ public sealed partial class FanSkillCollider : ShapeCollider
         return new Skill.FanSkillCollider(_buf);
     }
 
-    public readonly vector3 Rotation;
+    public readonly UnityEngine.Vector3 Rotation;
     public readonly float InsideRadius;
     public readonly float OutsideRadius;
     public readonly float Angle;

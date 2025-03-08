@@ -17,8 +17,8 @@ public sealed partial class BoxSkillCollider : ShapeCollider
 {
     public BoxSkillCollider(JSONNode _buf)  : base(_buf) 
     {
-        { if(!_buf["Rotation"].IsObject) { throw new SerializationException(); }  Rotation = vector3.Deserializevector3(_buf["Rotation"]);  }
-        { if(!_buf["Scale"].IsObject) { throw new SerializationException(); }  Scale = vector3.Deserializevector3(_buf["Scale"]);  }
+        { if(!_buf["Rotation"].IsObject) { throw new SerializationException(); }  Rotation = ExternalTypeUtil.NewVector3(vector3.Deserializevector3(_buf["Rotation"]));  }
+        { if(!_buf["Scale"].IsObject) { throw new SerializationException(); }  Scale = ExternalTypeUtil.NewVector3(vector3.Deserializevector3(_buf["Scale"]));  }
     }
 
     public static BoxSkillCollider DeserializeBoxSkillCollider(JSONNode _buf)
@@ -26,8 +26,8 @@ public sealed partial class BoxSkillCollider : ShapeCollider
         return new Skill.BoxSkillCollider(_buf);
     }
 
-    public readonly vector3 Rotation;
-    public readonly vector3 Scale;
+    public readonly UnityEngine.Vector3 Rotation;
+    public readonly UnityEngine.Vector3 Scale;
    
     public const int __ID__ = 669413271;
     public override int GetTypeId() => __ID__;

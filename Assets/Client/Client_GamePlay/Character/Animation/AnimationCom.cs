@@ -189,12 +189,26 @@ public class AnimationCom : MonoBehaviour, IComponent, IRequire<Animator>
 
     private void OnDestroy()
     {
-        graph.Destroy();
+        try
+        {
+            graph.Destroy();
+        }
+        catch (Exception e)
+        {
+            LogSystem.Error("graph 没有初始化，为null");
+        }
     }
 
     private void OnDisable()
     {
-        graph.Stop();
+        try
+        {
+            graph.Stop();
+        }
+        catch (Exception e)
+        {
+            LogSystem.Error("graph 没有初始化，为null");
+        }
     }
 
     #region RootMotion

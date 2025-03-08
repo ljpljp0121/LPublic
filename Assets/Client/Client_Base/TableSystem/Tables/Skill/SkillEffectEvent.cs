@@ -19,9 +19,9 @@ public sealed partial class SkillEffectEvent : Luban.BeanBase
     {
         { if(!_buf["FrameIndex"].IsNumber) { throw new SerializationException(); }  FrameIndex = _buf["FrameIndex"]; }
         { if(!_buf["EffectPrefab"].IsString) { throw new SerializationException(); }  EffectPrefab = _buf["EffectPrefab"]; }
-        { if(!_buf["Position"].IsObject) { throw new SerializationException(); }  Position = vector3.Deserializevector3(_buf["Position"]);  }
-        { if(!_buf["Rotation"].IsObject) { throw new SerializationException(); }  Rotation = vector3.Deserializevector3(_buf["Rotation"]);  }
-        { if(!_buf["Scale"].IsObject) { throw new SerializationException(); }  Scale = vector3.Deserializevector3(_buf["Scale"]);  }
+        { if(!_buf["Position"].IsObject) { throw new SerializationException(); }  Position = ExternalTypeUtil.NewVector3(vector3.Deserializevector3(_buf["Position"]));  }
+        { if(!_buf["Rotation"].IsObject) { throw new SerializationException(); }  Rotation = ExternalTypeUtil.NewVector3(vector3.Deserializevector3(_buf["Rotation"]));  }
+        { if(!_buf["Scale"].IsObject) { throw new SerializationException(); }  Scale = ExternalTypeUtil.NewVector3(vector3.Deserializevector3(_buf["Scale"]));  }
         { if(!_buf["Duration"].IsNumber) { throw new SerializationException(); }  Duration = _buf["Duration"]; }
         { if(!_buf["AutoDestroy"].IsBoolean) { throw new SerializationException(); }  AutoDestroy = _buf["AutoDestroy"]; }
     }
@@ -33,9 +33,9 @@ public sealed partial class SkillEffectEvent : Luban.BeanBase
 
     public readonly int FrameIndex;
     public readonly string EffectPrefab;
-    public readonly vector3 Position;
-    public readonly vector3 Rotation;
-    public readonly vector3 Scale;
+    public readonly UnityEngine.Vector3 Position;
+    public readonly UnityEngine.Vector3 Rotation;
+    public readonly UnityEngine.Vector3 Scale;
     public readonly int Duration;
     public readonly bool AutoDestroy;
    

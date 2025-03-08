@@ -38,7 +38,49 @@ public class ComponentSystem : MonoBehaviour
             .ToList();
 
         foreach (var c in foundComponents)
+        {
             RegisterComponent(c);
+        }
+
+        //注册组件
+        foreach (var c in foundComponents)
+        {
+            try
+            {
+                container.Register(c);
+                Debug.Log($"组件注册成功!! {c.GetType().Name}");
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"{c.GetType().Name}组件注册失败: {e}");
+            }
+        }
+        //注入依赖
+        foreach (var c in foundComponents)
+        {
+            try
+            {
+                DependencyInjector.InjectDependencies(c, container);
+                Debug.Log($"组件注入依赖成功!! {c.GetType().Name}");
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"{c.GetType().Name}组件注入依赖失败: {e}");
+            }
+        }
+        //初始化组件
+        foreach (var c in foundComponents)
+        {
+            try
+            {
+                c.Init();
+                Debug.Log($"组件初始化成功!! {c.GetType().Name}");
+            }
+            catch (Exception e)
+            {
+                LogSystem.Error($"组件初始化失败: {e}");
+            }
+        }
 
         updatableList = components.OfType<IUpdatable>().ToList();
         fixedUpdatableList = components.OfType<IFixedUpdatable>().ToList();
@@ -64,25 +106,6 @@ public class ComponentSystem : MonoBehaviour
             components.AddBefore(node, component);
         else
             components.AddLast(component);
-
-        try
-        {
-            container.Register(component);
-            DependencyInjector.InjectDependencies(component, container);
-            component.Init();
-            Debug.Log($"组件初始化成功!! {component.GetType().Name}");
-        }
-        catch (Exception e)
-        {
-            Debug.LogError($"{component.GetType().Name}初始化失败: {e}");
-        }
-
-        if (component is IUpdatable updatable)
-            updatableList.Add(updatable);
-        if (component is IFixedUpdatable fixedUpdatable)
-            fixedUpdatableList.Add(fixedUpdatable);
-        if (component is ILateUpdatable lateUpdatable)
-            lateUpdatableList.Add(lateUpdatable);
     }
 
     private void OnUpdate()
