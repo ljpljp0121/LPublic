@@ -196,7 +196,7 @@ public class AnimationCom : MonoBehaviour, IComponent, IRequire<Animator>
         {
             graph.Destroy();
         }
-        catch (Exception e)
+        catch
         {
             LogSystem.Error("graph 没有初始化，为null");
         }
@@ -208,7 +208,7 @@ public class AnimationCom : MonoBehaviour, IComponent, IRequire<Animator>
         {
             graph.Stop();
         }
-        catch (Exception e)
+        catch
         {
             LogSystem.Error("graph 没有初始化，为null");
         }

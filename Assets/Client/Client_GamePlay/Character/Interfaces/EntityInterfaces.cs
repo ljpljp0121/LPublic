@@ -6,6 +6,10 @@ public interface IComponent
     void Init();
 }
 
+public interface ISkillComponent : IComponent
+{
+}
+
 
 public interface IUpdatable
 {

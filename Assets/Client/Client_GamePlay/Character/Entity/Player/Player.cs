@@ -11,7 +11,7 @@ public class Player : MonoBehaviour, IComponent, IStateMachineOwner,IUpdatable, 
     private SkillPlayerCom skillPlayerCom;
 
     #region 组件初始化
-
+    
     public void SetDependency(AnimationCom dependency) => aniCom = dependency;
 
     public void SetDependency(SkillPlayerCom dependency) => skillPlayerCom = dependency;

@@ -4,7 +4,7 @@ using cfg.Skill;
 using UnityEngine;
 
 public class SkillPlayerCom : MonoBehaviour, IComponent, IUpdatable, IRequire<AnimationCom>,
-    IRequire<IEnumerable<WeaponController>>
+    IRequire<IEnumerable<WeaponController>>, IRequire<SkillBehaviorCom>
 {
     #region 变量
 
@@ -20,11 +20,14 @@ public class SkillPlayerCom : MonoBehaviour, IComponent, IUpdatable, IRequire<An
 
     #region 组件
 
+    private SkillBehaviorCom skillBehaviorCom;
     private AnimationCom animComp;
     private readonly Dictionary<string, WeaponController> weaponDic = new Dictionary<string, WeaponController>();
     public Dictionary<string, WeaponController> WeaponDic => weaponDic;
     public LayerMask ColliderLayer;
     public void SetDependency(AnimationCom dependency) => animComp = dependency;
+
+    public void SetDependency(SkillBehaviorCom dependency) => skillBehaviorCom = dependency;
 
     public void SetDependency(IEnumerable<WeaponController> dependency)
     {
@@ -56,6 +59,9 @@ public class SkillPlayerCom : MonoBehaviour, IComponent, IUpdatable, IRequire<An
 
     #endregion
 
+    /// <summary>
+    /// 播放技能
+    /// </summary>
     public void PlaySkillClip(int clipId)
     {
         SkillClip clip = TableSystem.GetVOData<TbSkillClip>().Get(clipId);
@@ -122,6 +128,7 @@ public class SkillPlayerCom : MonoBehaviour, IComponent, IUpdatable, IRequire<An
             }
             PoolSystem.PushObject(animClip, animEvent.AnimationClip);
             animComp.PlaySingleAnimation(animClip, 1, true, animEvent.TransitionTime);
+            animComp.SetRootMotionAction(skillBehaviorCom.OnRootMotion);
         }
     }
 
