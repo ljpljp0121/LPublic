@@ -235,6 +235,7 @@ public class AudioModule : MonoBehaviour
 
         bgAudioSource.clip = clip;
         bgAudioSource.Play();
+        LogSystem.Log($"开始播放背景音乐: {clip.name}");
         currTime = 0;
         // 提高音量，也就是淡入
         while (currTime < fadeInTime)
@@ -359,8 +360,9 @@ public class AudioModule : MonoBehaviour
         }
         // 播放一次音效
         audioSource.PlayOneShot(clip, volumeScale);
+        LogSystem.Log($"播放音效：{clip.name}");
         // 播放器回收以及回调函数
-        callBack += () => PlayOverRemoveOwnerDestroyAction(component); // 播放结束时移除宿主销毁Action
+        callBack += () => PlayOverRemoveOwnerDestroyAction(component);
         RecycleAudioPlay(audioSource, clip, callBack);
     }
 
@@ -385,6 +387,7 @@ public class AudioModule : MonoBehaviour
 
         // 播放一次音效
         audioSource.PlayOneShot(clip, volumeScale);
+        LogSystem.Log($"播放音效：{clip.name}");
         // 播放器回收以及回调函数
         RecycleAudioPlay(audioSource, clip, callBack);
     }

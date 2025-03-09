@@ -127,7 +127,7 @@ public class AnimationCom : MonoBehaviour, IComponent, IRequire<Animator>
         this.speed = speed;
         currentNode = singleAnimationNode;
         if (graph.IsPlaying() == false) graph.Play();
-        Debug.Log($"开始播放动画: {animationClip.name}");
+        LogSystem.Log($"开始播放动画: {animationClip.name}");
     }
 
     /// <summary>

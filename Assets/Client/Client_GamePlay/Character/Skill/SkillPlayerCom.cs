@@ -37,9 +37,7 @@ public class SkillPlayerCom : MonoBehaviour, IComponent, IUpdatable, IRequire<An
         }
     }
 
-    public void Init()
-    {
-    }
+    public void Init() { }
 
     public void OnUpdate()
     {
@@ -103,6 +101,9 @@ public class SkillPlayerCom : MonoBehaviour, IComponent, IUpdatable, IRequire<An
     {
         if (skillClip.CustomEvent.TryGetValue(currentFrameIndex, out SkillCustomEvent customEvent))
         {
+            customEvent = skillBehaviorCom.BeforeSkillCustomEvent(customEvent);
+            if (customEvent != null)
+                skillBehaviorCom.AfterSkillCustomEvent(customEvent);
         }
     }
 
@@ -116,6 +117,7 @@ public class SkillPlayerCom : MonoBehaviour, IComponent, IUpdatable, IRequire<An
 
         if (skillClip.AnimationEvent.TryGetValue(currentFrameIndex, out var animEvent))
         {
+            animEvent = skillBehaviorCom.BeforeSkillAnimationEvent(animEvent);
             AnimationClip animClip = PoolSystem.GetObject<AnimationClip>(animEvent.AnimationClip);
             if (animClip == null)
             {
@@ -129,6 +131,7 @@ public class SkillPlayerCom : MonoBehaviour, IComponent, IUpdatable, IRequire<An
             PoolSystem.PushObject(animClip, animEvent.AnimationClip);
             animComp.PlaySingleAnimation(animClip, 1, true, animEvent.TransitionTime);
             animComp.SetRootMotionAction(skillBehaviorCom.OnRootMotion);
+            skillBehaviorCom.AfterSkillAnimationEvent(animEvent);
         }
     }
 
@@ -139,6 +142,8 @@ public class SkillPlayerCom : MonoBehaviour, IComponent, IUpdatable, IRequire<An
             SkillAudioEvent audioEvent = skillClip.AudioEvent[i];
             if (audioEvent != null && audioEvent.FrameIndex == currentFrameIndex)
             {
+                audioEvent = skillBehaviorCom.BeforeSkillAudioEvent(audioEvent);
+                if (audioEvent == null) return;
                 AudioClip audioClip = PoolSystem.GetObject<AudioClip>(audioEvent.AudioClip);
                 if (audioClip == null)
                 {
@@ -151,6 +156,7 @@ public class SkillPlayerCom : MonoBehaviour, IComponent, IUpdatable, IRequire<An
                 }
                 PoolSystem.PushObject(audioClip, audioEvent.AudioClip);
                 AudioSystem.PlayBgAudio(audioClip);
+                skillBehaviorCom.AfterSkillAudioEvent(audioEvent);
             }
         }
     }
@@ -162,6 +168,8 @@ public class SkillPlayerCom : MonoBehaviour, IComponent, IUpdatable, IRequire<An
             SkillEffectEvent effectEvent = skillClip.EffectEvent[i];
             if (effectEvent.EffectPrefab != null && effectEvent.FrameIndex == currentFrameIndex)
             {
+                effectEvent = skillBehaviorCom.BeforeSkillEffectEvent(effectEvent);
+                if (effectEvent == null) return;
                 GameObject effectObj = PoolSystem.GetGameObject(effectEvent.EffectPrefab);
                 if (effectObj == null)
                 {
@@ -177,11 +185,13 @@ public class SkillPlayerCom : MonoBehaviour, IComponent, IUpdatable, IRequire<An
                 effectObj.transform.position = ModelTransform.TransformPoint(effectEvent.Position);
                 effectObj.transform.rotation = Quaternion.Euler(ModelTransform.eulerAngles + effectEvent.Rotation);
                 effectObj.transform.localScale = effectEvent.Scale;
+                LogSystem.Log($"特效{effectEvent.EffectPrefab}创建成功");
                 if (effectEvent.AutoDestroy)
                 {
                     MonoSystem.BeginCoroutine(AutoDestroyEffectObj((float)effectEvent.Duration / skillClip.FrameRate,
                         effectObj, effectEvent.EffectPrefab));
                 }
+                skillBehaviorCom.AfterSkillEffectEvent(effectEvent);
             }
         }
     }
@@ -197,13 +207,17 @@ public class SkillPlayerCom : MonoBehaviour, IComponent, IUpdatable, IRequire<An
 #if UNITY_EDITOR
         if (IsDrawCollider) curColliderList.Clear();
 #endif
-        foreach (var colliderEvent in skillClip.ColliderEvent)
+        for (var i = 0; i < skillClip.ColliderEvent.Count; i++)
         {
+            var colliderEvent = skillClip.ColliderEvent[i];
             if (colliderEvent == null)
             {
                 return;
             }
+            if (colliderEvent.FrameIndex == currentFrameIndex)
+                colliderEvent = skillBehaviorCom.BeforeSkillColliderEvent(colliderEvent);
 
+            if (colliderEvent == null) return;
             if (colliderEvent.ColliderData is WeaponCollider weaponCollider)
             {
                 if (colliderEvent.FrameIndex == currentFrameIndex)
@@ -235,10 +249,9 @@ public class SkillPlayerCom : MonoBehaviour, IComponent, IUpdatable, IRequire<An
                     if (colliders == null || colliders.Length == 0) break;
                     for (int ii = 0; ii < colliders.Length; ii++)
                     {
-                        if (colliders[ii] != null)
-                        {
-                        }
+                        if (colliders[ii] != null) { }
                     }
+                    LogSystem.Log($"检测到{colliders.Length}个碰撞体");
                 }
             }
 #if UNITY_EDITOR
@@ -251,6 +264,8 @@ public class SkillPlayerCom : MonoBehaviour, IComponent, IUpdatable, IRequire<An
                 }
             }
 #endif
+            if (colliderEvent.FrameIndex + colliderEvent.DurationFrame == currentFrameIndex)
+                skillBehaviorCom.AfterSkillColliderEvent(colliderEvent);
         }
     }
 
