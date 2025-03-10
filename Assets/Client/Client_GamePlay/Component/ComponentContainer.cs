@@ -7,7 +7,13 @@ using System.Linq;
 /// </summary>
 public class ComponentContainer
 {
+    /// <summary>
+    /// 组件字典
+    /// </summary>
     private readonly Dictionary<Type, List<object>> componentsDic = new();
+    /// <summary>
+    /// 接口映射 key:接口类型 value:实现类型
+    /// </summary>
     private readonly Dictionary<Type, List<Type>> interfaceMap = new();
 
     /// <summary>
