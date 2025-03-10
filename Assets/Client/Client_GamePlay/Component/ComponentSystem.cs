@@ -170,6 +170,9 @@ public class ComponentSystem : MonoBehaviour
         target = target ?? gameObject;
         var comp = target.AddComponent<T>();
         OrderComponent(comp);
+        container.Register(comp);
+        DependencyInjector.InjectDependencies(comp, container);
+        comp.Init();
         return comp;
     }
 
@@ -191,5 +194,3 @@ public class ComponentSystem : MonoBehaviour
 
     #endregion
 }
-
-

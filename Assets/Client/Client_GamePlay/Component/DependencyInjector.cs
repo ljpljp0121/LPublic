@@ -8,21 +8,24 @@ using System.Linq;
 /// </summary>
 public static class DependencyInjector
 {
-    private static readonly Dictionary<Type, Action<object, ComponentContainer>> _cache = new();
+    private static readonly Dictionary<Type, Action<object, ComponentContainer>> Cache = new();
 
     public static void InjectDependencies(IComponent component, ComponentContainer container)
     {
         var type = component.GetType();
 
-        if (!_cache.TryGetValue(type, out var injector))
+        if (!Cache.TryGetValue(type, out var injector))
         {
             injector = CreateInjector(type);
-            _cache[type] = injector;
+            Cache[type] = injector;
         }
 
         injector(component, container);
     }
 
+    /// <summary>
+    /// 注入依赖器
+    /// </summary>
     private static Action<object, ComponentContainer> CreateInjector(Type componentType)
     {
         var injectActions = new List<Action<object, ComponentContainer>>();
