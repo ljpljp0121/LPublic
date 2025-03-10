@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 
 /// <summary>
 /// 依赖注入器
@@ -9,18 +10,41 @@ using System.Linq;
 public static class DependencyInjector
 {
     private static readonly Dictionary<Type, Action<object, ComponentContainer>> Cache = new();
+    private static readonly ThreadLocal<Stack<Type>> _currentInjectionStack = new(() => new Stack<Type>());
 
     public static void InjectDependencies(IComponent component, ComponentContainer container)
     {
-        var type = component.GetType();
+        var stack = _currentInjectionStack.Value;
+        var componentType = component.GetType();
 
-        if (!Cache.TryGetValue(type, out var injector))
+        if (stack.Contains(componentType))
         {
-            injector = CreateInjector(type);
-            Cache[type] = injector;
+            LogSystem.Log($"检测到循环依赖: {string.Join(" -> ", stack)} -> {componentType}");
         }
 
-        injector(component, container);
+        stack.Push(componentType);
+
+        try
+        {
+            var type = component.GetType();
+
+            if (!Cache.TryGetValue(type, out var injector))
+            {
+                injector = CreateInjector(type);
+                Cache[type] = injector;
+            }
+
+            injector(component, container);
+        }
+        catch (Exception e)
+        {
+            LogSystem.Error(e);
+            throw;
+        }
+        finally
+        {
+            stack.Pop();
+        }
     }
 
     /// <summary>

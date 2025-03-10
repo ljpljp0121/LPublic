@@ -261,6 +261,11 @@ public static class AssetSystem
     public static T LoadAsset<T>(string assetName) where T : UnityEngine.Object
     {
         AssetHandle handle = YooAssets.LoadAssetSync<T>($"{assetPath}{assetName}");
+        if (handle?.AssetObject == null)
+        {
+            LogSystem.Error($"加载资源失败: {assetName}");
+            return null;
+        }
         return handle.AssetObject as T;
     }
 
@@ -270,10 +275,15 @@ public static class AssetSystem
     /// <typeparam name="T">资源类型</typeparam>
     /// <param name="assetName">AB资源名称</param>
     /// <param name="callBack">回调函数</param>
-    public static void LoadAssetAsync<T>(string assetName, Action<T> callback) where T : UnityEngine.Object
+    public static void LoadAssetAsync<T>(string assetName, Action<T> callBack) where T : UnityEngine.Object
     {
         AssetHandle handle = YooAssets.LoadAssetAsync<T>($"{assetPath}{assetName}");
-        handle.Completed += (obj) => { callback?.Invoke(obj.AssetObject as T); };
+        if (handle?.AssetObject == null)
+        {
+            LogSystem.Error($"加载资源失败: {assetName}");
+            return;
+        }
+        handle.Completed += (obj) => { callBack?.Invoke(obj.AssetObject as T); };
     }
 
     private static void OnLoadAssetAsyncCompleted<T>(AsyncOperationHandle<T> handle, Action<T> callback)
