@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using cfg.Skill;
 using UnityEngine;
+using static Codice.CM.WorkspaceServer.DataStore.WkTree.WriteWorkspaceTree;
 
 public class SkillBehaviorCom : MonoBehaviour, IComponent, IRequire<IEnumerable<ISkillComponent>>,
     IRequire<AnimationCom>
@@ -28,22 +29,58 @@ public class SkillBehaviorCom : MonoBehaviour, IComponent, IRequire<IEnumerable<
     /// <summary>
     /// 技能片段开始时调用
     /// </summary>
-    public void OnSkillClipStart() { }
+    public void OnSkillClipStart()
+    {
+        foreach (ISkillComponent component in skillComponents)
+        {
+            if (component is ISkillClipStart c)
+            {
+                c.OnSkillClipStart();
+            }
+        }
+    }
 
     /// <summary>
     /// 技能片段结束时会调用
     /// </summary>
-    public void OnSkillClipEnd() { }
+    public void OnSkillClipEnd()
+    {
+        foreach (ISkillComponent component in skillComponents)
+        {
+            if (component is ISkillClipEnd c)
+            {
+                c.OnSkillClipEnd();
+            }
+        }
+    }
 
     /// <summary>
     /// 驱动技能时调用,技能运行时每一帧都会调用
     /// </summary>
-    public void OnTickSkill(int frameIndex) { }
+    public void OnTickSkill(int frameIndex)
+    {
+        foreach (ISkillComponent component in skillComponents)
+        {
+            if (component is ISkillTick c)
+            {
+                c.OnTickSkill(frameIndex);
+            }
+        }
+    }
 
     /// <summary>
     /// 当攻击范围检测命中时调用
     /// </summary>
-    public void OnAttackTrigger(Collider collider) { }
+    public void OnAttackTrigger(Collider collider)
+    {
+        foreach (ISkillComponent component in skillComponents)
+        {
+            if (component is ISkillAttackTrigger c)
+            {
+                c.OnAttackTrigger(collider);
+            }
+        }
+    }
 
     /// <summary>
     /// 在自定义事件调用前调用
@@ -52,6 +89,13 @@ public class SkillBehaviorCom : MonoBehaviour, IComponent, IRequire<IEnumerable<
     public SkillCustomEvent BeforeSkillCustomEvent(SkillCustomEvent customEvent)
     {
         LogSystem.Log("BeforeSkillCustomEvent");
+        foreach (ISkillComponent component in skillComponents)
+        {
+            if (component is ISkillBeforeCustomEvent c)
+            {
+                c.BeforeSkillCustomEvent(customEvent);
+            }
+        }
         return customEvent;
     }
 
@@ -62,6 +106,13 @@ public class SkillBehaviorCom : MonoBehaviour, IComponent, IRequire<IEnumerable<
     public SkillAnimationEvent BeforeSkillAnimationEvent(SkillAnimationEvent animationEvent)
     {
         LogSystem.Log("BeforeSkillAnimationEvent");
+        foreach (ISkillComponent component in skillComponents)
+        {
+            if (component is ISkillBeforeAnimationEvent c)
+            {
+                c.BeforeSkillAnimationEvent(animationEvent);
+            }
+        }
         return animationEvent;
     }
 
@@ -72,6 +123,13 @@ public class SkillBehaviorCom : MonoBehaviour, IComponent, IRequire<IEnumerable<
     public SkillAudioEvent BeforeSkillAudioEvent(SkillAudioEvent audioEvent)
     {
         LogSystem.Log("BeforeSkillAudioEvent");
+        foreach (ISkillComponent component in skillComponents)
+        {
+            if (component is ISkillBeforeAudioEvent c)
+            {
+                c.BeforeSkillAudioEvent(audioEvent);
+            }
+        }
         return audioEvent;
     }
 
@@ -82,6 +140,13 @@ public class SkillBehaviorCom : MonoBehaviour, IComponent, IRequire<IEnumerable<
     public SkillColliderEvent BeforeSkillColliderEvent(SkillColliderEvent colliderEvent)
     {
         LogSystem.Log("BeforeSkillColliderEvent");
+        foreach (ISkillComponent component in skillComponents)
+        {
+            if (component is ISkillBeforeColliderEvent c)
+            {
+                c.BeforeSkillColliderEvent(colliderEvent);
+            }
+        }
         return colliderEvent;
     }
 
@@ -92,6 +157,13 @@ public class SkillBehaviorCom : MonoBehaviour, IComponent, IRequire<IEnumerable<
     public SkillEffectEvent BeforeSkillEffectEvent(SkillEffectEvent effectEvent)
     {
         LogSystem.Log("BeforeSkillEffectEvent");
+        foreach (ISkillComponent component in skillComponents)
+        {
+            if (component is ISkillBeforeEffectEvent c)
+            {
+                c.BeforeSkillEffectEvent(effectEvent);
+            }
+        }
         return effectEvent;
     }
 
@@ -112,6 +184,14 @@ public class SkillBehaviorCom : MonoBehaviour, IComponent, IRequire<IEnumerable<
         {
             canRotate = false;
         }
+
+        foreach (ISkillComponent component in skillComponents)
+        {
+            if (component is ISkillAfterCustomEvent c)
+            {
+                c.AfterSkillCustomEvent(customEvent);
+            }
+        }
     }
 
     /// <summary>
@@ -121,6 +201,13 @@ public class SkillBehaviorCom : MonoBehaviour, IComponent, IRequire<IEnumerable<
     public void AfterSkillAnimationEvent(SkillAnimationEvent animationEvent)
     {
         LogSystem.Log("AfterSkillAnimationEvent");
+        foreach (ISkillComponent component in skillComponents)
+        {
+            if (component is ISkillAfterAnimationEvent c)
+            {
+                c.AfterSkillAnimationEvent(animationEvent);
+            }
+        }
     }
 
     /// <summary>
@@ -130,6 +217,13 @@ public class SkillBehaviorCom : MonoBehaviour, IComponent, IRequire<IEnumerable<
     public void AfterSkillAudioEvent(SkillAudioEvent audioEvent)
     {
         LogSystem.Log("AfterSkillAudioEvent");
+        foreach (ISkillComponent component in skillComponents)
+        {
+            if (component is ISkillAfterAudioEvent c)
+            {
+                c.AfterSkillAudioEvent(audioEvent);
+            }
+        }
     }
 
     /// <summary>
@@ -139,6 +233,13 @@ public class SkillBehaviorCom : MonoBehaviour, IComponent, IRequire<IEnumerable<
     public void AfterSkillColliderEvent(SkillColliderEvent colliderEvent)
     {
         LogSystem.Log("AfterSkillColliderEvent");
+        foreach (ISkillComponent component in skillComponents)
+        {
+            if (component is ISkillAfterColliderEvent c)
+            {
+                c.AfterSkillColliderEvent(colliderEvent);
+            }
+        }
     }
 
     /// <summary>
@@ -148,12 +249,26 @@ public class SkillBehaviorCom : MonoBehaviour, IComponent, IRequire<IEnumerable<
     public virtual void AfterSkillEffectEvent(SkillEffectEvent effectEvent)
     {
         LogSystem.Log("AfterSkillEffectEvent");
+        foreach (ISkillComponent component in skillComponents)
+        {
+            if (component is ISkillAfterEffectEvent c)
+            {
+                c.AfterSkillEffectEvent(effectEvent);
+            }
+        }
     }
 
     public void OnRootMotion(Vector3 deltaPosition, Quaternion deltaRotation)
     {
         animCom.transform.rotation *= deltaRotation;
         characterController.Move(deltaPosition);
+        foreach (ISkillComponent component in skillComponents)
+        {
+            if (component is IRootMotion c)
+            {
+                c.OnRootMotion(deltaPosition, deltaRotation);
+            }
+        }
     }
 
     #endregion
