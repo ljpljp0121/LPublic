@@ -3,7 +3,6 @@ using System.Linq;
 using cfg.Skill;
 using UnityEngine;
 
-[RequireComponent(typeof(AnimationCom))]
 public class SkillBehaviorCom : MonoBehaviour, IComponent, IRequire<IEnumerable<ISkillComponent>>,
     IRequire<AnimationCom>
 {
@@ -15,7 +14,7 @@ public class SkillBehaviorCom : MonoBehaviour, IComponent, IRequire<IEnumerable<
 
     public void SetDependency(AnimationCom dependency) => animCom = dependency;
 
-    public void SetDependency(IEnumerable<ISkillComponent> dependency) =>
+    public void SetDependency(IEnumerable<ISkillComponent> dependency) =>   
         skillComponents = dependency.OrderByDescending(skillCom => skillCom.Order);
 
     public void Init()

@@ -36,6 +36,7 @@ public interface IRequire<T> where T : class
 
 public interface ISkillComponent : IComponent
 {
+    public int Order { get; }
 }
 
 public interface ISkillClipStart
