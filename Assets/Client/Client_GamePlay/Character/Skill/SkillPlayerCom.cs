@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using cfg.Skill;
 using UnityEngine;
 
+[RequireComponent(typeof(AnimationCom))]
 public class SkillPlayerCom : MonoBehaviour, IComponent, IUpdatable, IRequire<AnimationCom>,
     IRequire<IEnumerable<WeaponController>>, IRequire<SkillBehaviorCom>
 {

@@ -7,7 +7,8 @@ using UnityEngine.Playables;
 
 
 [InitializeOrder(100)]
-public class AnimationCom : MonoBehaviour, IComponent, IRequire<Animator>
+[RequireComponent(typeof(Animator))]
+public class AnimationCom : MonoBehaviour, IComponent
 {
     public Transform ModelTransform => this.transform;
 
@@ -33,12 +34,9 @@ public class AnimationCom : MonoBehaviour, IComponent, IRequire<Animator>
         }
     }
 
-    public void SetDependency(Animator dependency) => animator = dependency;
-
     public void Init()
     {
-        if (animator == null)
-            animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
         // 创建图
         graph = PlayableGraph.Create("AnimationPlayer");
         // 设置图的时间模式

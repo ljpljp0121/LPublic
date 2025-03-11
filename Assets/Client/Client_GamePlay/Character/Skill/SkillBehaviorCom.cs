@@ -1,10 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using cfg.Skill;
 using UnityEngine;
-using static Codice.CM.WorkspaceServer.DataStore.WkTree.WriteWorkspaceTree;
 
+[RequireComponent(typeof(AnimationCom))]
 public class SkillBehaviorCom : MonoBehaviour, IComponent, IRequire<IEnumerable<ISkillComponent>>,
     IRequire<AnimationCom>
 {
@@ -17,7 +16,7 @@ public class SkillBehaviorCom : MonoBehaviour, IComponent, IRequire<IEnumerable<
     public void SetDependency(AnimationCom dependency) => animCom = dependency;
 
     public void SetDependency(IEnumerable<ISkillComponent> dependency) =>
-        skillComponents = dependency;
+        skillComponents = dependency.OrderByDescending(skillCom => skillCom.Order);
 
     public void Init()
     {
