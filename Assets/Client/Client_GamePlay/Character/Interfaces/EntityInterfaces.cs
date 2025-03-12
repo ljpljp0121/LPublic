@@ -9,6 +9,11 @@ public interface IComponent
     void Init();
 }
 
+public interface IEnabled
+{
+    bool IsEnable { get; set; }
+}
+
 public interface IUpdatable
 {
     void OnUpdate();

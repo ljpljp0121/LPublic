@@ -2,32 +2,42 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class InputReader : MonoBehaviour, GameInput.IGamePlayActions, GameInput.IUIActions
+public class InputManager : Singleton<InputManager>, GameInput.IGamePlayActions, GameInput.IUIActions
 {
-    private GameInput gameInput;
+    #region 初始化
 
-    private void Awake()
+    private GameInput gameInput;
+    private bool isInitialized;
+
+    public void Init()
     {
-        if (gameInput == null)
-        {
-            gameInput = new GameInput();
-        }
+        if (isInitialized) return;
+        gameInput = new GameInput();
         gameInput.GamePlay.SetCallbacks(this);
         gameInput.UI.SetCallbacks(this);
         SetGamePlay();
     }
 
-    public void SetGamePlay()
+    public void UnInit()
+    {
+        gameInput?.Dispose();
+        instance = null;
+    }
+
+    private void SetGamePlay()
     {
         gameInput.GamePlay.Enable();
         gameInput.UI.Disable();
     }
 
-    public void SetUI()
+    private void SetUI()
     {
         gameInput.UI.Enable();
         gameInput.GamePlay.Disable();
     }
+
+    #endregion
+
 
     public event Action<Vector2> MoveEvent;
     public event Action FlashEvent;

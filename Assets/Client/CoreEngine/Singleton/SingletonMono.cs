@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class SingletonMono<T> : MonoBehaviour where T : SingletonMono<T>
 {
-    private static T instance;
+    protected static T instance;
 
     public static T Instance
     {

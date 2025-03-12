@@ -4,11 +4,12 @@ using cfg.Skill;
 using UnityEngine;
 
 public class SkillPlayerCom : MonoBehaviour, IComponent, IUpdatable, IRequire<AnimationCom>,
-    IRequire<IEnumerable<WeaponController>>, IRequire<SkillBehaviorCom>
+    IRequire<IEnumerable<WeaponController>>, IRequire<SkillBehaviorCom>, IEnabled
 {
     #region 变量
 
     public bool IsPlaying { get; private set; }
+    public bool IsEnable { get; set; }
     public Transform ModelTransform => animComp.ModelTransform;
 
     private int currentFrameIndex;
@@ -37,7 +38,10 @@ public class SkillPlayerCom : MonoBehaviour, IComponent, IUpdatable, IRequire<An
         }
     }
 
-    public void Init() { }
+    public void Init()
+    {
+        IsEnable = true;
+    }
 
     public void OnUpdate()
     {
@@ -62,6 +66,7 @@ public class SkillPlayerCom : MonoBehaviour, IComponent, IUpdatable, IRequire<An
     /// </summary>
     public void PlaySkillClip(int clipId)
     {
+        if (!IsEnable) return;
         SkillClip clip = TableSystem.GetVOData<TbSkillClip>().Get(clipId);
         if (clip == null)
         {
@@ -73,6 +78,7 @@ public class SkillPlayerCom : MonoBehaviour, IComponent, IUpdatable, IRequire<An
 
     public void PlaySkillClip(SkillClip clip)
     {
+        if (!IsEnable) return;
         this.skillClip = clip;
         currentFrameIndex = -1;
         frameRate = skillClip.FrameRate;
@@ -291,4 +297,5 @@ public class SkillPlayerCom : MonoBehaviour, IComponent, IUpdatable, IRequire<An
 #endif
 
     #endregion
+
 }
