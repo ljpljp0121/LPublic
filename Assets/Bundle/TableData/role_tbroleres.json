@@ -1,0 +1,28 @@
+[
+  {
+    "Id": 1001,
+    "Name": "星见雅",
+    "Prefab": "Prefab/Role/星见雅",
+    "HeadIcon": "111",
+    "AnimationClips": [
+      [
+        "move",
+        "Animation/Move"
+      ],
+      [
+        "rush",
+        "Animation/Rush"
+      ]
+    ],
+    "AudioClips": [
+      [
+        "111",
+        "222"
+      ],
+      [
+        "333",
+        "444"
+      ]
+    ]
+  }
+]

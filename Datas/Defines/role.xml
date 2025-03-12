@@ -1,0 +1,14 @@
+<module name="role">
+
+    <!-- 角色资源 -->
+    <bean name="RoleRes">
+        <var name="Id" type="int" alias="ID"/>
+        <var name="Name" type="string" alias="名字"/>
+        <var name="Prefab" type="string" alias="预制体"/>
+        <var name="HeadIcon" type="string" alias="人物图标"/>
+        <var name="AnimationClips" type="map,string,string" alias="动画片段"/>
+        <var name="AudioClips" type="map,string,string" alias="音频片段"/>
+    </bean>
+
+    <table name="TbRoleRes" index="Id" value="RoleRes" input="RoleRes.xlsx"/>
+</module>

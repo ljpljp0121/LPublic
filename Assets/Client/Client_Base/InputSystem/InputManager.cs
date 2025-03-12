@@ -1,4 +1,5 @@
 using System;
+using cfg.role;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -54,6 +55,7 @@ public class InputManager : Singleton<InputManager>, GameInput.IGamePlayActions,
     /// </summary>
     public void OnMove(InputAction.CallbackContext context)
     {
+        LogSystem.Log($"Phase:{context.phase} Move:{context.ReadValue<Vector2>()}");
         MoveEvent?.Invoke(context.ReadValue<Vector2>());
     }
 
@@ -62,6 +64,7 @@ public class InputManager : Singleton<InputManager>, GameInput.IGamePlayActions,
     /// </summary>
     public void OnFlash(InputAction.CallbackContext context)
     {
+        LogSystem.Log($"Phase:{context.phase} Flash:{context.ReadValue<Vector2>()}");
         if (context.phase == InputActionPhase.Started)
         {
             FlashEvent?.Invoke();
@@ -73,6 +76,7 @@ public class InputManager : Singleton<InputManager>, GameInput.IGamePlayActions,
     /// </summary>    
     public void OnMenu(InputAction.CallbackContext context)
     {
+        LogSystem.Log($"Phase:{context.phase} Menu:{context.ReadValue<Vector2>()}");
         LogSystem.Log($"Phase:{context.phase} Menu:{context.ReadValue<Vector2>()}");
         if (context.phase == InputActionPhase.Started)
         {
@@ -86,6 +90,7 @@ public class InputManager : Singleton<InputManager>, GameInput.IGamePlayActions,
     /// </summary>
     public void OnInfo(InputAction.CallbackContext context)
     {
+        LogSystem.Log($"Phase:{context.phase} Info:{context.ReadValue<Vector2>()}");
         if (context.phase == InputActionPhase.Started)
         {
             InfoEvent?.Invoke();
@@ -101,6 +106,7 @@ public class InputManager : Singleton<InputManager>, GameInput.IGamePlayActions,
     /// </summary>
     public void OnCommonAttack(InputAction.CallbackContext context)
     {
+        LogSystem.Log($"Phase:{context.phase} CommonAttack:{context.ReadValue<Vector2>()}");
         if (context.phase == InputActionPhase.Started)
         {
             CommonAttackEvent?.Invoke();
@@ -112,6 +118,7 @@ public class InputManager : Singleton<InputManager>, GameInput.IGamePlayActions,
     /// </summary>
     public void OnCommonSkill(InputAction.CallbackContext context)
     {
+        LogSystem.Log($"Phase:{context.phase} CommonSkill:{context.ReadValue<Vector2>()}");
         if (context.phase == InputActionPhase.Started)
         {
             CommonSkillEvent?.Invoke();
@@ -123,6 +130,7 @@ public class InputManager : Singleton<InputManager>, GameInput.IGamePlayActions,
     /// </summary>
     public void OnUltimateSkill(InputAction.CallbackContext context)
     {
+        LogSystem.Log($"Phase:{context.phase} UltimateSkill:{context.ReadValue<Vector2>()}");
         if (context.phase == InputActionPhase.Started)
         {
             UltimateSkillEvent?.Invoke();
@@ -134,6 +142,7 @@ public class InputManager : Singleton<InputManager>, GameInput.IGamePlayActions,
     /// </summary>
     public void OnResume(InputAction.CallbackContext context)
     {
+        LogSystem.Log($"Phase:{context.phase} Resume:{context.ReadValue<Vector2>()}");
         if (context.phase == InputActionPhase.Started)
         {
             ResumeEvent?.Invoke();
