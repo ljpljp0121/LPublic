@@ -36,6 +36,9 @@ public interface IRequire<T> where T : class
 
 public interface ISkillComponent : IComponent
 {
+    /// <summary>
+    /// Order越大，优先级越高
+    /// </summary>
     public int Order { get; }
 }
 
