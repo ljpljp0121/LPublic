@@ -1,12 +1,10 @@
 ﻿using UnityEngine;
 
-public class WeaponController : MonoBehaviour, IComponent, IRequire<SkillPlayerCom>
+public class WeaponController : MonoBehaviour, IComponent
 {
     public string WeaponName;
+    public LayerMask AttackLayer;
     private Collider weaponCollider;
-    private LayerMask attackLayer;
-
-    public void SetDependency(SkillPlayerCom dependency) => attackLayer = dependency.ColliderLayer;
 
     public void Init()
     {
@@ -26,7 +24,7 @@ public class WeaponController : MonoBehaviour, IComponent, IRequire<SkillPlayerC
 
     private void OnTriggerStay(Collider other)
     {
-        if ((attackLayer & 1 << other.gameObject.layer) > 0)
+        if ((AttackLayer & 1 << other.gameObject.layer) > 0)
         {
             Debug.Log("击中物体");
         }
