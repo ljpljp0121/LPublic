@@ -22,6 +22,11 @@ public class SkillBehaviorCom : MonoBehaviour, IComponent, IRequire<IEnumerable<
         characterController = GetComponent<CharacterController>();
     }
 
+    public void UnInit()
+    {
+
+    }
+
     #region 技能播放事件方法，用于在技能播放中操作技能
 
     /// <summary>

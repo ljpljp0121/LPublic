@@ -49,6 +49,18 @@ public class AnimationCom : MonoBehaviour, IComponent
         playableOutput.SetSourcePlayable(mixer);
     }
 
+    public void UnInit()
+    {
+        try
+        {
+            graph.Destroy();
+        }
+        catch
+        {
+            LogSystem.Error("graph 没有初始化，为null");
+        }
+    }
+
     private void DestroyNode(AnimationNodeBase node)
     {
         if (node != null)
@@ -186,18 +198,6 @@ public class AnimationCom : MonoBehaviour, IComponent
     public void SetBlendWeight(float clip1Weight)
     {
         (currentNode as BlendAnimationNode)?.SetBlendWeight(clip1Weight);
-    }
-
-    private void OnDestroy()
-    {
-        try
-        {
-            graph.Destroy();
-        }
-        catch
-        {
-            LogSystem.Error("graph 没有初始化，为null");
-        }
     }
 
     private void OnDisable()

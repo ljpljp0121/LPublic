@@ -188,6 +188,7 @@ public class ComponentSystem : MonoBehaviour
             fixedUpdatableList.Remove(component as IFixedUpdatable);
             lateUpdatableList.Remove(component as ILateUpdatable);
             container.Unregister(component);
+            component.UnInit();
             Destroy(mb);
         }
     }

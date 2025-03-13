@@ -7,6 +7,7 @@ using UnityEngine;
 public interface IComponent
 {
     void Init();
+    void UnInit();
 }
 
 public interface IEnabled

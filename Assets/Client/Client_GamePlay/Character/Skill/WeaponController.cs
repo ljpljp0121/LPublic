@@ -12,6 +12,11 @@ public class WeaponController : MonoBehaviour, IComponent
         weaponCollider.enabled = false;
     }
 
+    public void UnInit()
+    {
+        weaponCollider.enabled = false;
+    }
+
     public void StartDetection()
     {
         weaponCollider.enabled = true;

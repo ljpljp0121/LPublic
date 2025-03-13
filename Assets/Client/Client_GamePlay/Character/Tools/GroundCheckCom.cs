@@ -16,6 +16,11 @@ public class GroundCheckCom : MonoBehaviour, IComponent, IUpdatable
         controller = GetComponent<CharacterController>();
     }
 
+    public void UnInit()
+    {
+
+    }
+
     public void OnUpdate()
     {
         RaycastHit hit;

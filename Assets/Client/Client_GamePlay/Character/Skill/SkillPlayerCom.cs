@@ -43,6 +43,11 @@ public class SkillPlayerCom : MonoBehaviour, IComponent, IUpdatable, IRequire<An
         IsEnable = true;
     }
 
+    public void UnInit()
+    {
+        IsEnable = false;
+    }
+
     public void OnUpdate()
     {
         if (!IsPlaying) return;
