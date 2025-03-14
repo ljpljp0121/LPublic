@@ -10,6 +10,7 @@ public class DownloadPackageFiles : StateBase
 {
     public override void Enter()
     {
+        StartLoading.Open();
         MonoSystem.BeginCoroutine(BeginDownload());
     }
 

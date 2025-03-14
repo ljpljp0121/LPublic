@@ -10,5 +10,6 @@ public class UpdaterDone : StateBase
     public override void Enter()
     {
         owner.SetFinish();
+        StartLoading.Close();
     }
 }

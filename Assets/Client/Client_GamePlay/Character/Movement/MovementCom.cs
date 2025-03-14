@@ -6,6 +6,8 @@ public class MovementCom : MonoBehaviour, IComponent, IEnabled, IRequire<Animati
     private AnimationCom animCom;
     private CharacterController characterController;
 
+    private bool isWalk = false;
+
     public bool IsEnable { get; set; }
     public void SetDependency(AnimationCom dependency) => animCom = dependency;
 
@@ -33,7 +35,21 @@ public class MovementCom : MonoBehaviour, IComponent, IEnabled, IRequire<Animati
 
     private void OnMove(Vector2 direction)
     {
-        Debug.Log("移动");
+        if (!IsEnable)
+            return;
+        Vector3 input = new Vector3(direction.x, 0, direction.y);
+        if (direction is { x: 0, y: 0 })
+        {
+            animCom.PlaySingleAnimation(default);
+        }
+        if (!isWalk)
+        {
+            animCom.PlaySingleAnimation(default);
+        }
+        else
+        {
+            animCom.PlaySingleAnimation(default);
+        }
     }
 
     private void OnFlash()

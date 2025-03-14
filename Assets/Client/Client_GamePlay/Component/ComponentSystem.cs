@@ -23,15 +23,13 @@ public class ComponentSystem : MonoBehaviour
     private List<IFixedUpdatable> fixedUpdatableList = new();
     private List<ILateUpdatable> lateUpdatableList = new();
 
-    private void Awake() => Initialize();
-
     private void OnDestroy()
     {
         foreach (var c in components.ToArray())
             RemoveComponent(c);
     }
 
-    private void Initialize()
+    public void Initialize()
     {
         var foundComponents = GetComponentsInChildren<IComponent>(true)
             .OrderBy(GetComponentPriority)

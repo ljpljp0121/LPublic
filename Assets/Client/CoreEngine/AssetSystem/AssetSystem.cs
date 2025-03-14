@@ -2,9 +2,8 @@ using System;
 using System.Collections;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.Networking;
-using UnityEngine.ResourceManagement.AsyncOperations;
 using YooAsset;
 
 public static class AssetSystem
@@ -286,11 +285,20 @@ public static class AssetSystem
         handle.Completed += (obj) => { callBack?.Invoke(obj.AssetObject as T); };
     }
 
-    private static void OnLoadAssetAsyncCompleted<T>(AsyncOperationHandle<T> handle, Action<T> callback)
-        where T : UnityEngine.Object
+    public static Task<T> LoadAssetAsync<T>(string assetName) where T : UnityEngine.Object
     {
-        callback?.Invoke(handle.Result);
+        var tcs = new TaskCompletionSource<T>();
+
+        LoadAssetAsync<T>(assetName, obj =>
+        {
+            if (obj != null)
+                tcs.SetResult(obj);
+            else
+                tcs.SetException(new Exception($"加载失败: {assetName}"));
+        });
+        return tcs.Task;
     }
+
 
     /// <summary>
     /// 释放资源

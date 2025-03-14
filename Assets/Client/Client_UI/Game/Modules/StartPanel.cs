@@ -13,7 +13,6 @@ public class StartPanel : UIBehavior
         StartBtn.SetButton(OnStartBtnClick);
         ContinueBtn.SetButton(OnContinueBtnClick);
         QuitBtn.SetButton(OnQuitBtnClick);
-        StartLoading.Close();
     }
 
     private void OnStartBtnClick()
