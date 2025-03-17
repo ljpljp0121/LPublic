@@ -8,20 +8,20 @@ namespace GAS.Editor
     
     public class GASSettingAggregator : OdinMenuEditorWindow
     {
-        private static GASSettingAsset _settingAsset;
+        private static GASSettingAsset settingAsset;
 
-        private static GameplayTagsAsset _tagsAsset;
+        private static GameplayTagsAsset tagsAsset;
 
-        private static AttributeAsset _attributeAsset;
+        private static AttributeAsset attributeAsset;
 
-        private static AttributeSetAsset _attributeSetAsset;
+        private static AttributeSetAsset attributeSetAsset;
 
         private static GASSettingAsset SettingAsset
         {
             get
             {
-                if (_settingAsset == null) _settingAsset = GASSettingAsset.LoadOrCreate();
-                return _settingAsset;
+                if (settingAsset == null) settingAsset = GASSettingAsset.LoadOrCreate();
+                return settingAsset;
             }
         }
 
@@ -29,8 +29,8 @@ namespace GAS.Editor
         {
             get
             {
-                if (_tagsAsset == null) _tagsAsset = GameplayTagsAsset.LoadOrCreate();
-                return _tagsAsset;
+                if (tagsAsset == null) tagsAsset = GameplayTagsAsset.LoadOrCreate();
+                return tagsAsset;
             }
         }
 
@@ -38,8 +38,8 @@ namespace GAS.Editor
         {
             get
             {
-                if (_attributeAsset == null) _attributeAsset = AttributeAsset.LoadOrCreate();
-                return _attributeAsset;
+                if (attributeAsset == null) attributeAsset = AttributeAsset.LoadOrCreate();
+                return attributeAsset;
             }
         }
 
@@ -47,8 +47,8 @@ namespace GAS.Editor
         {
             get
             {
-                if (_attributeSetAsset == null) _attributeSetAsset = AttributeSetAsset.LoadOrCreate();
-                return _attributeSetAsset;
+                if (attributeSetAsset == null) attributeSetAsset = AttributeSetAsset.LoadOrCreate();
+                return attributeSetAsset;
             }
         }
 
