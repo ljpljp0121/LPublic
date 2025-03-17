@@ -154,6 +154,19 @@ MonoBehaviour:
         FilterRuleName: CollectAll
         AssetTags: 
         UserData: 
+    - GroupName: SOData
+      GroupDesc: "ScriptObject\u6570\u636E"
+      AssetTags: 
+      ActiveRuleName: EnableGroup
+      Collectors:
+      - CollectPath: Assets/Bundle/SOData
+        CollectorGUID: 25a3c0b0c0ac60f40bd10966507401e9
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
   - PackageName: DllPackage
     PackageDesc: "dll\u8D44\u6E90\u5305"
     EnableAddressable: 0
