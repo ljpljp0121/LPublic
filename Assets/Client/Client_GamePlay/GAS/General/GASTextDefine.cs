@@ -1,5 +1,8 @@
 ﻿namespace GAS.General
 {
+    /// <summary>
+    /// GAS所有的文本定义
+    /// </summary>
     public static class GASTextDefine
     {
         public const string TITLE_SETTING = "设置";
@@ -7,7 +10,6 @@
         public const string TITLE_BASEINFO = "基本信息";
         public const string TITLE_DESCRIPTION = "描述";
 
-        
         #region GASSettingAsset
 
         public const string TIP_CREATE_GEN_AscUtilCode =
@@ -23,7 +25,6 @@
 
         #endregion
 
-        
         #region Tag
 
         public const string BUTTON_ExpandAllTag = "展开全部";
@@ -33,7 +34,6 @@
         public const string BUTTON_GenTagCode = "生成TagLib";
 
         #endregion
-        
         
         #region Attribute
         public const string TIP_Warning_EmptyAttribute =
@@ -45,7 +45,6 @@
             "<size=13><color=yellow>The <color=orange>Attribute名</color> 禁止 <color=red><b>重复</b></color>!\n" +
             "重复的Attributes名:<size=15><b><color=white> {0} </color></b></size>.</color></size>";
         #endregion
-
 
         #region AttributeSet
 
@@ -59,7 +58,6 @@
         public const string BUTTON_GenerateAttributeSetCode = " 生成AttrSetLib";
         
         #endregion
-
 
         #region GameplayEffect
         

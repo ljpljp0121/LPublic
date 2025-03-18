@@ -8,38 +8,49 @@ namespace GAS.Editor
     using UnityEditorInternal;
     using UnityEngine;
     
+    /// <summary>
+    /// 单例SO,适用于全局SO配置
+    /// </summary>
     public class ScriptableSingleton<T> : ScriptableObject where T : ScriptableObject
     {
-        private static T s_Instance;
+        private static T instance;
         public static T Instance
         {
             get
             {
-                if (!s_Instance)
+                if (!instance)
                 {
                     LoadOrCreate();
                 }
-                return s_Instance;
+                return instance;
             }
         }
+        /// <summary>
+        /// 懒加载全局配置
+        /// </summary>
+        /// <returns></returns>
         public static T LoadOrCreate()
         {
             string filePath = GetFilePath();
             if (!string.IsNullOrEmpty(filePath))
             {
                 var arr = InternalEditorUtility.LoadSerializedFileAndForget(filePath);
-                s_Instance = arr.Length > 0 ? arr[0] as T : s_Instance??CreateInstance<T>();
+                instance = arr.Length > 0 ? arr[0] as T : instance??CreateInstance<T>();
             }
             else
             {
                 Debug.LogError($"save location of {nameof(ScriptableSingleton<T>)} is invalid");
             }
-            return s_Instance;
+            return instance;
         }
 
+        /// <summary>
+        /// 保存全局配置
+        /// </summary>
+        /// <param name="saveAsText">是否保存为文本</param>
         public static void Save(bool saveAsText = true)
         {
-            if (!s_Instance)
+            if (!instance)
             {
                 Debug.LogError("Cannot save ScriptableSingleton: no instance!");
                 return;
@@ -53,18 +64,24 @@ namespace GAS.Editor
                 {
                     Directory.CreateDirectory(directoryName);
                 }
-                UnityEngine.Object[] obj = new T[1] { s_Instance };
+                UnityEngine.Object[] obj = { instance };
                 InternalEditorUtility.SaveToSerializedFileAndForget(obj, filePath, saveAsText);
                 //Debug.Log($"Saved ScriptableSingleton to {filePath}");
             }
         }
 
+        /// <summary>
+        /// 更新全局配置
+        /// </summary>
         public static void UpdateAsset(T asset)
         {
             if (asset == null) return;
-            s_Instance = asset;
+            instance = asset;
         }
         
+        /// <summary>
+        /// 获取路径
+        /// </summary>
         protected static string GetFilePath()
         {
             return typeof(T).GetCustomAttributes(inherit: true)

@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace GAS
 {
+    /// <summary>
+    /// GAS系统的所有定义
+    /// </summary>
     public static class GasDefine
     {
         public const string GAS_VERSION = "1.0.9";

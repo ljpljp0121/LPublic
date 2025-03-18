@@ -6,6 +6,9 @@ namespace GAS.Editor
 	using UnityEditor.TreeDataModel;
 	using UnityEngine;
 	
+	/// <summary>
+	/// 
+	/// </summary>
 	[FilePath(GasDefine.GAS_TAGS_MANAGER_ASSET_PATH)]
 	public class GameplayTagsAsset : ScriptableSingleton<GameplayTagsAsset>
 	{

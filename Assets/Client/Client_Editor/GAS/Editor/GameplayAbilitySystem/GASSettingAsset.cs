@@ -9,55 +9,70 @@ namespace GAS.Editor
     using Sirenix.OdinInspector;
     using UnityEditor;
     using UnityEngine;
-    
+
+    /// <summary>
+    /// GAS设置面板
+    /// </summary>
     [FilePath(GasDefine.GAS_BASE_SETTING_PATH)]
     public class GASSettingAsset : ScriptableSingleton<GASSettingAsset>
     {
         private const int LABEL_WIDTH = 200;
         private const int SHORT_LABEL_WIDTH = 200;
-        private static GASSettingAsset _setting;
-        
-        
-        [Title(GASTextDefine.TITLE_SETTING,Bold = true)]
-        [BoxGroup("A", false,order:1)] 
+        private static GASSettingAsset setting;
+        public static GASSettingAsset Setting
+        {
+            get
+            {
+                if (setting == null) setting = LoadOrCreate();
+                return setting;
+            }
+        }
+
+        public static string CodeGenPath => Setting.CodeGeneratePath;
+
+        /// <summary>
+        /// 版本信息
+        /// </summary>
+        [ShowInInspector]
+        [BoxGroup("V",false,order:0)]
+        [HideLabel][DisplayAsString(TextAlignment.Left,true)]
+        private static string Version => $"<size=15><b><color=white>EX-GAS Version: {GasDefine.GAS_VERSION}</color></b></size>";
+
+        /// <summary>
+        /// 代码生成路径
+        /// </summary>
+        [Title(GASTextDefine.TITLE_SETTING, Bold = true)]
+        [BoxGroup("A", false, order: 1)]
         [LabelText(GASTextDefine.LABLE_OF_CodeGeneratePath)]
         [LabelWidth(LABEL_WIDTH)]
         [FolderPath]
         [OnValueChanged("SaveAsset")]
         public string CodeGeneratePath = "Assets/Scripts/Gen";
 
-        [BoxGroup("A")] 
-        [LabelText(GASTextDefine.LABLE_OF_GASConfigAssetPath)] 
+        /// <summary>
+        /// 配置资源路径
+        /// </summary>
+        [BoxGroup("A")]
+        [LabelText(GASTextDefine.LABLE_OF_GASConfigAssetPath)]
         [LabelWidth(LABEL_WIDTH)]
         [FolderPath]
         [OnValueChanged("SaveAsset")]
         public string GASConfigAssetPath = "Assets/GAS/Config";
-        
-        public static GASSettingAsset Setting
-        {
-            get
-            {
-                if (_setting == null) _setting = LoadOrCreate();
-                return _setting;
-            }
-        }
 
-        [ShowInInspector]
-        [BoxGroup("V",false,order:0)]
-        [HideLabel][DisplayAsString(TextAlignment.Left,true)]
-        private static string Version => $"<size=15><b><color=white>EX-GAS Version: {GasDefine.GAS_VERSION}</color></b></size>";
-        
-        public static string CodeGenPath => Setting.CodeGeneratePath;
-
-
+        /// <summary>
+        /// 能力系统组件路径
+        /// </summary>
         [Title(GASTextDefine.TITLE_PATHS,Bold = true)]
         [PropertySpace(10)]
         [ShowInInspector]
         [BoxGroup("A")]
         [DisplayAsString(TextAlignment.Left,true)]
-        [LabelWidth(SHORT_LABEL_WIDTH)]
+        [LabelWidth(SHORT_LABEL_WIDTH)] 
         public static string ASCLibPath => $"{Setting.GASConfigAssetPath}/{GasDefine.GAS_ASC_LIBRARY_FOLDER}";
 
+        /// <summary>
+        /// 游戏效果路径
+        /// </summary>
         [ShowInInspector]
         [BoxGroup("A")]
         [DisplayAsString(TextAlignment.Left,true)]
@@ -65,6 +80,9 @@ namespace GAS.Editor
         public static string GameplayEffectLibPath =>
             $"{Setting.GASConfigAssetPath}/{GasDefine.GAS_EFFECT_LIBRARY_FOLDER}";
 
+        /// <summary>
+        /// 游戏能力库
+        /// </summary>
         [ShowInInspector]
         [BoxGroup("A")]
         [DisplayAsString(TextAlignment.Left,true)]
@@ -72,17 +90,24 @@ namespace GAS.Editor
         public static string GameplayAbilityLibPath =>
             $"{Setting.GASConfigAssetPath}/{GasDefine.GAS_ABILITY_LIBRARY_FOLDER}";
 
+        /// <summary>
+        /// 游戏提示库
+        /// </summary>
         [ShowInInspector]
         [BoxGroup("A")]
         [DisplayAsString(TextAlignment.Left,true)]
         [LabelWidth(SHORT_LABEL_WIDTH)]
         public static string GameplayCueLibPath => $"{Setting.GASConfigAssetPath}/{GasDefine.GAS_CUE_LIBRARY_FOLDER}";
-        
+
+        /// <summary>
+        /// ModifierMagnitudeCalculation修改器路径
+        /// </summary>
         [ShowInInspector]
         [BoxGroup("A")]
         [DisplayAsString(TextAlignment.Left,true)]
         [LabelWidth(SHORT_LABEL_WIDTH)]
         public static string MMCLibPath => $"{Setting.GASConfigAssetPath}/{GasDefine.GAS_MMC_LIBRARY_FOLDER}";
+
 
         [ShowInInspector]
         [BoxGroup("A")]
@@ -111,6 +136,10 @@ namespace GAS.Editor
         [LabelText("AttributeSet Asset Path")]
         public static string GAS_ATTRIBUTESET_ASSET_PATH => GasDefine.GAS_ATTRIBUTE_SET_ASSET_PATH;
 
+        /// <summary>
+        /// 检查路径文件夹是否存在
+        /// </summary>
+        /// <param name="folderPath"></param>
         void CheckPathFolderExist(string folderPath)
         {
             var folders = folderPath.Split('/');

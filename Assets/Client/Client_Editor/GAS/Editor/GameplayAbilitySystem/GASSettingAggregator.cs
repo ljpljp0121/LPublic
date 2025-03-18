@@ -5,17 +5,23 @@ namespace GAS.Editor
     using Sirenix.Utilities;
     using Sirenix.Utilities.Editor;
     using UnityEditor;
-    
+
+    /// <summary>
+    /// GAS 设置聚合编辑器窗口，用于集中管理各种 GAS 相关资源配置
+    /// </summary>
     public class GASSettingAggregator : OdinMenuEditorWindow
     {
         private static GASSettingAsset settingAsset;
 
-        private static GameplayTagsAsset tagsAsset;
+        private static GameplayTagsAsset tagsAsset; 
 
         private static AttributeAsset attributeAsset;
 
         private static AttributeSetAsset attributeSetAsset;
 
+        /// <summary>
+        /// GAS核心设置资源属性
+        /// </summary>
         private static GASSettingAsset SettingAsset
         {
             get
@@ -25,6 +31,9 @@ namespace GAS.Editor
             }
         }
 
+        /// <summary>
+        /// 标签资源属性
+        /// </summary>
         private static GameplayTagsAsset TagsAsset
         {
             get
@@ -34,6 +43,9 @@ namespace GAS.Editor
             }
         }
 
+        /// <summary>
+        /// 属性资源
+        /// </summary>
         private static AttributeAsset AttributeAsset
         {
             get
@@ -43,6 +55,9 @@ namespace GAS.Editor
             }
         }
 
+        /// <summary>
+        /// 属性集合资源
+        /// </summary>
         private static AttributeSetAsset AttributeSetAsset
         {
             get
@@ -63,11 +78,13 @@ namespace GAS.Editor
         {
             var tree = new OdinMenuTree();
 
+            // 添加菜单项（显示名称，关联对象）
             tree.Add("Setting", SettingAsset);
             tree.Add("Tags", TagsAsset);
             tree.Add("Attribute", AttributeAsset);
             tree.Add("Attribute Set", AttributeSetAsset);
 
+            // 配置菜单树属性
             tree.Config.AutoScrollOnSelectionChanged = true;
             tree.Config.DrawScrollView = true;
             tree.Config.AutoHandleKeyboardNavigation = true;
