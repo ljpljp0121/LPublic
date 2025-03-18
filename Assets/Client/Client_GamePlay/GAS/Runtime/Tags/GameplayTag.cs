@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace GAS.Runtime
 {
+    /// <summary>
+    /// GASTag的结构，它用于分类和描述对象的状态。
+    /// </summary>
     [Serializable]
     public struct GameplayTag
     {

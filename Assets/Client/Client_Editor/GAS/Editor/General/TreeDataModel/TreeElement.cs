@@ -5,7 +5,10 @@ namespace UnityEditor.TreeDataModel
     using System.Collections.Generic;
     using UnityEngine;
 
-    
+
+    /// <summary>
+    /// 树形结构元素基类，用于构建可序列化的树形数据结构
+    /// </summary>
     [Serializable]
     public class TreeElement
     {

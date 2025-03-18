@@ -5,11 +5,11 @@ namespace GAS.Editor
 	using System.Collections.Generic;
 	using UnityEditor.TreeDataModel;
 	using UnityEngine;
-	
-	/// <summary>
-	/// 
-	/// </summary>
-	[FilePath(GasDefine.GAS_TAGS_MANAGER_ASSET_PATH)]
+
+    /// <summary>
+    /// Tag标签资源,它用于分类和描述对象的状态，非常有用于控制游戏逻辑
+    /// </summary>
+    [FilePath(GasDefine.GAS_TAGS_MANAGER_ASSET_PATH)]
 	public class GameplayTagsAsset : ScriptableSingleton<GameplayTagsAsset>
 	{
 		[SerializeField] List<GameplayTagTreeElement> gameplayTagTreeElements = new List<GameplayTagTreeElement>();
