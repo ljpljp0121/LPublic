@@ -7,7 +7,7 @@ namespace GAS.Editor
 	using UnityEngine;
 
     /// <summary>
-    /// Tag±êÇ©×ÊÔ´,ËüÓÃÓÚ·ÖÀàºÍÃèÊö¶ÔÏóµÄ×´Ì¬£¬·Ç³£ÓĞÓÃÓÚ¿ØÖÆÓÎÏ·Âß¼­
+    /// Tag å®ƒç”¨äºåˆ†ç±»å’Œæè¿°å¯¹è±¡çš„çŠ¶æ€ï¼Œéå¸¸æœ‰ç”¨äºæ§åˆ¶æ¸¸æˆé€»è¾‘ã€‚
     /// </summary>
     [FilePath(GasDefine.GAS_TAGS_MANAGER_ASSET_PATH)]
 	public class GameplayTagsAsset : ScriptableSingleton<GameplayTagsAsset>

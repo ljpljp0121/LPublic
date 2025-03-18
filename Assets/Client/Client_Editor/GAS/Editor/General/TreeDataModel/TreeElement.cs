@@ -7,7 +7,8 @@ namespace UnityEditor.TreeDataModel
 
 
     /// <summary>
-    /// 树形结构元素基类，用于构建可序列化的树形数据结构
+    /// 鏍戝舰缁撴瀯鍏冪礌鍩虹被锛岀敤浜庢瀯寤哄彲搴忓垪鍖栫殑鏍戝舰鏁版嵁缁撴瀯
+    /// 鍏稿瀷搴旂敤鍦烘櫙锛氱紪杈戝櫒涓殑鏍戠姸瑙嗗浘锛堝璧勬簮绠＄悊鍣ㄣ�佸眰绾ф爲绛夛級
     /// </summary>
     [Serializable]
     public class TreeElement

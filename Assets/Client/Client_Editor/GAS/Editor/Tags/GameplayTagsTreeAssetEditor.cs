@@ -11,6 +11,10 @@ using UnityEngine;
 
 namespace GAS.Editor
 {
+    /// <summary>
+    /// 游戏标签资产的编辑器扩展类
+    /// 功能：提供可视化的树形标签编辑界面
+    /// </summary>
     [CustomEditor(typeof(GameplayTagsAsset))]
     public class GameplayTagsTreeAssetEditor : UnityEditor.Editor
     {
@@ -23,19 +27,22 @@ namespace GAS.Editor
         private void OnEnable()
         {
             Undo.undoRedoPerformed += OnUndoRedoPerformed;
-
+            // 初始化树视图状态
             var treeViewState = new TreeViewState();
             var jsonState = SessionState.GetString(KSessionStateKeyPrefix + Asset.GetInstanceID(), "");
             if (!string.IsNullOrEmpty(jsonState))
                 JsonUtility.FromJsonOverwrite(jsonState, treeViewState);
+            // 创建树形数据模型
             var treeModel = new TreeModel<GameplayTagTreeElement>(Asset.GameplayTagTreeElements);
+            // 初始化自定义树视图
             _treeView = new GameplayTagTreeView(treeViewState, treeModel, Asset);
             _treeView.beforeDroppingDraggedItems += OnBeforeDroppingDraggedItems;
             _treeView.Reload();
-
+            // 初始化搜索框
             _searchField = new SearchField();
             _searchField.downOrUpArrowKeyPressed += _treeView.SetFocusAndEnsureSelectedItem;
 
+            // 自动创建初始标签
             if (!_treeView.treeModel.Root.HasChildren) CreateFirstTag();
         }
 
@@ -47,6 +54,7 @@ namespace GAS.Editor
                 JsonUtility.ToJson(_treeView.state));
         }
 
+        // 处理撤销/重做操作
         private void OnUndoRedoPerformed()
         {
             if (_treeView != null)
@@ -56,12 +64,14 @@ namespace GAS.Editor
             }
         }
 
+        // 拖拽操作前的记录
         private void OnBeforeDroppingDraggedItems(IList<TreeViewItem> draggedRows)
         {
             Undo.RecordObject(Asset,
                 $"Moving {draggedRows.Count} Tag{(draggedRows.Count > 1 ? "s" : "")}");
         }
 
+        // 主绘制逻辑
         public override void OnInspectorGUI()
         {
             GUILayout.Space(5f);
@@ -89,6 +99,7 @@ namespace GAS.Editor
             _treeView.OnGUI(rect);
         }
 
+        // 绘制顶部工具栏
         private void ToolBar()
         {
             using (new EditorGUILayout.HorizontalScope())

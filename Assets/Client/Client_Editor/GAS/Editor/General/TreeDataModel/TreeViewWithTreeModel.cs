@@ -8,7 +8,9 @@ namespace UnityEditor.TreeDataModel
     using UnityEngine;
     using Object = UnityEngine.Object;
 
-    
+    /// <summary>
+    /// 泛型树视图项 - 将数据模型与视图项绑定
+    /// </summary>
     internal class TreeViewItem<T> : TreeViewItem where T : TreeElement
     {
         public TreeViewItem(int id, int depth, string displayName, T data) : base(id, depth, displayName)
@@ -23,7 +25,7 @@ namespace UnityEditor.TreeDataModel
     {
         // Dragging
         //-----------
-
+        // 拖拽操作标识
         private const string k_GenericDragID = "GenericDragColumnDragging";
         private readonly List<TreeViewItem> m_Rows = new List<TreeViewItem>(100);
 
@@ -39,6 +41,7 @@ namespace UnityEditor.TreeDataModel
             Init(model);
         }
 
+        // 核心数据模型
         public TreeModel<T> treeModel { get; private set; }
 
         public event Action treeChanged;
