@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ERROR_DuplicatedAttributeSet: 
-  AttributeSetConfigs: []
+  AttributeSetConfigs:
+  - Name: Fight
+    AttributeNames:
+    - HP

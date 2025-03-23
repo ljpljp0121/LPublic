@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Warning_DuplicatedAttribute: 
-  attributes: []
+  attributes:
+  - Name: HP
+    Comment: He is very lazy and left nothing behind.

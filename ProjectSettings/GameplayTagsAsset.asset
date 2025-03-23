@@ -16,12 +16,52 @@ MonoBehaviour:
   - _id: 1
     _name: Root
     _depth: -1
+  - _id: 3
+    _name: Faction
+    _depth: 0
   - _id: 2
     _name: Ability
     _depth: 0
+  - _id: 4
+    _name: State
+    _depth: 0
+  - _id: 5
+    _name: Event
+    _depth: 0
+  - _id: 6
+    _name: CD
+    _depth: 0
+  - _id: 7
+    _name: Ban
+    _depth: 0
   Tags:
+  - _name: Faction
+    _hashCode: -168968830
+    _shortName: Faction
+    _ancestorHashCodes: 
+    _ancestorNames: []
   - _name: Ability
     _hashCode: -523153736
     _shortName: Ability
+    _ancestorHashCodes: 
+    _ancestorNames: []
+  - _name: State
+    _hashCode: 1695958603
+    _shortName: State
+    _ancestorHashCodes: 
+    _ancestorNames: []
+  - _name: Event
+    _hashCode: 667645442
+    _shortName: Event
+    _ancestorHashCodes: 
+    _ancestorNames: []
+  - _name: CD
+    _hashCode: -1137859925
+    _shortName: CD
+    _ancestorHashCodes: 
+    _ancestorNames: []
+  - _name: Ban
+    _hashCode: 696030461
+    _shortName: Ban
     _ancestorHashCodes: 
     _ancestorNames: []
