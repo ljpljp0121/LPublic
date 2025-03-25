@@ -34,6 +34,78 @@ namespace GAS.Runtime
 
         #endregion HP
 
+        #region ATK
+
+        private AttributeBase _ATK = new AttributeBase("AS_Fight", "ATK");
+
+        public AttributeBase ATK => _ATK;
+
+        public void InitATK(float value)
+        {
+            _ATK.SetBaseValue(value);
+            _ATK.SetCurrentValue(value);
+        }
+
+        public void SetCurrentATK(float value)
+        {
+            _ATK.SetCurrentValue(value);
+        }
+
+        public void SetBaseATK(float value)
+        {
+            _ATK.SetBaseValue(value);
+        }
+
+        #endregion ATK
+
+        #region SPEED
+
+        private AttributeBase _SPEED = new AttributeBase("AS_Fight", "SPEED");
+
+        public AttributeBase SPEED => _SPEED;
+
+        public void InitSPEED(float value)
+        {
+            _SPEED.SetBaseValue(value);
+            _SPEED.SetCurrentValue(value);
+        }
+
+        public void SetCurrentSPEED(float value)
+        {
+            _SPEED.SetCurrentValue(value);
+        }
+
+        public void SetBaseSPEED(float value)
+        {
+            _SPEED.SetBaseValue(value);
+        }
+
+        #endregion SPEED
+
+        #region Sprite
+
+        private AttributeBase _Sprite = new AttributeBase("AS_Fight", "Sprite");
+
+        public AttributeBase Sprite => _Sprite;
+
+        public void InitSprite(float value)
+        {
+            _Sprite.SetBaseValue(value);
+            _Sprite.SetCurrentValue(value);
+        }
+
+        public void SetCurrentSprite(float value)
+        {
+            _Sprite.SetCurrentValue(value);
+        }
+
+        public void SetBaseSprite(float value)
+        {
+            _Sprite.SetBaseValue(value);
+        }
+
+        #endregion Sprite
+
         public override AttributeBase this[string key]
         {
             get
@@ -42,6 +114,12 @@ namespace GAS.Runtime
                 {
                     case "HP":
                         return _HP;
+                    case "ATK":
+                        return _ATK;
+                    case "SPEED":
+                        return _SPEED;
+                    case "Sprite":
+                        return _Sprite;
                 }
 
                 return null;
@@ -51,12 +129,18 @@ namespace GAS.Runtime
         public override string[] AttributeNames { get; } =
         {
             "HP",
+            "ATK",
+            "SPEED",
+            "Sprite",
         };
 
         public override void SetOwner(AbilitySystemComponent owner)
         {
             _owner = owner;
             _HP.SetOwner(owner);
+            _ATK.SetOwner(owner);
+            _SPEED.SetOwner(owner);
+            _Sprite.SetOwner(owner);
         }
     }
 
@@ -74,6 +158,9 @@ namespace GAS.Runtime
         public static List<string> AttributeFullNames = new List<string>()
         {
             "AS_Fight.HP",
+            "AS_Fight.ATK",
+            "AS_Fight.SPEED",
+            "AS_Fight.Sprite",
         };
     }
 }

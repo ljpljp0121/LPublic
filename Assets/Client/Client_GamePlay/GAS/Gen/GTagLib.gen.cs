@@ -24,6 +24,8 @@ namespace GAS.Runtime
         public static GameplayTag Event { get; } = new GameplayTag("Event");
         public static GameplayTag Event_Moving { get; } = new GameplayTag("Event.Moving");
         public static GameplayTag CD { get; } = new GameplayTag("CD");
+        public static GameplayTag CD_SuperSkill { get; } = new GameplayTag("CD.SuperSkill");
+        public static GameplayTag CD_CommonSkill { get; } = new GameplayTag("CD.CommonSkill");
         public static GameplayTag Ban { get; } = new GameplayTag("Ban");
         public static GameplayTag Ban_Motion { get; } = new GameplayTag("Ban.Motion");
 
@@ -44,6 +46,8 @@ namespace GAS.Runtime
             ["Event"] = Event,
             ["Event.Moving"] = Event_Moving,
             ["CD"] = CD,
+            ["CD.SuperSkill"] = CD_SuperSkill,
+            ["CD.CommonSkill"] = CD_CommonSkill,
             ["Ban"] = Ban,
             ["Ban.Motion"] = Ban_Motion,
         };
