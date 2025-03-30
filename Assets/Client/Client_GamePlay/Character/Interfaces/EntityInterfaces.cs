@@ -10,11 +10,6 @@ public interface IComponent
     void UnInit();
 }
 
-public interface IEnabled
-{
-    bool IsEnable { get; set; }
-}
-
 public interface IUpdatable
 {
     void OnUpdate();

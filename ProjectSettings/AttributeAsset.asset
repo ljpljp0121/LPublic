@@ -16,3 +16,9 @@ MonoBehaviour:
   attributes:
   - Name: HP
     Comment: He is very lazy and left nothing behind.
+  - Name: ATK
+    Comment: He is very lazy and left nothing behind.
+  - Name: SPEED
+    Comment: He is very lazy and left nothing behind.
+  - Name: Sprite
+    Comment: He is very lazy and left nothing behind.

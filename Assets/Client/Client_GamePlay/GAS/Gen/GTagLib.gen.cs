@@ -22,7 +22,7 @@ namespace GAS.Runtime
         public static GameplayTag State_DeBuff { get; } = new GameplayTag("State.DeBuff");
         public static GameplayTag State_Buff { get; } = new GameplayTag("State.Buff");
         public static GameplayTag Event { get; } = new GameplayTag("Event");
-        public static GameplayTag Event_Moving { get; } = new GameplayTag("Event.Moving");
+        public static GameplayTag Event_BlockMove { get; } = new GameplayTag("Event.BlockMove");
         public static GameplayTag CD { get; } = new GameplayTag("CD");
         public static GameplayTag CD_SuperSkill { get; } = new GameplayTag("CD.SuperSkill");
         public static GameplayTag CD_CommonSkill { get; } = new GameplayTag("CD.CommonSkill");
@@ -44,7 +44,7 @@ namespace GAS.Runtime
             ["State.DeBuff"] = State_DeBuff,
             ["State.Buff"] = State_Buff,
             ["Event"] = Event,
-            ["Event.Moving"] = Event_Moving,
+            ["Event.BlockMove"] = Event_BlockMove,
             ["CD"] = CD,
             ["CD.SuperSkill"] = CD_SuperSkill,
             ["CD.CommonSkill"] = CD_CommonSkill,

@@ -14,6 +14,7 @@ public class UISystem : SingletonMono<UISystem>, IUIStorage
     private Transform uiRoot;
     private RectTransform windowRoot;
     private Camera uiCamera;
+    private GameObject bgImg;
 
     public Transform UIRoot
     {
@@ -46,6 +47,18 @@ public class UISystem : SingletonMono<UISystem>, IUIStorage
         }
     }
 
+    public GameObject BgImg
+    {
+        get
+        {
+            if (bgImg == null)
+            {
+                bgImg = windowRoot.Find("BgCanvas").gameObject;
+            }
+            return bgImg;
+        }
+    }
+    
     #endregion
 
     ////UI实例缓存字典,存储已经实例化的UI

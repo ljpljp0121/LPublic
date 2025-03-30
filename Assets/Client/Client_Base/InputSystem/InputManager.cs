@@ -39,24 +39,13 @@ public class InputManager : Singleton<InputManager>, GameInput.IGamePlayActions,
 
     #endregion
 
-
-    public event Action<Vector2> MoveEvent;
-    public event Action FlashEvent;
-    public event Action MenuEvent;
-    public event Action InfoEvent;
-    public event Action InfoCancelledEvent;
-    public event Action CommonAttackEvent;
-    public event Action CommonSkillEvent;
-    public event Action UltimateSkillEvent;
-    public event Action ResumeEvent;
-
     /// <summary>
     /// 移动
     /// </summary>
     public void OnMove(InputAction.CallbackContext context)
     {
         LogSystem.Log($"Phase:{context.phase} Move:{context.ReadValue<Vector2>()}");
-        MoveEvent?.Invoke(context.ReadValue<Vector2>());
+        EventSystem.DispatchEvent(new EOnInputMove(context.ReadValue<Vector2>()));
     }
 
     /// <summary>
@@ -67,7 +56,7 @@ public class InputManager : Singleton<InputManager>, GameInput.IGamePlayActions,
         LogSystem.Log($"Phase:{context.phase} Flash:{context.ReadValue<float>()}");
         if (context.phase == InputActionPhase.Started)
         {
-            FlashEvent?.Invoke();
+            EventSystem.DispatchEvent(new EOnInputFlash());
         }
     }
 
@@ -79,7 +68,7 @@ public class InputManager : Singleton<InputManager>, GameInput.IGamePlayActions,
         LogSystem.Log($"Phase:{context.phase} Menu:{context.ReadValue<float>()}");
         if (context.phase == InputActionPhase.Started)
         {
-            MenuEvent?.Invoke();
+            EventSystem.DispatchEvent(new EOnInputMenu());
             SetUI();
         }
     }
@@ -92,11 +81,11 @@ public class InputManager : Singleton<InputManager>, GameInput.IGamePlayActions,
         LogSystem.Log($"Phase:{context.phase} Info:{context.ReadValue<float>()}");
         if (context.phase == InputActionPhase.Started)
         {
-            InfoEvent?.Invoke();
+            EventSystem.DispatchEvent(new EOnInputInfo());
         }
         else if (context.phase == InputActionPhase.Canceled)
         {
-            InfoCancelledEvent?.Invoke();
+            EventSystem.DispatchEvent(new EOnInputInfoCancelled());
         }
     }
 
@@ -108,7 +97,7 @@ public class InputManager : Singleton<InputManager>, GameInput.IGamePlayActions,
         LogSystem.Log($"Phase:{context.phase} CommonAttack:{context.ReadValue<float>()}");
         if (context.phase == InputActionPhase.Started)
         {
-            CommonAttackEvent?.Invoke();
+            EventSystem.DispatchEvent(new EOnInputCommonAttack());
         }
     }
 
@@ -120,7 +109,7 @@ public class InputManager : Singleton<InputManager>, GameInput.IGamePlayActions,
         LogSystem.Log($"Phase:{context.phase} CommonSkill:{context.ReadValue<float>()}");
         if (context.phase == InputActionPhase.Started)
         {
-            CommonSkillEvent?.Invoke();
+            EventSystem.DispatchEvent(new EOnInputCommonSkill());
         }
     }
 
@@ -132,7 +121,7 @@ public class InputManager : Singleton<InputManager>, GameInput.IGamePlayActions,
         LogSystem.Log($"Phase:{context.phase} UltimateSkill:{context.ReadValue<float>()}");
         if (context.phase == InputActionPhase.Started)
         {
-            UltimateSkillEvent?.Invoke();
+            EventSystem.DispatchEvent(new EOnInputUltimateSkill());
         }
     }
 
@@ -144,7 +133,7 @@ public class InputManager : Singleton<InputManager>, GameInput.IGamePlayActions,
         LogSystem.Log($"Phase:{context.phase} Resume:{context.ReadValue<float>()}");
         if (context.phase == InputActionPhase.Started)
         {
-            ResumeEvent?.Invoke();
+            EventSystem.DispatchEvent(new EOnInputResume());
             SetGamePlay();
         }
     }

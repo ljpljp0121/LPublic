@@ -17,3 +17,6 @@ MonoBehaviour:
   - Name: Fight
     AttributeNames:
     - HP
+    - ATK
+    - SPEED
+    - Sprite

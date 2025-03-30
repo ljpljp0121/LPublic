@@ -19,49 +19,166 @@ MonoBehaviour:
   - _id: 3
     _name: Faction
     _depth: 0
+  - _id: 9
+    _name: Player
+    _depth: 1
+  - _id: 8
+    _name: Enemy
+    _depth: 1
   - _id: 2
     _name: Ability
     _depth: 0
+  - _id: 14
+    _name: Dash
+    _depth: 1
+  - _id: 13
+    _name: Attack
+    _depth: 1
+  - _id: 12
+    _name: Move
+    _depth: 1
+  - _id: 11
+    _name: Defend
+    _depth: 1
+  - _id: 10
+    _name: Die
+    _depth: 1
   - _id: 4
     _name: State
     _depth: 0
+  - _id: 16
+    _name: DeBuff
+    _depth: 1
+  - _id: 15
+    _name: Buff
+    _depth: 1
   - _id: 5
     _name: Event
     _depth: 0
+  - _id: 22
+    _name: BlockMove
+    _depth: 1
   - _id: 6
     _name: CD
     _depth: 0
+  - _id: 20
+    _name: SuperSkill
+    _depth: 1
+  - _id: 19
+    _name: CommonSkill
+    _depth: 1
   - _id: 7
     _name: Ban
     _depth: 0
+  - _id: 18
+    _name: Motion
+    _depth: 1
   Tags:
   - _name: Faction
     _hashCode: -168968830
     _shortName: Faction
     _ancestorHashCodes: 
     _ancestorNames: []
+  - _name: Faction.Player
+    _hashCode: 1030057057
+    _shortName: Player
+    _ancestorHashCodes: 82bdedf5
+    _ancestorNames:
+    - Faction
+  - _name: Faction.Enemy
+    _hashCode: -1091112840
+    _shortName: Enemy
+    _ancestorHashCodes: 82bdedf5
+    _ancestorNames:
+    - Faction
   - _name: Ability
     _hashCode: -523153736
     _shortName: Ability
     _ancestorHashCodes: 
     _ancestorNames: []
+  - _name: Ability.Dash
+    _hashCode: 1866515682
+    _shortName: Dash
+    _ancestorHashCodes: b84ed1e0
+    _ancestorNames:
+    - Ability
+  - _name: Ability.Attack
+    _hashCode: 115429334
+    _shortName: Attack
+    _ancestorHashCodes: b84ed1e0
+    _ancestorNames:
+    - Ability
+  - _name: Ability.Move
+    _hashCode: -1903949459
+    _shortName: Move
+    _ancestorHashCodes: b84ed1e0
+    _ancestorNames:
+    - Ability
+  - _name: Ability.Defend
+    _hashCode: 465592122
+    _shortName: Defend
+    _ancestorHashCodes: b84ed1e0
+    _ancestorNames:
+    - Ability
+  - _name: Ability.Die
+    _hashCode: 265453460
+    _shortName: Die
+    _ancestorHashCodes: b84ed1e0
+    _ancestorNames:
+    - Ability
   - _name: State
     _hashCode: 1695958603
     _shortName: State
     _ancestorHashCodes: 
     _ancestorNames: []
+  - _name: State.DeBuff
+    _hashCode: -1227812349
+    _shortName: DeBuff
+    _ancestorHashCodes: 4b461665
+    _ancestorNames:
+    - State
+  - _name: State.Buff
+    _hashCode: 743086286
+    _shortName: Buff
+    _ancestorHashCodes: 4b461665
+    _ancestorNames:
+    - State
   - _name: Event
     _hashCode: 667645442
     _shortName: Event
     _ancestorHashCodes: 
     _ancestorNames: []
+  - _name: Event.BlockMove
+    _hashCode: -35365248
+    _shortName: BlockMove
+    _ancestorHashCodes: 0276cb27
+    _ancestorNames:
+    - Event
   - _name: CD
     _hashCode: -1137859925
     _shortName: CD
     _ancestorHashCodes: 
     _ancestorNames: []
+  - _name: CD.SuperSkill
+    _hashCode: -167840447
+    _shortName: SuperSkill
+    _ancestorHashCodes: aba22dbc
+    _ancestorNames:
+    - CD
+  - _name: CD.CommonSkill
+    _hashCode: -1941010223
+    _shortName: CommonSkill
+    _ancestorHashCodes: aba22dbc
+    _ancestorNames:
+    - CD
   - _name: Ban
     _hashCode: 696030461
     _shortName: Ban
     _ancestorHashCodes: 
     _ancestorNames: []
+  - _name: Ban.Motion
+    _hashCode: 1305984585
+    _shortName: Motion
+    _ancestorHashCodes: fd947c29
+    _ancestorNames:
+    - Ban
