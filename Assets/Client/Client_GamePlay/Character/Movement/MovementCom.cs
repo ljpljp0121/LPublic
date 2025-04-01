@@ -13,7 +13,7 @@ public class MovementCom : MonoBehaviour, IComponent, IStateMachineOwner, IRequi
     private Player player;
     private StateMachine stateMachine;
     private MoveState curState = MoveState.Idle;
-    
+
     public void SetDependency(AnimationCom dependency) => animCom = dependency;
     public void SetDependency(AbilitySystemComponent dependency) => asc = dependency;
     public void SetDependency(Player dependency) => player = dependency;
@@ -35,20 +35,26 @@ public class MovementCom : MonoBehaviour, IComponent, IStateMachineOwner, IRequi
         switch (moveState)
         {
             case MoveState.Idle:
-               stateMachine.ChangeState<>()
+                stateMachine.ChangeState<IdleState>();
                 break;
             case MoveState.Walk:
+                stateMachine.ChangeState<WalkState>();
                 break;
             case MoveState.RunStart:
+                stateMachine.ChangeState<RunStartState>();
                 break;
             case MoveState.Run:
+                stateMachine.ChangeState<RunState>();
                 break;
             case MoveState.RunEnd:
+                stateMachine.ChangeState<RunEndState>();
                 break;
             case MoveState.RunBack:
+                stateMachine.ChangeState<RunBackState>();
                 break;
-            default:
-                throw new ArgumentOutOfRangeException(nameof(moveState), moveState, null);
+            case MoveState.Lock:
+                stateMachine.ChangeState<LockState>();
+                break;
         }
     }
     public void OnRootMotion(Vector3 deltaPosition, Quaternion deltaRotation)

@@ -1,7 +1,5 @@
-namespace Client.Client_GamePlay.Character.Movement.MoveState
+
+public class RunState : MoveStateBase
 {
-    public class RunState
-    {
-        
-    }
+
 }

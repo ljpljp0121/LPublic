@@ -9,4 +9,5 @@ public enum MoveState
     Run,
     RunEnd,
     RunBack,
+    Lock,
 }
