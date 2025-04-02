@@ -1,7 +1,8 @@
 ﻿
+using GAS.Runtime;
 using UnityEngine;
 
-public class GroundCheckCom : MonoBehaviour, IComponent, IUpdatable
+public class GroundCheckCom : GameComponent
 {
     [Header("检测参数")]
     [SerializeField] private float GroundCheckDistance = 0.2f;
@@ -11,17 +12,17 @@ public class GroundCheckCom : MonoBehaviour, IComponent, IUpdatable
     public bool IsGrounded { get; private set; }
     public Vector3 GroundNormal { get; private set; }
 
-    public void Init()
+    public void Awake()
     {
         controller = GetComponent<CharacterController>();
     }
 
-    public void UnInit()
+    public void OnDestroy()
     {
 
     }
 
-    public void OnUpdate()
+    public void Tick()
     {
         RaycastHit hit;
         IsGrounded = Physics.SphereCast(

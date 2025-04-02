@@ -21,8 +21,6 @@ public static class CharacterFactory
             {
                 Object.Instantiate(obj, tr);
             }
-            SetStats(roleRes);
-            obj.GetComponent<ComponentSystem>().Initialize();
         }
         catch (Exception e)
         {
@@ -31,8 +29,5 @@ public static class CharacterFactory
         }
     }
 
-    private static void SetStats(RoleRes roleRes)
-    {
 
-    }
 }

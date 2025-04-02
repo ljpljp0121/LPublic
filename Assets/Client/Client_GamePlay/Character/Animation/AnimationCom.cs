@@ -1,14 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using GAS.Runtime;
 using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.Playables;
 
 
-[InitializeOrder(100)]
 [RequireComponent(typeof(Animator))]
-public class AnimationCom : MonoBehaviour, IComponent
+public class AnimationCom : GameComponent
 {
     public Transform ModelTransform => this.transform;
 
@@ -34,7 +34,7 @@ public class AnimationCom : MonoBehaviour, IComponent
         }
     }
 
-    public void Init()
+    public void Awake()
     {
         animator = GetComponent<Animator>();
         // 创建图
@@ -49,7 +49,31 @@ public class AnimationCom : MonoBehaviour, IComponent
         playableOutput.SetSourcePlayable(mixer);
     }
 
-    public void UnInit()
+    public override void Enable()
+    {
+        try
+        {
+            graph.Play();
+        }
+        catch
+        {
+            LogSystem.Error("graph 没有初始化，为null");
+        }
+    }
+
+    public override void Disable()
+    {
+        try
+        {
+            graph.Stop();
+        }
+        catch
+        {
+            LogSystem.Error("graph 没有初始化，为null");
+        }
+    }
+
+    public void OnDestroy()
     {
         try
         {
@@ -109,9 +133,6 @@ public class AnimationCom : MonoBehaviour, IComponent
     }
 
 
-    /// <summary>
-    /// 播放单个动画
-    /// </summary>
     public void PlaySingleAnimation(AnimationClip animationClip, float speed = 1, bool refreshAnimation = false,
         float transitionFixedTime = 0.25f)
     {
@@ -140,9 +161,14 @@ public class AnimationCom : MonoBehaviour, IComponent
         LogSystem.Log($"开始播放动画: {animationClip.name}");
     }
 
-    /// <summary>
-    /// 播放混合动画
-    /// </summary>
+    public void PlaySingleAnimation(AnimationClip animationClip, Action<Vector3, Quaternion> rootMotionAction = null, float speed = 1, bool refreshAnimation = false,
+        float transitionFixedTime = 0.25f)
+    {
+        if (rootMotionAction != null)
+            SetRootMotionAction(rootMotionAction);
+        PlaySingleAnimation(animationClip, speed, refreshAnimation, transitionFixedTime);
+    }
+
     public void PlayBlendAnimation(List<AnimationClip> clips, float speed = 1, float transitionFixedTime = 0.25f)
     {
         BlendAnimationNode blendAnimationNode = AssetSystem.GetOrNew<BlendAnimationNode>();
@@ -164,10 +190,6 @@ public class AnimationCom : MonoBehaviour, IComponent
         if (graph.IsPlaying() == false) graph.Play();
     }
 
-    /// <summary>
-    /// 播放混合动画
-    /// 如果只是播放两个混合动画使用这个
-    /// </summary>
     public void PlayBlendAnimation(AnimationClip clip1, AnimationClip clip2, float speed = 1,
         float transitionFixedTime = 0.25f)
     {
@@ -200,18 +222,6 @@ public class AnimationCom : MonoBehaviour, IComponent
         (currentNode as BlendAnimationNode)?.SetBlendWeight(clip1Weight);
     }
 
-    private void OnDisable()
-    {
-        try
-        {
-            graph.Stop();
-        }
-        catch
-        {
-            LogSystem.Error("graph 没有初始化，为null");
-        }
-    }
-
     #region RootMotion
 
     private Action<Vector3, Quaternion> rootMotionAction;
@@ -237,7 +247,6 @@ public class AnimationCom : MonoBehaviour, IComponent
 
     private readonly Dictionary<string, Action> eventDic = new Dictionary<string, Action>();
 
-    // Animator会触发的实际事件函数
     private void AnimationEvent(string eventName)
     {
         if (eventDic.TryGetValue(eventName, out Action action))

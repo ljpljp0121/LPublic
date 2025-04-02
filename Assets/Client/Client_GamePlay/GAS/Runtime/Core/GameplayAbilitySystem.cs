@@ -12,8 +12,9 @@ namespace GAS
         private GameplayAbilitySystem()
         {
             AbilitySystemComponents = new List<AbilitySystemComponent>();
+            GameComponents = new List<GameComponent>();
             GASTimer.InitStartTimestamp();
-            
+
             GasHost = new GameObject("GAS Host").AddComponent<GasHost>();
             GasHost.hideFlags = HideFlags.HideAndDontSave;
             Object.DontDestroyOnLoad(GasHost.gameObject);
@@ -21,6 +22,7 @@ namespace GAS
         }
 
         public List<AbilitySystemComponent> AbilitySystemComponents { get; }
+        public List<GameComponent> GameComponents { get; }
 
         private GasHost GasHost { get; }
 
@@ -58,6 +60,17 @@ namespace GAS
             return AbilitySystemComponents.Remove(abilitySystemComponent);
         }
 
+        public void Register(GameComponent gameComponent)
+        {
+            if (GameComponents.Contains(gameComponent)) return;
+            GameComponents.Add(gameComponent);
+        }
+
+        public bool Unregister(GameComponent gameComponent)
+        {
+            return GameComponents.Remove(gameComponent);
+        }
+
         public void Pause()
         {
             GasHost.enabled = false;
@@ -67,13 +80,18 @@ namespace GAS
         {
             GasHost.enabled = true;
         }
-        
+
         public void ClearComponents()
         {
             foreach (var t in AbilitySystemComponents)
                 t.Dispose();
 
             AbilitySystemComponents.Clear();
+
+            foreach (var t in GameComponents)
+                t.Disable();
+            GameComponents.Clear();
         }
+
     }
 }
