@@ -16,7 +16,7 @@ public class InputManager : Singleton<InputManager>, GameInput.IGamePlayActions,
         gameInput = new GameInput();
         gameInput.GamePlay.SetCallbacks(this);
         gameInput.UI.SetCallbacks(this);
-        SetUI();
+        SetGamePlay();
     }
 
     public void UnInit()

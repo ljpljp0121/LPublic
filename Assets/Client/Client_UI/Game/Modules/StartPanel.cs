@@ -19,6 +19,11 @@ public class StartPanel : UIBehavior
     {
         Debug.Log("开始游戏");
         UISystem.Instance.HideUI<StartPanel>();
+        UISystem.Instance.SetBgVisible(false);
+
+        GameObject go = AssetSystem.LoadAsset<GameObject>("Prefab/Role/星见雅");
+        GameObject obj = Instantiate(go);
+        MouseManager.SetMouseLocked(true);
     }
 
     private void OnContinueBtnClick()

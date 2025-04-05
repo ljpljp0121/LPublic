@@ -8,6 +8,7 @@ using UnityEngine.Serialization;
 public class Player : GameComponent
 {
     public Dictionary<string, AnimationClip> animDict = new Dictionary<string, AnimationClip>();
+    public Role RoleConfig = new Role();
 
     #region 组件初始化
 
@@ -19,10 +20,7 @@ public class Player : GameComponent
     private void PreLoadAssets() { }
 
     public void OnDestroy() { }
-    public void Tick()
-    {
-
-    }
+    public void Tick() { }
 
     #endregion
 }

@@ -58,7 +58,12 @@ public class UISystem : SingletonMono<UISystem>, IUIStorage
             return bgImg;
         }
     }
-    
+
+    public void SetBgVisible(bool isVisible)
+    {
+        BgImg.SetActive(isVisible);
+    }
+
     #endregion
 
     ////UI实例缓存字典,存储已经实例化的UI

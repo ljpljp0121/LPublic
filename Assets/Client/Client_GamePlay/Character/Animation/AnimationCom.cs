@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using GAS.Runtime;
 using UnityEngine;
 using UnityEngine.Animations;
@@ -10,6 +11,8 @@ using UnityEngine.Playables;
 [RequireComponent(typeof(Animator))]
 public class AnimationCom : GameComponent
 {
+    private Dictionary<string, AnimationClip> animClipDic = new Dictionary<string, AnimationClip>();
+
     public Transform ModelTransform => this.transform;
 
     private Animator animator;
@@ -20,6 +23,10 @@ public class AnimationCom : GameComponent
     private AnimationNodeBase currentNode; // 当前节点
     private int inputPort0 = 0;
     private int inputPort1 = 1;
+
+    private Action onAnimEnd;
+    private float animEndTime;
+    private SingleAnimationNode trackNode;
 
     private Coroutine transitionCoroutine;
 
@@ -39,10 +46,21 @@ public class AnimationCom : GameComponent
         animator = GetComponent<Animator>();
         // 创建图
         graph = PlayableGraph.Create("AnimationPlayer");
+        if (!graph.IsValid())
+        {
+            LogSystem.Error("PlayableGraph 创建失败！");
+            return;
+        }
         // 设置图的时间模式
         graph.SetTimeUpdateMode(DirectorUpdateMode.GameTime);
         // 创建混合器
         mixer = AnimationMixerPlayable.Create(graph, 3);
+        if (!mixer.IsValid())
+        {
+            LogSystem.Error("AnimationMixerPlayable 创建失败！");
+            graph.Destroy();
+            return;
+        }
         // 创建Output
         AnimationPlayableOutput playableOutput = AnimationPlayableOutput.Create(graph, "Animation", animator);
         // 让混合器链接上Output
@@ -132,6 +150,40 @@ public class AnimationCom : GameComponent
         transitionCoroutine = null;
     }
 
+    #region 单独动画
+
+    public void PlaySingleAnimation(string clipName, float speed = 1, bool refreshAnimation = false,
+        float transitionFixedTime = 0.25f)
+    {
+        string realClipName = Path.GetFileNameWithoutExtension(clipName);
+        if (!animClipDic.TryGetValue(realClipName, out var animationClip))
+        {
+            animationClip = AssetSystem.LoadAsset<AnimationClip>(clipName);
+            if (animationClip == null)
+            {
+                LogSystem.Error($"没有找到AnimationClip: {clipName}");
+                return;
+            }
+            animClipDic.Add(realClipName, animationClip);
+        }
+        PlaySingleAnimation(animationClip, speed, refreshAnimation, transitionFixedTime);
+    }
+
+    public void PlaySingleAnimation(string clipName, Action onAnimEnd)
+    {
+        string realClipName = Path.GetFileNameWithoutExtension(clipName);
+        if (!animClipDic.TryGetValue(realClipName, out var animationClip))
+        {
+            animationClip = AssetSystem.LoadAsset<AnimationClip>(clipName);
+            if (animationClip == null)
+            {
+                LogSystem.Error($"没有找到AnimationClip: {clipName}");
+                return;
+            }
+            animClipDic.Add(realClipName, animationClip);
+        }
+        PlaySingleAnimation(animationClip, onAnimEnd);
+    }
 
     public void PlaySingleAnimation(AnimationClip animationClip, float speed = 1, bool refreshAnimation = false,
         float transitionFixedTime = 0.25f)
@@ -161,13 +213,29 @@ public class AnimationCom : GameComponent
         LogSystem.Log($"开始播放动画: {animationClip.name}");
     }
 
-    public void PlaySingleAnimation(AnimationClip animationClip, Action<Vector3, Quaternion> rootMotionAction = null, float speed = 1, bool refreshAnimation = false,
-        float transitionFixedTime = 0.25f)
+    public void PlaySingleAnimation(AnimationClip animationClip, Action onAnimEnd)
     {
-        if (rootMotionAction != null)
-            SetRootMotionAction(rootMotionAction);
-        PlaySingleAnimation(animationClip, speed, refreshAnimation, transitionFixedTime);
+        PlaySingleAnimation(animationClip);
+        if (onAnimEnd != null)
+        {
+            this.onAnimEnd = onAnimEnd;
+            trackNode = currentNode as SingleAnimationNode;
+            if (trackNode != null && trackNode.GetAnimationClip() != null)
+            {
+                float clipLength = trackNode.GetAnimationClip().length;
+                animEndTime = Time.time + clipLength / speed;
+            }
+            else
+            {
+                onAnimEnd?.Invoke();
+                ClearCallback();
+            }
+        }
     }
+
+    #endregion
+
+    #region 混合动画
 
     public void PlayBlendAnimation(List<AnimationClip> clips, float speed = 1, float transitionFixedTime = 0.25f)
     {
@@ -220,6 +288,32 @@ public class AnimationCom : GameComponent
     public void SetBlendWeight(float clip1Weight)
     {
         (currentNode as BlendAnimationNode)?.SetBlendWeight(clip1Weight);
+    }
+
+    #endregion
+
+    public void ClearCallback()
+    {
+        onAnimEnd = null;
+        animEndTime = 0;
+    }
+
+    public override void Tick()
+    {
+        if (onAnimEnd != null)
+        {
+            if (currentNode != trackNode)
+            {
+                ClearCallback();
+                return;
+            }
+
+            if (Time.time >= animEndTime)
+            {
+                onAnimEnd?.Invoke();
+                ClearCallback();
+            }
+        }
     }
 
     #region RootMotion

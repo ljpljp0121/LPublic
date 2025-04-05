@@ -1,8 +1,8 @@
+using System.Collections;
 using UnityEngine;
 
 namespace GAS.Runtime
 {
-
     /// <summary>
     /// 组件接口
     /// </summary>
@@ -17,6 +17,13 @@ namespace GAS.Runtime
         {
             GameplayAbilitySystem.GAS.Register(this);
             Enable();
+            StartCoroutine(DelayCall());
+        }
+
+        public IEnumerator DelayCall()
+        {
+            yield return CoroutineTool.WaitForEndOfFrame();
+            AfterEnable();
         }
 
         private void OnDisable()
@@ -27,6 +34,7 @@ namespace GAS.Runtime
 
         public virtual void Tick() { }
         public virtual void Enable() { }
+        public virtual void AfterEnable() { }
         public virtual void Disable() { }
     }
 }
