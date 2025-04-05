@@ -75,7 +75,7 @@
                     "id": "36d15da5-e304-4154-a8b9-2a1f87d5ff12",
                     "path": "2DVector",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "NormalizeVector2",
                     "groups": "",
                     "action": "Move",
                     "isComposite": true,
@@ -138,17 +138,6 @@
                 },
                 {
                     "name": "",
-                    "id": "48a50b96-6e00-4676-b785-c44c1522f4a1",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Flash",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "6422b1f8-6811-4514-ab34-60b1103a6403",
                     "path": "<Keyboard>/leftShift",
                     "interactions": "",
@@ -177,17 +166,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Flash",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "a942ede4-222f-47fc-a5b2-999aa907ada0",
-                    "path": "<Keyboard>/b",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Menu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -232,6 +210,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "UltimateSkill",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a942ede4-222f-47fc-a5b2-999aa907ada0",
+                    "path": "<Keyboard>/b",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Menu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
