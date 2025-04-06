@@ -38,7 +38,7 @@ namespace GAS.General
             _deltaTime -= (int)(Timestamp() - _pauseTimestamp);
         }
         
-        private static int _frameRate = 60;
+        private static int _frameRate = 30;
         public static int FrameRate => _frameRate;
     }
 }

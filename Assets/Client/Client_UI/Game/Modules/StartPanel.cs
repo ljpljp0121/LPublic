@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,8 +22,11 @@ public class StartPanel : UIBehavior
         UISystem.Instance.HideUI<StartPanel>();
         UISystem.Instance.SetBgVisible(false);
 
+        CinemachineFreeLook _camera = GameObject.Find("CharacterCamera").GetComponent<CinemachineFreeLook>();
         GameObject go = AssetSystem.LoadAsset<GameObject>("Prefab/Role/星见雅");
         GameObject obj = Instantiate(go);
+        _camera.Follow = obj.transform;
+        _camera.LookAt = obj.transform;
         MouseManager.SetMouseLocked(true);
     }
 
