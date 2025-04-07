@@ -19,16 +19,22 @@ public class Player : GameComponent
         asc = GetComponent<AbilitySystemComponent>();
         animCom = GetComponent<AnimationCom>();
         asc.InitWithPreset(1);
+        asc.AttrSet<AS_Fight>().InitHP(100);
+        asc.AttrSet<AS_Fight>().InitATK(10);
     }
 
     public override void Enable()
     {
         EventSystem.RegisterEvent<EOnInputCommonAttack>(OnCommonAttack);
+        asc.AttrSet<AS_Fight>().HP.RegisterPreBaseValueChange(OnHpChangePre);
+        asc.AttrSet<AS_Fight>().HP.RegisterPostBaseValueChange(OnHpChangePost);
     }
 
     public override void Disable()
     {
         EventSystem.RemoveEvent<EOnInputCommonAttack>(OnCommonAttack);
+        asc.AttrSet<AS_Fight>().HP.UnregisterPreBaseValueChange(OnHpChangePre);
+        asc.AttrSet<AS_Fight>().HP.UnregisterPostBaseValueChange(OnHpChangePost);
     }
 
     private void OnCommonAttack(EOnInputCommonAttack obj)
@@ -41,6 +47,19 @@ public class Player : GameComponent
 
     public void OnDestroy() { }
     public void Tick() { }
+
+    #endregion
+
+    #region 事件
+
+    private void OnHpChangePost(AttributeBase arg1, float arg2, float arg3)
+    {
+    }
+
+    private float OnHpChangePre(AttributeBase attr, float newValue)
+    {
+        return 0f;
+    }
 
     #endregion
 }

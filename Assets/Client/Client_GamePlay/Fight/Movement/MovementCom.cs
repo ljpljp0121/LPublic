@@ -49,6 +49,7 @@ public class MovementCom : GameComponent, IStateMachineOwner
 
     public void ChangeState(MoveState moveState, bool reCurrstate = false)
     {
+        curState = moveState;
         switch (moveState)
         {
             case MoveState.Idle:
@@ -99,6 +100,10 @@ public class MovementCom : GameComponent, IStateMachineOwner
         stateMachine.Tick();
         if (!LockRotate && InputDir != Vector3.zero)
             Rotate(InputDir);
+        if (curState == MoveState.Idle)
+            asc.RemoveFixedTag(GTagLib.Ability_Move);
+        else
+            asc.AddFixedTag(GTagLib.Ability_Move);
     }
 
     private void OnMove(EOnInputMove obj)
@@ -108,6 +113,7 @@ public class MovementCom : GameComponent, IStateMachineOwner
             InputDir = Vector3.zero;
             return;
         }
+
         InputDir = new Vector3(obj.MoveDir.x, 0, obj.MoveDir.y);
     }
 

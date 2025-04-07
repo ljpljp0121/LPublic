@@ -28,7 +28,13 @@ MonoBehaviour:
   BlockAbilityTags: []
   ActivationOwnedTag: []
   ActivationRequiredTags: []
-  ActivationBlockedTags: []
+  ActivationBlockedTags:
+  - _name: Ability.Move
+    _hashCode: -1903949459
+    _shortName: Move
+    _ancestorHashCodes: b84ed1e0
+    _ancestorNames:
+    - Ability
   manualEndAbility: 0
   FrameCount: 120
   DurationalCues:
@@ -45,7 +51,22 @@ MonoBehaviour:
       - {fileID: 11400000, guid: 1d09a00d73c368c45bbc54de7c445eee, type: 2}
   ReleaseGameplayEffect:
   - trackName: 
-    markEvents: []
+    markEvents:
+    - startFrame: 47
+      jsonTargetCatcher:
+        Type: GAS.Runtime.CatchSelf
+        Data: 
+      gameplayEffectAssets: []
   BuffGameplayEffects: []
-  InstantTasks: []
-  OngoingTasks: []
+  InstantTasks:
+  - trackName: 
+    markEvents: []
+  OngoingTasks:
+  - trackName: Task Clips
+    clipEvents:
+    - startFrame: 10
+      durationFrame: 5
+      ongoingTask:
+        TaskData:
+          Type: GAS.Runtime.DefaultOngoingAbilityTask
+          Data: 
