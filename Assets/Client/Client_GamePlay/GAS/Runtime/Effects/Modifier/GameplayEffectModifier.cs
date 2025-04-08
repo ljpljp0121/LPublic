@@ -15,6 +15,9 @@ namespace GAS.Runtime
         Override
     }
 
+    /// <summary>
+    /// 定义单个修饰器的配置，包括目标属性、操作类型和计算规则。
+    /// </summary>
     [Serializable]
     public struct GameplayEffectModifier
     {

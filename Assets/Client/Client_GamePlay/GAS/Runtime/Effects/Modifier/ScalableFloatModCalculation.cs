@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace GAS.Runtime
 {
+    /// <summary>
+    /// （线性缩放）
+    /// </summary>
     [CreateAssetMenu(fileName = "ScalableFloatModCalculation", menuName = "GAS/MMC/ScalableFloatModCalculation")]
     public class ScalableFloatModCalculation : ModifierMagnitudeCalculation
     {

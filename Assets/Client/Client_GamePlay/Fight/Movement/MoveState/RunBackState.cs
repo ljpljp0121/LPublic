@@ -4,7 +4,6 @@ public class RunBackState : MoveStateBase
 {
     public override void Enter()
     {
-        movementCom.LockRotate = true;
         animationCom.PlaySingleAnimation("Animation/XingJianYa/A06_RunA_B_Turn.anim", OnAnimEnd);
     }
 
@@ -19,7 +18,6 @@ public class RunBackState : MoveStateBase
 
     private void OnAnimEnd()
     {
-        movementCom.LockRotate = false;
         movementCom.ChangeState(MoveState.Run);
     }
 }

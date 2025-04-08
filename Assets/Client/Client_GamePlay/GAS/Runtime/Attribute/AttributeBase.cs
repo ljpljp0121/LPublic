@@ -4,6 +4,10 @@ using System.Linq;
 
 namespace GAS.Runtime
 {
+    /// <summary>
+    /// 管理属性的基础值和当前值。
+    /// 提供事件系统,​在值变化时通知监听者。
+    /// </summary>
     public class AttributeBase
     {
         public readonly string Name;

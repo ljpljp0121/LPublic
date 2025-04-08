@@ -2,6 +2,9 @@
 
 namespace GAS.Runtime
 {
+    /// <summary>
+    /// （基于属性的计算）
+    /// </summary>
     [CreateAssetMenu(fileName = "AttributeBasedModCalculation", menuName = "GAS/MMC/AttributeBasedModCalculation")]
     public class AttributeBasedModCalculation : ModifierMagnitudeCalculation
     {

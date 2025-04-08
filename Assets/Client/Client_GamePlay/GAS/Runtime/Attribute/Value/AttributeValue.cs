@@ -1,5 +1,10 @@
 ﻿namespace GAS.Runtime
 {
+    /// <summary>
+    /// GAS属性结构体，
+    /// 存储属性的基础值和实时计算后的当前值
+    /// 
+    /// </summary>
     public struct AttributeValue
     {
         public AttributeValue(float baseValue)

@@ -9,12 +9,11 @@ public class MovementCom : GameComponent, IStateMachineOwner
 {
     public AnimationCom AnimCom { get; private set; }
     public Vector3 InputDir { get; private set; }
-    public bool LockRotate { get; set; }
+    public AbilitySystemComponent ASC { get; private set; }
 
     private CharacterController characterController;
     private Player player;
     private NoneUpdateStateMachine stateMachine;
-    private AbilitySystemComponent asc;
     private MoveState curState = MoveState.Idle;
 
     private Camera mainCamera;
@@ -25,7 +24,7 @@ public class MovementCom : GameComponent, IStateMachineOwner
         stateMachine = AssetSystem.GetOrNew<NoneUpdateStateMachine>();
         AnimCom = GetComponentInChildren<AnimationCom>();
         player = GetComponent<Player>();
-        asc = GetComponent<AbilitySystemComponent>();
+        ASC = GetComponent<AbilitySystemComponent>();
         stateMachine.Init(this);
         mainCamera = Camera.main;
     }
@@ -98,17 +97,17 @@ public class MovementCom : GameComponent, IStateMachineOwner
     public override void Tick()
     {
         stateMachine.Tick();
-        if (!LockRotate && InputDir != Vector3.zero)
+        if (InputDir != Vector3.zero)
             Rotate(InputDir);
-        if (curState == MoveState.Idle)
-            asc.RemoveFixedTag(GTagLib.Ability_Move);
-        else
-            asc.AddFixedTag(GTagLib.Ability_Move);
+        if (ASC.HasTag(GTagLib.Event_BlockMove))
+        {
+            ChangeState(MoveState.Lock);
+        }
     }
 
     private void OnMove(EOnInputMove obj)
     {
-        if (asc.HasTag(GTagLib.Event_BlockMove))
+        if (ASC.HasTag(GTagLib.Event_BlockMove))
         {
             InputDir = Vector3.zero;
             return;

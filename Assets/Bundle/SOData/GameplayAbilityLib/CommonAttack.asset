@@ -64,9 +64,9 @@ MonoBehaviour:
   OngoingTasks:
   - trackName: Task Clips
     clipEvents:
-    - startFrame: 10
-      durationFrame: 5
+    - startFrame: 1
+      durationFrame: 40
       ongoingTask:
         TaskData:
-          Type: GAS.Runtime.DefaultOngoingAbilityTask
+          Type: GetTagTask
           Data: 

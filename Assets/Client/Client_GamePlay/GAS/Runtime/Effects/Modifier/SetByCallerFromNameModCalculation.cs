@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace GAS.Runtime
 {
+    /// <summary>
+    /// （运行时动态传值）
+    /// </summary>
     [CreateAssetMenu(fileName = "SetByCallerFromName", menuName = "GAS/MMC/SetByCallerFromNameModCalculation")]
     public class SetByCallerFromNameModCalculation : ModifierMagnitudeCalculation
     {

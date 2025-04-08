@@ -4,6 +4,10 @@ using UnityEngine;
 
 namespace GAS.Runtime
 {
+    /// <summary>
+    /// 缓存所有影响该属性的 ​游戏效果（GameplayEffect）​ 和其 ​修饰器（Modifier）​。
+    /// 根据修饰器的操作类型（加法、乘法、覆盖）动态计算当前值。
+    /// </summary>
     public class AttributeAggregator
     {
         AttributeBase _processedAttribute;

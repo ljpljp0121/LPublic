@@ -1,5 +1,9 @@
 ﻿namespace GAS.Runtime
 {
+    /// <summary>
+    /// 将相关属性组织成逻辑组
+    /// 用于组织和管理一组属性
+    /// </summary>
     public abstract class AttributeSet
     {
         protected AbilitySystemComponent _owner;
