@@ -8,6 +8,9 @@ namespace GAS.Runtime
         Duration
     }
 
+    /// <summary>
+    /// GE数据，数据聚合作用
+    /// </summary>
     public class GameplayEffect
     {
         public readonly string GameplayEffectName;

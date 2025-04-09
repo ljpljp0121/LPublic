@@ -5,6 +5,9 @@ using UnityEngine;
 
 namespace GAS.Runtime
 {
+    /// <summary>
+    /// 存储 GameplayEffect 的运行时数据
+    /// </summary>
     public class GameplayEffectSpec
     {
         private Dictionary<GameplayTag, float> _valueMapWithTag = new Dictionary<GameplayTag, float>();

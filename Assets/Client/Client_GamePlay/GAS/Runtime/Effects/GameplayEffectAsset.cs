@@ -9,6 +9,9 @@ using UnityEngine;
 
 namespace GAS.Runtime
 {
+    /// <summary>
+    /// GE资源配置
+    /// </summary>
     [CreateAssetMenu(fileName = "GameplayEffect", menuName = "GAS/GameplayEffect")]
     public class GameplayEffectAsset : ScriptableObject
     {

@@ -2,6 +2,9 @@
 
 namespace GAS.Runtime
 {
+    /// <summary>
+    /// 管理持续效果的周期性执行（如每2秒造成一次伤害）。
+    /// </summary>
     public class GameplayEffectPeriodTicker
     {
         private float _periodRemaining;
