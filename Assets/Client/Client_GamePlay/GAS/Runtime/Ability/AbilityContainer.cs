@@ -3,6 +3,9 @@ using System.Linq;
 
 namespace GAS.Runtime
 {
+    /// <summary>
+    /// 管理 ?ASC持有的所有技能实例
+    /// </summary>
     public class AbilityContainer
     {
         private readonly AbilitySystemComponent _owner;

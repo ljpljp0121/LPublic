@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace GAS.Runtime
 {
+    /// <summary>
+    ///  持续型提示
+    /// </summary>
     public abstract class GameplayCueDurational : GameplayCue<GameplayCueDurationalSpec>
     {
         public GameplayCueDurationalSpec ApplyFrom(GameplayEffectSpec gameplayEffectSpec)
@@ -27,6 +30,9 @@ namespace GAS.Runtime
 #endif
     }
 
+    /// <summary>
+    /// 持续型提示运行时实例逻辑
+    /// </summary>
     public abstract class GameplayCueDurationalSpec : GameplayCueSpec
     {
         protected GameplayCueDurationalSpec(GameplayCueDurational cue, GameplayCueParameters parameters) : 

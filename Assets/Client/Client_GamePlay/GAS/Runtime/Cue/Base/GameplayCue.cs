@@ -9,6 +9,9 @@ using UnityEngine;
 
 namespace GAS.Runtime
 {
+    /// <summary>
+    /// 所有提示效果的配置基类
+    /// </summary>
     public abstract class GameplayCue : ScriptableObject
     {
         private const string TopGroup = "TopGroup";
@@ -91,7 +94,10 @@ namespace GAS.Runtime
         }
 #endif
     }
-    
+
+    /// <summary>
+    /// 通过抽象方法CreateSpec()强制子类实现Spec创建
+    /// </summary>
     public abstract class GameplayCue<T> : GameplayCue where T : GameplayCueSpec
     {
         public abstract T CreateSpec(GameplayCueParameters parameters);

@@ -2,6 +2,9 @@
 
 namespace GAS.Runtime
 {
+    /// <summary>
+    /// 技能 ​运行时实例 的逻辑载体
+    /// </summary>
     public abstract class AbilitySpec
     {
         protected object[] _abilityArguments;

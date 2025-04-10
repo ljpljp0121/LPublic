@@ -1,6 +1,9 @@
 ﻿
 namespace GAS.Runtime
 {
+    /// <summary>
+    /// 效果的运行时实例逻辑
+    /// </summary>
     public abstract class GameplayCueSpec
     {
         protected readonly GameplayCue _cue;

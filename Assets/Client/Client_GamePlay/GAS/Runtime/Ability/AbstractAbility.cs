@@ -3,6 +3,10 @@ using GAS.Runtime;
 
 namespace GAS.Runtime
 {
+    /// <summary>
+    /// 能力实现基类
+    /// 连接 ?数据层 与 ?逻辑层 的桥梁
+    /// </summary>
     public abstract class AbstractAbility
     {
         public readonly string Name;

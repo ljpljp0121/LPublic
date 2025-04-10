@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace GAS.Runtime
 {
+    /// <summary>
+    /// 即时型提示
+    /// </summary>
     public abstract class GameplayCueInstant : GameplayCue<GameplayCueInstantSpec>
     {
         public virtual void ApplyFrom(GameplayEffectSpec gameplayEffectSpec)
@@ -31,6 +34,9 @@ namespace GAS.Runtime
 #endif
     }
 
+    /// <summary>
+    /// 即时型提示运行时实例逻辑
+    /// </summary>
     public abstract class GameplayCueInstantSpec : GameplayCueSpec
     {
         public GameplayCueInstantSpec(GameplayCueInstant cue, GameplayCueParameters parameters) : base(cue,

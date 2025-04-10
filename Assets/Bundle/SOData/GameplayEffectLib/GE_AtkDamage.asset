@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: "\u666E\u653B\u4F24\u5BB3"
   Description: "\u653B\u51FB\u4F24\u5BB3"
-  DurationPolicy: 1
-  Duration: 0
-  Period: 0
+  DurationPolicy: 2
+  Duration: 11
+  Period: 2
   PeriodExecution: {fileID: 0}
   GrantedAbilities: []
   Modifiers:

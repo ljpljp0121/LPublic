@@ -10,6 +10,9 @@ using UnityEngine;
 
 namespace GAS.Runtime
 {
+    /// <summary>
+    /// 能力数据模板
+    /// </summary>
     public abstract class AbilityAsset : ScriptableObject
     {
         private const string GRP_BASE = "Base Info";
