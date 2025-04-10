@@ -1,0 +1,106 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d763af469c524557946c477b9bea3a46, type: 3}
+  m_Name: CommonAttack1
+  m_EditorClassIdentifier: 
+  UniqueName: CommonAttack1
+  Description: 
+  Cost: {fileID: 0}
+  Cooldown: {fileID: 0}
+  CooldownTime: 0
+  AssetTag:
+  - _name: Ability.XingJianYa.ComAttack1
+    _hashCode: -657556564
+    _shortName: ComAttack1
+    _ancestorHashCodes: b84ed1e0b6ee2412
+    _ancestorNames:
+    - Ability
+    - Ability.XingJianYa
+  CancelAbilityTags:
+  - _name: Ability.XingJianYa.ComAttack2
+    _hashCode: -657556567
+    _shortName: ComAttack2
+    _ancestorHashCodes: b84ed1e0b6ee2412
+    _ancestorNames:
+    - Ability
+    - Ability.XingJianYa
+  - _name: Ability.XingJianYa.ComAttack3
+    _hashCode: -657556566
+    _shortName: ComAttack3
+    _ancestorHashCodes: b84ed1e0b6ee2412
+    _ancestorNames:
+    - Ability
+    - Ability.XingJianYa
+  - _name: Ability.XingJianYa.ComAttack4
+    _hashCode: -657556569
+    _shortName: ComAttack4
+    _ancestorHashCodes: b84ed1e0b6ee2412
+    _ancestorNames:
+    - Ability
+    - Ability.XingJianYa
+  BlockAbilityTags: []
+  ActivationOwnedTag:
+  - _name: Ability.XingJianYa.ComAttack1
+    _hashCode: -657556564
+    _shortName: ComAttack1
+    _ancestorHashCodes: b84ed1e0b6ee2412
+    _ancestorNames:
+    - Ability
+    - Ability.XingJianYa
+  - _name: Event.UseAbility
+    _hashCode: 1395793715
+    _shortName: UseAbility
+    _ancestorHashCodes: 0276cb27
+    _ancestorNames:
+    - Event
+  ActivationRequiredTags: []
+  ActivationBlockedTags:
+  - _name: Event.BlockAbility
+    _hashCode: -166839487
+    _shortName: BlockAbility
+    _ancestorHashCodes: 0276cb27
+    _ancestorNames:
+    - Event
+  manualEndAbility: 0
+  FrameCount: 120
+  DurationalCues:
+  - trackName: 
+    clipEvents: []
+  InstantCues:
+  - trackName: 
+    markEvents:
+    - startFrame: 0
+      cues:
+      - {fileID: 11400000, guid: b0782bc94c689024385ef43cbbe2d14a, type: 2}
+    - startFrame: 17
+      cues:
+      - {fileID: 11400000, guid: 1d09a00d73c368c45bbc54de7c445eee, type: 2}
+  ReleaseGameplayEffect:
+  - trackName: 
+    markEvents: []
+  BuffGameplayEffects:
+  - trackName: Buff
+    clipEvents:
+    - startFrame: 0
+      durationFrame: 17
+      buffTarget: 0
+      gameplayEffect: {fileID: 11400000, guid: 3dbb16681f78adf44916be5c05b73e8c, type: 2}
+  - trackName: Buff
+    clipEvents:
+    - startFrame: 0
+      durationFrame: 15
+      buffTarget: 0
+      gameplayEffect: {fileID: 11400000, guid: fb1771f26a6df384b86aa13be4e4e5fb, type: 2}
+  InstantTasks:
+  - trackName: 
+    markEvents: []
+  OngoingTasks: []

@@ -17,12 +17,21 @@ namespace GAS.Runtime
             public Type AbilityClassType;
         }
 
-        public static AbilityInfo CommonAttack = new AbilityInfo { Name = "CommonAttack", AssetPath = "Assets/Bundle/SOData/GameplayAbilityLib/CommonAttack.asset",AbilityClassType = typeof(GAS.Runtime.TimelineAbility) };
+        public static AbilityInfo CommonAttack1 = new AbilityInfo { Name = "CommonAttack1", AssetPath = "Assets/Bundle/SOData/GameplayAbilityLib/CommonAttack1.asset",AbilityClassType = typeof(GAS.Runtime.TimelineAbility) };
+
+        public static AbilityInfo CommonAttack2 = new AbilityInfo { Name = "CommonAttack2", AssetPath = "Assets/Bundle/SOData/GameplayAbilityLib/CommonAttack2.asset",AbilityClassType = typeof(GAS.Runtime.TimelineAbility) };
+
+        public static AbilityInfo CommonAttack3 = new AbilityInfo { Name = "CommonAttack3", AssetPath = "Assets/Bundle/SOData/GameplayAbilityLib/CommonAttack3.asset",AbilityClassType = typeof(GAS.Runtime.TimelineAbility) };
+
+        public static AbilityInfo CommonAttack4 = new AbilityInfo { Name = "CommonAttack4", AssetPath = "Assets/Bundle/SOData/GameplayAbilityLib/CommonAttack4.asset",AbilityClassType = typeof(GAS.Runtime.TimelineAbility) };
 
 
         public static Dictionary<string, AbilityInfo> AbilityMap = new Dictionary<string, AbilityInfo>
         {
-            ["CommonAttack"] = CommonAttack,
+            ["CommonAttack1"] = CommonAttack1,
+            ["CommonAttack2"] = CommonAttack2,
+            ["CommonAttack3"] = CommonAttack3,
+            ["CommonAttack4"] = CommonAttack4,
         };
     }
 }

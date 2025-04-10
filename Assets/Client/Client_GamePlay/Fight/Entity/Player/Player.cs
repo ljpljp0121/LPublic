@@ -39,7 +39,24 @@ public class Player : GameComponent
 
     private void OnCommonAttack(EOnInputCommonAttack obj)
     {
-        var result = asc.TryActivateAbility(GAbilityLib.CommonAttack.Name);
+        bool result;
+        if (asc.HasTag(GTagLib.Ability_XingJianYa_ComAttack3))
+        {
+            result = asc.TryActivateAbility(GAbilityLib.CommonAttack4.Name);
+        }
+        else if (asc.HasTag(GTagLib.Ability_XingJianYa_ComAttack2))
+        {
+            result = asc.TryActivateAbility(GAbilityLib.CommonAttack3.Name);
+        }
+        else if (asc.HasTag(GTagLib.Ability_XingJianYa_ComAttack1))
+        {
+            result = asc.TryActivateAbility(GAbilityLib.CommonAttack2.Name);
+        }
+        else
+        {
+            result = asc.TryActivateAbility(GAbilityLib.CommonAttack1.Name);
+        }
+
         LogSystem.Log("技能施放结果：" + result);
     }
 
@@ -52,9 +69,7 @@ public class Player : GameComponent
 
     #region 事件
 
-    private void OnHpChangePost(AttributeBase arg1, float arg2, float arg3)
-    {
-    }
+    private void OnHpChangePost(AttributeBase arg1, float arg2, float arg3) { }
 
     private float OnHpChangePre(AttributeBase attr, float newValue)
     {

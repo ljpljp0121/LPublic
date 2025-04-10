@@ -1,20 +1,17 @@
 using GAS.Runtime;
+using UnityEngine;
 
 public class LockState : MoveStateBase
 {
-    public override void Enter()
-    {
-
-    }
-
     public override void Update()
     {
+        base.Update();
         if (!movementCom.ASC.HasTag(GTagLib.Event_BlockMove))
-            movementCom.ChangeState(MoveState.Idle);
-    }
-
-    public override void Exit()
-    {
-
+        {
+            if (movementCom.InputDir != Vector3.zero)
+                movementCom.ChangeState(MoveState.RunStart);
+            else if(!movementCom.ASC.HasTag(GTagLib.Event_UseAbility))
+                movementCom.ChangeState(MoveState.Idle);
+        }
     }
 }

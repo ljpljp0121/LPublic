@@ -9,7 +9,9 @@ public class MovementCom : GameComponent, IStateMachineOwner
 {
     public AnimationCom AnimCom { get; private set; }
     public Vector3 InputDir { get; private set; }
+    public bool LockRotate { get; set; }
     public AbilitySystemComponent ASC { get; private set; }
+
 
     private CharacterController characterController;
     private Player player;
@@ -97,12 +99,10 @@ public class MovementCom : GameComponent, IStateMachineOwner
     public override void Tick()
     {
         stateMachine.Tick();
-        if (InputDir != Vector3.zero)
+        if (!LockRotate && InputDir != Vector3.zero)
             Rotate(InputDir);
         if (ASC.HasTag(GTagLib.Event_BlockMove))
-        {
             ChangeState(MoveState.Lock);
-        }
     }
 
     private void OnMove(EOnInputMove obj)
@@ -111,6 +111,13 @@ public class MovementCom : GameComponent, IStateMachineOwner
         {
             InputDir = Vector3.zero;
             return;
+        }
+        if (obj.MoveDir != Vector2.zero)
+        {
+            foreach (string spec in ASC.AbilityContainer.AbilitySpecs().Keys)
+            {
+                ASC.TryEndAbility(spec);
+            }
         }
 
         InputDir = new Vector3(obj.MoveDir.x, 0, obj.MoveDir.y);

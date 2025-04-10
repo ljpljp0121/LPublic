@@ -28,14 +28,26 @@ MonoBehaviour:
   - _id: 2
     _name: Ability
     _depth: 0
-  - _id: 14
-    _name: Dash
+  - _id: 24
+    _name: XingJianYa
     _depth: 1
-  - _id: 13
-    _name: Attack
-    _depth: 1
+  - _id: 28
+    _name: ComAttack1
+    _depth: 2
+  - _id: 27
+    _name: ComAttack2
+    _depth: 2
+  - _id: 29
+    _name: ComAttack3
+    _depth: 2
+  - _id: 30
+    _name: ComAttack4
+    _depth: 2
   - _id: 12
     _name: Move
+    _depth: 2
+  - _id: 14
+    _name: Dash
     _depth: 1
   - _id: 11
     _name: Defend
@@ -55,6 +67,12 @@ MonoBehaviour:
   - _id: 5
     _name: Event
     _depth: 0
+  - _id: 31
+    _name: BlockAbility
+    _depth: 1
+  - _id: 23
+    _name: UseAbility
+    _depth: 1
   - _id: 22
     _name: BlockMove
     _depth: 1
@@ -96,21 +114,50 @@ MonoBehaviour:
     _shortName: Ability
     _ancestorHashCodes: 
     _ancestorNames: []
+  - _name: Ability.XingJianYa
+    _hashCode: 304410294
+    _shortName: XingJianYa
+    _ancestorHashCodes: b84ed1e0
+    _ancestorNames:
+    - Ability
+  - _name: Ability.XingJianYa.ComAttack1
+    _hashCode: -657556564
+    _shortName: ComAttack1
+    _ancestorHashCodes: b84ed1e0b6ee2412
+    _ancestorNames:
+    - Ability
+    - Ability.XingJianYa
+  - _name: Ability.XingJianYa.ComAttack2
+    _hashCode: -657556567
+    _shortName: ComAttack2
+    _ancestorHashCodes: b84ed1e0b6ee2412
+    _ancestorNames:
+    - Ability
+    - Ability.XingJianYa
+  - _name: Ability.XingJianYa.ComAttack3
+    _hashCode: -657556566
+    _shortName: ComAttack3
+    _ancestorHashCodes: b84ed1e0b6ee2412
+    _ancestorNames:
+    - Ability
+    - Ability.XingJianYa
+  - _name: Ability.XingJianYa.ComAttack4
+    _hashCode: -657556569
+    _shortName: ComAttack4
+    _ancestorHashCodes: b84ed1e0b6ee2412
+    _ancestorNames:
+    - Ability
+    - Ability.XingJianYa
+  - _name: Ability.XingJianYa.Move
+    _hashCode: 277585543
+    _shortName: Move
+    _ancestorHashCodes: b84ed1e0b6ee2412
+    _ancestorNames:
+    - Ability
+    - Ability.XingJianYa
   - _name: Ability.Dash
     _hashCode: 1866515682
     _shortName: Dash
-    _ancestorHashCodes: b84ed1e0
-    _ancestorNames:
-    - Ability
-  - _name: Ability.Attack
-    _hashCode: 115429334
-    _shortName: Attack
-    _ancestorHashCodes: b84ed1e0
-    _ancestorNames:
-    - Ability
-  - _name: Ability.Move
-    _hashCode: -1903949459
-    _shortName: Move
     _ancestorHashCodes: b84ed1e0
     _ancestorNames:
     - Ability
@@ -148,6 +195,18 @@ MonoBehaviour:
     _shortName: Event
     _ancestorHashCodes: 
     _ancestorNames: []
+  - _name: Event.BlockAbility
+    _hashCode: -166839487
+    _shortName: BlockAbility
+    _ancestorHashCodes: 0276cb27
+    _ancestorNames:
+    - Event
+  - _name: Event.UseAbility
+    _hashCode: 1395793715
+    _shortName: UseAbility
+    _ancestorHashCodes: 0276cb27
+    _ancestorNames:
+    - Event
   - _name: Event.BlockMove
     _hashCode: -35365248
     _shortName: BlockMove
