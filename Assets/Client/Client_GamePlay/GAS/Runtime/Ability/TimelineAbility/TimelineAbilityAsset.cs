@@ -8,6 +8,9 @@ using UnityEngine;
 
 namespace GAS.Runtime
 {
+    /// <summary>
+    /// 存储时间轴上的所有事件轨道信息。
+    /// </summary>
     public class TimelineAbilityAsset : AbilityAsset
     {
         [BoxGroup] [LabelText(GASTextDefine.ABILITY_MANUAL_ENDABILITY)] [LabelWidth(100)]

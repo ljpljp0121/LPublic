@@ -5,7 +5,7 @@ namespace GAS.Runtime
 {
     /// <summary>
     /// 能力实现基类
-    /// 连接 ?数据层 与 ?逻辑层 的桥梁
+    /// 连接 数据层 与 逻辑层 的桥梁
     /// </summary>
     public abstract class AbstractAbility
     {
@@ -69,6 +69,9 @@ namespace GAS.Runtime
         }
     }
 
+    /// <summary>
+    /// 可以直接通过AbilityAsset属性获取到具体的资源,不用强制转换
+    /// </summary>
     public abstract class AbstractAbility<T> : AbstractAbility where T : AbilityAsset
     {
         public T AbilityAsset => DataReference as T;

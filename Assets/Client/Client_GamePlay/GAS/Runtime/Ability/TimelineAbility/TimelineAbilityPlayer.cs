@@ -32,7 +32,10 @@ namespace GAS.Runtime
         public InstantAbilityTask task;
     }
 
-    public class TimelineAbilityPlayer<T>  where T : AbstractAbility
+    /// <summary>
+    /// 控制技能时间轴的 ​播放逻辑，处理帧事件触发、状态更新。
+    /// </summary>
+    public class TimelineAbilityPlayer<T> where T : AbstractAbility
     {
         private readonly TimelineAbilitySpecT<T> _abilitySpec;
         private readonly List<RuntimeBuffClip> _cacheBuffGameplayEffectTrack = new();
@@ -59,13 +62,13 @@ namespace GAS.Runtime
         public bool IsPlaying { get; private set; }
 
         public TimelineAbilityAsset AbilityAsset => _abilitySpec.Ability.DataReference as TimelineAbilityAsset;
-             private int FrameCount => AbilityAsset.FrameCount;
+        private int FrameCount => AbilityAsset.FrameCount;
         private int FrameRate => GASTimer.FrameRate;
 
         private void Cache()
         {
             _cacheInstantCues.Clear();
-            foreach (var trackData in AbilityAsset.InstantCues)
+            foreach (InstantCueTrackData trackData in AbilityAsset.InstantCues)
                 _cacheInstantCues.AddRange(trackData.markEvents);
             _cacheInstantCues.Sort((a, b) => a.startFrame.CompareTo(b.startFrame));
 
@@ -78,63 +81,63 @@ namespace GAS.Runtime
 
             _cacheInstantTasks.Clear();
             foreach (var trackData in AbilityAsset.InstantTasks)
-            foreach (var markEvent in trackData.markEvents)
-            foreach (var taskData in markEvent.InstantTasks)
-            {
-                var runtimeTaskMark = new RuntimeTaskMark
-                {
-                    startFrame = markEvent.startFrame,
-                    task = taskData.CreateTask(_abilitySpec)
-                };
-                _cacheInstantTasks.Add(runtimeTaskMark);
-            }
+                foreach (var markEvent in trackData.markEvents)
+                    foreach (var taskData in markEvent.InstantTasks)
+                    {
+                        var runtimeTaskMark = new RuntimeTaskMark
+                        {
+                            startFrame = markEvent.startFrame,
+                            task = taskData.CreateTask(_abilitySpec)
+                        };
+                        _cacheInstantTasks.Add(runtimeTaskMark);
+                    }
 
             _cacheInstantTasks.Sort((a, b) => a.startFrame.CompareTo(b.startFrame));
 
             _cacheDurationalCueTrack.Clear();
             foreach (var track in AbilityAsset.DurationalCues)
-            foreach (var clipEvent in track.clipEvents)
-            {
-                var cueSpec = clipEvent.cue.ApplyFrom(_abilitySpec);
-                if (cueSpec == null) continue;
-                var runtimeDurationCueClip = new RuntimeDurationCueClip
+                foreach (var clipEvent in track.clipEvents)
                 {
-                    startFrame = clipEvent.startFrame,
-                    endFrame = clipEvent.EndFrame,
-                    cueSpec = cueSpec
-                };
-                _cacheDurationalCueTrack.Add(runtimeDurationCueClip);
-            }
-
-            _cacheBuffGameplayEffectTrack.Clear();
-            foreach (var track in AbilityAsset.BuffGameplayEffects)
-            foreach (var clipEvent in track.clipEvents)
-                // 只有持续型的GameplayEffect可视作buff
-                if (clipEvent.gameplayEffect.DurationPolicy is EffectsDurationPolicy.Duration
-                    or EffectsDurationPolicy.Infinite)
-                {
-                    var runtimeBuffClip = new RuntimeBuffClip
+                    var cueSpec = clipEvent.cue.ApplyFrom(_abilitySpec);
+                    if (cueSpec == null) continue;
+                    var runtimeDurationCueClip = new RuntimeDurationCueClip
                     {
                         startFrame = clipEvent.startFrame,
                         endFrame = clipEvent.EndFrame,
-                        buff = new GameplayEffect(clipEvent.gameplayEffect),
-                        buffSpec = null
+                        cueSpec = cueSpec
                     };
-                    _cacheBuffGameplayEffectTrack.Add(runtimeBuffClip);
+                    _cacheDurationalCueTrack.Add(runtimeDurationCueClip);
                 }
+
+            _cacheBuffGameplayEffectTrack.Clear();
+            foreach (var track in AbilityAsset.BuffGameplayEffects)
+                foreach (var clipEvent in track.clipEvents)
+                    // 只有持续型的GameplayEffect可视作buff
+                    if (clipEvent.gameplayEffect.DurationPolicy is EffectsDurationPolicy.Duration
+                        or EffectsDurationPolicy.Infinite)
+                    {
+                        var runtimeBuffClip = new RuntimeBuffClip
+                        {
+                            startFrame = clipEvent.startFrame,
+                            endFrame = clipEvent.EndFrame,
+                            buff = new GameplayEffect(clipEvent.gameplayEffect),
+                            buffSpec = null
+                        };
+                        _cacheBuffGameplayEffectTrack.Add(runtimeBuffClip);
+                    }
 
             _cacheOngoingTaskTrack.Clear();
             foreach (var track in AbilityAsset.OngoingTasks)
-            foreach (var clip in track.clipEvents)
-            {
-                var runtimeTaskClip = new RuntimeTaskClip
+                foreach (var clip in track.clipEvents)
                 {
-                    startFrame = clip.startFrame,
-                    endFrame = clip.EndFrame,
-                    task = clip.ongoingTask.CreateTask(_abilitySpec)
-                };
-                _cacheOngoingTaskTrack.Add(runtimeTaskClip);
-            }
+                    var runtimeTaskClip = new RuntimeTaskClip
+                    {
+                        startFrame = clip.startFrame,
+                        endFrame = clip.EndFrame,
+                        task = clip.ongoingTask.CreateTask(_abilitySpec)
+                    };
+                    _cacheOngoingTaskTrack.Add(runtimeTaskClip);
+                }
         }
 
         private void Prepare()
