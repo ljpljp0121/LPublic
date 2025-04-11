@@ -18,30 +18,33 @@ MonoBehaviour:
   Cooldown: {fileID: 0}
   CooldownTime: 0
   AssetTag:
-  - _name: Ability.XingJianYa.ComAttack2
-    _hashCode: -657556567
+  - _name: Ability.XingJianYa.ComAttack.ComAttack2
+    _hashCode: 537911240
     _shortName: ComAttack2
-    _ancestorHashCodes: b84ed1e0b6ee2412
+    _ancestorHashCodes: b84ed1e0b6ee2412fb5dbe3b
     _ancestorNames:
     - Ability
     - Ability.XingJianYa
+    - Ability.XingJianYa.ComAttack
   CancelAbilityTags:
-  - _name: Ability.XingJianYa.ComAttack1
-    _hashCode: -657556564
+  - _name: Ability.XingJianYa.ComAttack.ComAttack1
+    _hashCode: 537911237
     _shortName: ComAttack1
-    _ancestorHashCodes: b84ed1e0b6ee2412
+    _ancestorHashCodes: b84ed1e0b6ee2412fb5dbe3b
     _ancestorNames:
     - Ability
     - Ability.XingJianYa
+    - Ability.XingJianYa.ComAttack
   BlockAbilityTags: []
   ActivationOwnedTag:
-  - _name: Ability.XingJianYa.ComAttack2
-    _hashCode: -657556567
+  - _name: Ability.XingJianYa.ComAttack.ComAttack2
+    _hashCode: 537911240
     _shortName: ComAttack2
-    _ancestorHashCodes: b84ed1e0b6ee2412
+    _ancestorHashCodes: b84ed1e0b6ee2412fb5dbe3b
     _ancestorNames:
     - Ability
     - Ability.XingJianYa
+    - Ability.XingJianYa.ComAttack
   - _name: Event.UseAbility
     _hashCode: 1395793715
     _shortName: UseAbility
@@ -49,13 +52,14 @@ MonoBehaviour:
     _ancestorNames:
     - Event
   ActivationRequiredTags:
-  - _name: Ability.XingJianYa.ComAttack1
-    _hashCode: -657556564
+  - _name: Ability.XingJianYa.ComAttack.ComAttack1
+    _hashCode: 537911237
     _shortName: ComAttack1
-    _ancestorHashCodes: b84ed1e0b6ee2412
+    _ancestorHashCodes: b84ed1e0b6ee2412fb5dbe3b
     _ancestorNames:
     - Ability
     - Ability.XingJianYa
+    - Ability.XingJianYa.ComAttack
   ActivationBlockedTags:
   - _name: Event.BlockAbility
     _hashCode: -166839487
@@ -86,7 +90,7 @@ MonoBehaviour:
   - trackName: Buff
     clipEvents:
     - startFrame: 0
-      durationFrame: 28
+      durationFrame: 18
       buffTarget: 0
       gameplayEffect: {fileID: 11400000, guid: fb1771f26a6df384b86aa13be4e4e5fb, type: 2}
   InstantTasks: []

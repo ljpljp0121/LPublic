@@ -33,13 +33,7 @@ MonoBehaviour:
     _ancestorNames:
     - Ability
     - Ability.XingJianYa
-  BlockAbilityTags:
-  - _name: Event.BlockAbility
-    _hashCode: -166839487
-    _shortName: BlockAbility
-    _ancestorHashCodes: 0276cb27
-    _ancestorNames:
-    - Event
+  BlockAbilityTags: []
   ActivationOwnedTag:
   - _name: Ability.XingJianYa.ComAttack4
     _hashCode: -657556569
@@ -92,7 +86,7 @@ MonoBehaviour:
   - trackName: Buff
     clipEvents:
     - startFrame: 0
-      durationFrame: 18
+      durationFrame: 11
       buffTarget: 0
       gameplayEffect: {fileID: 11400000, guid: fb1771f26a6df384b86aa13be4e4e5fb, type: 2}
   InstantTasks: []

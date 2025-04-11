@@ -16,4 +16,4 @@ MonoBehaviour:
   Description: He is very lazy and left nothing behind.
   RequiredTags: []
   ImmunityTags: []
-  AnimClip: {fileID: 7400000, guid: ab4be61a762f99f4b9b2fdd60eb64367, type: 2}
+  AnimClip: {fileID: 7400000, guid: f423dfd6a41de8c468bbdb9f7f447db6, type: 2}

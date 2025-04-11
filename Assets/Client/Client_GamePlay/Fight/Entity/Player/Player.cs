@@ -40,15 +40,19 @@ public class Player : GameComponent
     private void OnCommonAttack(EOnInputCommonAttack obj)
     {
         bool result;
-        if (asc.HasTag(GTagLib.Ability_XingJianYa_ComAttack3))
+        if (asc.HasTag(GTagLib.State_Buff_Combo_AttackCombo_AtkCombo4))
+        {
+            result = asc.TryActivateAbility(GAbilityLib.CommonAttack5.Name);
+        }
+        else if (asc.HasTag(GTagLib.State_Buff_Combo_AttackCombo_AtkCombo3))
         {
             result = asc.TryActivateAbility(GAbilityLib.CommonAttack4.Name);
         }
-        else if (asc.HasTag(GTagLib.Ability_XingJianYa_ComAttack2))
+        else if (asc.HasTag(GTagLib.State_Buff_Combo_AttackCombo_AtkCombo2))
         {
             result = asc.TryActivateAbility(GAbilityLib.CommonAttack3.Name);
         }
-        else if (asc.HasTag(GTagLib.Ability_XingJianYa_ComAttack1))
+        else if (asc.HasTag(GTagLib.State_Buff_Combo_AttackCombo_AtkCombo1))
         {
             result = asc.TryActivateAbility(GAbilityLib.CommonAttack2.Name);
         }

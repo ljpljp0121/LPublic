@@ -31,18 +31,24 @@ MonoBehaviour:
   - _id: 24
     _name: XingJianYa
     _depth: 1
+  - _id: 37
+    _name: ComAttack
+    _depth: 2
   - _id: 28
     _name: ComAttack1
-    _depth: 2
+    _depth: 3
+  - _id: 36
+    _name: ComAttack5
+    _depth: 3
   - _id: 27
     _name: ComAttack2
-    _depth: 2
+    _depth: 3
   - _id: 29
     _name: ComAttack3
-    _depth: 2
+    _depth: 3
   - _id: 30
     _name: ComAttack4
-    _depth: 2
+    _depth: 3
   - _id: 12
     _name: Move
     _depth: 2
@@ -64,6 +70,24 @@ MonoBehaviour:
   - _id: 15
     _name: Buff
     _depth: 1
+  - _id: 38
+    _name: Combo
+    _depth: 2
+  - _id: 39
+    _name: AttackCombo
+    _depth: 3
+  - _id: 41
+    _name: AtkCombo1
+    _depth: 4
+  - _id: 42
+    _name: AtkCombo2
+    _depth: 4
+  - _id: 43
+    _name: AtkCombo3
+    _depth: 4
+  - _id: 45
+    _name: AtkCombo4
+    _depth: 4
   - _id: 5
     _name: Event
     _depth: 0
@@ -120,34 +144,53 @@ MonoBehaviour:
     _ancestorHashCodes: b84ed1e0
     _ancestorNames:
     - Ability
-  - _name: Ability.XingJianYa.ComAttack1
-    _hashCode: -657556564
+  - _name: Ability.XingJianYa.ComAttack
+    _hashCode: 1002331643
+    _shortName: ComAttack
+    _ancestorHashCodes: b84ed1e0b6ee2412
+    _ancestorNames:
+    - Ability
+    - Ability.XingJianYa
+  - _name: Ability.XingJianYa.ComAttack.ComAttack1
+    _hashCode: 537911237
     _shortName: ComAttack1
-    _ancestorHashCodes: b84ed1e0b6ee2412
+    _ancestorHashCodes: b84ed1e0b6ee2412fb5dbe3b
     _ancestorNames:
     - Ability
     - Ability.XingJianYa
-  - _name: Ability.XingJianYa.ComAttack2
-    _hashCode: -657556567
+    - Ability.XingJianYa.ComAttack
+  - _name: Ability.XingJianYa.ComAttack.ComAttack5
+    _hashCode: 537911241
+    _shortName: ComAttack5
+    _ancestorHashCodes: b84ed1e0b6ee2412fb5dbe3b
+    _ancestorNames:
+    - Ability
+    - Ability.XingJianYa
+    - Ability.XingJianYa.ComAttack
+  - _name: Ability.XingJianYa.ComAttack.ComAttack2
+    _hashCode: 537911240
     _shortName: ComAttack2
-    _ancestorHashCodes: b84ed1e0b6ee2412
+    _ancestorHashCodes: b84ed1e0b6ee2412fb5dbe3b
     _ancestorNames:
     - Ability
     - Ability.XingJianYa
-  - _name: Ability.XingJianYa.ComAttack3
-    _hashCode: -657556566
+    - Ability.XingJianYa.ComAttack
+  - _name: Ability.XingJianYa.ComAttack.ComAttack3
+    _hashCode: 537911239
     _shortName: ComAttack3
-    _ancestorHashCodes: b84ed1e0b6ee2412
+    _ancestorHashCodes: b84ed1e0b6ee2412fb5dbe3b
     _ancestorNames:
     - Ability
     - Ability.XingJianYa
-  - _name: Ability.XingJianYa.ComAttack4
-    _hashCode: -657556569
+    - Ability.XingJianYa.ComAttack
+  - _name: Ability.XingJianYa.ComAttack.ComAttack4
+    _hashCode: 537911242
     _shortName: ComAttack4
-    _ancestorHashCodes: b84ed1e0b6ee2412
+    _ancestorHashCodes: b84ed1e0b6ee2412fb5dbe3b
     _ancestorNames:
     - Ability
     - Ability.XingJianYa
+    - Ability.XingJianYa.ComAttack
   - _name: Ability.XingJianYa.Move
     _hashCode: 277585543
     _shortName: Move
@@ -190,6 +233,57 @@ MonoBehaviour:
     _ancestorHashCodes: 4b461665
     _ancestorNames:
     - State
+  - _name: State.Buff.Combo
+    _hashCode: 512860498
+    _shortName: Combo
+    _ancestorHashCodes: 4b461665ce984a2c
+    _ancestorNames:
+    - State
+    - State.Buff
+  - _name: State.Buff.Combo.AttackCombo
+    _hashCode: 1110985550
+    _shortName: AttackCombo
+    _ancestorHashCodes: 4b461665ce984a2c52a1911e
+    _ancestorNames:
+    - State
+    - State.Buff
+    - State.Buff.Combo
+  - _name: State.Buff.Combo.AttackCombo.AtkCombo1
+    _hashCode: 684409291
+    _shortName: AtkCombo1
+    _ancestorHashCodes: 4b461665ce984a2c52a1911e4e4b3842
+    _ancestorNames:
+    - State
+    - State.Buff
+    - State.Buff.Combo
+    - State.Buff.Combo.AttackCombo
+  - _name: State.Buff.Combo.AttackCombo.AtkCombo2
+    _hashCode: 1087693818
+    _shortName: AtkCombo2
+    _ancestorHashCodes: 4b461665ce984a2c52a1911e4e4b3842
+    _ancestorNames:
+    - State
+    - State.Buff
+    - State.Buff.Combo
+    - State.Buff.Combo.AttackCombo
+  - _name: State.Buff.Combo.AttackCombo.AtkCombo3
+    _hashCode: -478390123
+    _shortName: AtkCombo3
+    _ancestorHashCodes: 4b461665ce984a2c52a1911e4e4b3842
+    _ancestorNames:
+    - State
+    - State.Buff
+    - State.Buff.Combo
+    - State.Buff.Combo.AttackCombo
+  - _name: State.Buff.Combo.AttackCombo.AtkCombo4
+    _hashCode: -75105596
+    _shortName: AtkCombo4
+    _ancestorHashCodes: 4b461665ce984a2c52a1911e4e4b3842
+    _ancestorNames:
+    - State
+    - State.Buff
+    - State.Buff.Combo
+    - State.Buff.Combo.AttackCombo
   - _name: Event
     _hashCode: 667645442
     _shortName: Event

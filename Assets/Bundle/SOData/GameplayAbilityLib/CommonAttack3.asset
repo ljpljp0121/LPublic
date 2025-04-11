@@ -33,21 +33,16 @@ MonoBehaviour:
     _ancestorNames:
     - Ability
     - Ability.XingJianYa
-  BlockAbilityTags:
-  - _name: Event.BlockAbility
-    _hashCode: -166839487
-    _shortName: BlockAbility
-    _ancestorHashCodes: 0276cb27
-    _ancestorNames:
-    - Event
+  BlockAbilityTags: []
   ActivationOwnedTag:
-  - _name: Ability.XingJianYa.ComAttack3
-    _hashCode: -657556566
+  - _name: Ability.XingJianYa.ComAttack.ComAttack3
+    _hashCode: 537911239
     _shortName: ComAttack3
-    _ancestorHashCodes: b84ed1e0b6ee2412
+    _ancestorHashCodes: b84ed1e0b6ee2412fb5dbe3b
     _ancestorNames:
     - Ability
     - Ability.XingJianYa
+    - Ability.XingJianYa.ComAttack
   - _name: Event.UseAbility
     _hashCode: 1395793715
     _shortName: UseAbility
@@ -55,13 +50,14 @@ MonoBehaviour:
     _ancestorNames:
     - Event
   ActivationRequiredTags:
-  - _name: Ability.XingJianYa.ComAttack2
-    _hashCode: -657556567
-    _shortName: ComAttack2
-    _ancestorHashCodes: b84ed1e0b6ee2412
+  - _name: Ability.XingJianYa.ComAttack.ComAttack3
+    _hashCode: 537911239
+    _shortName: ComAttack3
+    _ancestorHashCodes: b84ed1e0b6ee2412fb5dbe3b
     _ancestorNames:
     - Ability
     - Ability.XingJianYa
+    - Ability.XingJianYa.ComAttack
   ActivationBlockedTags:
   - _name: Event.BlockAbility
     _hashCode: -166839487
@@ -92,7 +88,7 @@ MonoBehaviour:
   - trackName: Buff
     clipEvents:
     - startFrame: 0
-      durationFrame: 15
+      durationFrame: 10
       buffTarget: 0
       gameplayEffect: {fileID: 11400000, guid: fb1771f26a6df384b86aa13be4e4e5fb, type: 2}
   InstantTasks: []

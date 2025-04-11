@@ -25,6 +25,8 @@ namespace GAS.Runtime
 
         public static AbilityInfo CommonAttack4 = new AbilityInfo { Name = "CommonAttack4", AssetPath = "Assets/Bundle/SOData/GameplayAbilityLib/CommonAttack4.asset",AbilityClassType = typeof(GAS.Runtime.TimelineAbility) };
 
+        public static AbilityInfo CommonAttack5 = new AbilityInfo { Name = "CommonAttack5", AssetPath = "Assets/Bundle/SOData/GameplayAbilityLib/CommonAttack5.asset",AbilityClassType = typeof(GAS.Runtime.TimelineAbility) };
+
 
         public static Dictionary<string, AbilityInfo> AbilityMap = new Dictionary<string, AbilityInfo>
         {
@@ -32,6 +34,7 @@ namespace GAS.Runtime
             ["CommonAttack2"] = CommonAttack2,
             ["CommonAttack3"] = CommonAttack3,
             ["CommonAttack4"] = CommonAttack4,
+            ["CommonAttack5"] = CommonAttack5,
         };
     }
 }

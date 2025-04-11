@@ -18,44 +18,57 @@ MonoBehaviour:
   Cooldown: {fileID: 0}
   CooldownTime: 0
   AssetTag:
-  - _name: Ability.XingJianYa.ComAttack1
-    _hashCode: -657556564
+  - _name: Ability.XingJianYa.ComAttack.ComAttack1
+    _hashCode: 537911237
     _shortName: ComAttack1
-    _ancestorHashCodes: b84ed1e0b6ee2412
+    _ancestorHashCodes: b84ed1e0b6ee2412fb5dbe3b
     _ancestorNames:
     - Ability
     - Ability.XingJianYa
+    - Ability.XingJianYa.ComAttack
   CancelAbilityTags:
-  - _name: Ability.XingJianYa.ComAttack2
-    _hashCode: -657556567
+  - _name: Ability.XingJianYa.ComAttack.ComAttack2
+    _hashCode: 537911240
     _shortName: ComAttack2
-    _ancestorHashCodes: b84ed1e0b6ee2412
+    _ancestorHashCodes: b84ed1e0b6ee2412fb5dbe3b
     _ancestorNames:
     - Ability
     - Ability.XingJianYa
-  - _name: Ability.XingJianYa.ComAttack3
-    _hashCode: -657556566
+    - Ability.XingJianYa.ComAttack
+  - _name: Ability.XingJianYa.ComAttack.ComAttack3
+    _hashCode: 537911239
     _shortName: ComAttack3
-    _ancestorHashCodes: b84ed1e0b6ee2412
+    _ancestorHashCodes: b84ed1e0b6ee2412fb5dbe3b
     _ancestorNames:
     - Ability
     - Ability.XingJianYa
-  - _name: Ability.XingJianYa.ComAttack4
-    _hashCode: -657556569
+    - Ability.XingJianYa.ComAttack
+  - _name: Ability.XingJianYa.ComAttack.ComAttack4
+    _hashCode: 537911242
     _shortName: ComAttack4
-    _ancestorHashCodes: b84ed1e0b6ee2412
+    _ancestorHashCodes: b84ed1e0b6ee2412fb5dbe3b
     _ancestorNames:
     - Ability
     - Ability.XingJianYa
+    - Ability.XingJianYa.ComAttack
+  - _name: Ability.XingJianYa.ComAttack.ComAttack5
+    _hashCode: 537911241
+    _shortName: ComAttack5
+    _ancestorHashCodes: b84ed1e0b6ee2412fb5dbe3b
+    _ancestorNames:
+    - Ability
+    - Ability.XingJianYa
+    - Ability.XingJianYa.ComAttack
   BlockAbilityTags: []
   ActivationOwnedTag:
-  - _name: Ability.XingJianYa.ComAttack1
-    _hashCode: -657556564
+  - _name: Ability.XingJianYa.ComAttack.ComAttack1
+    _hashCode: 537911237
     _shortName: ComAttack1
-    _ancestorHashCodes: b84ed1e0b6ee2412
+    _ancestorHashCodes: b84ed1e0b6ee2412fb5dbe3b
     _ancestorNames:
     - Ability
     - Ability.XingJianYa
+    - Ability.XingJianYa.ComAttack
   - _name: Event.UseAbility
     _hashCode: 1395793715
     _shortName: UseAbility
@@ -84,22 +97,26 @@ MonoBehaviour:
     - startFrame: 17
       cues:
       - {fileID: 11400000, guid: 1d09a00d73c368c45bbc54de7c445eee, type: 2}
-  ReleaseGameplayEffect:
-  - trackName: 
-    markEvents: []
+  ReleaseGameplayEffect: []
   BuffGameplayEffects:
   - trackName: Buff
     clipEvents:
     - startFrame: 0
-      durationFrame: 17
+      durationFrame: 7
       buffTarget: 0
       gameplayEffect: {fileID: 11400000, guid: 3dbb16681f78adf44916be5c05b73e8c, type: 2}
   - trackName: Buff
     clipEvents:
     - startFrame: 0
-      durationFrame: 15
+      durationFrame: 7
       buffTarget: 0
       gameplayEffect: {fileID: 11400000, guid: fb1771f26a6df384b86aa13be4e4e5fb, type: 2}
+  - trackName: Buff
+    clipEvents:
+    - startFrame: 7
+      durationFrame: 10
+      buffTarget: 0
+      gameplayEffect: {fileID: 11400000, guid: b30985e386cfc0c4aa3f1ae3917c9ec1, type: 2}
   InstantTasks:
   - trackName: 
     markEvents: []
