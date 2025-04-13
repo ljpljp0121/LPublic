@@ -39,35 +39,38 @@ public class Player : GameComponent
 
     private void OnCommonAttack(EOnInputCommonAttack obj)
     {
-        bool result;
-        if (asc.HasTag(GTagLib.State_Buff_Combo_AttackCombo_AtkCombo4))
-        {
-            result = asc.TryActivateAbility(GAbilityLib.CommonAttack5.Name);
-        }
-        else if (asc.HasTag(GTagLib.State_Buff_Combo_AttackCombo_AtkCombo3))
-        {
-            result = asc.TryActivateAbility(GAbilityLib.CommonAttack4.Name);
-        }
-        else if (asc.HasTag(GTagLib.State_Buff_Combo_AttackCombo_AtkCombo2))
-        {
-            result = asc.TryActivateAbility(GAbilityLib.CommonAttack3.Name);
-        }
-        else if (asc.HasTag(GTagLib.State_Buff_Combo_AttackCombo_AtkCombo1))
-        {
-            result = asc.TryActivateAbility(GAbilityLib.CommonAttack2.Name);
-        }
-        else
-        {
-            result = asc.TryActivateAbility(GAbilityLib.CommonAttack1.Name);
-        }
-
-        LogSystem.Log("技能施放结果：" + result);
+        // bool result;
+        // if (asc.HasTag(GTagLib.State_Buff_Combo_AttackCombo_AtkCombo3))
+        // {
+        //     result = asc.TryActivateAbility(GAbilityLib.CommonAttack4.Name);
+        // }
+        // else if (asc.HasTag(GTagLib.State_Buff_Combo_AttackCombo_AtkCombo2))
+        // {
+        //     result = asc.TryActivateAbility(GAbilityLib.CommonAttack3.Name);
+        // }
+        // else if (asc.HasTag(GTagLib.State_Buff_Combo_AttackCombo_AtkCombo1))
+        // {
+        //     result = asc.TryActivateAbility(GAbilityLib.CommonAttack2.Name);
+        // }
+        // else
+        // {
+        //     result = asc.TryActivateAbility(GAbilityLib.CommonAttack1.Name);
+        // }
+        //
+        // LogSystem.Log("技能施放结果：" + result);
     }
 
     private void PreLoadAssets() { }
 
     public void OnDestroy() { }
-    public void Tick() { }
+
+    public override void Tick()
+    {
+        if (!asc.HasTag(GTagLib.State))
+        {
+            asc.TryActivateAbility(GAbilityLib.Move.Name);
+        }
+    }
 
     #endregion
 

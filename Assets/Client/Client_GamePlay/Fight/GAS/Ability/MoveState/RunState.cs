@@ -9,7 +9,7 @@ public class RunState : MoveStateBase
 
     public override void Update()
     {
-        if (movementCom.InputDir == Vector3.zero)
-            movementCom.ChangeState(MoveState.RunEnd);
+        if (moveUnit.InputDir == Vector3.zero)
+            moveUnit.ChangeState(MoveState.RunEnd);
     }
 }

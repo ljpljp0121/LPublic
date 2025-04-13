@@ -9,12 +9,12 @@ public class RunStartState : MoveStateBase
 
     public override void Update()
     {
-        if (movementCom.InputDir == Vector3.zero)
-            movementCom.ChangeState(MoveState.RunEnd);
+        if (moveUnit.InputDir == Vector3.zero)
+            moveUnit.ChangeState(MoveState.RunEnd);
     }
 
     private void OnAnimEnd()
     {
-        movementCom.ChangeState(MoveState.Run);
+        moveUnit.ChangeState(MoveState.Run);
     }
 }

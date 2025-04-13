@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: 
   Description: 
-  DurationPolicy: 1
-  Duration: 0
+  DurationPolicy: 3
+  Duration: 3
   Period: 0
   PeriodExecution: {fileID: 0}
   GrantedAbilities: []

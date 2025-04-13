@@ -9,12 +9,12 @@ public class RunEndState : MoveStateBase
 
     public override void Update()
     {
-        if(movementCom.InputDir != Vector3.zero)
-            movementCom.ChangeState(MoveState.RunStart);
+        if(moveUnit.InputDir != Vector3.zero)
+            moveUnit.ChangeState(MoveState.RunStart);
     }
 
     private void OnAnimEnd()
     {
-        movementCom.ChangeState(MoveState.Idle);
+        moveUnit.ChangeState(MoveState.Idle);
     }
 }

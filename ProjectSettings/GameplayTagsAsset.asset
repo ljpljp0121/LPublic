@@ -16,322 +16,214 @@ MonoBehaviour:
   - _id: 1
     _name: Root
     _depth: -1
-  - _id: 3
-    _name: Faction
-    _depth: 0
-  - _id: 9
-    _name: Player
-    _depth: 1
-  - _id: 8
-    _name: Enemy
-    _depth: 1
-  - _id: 2
-    _name: Ability
-    _depth: 0
-  - _id: 24
-    _name: XingJianYa
-    _depth: 1
-  - _id: 37
-    _name: ComAttack
-    _depth: 2
-  - _id: 28
-    _name: ComAttack1
-    _depth: 3
-  - _id: 36
-    _name: ComAttack5
-    _depth: 3
-  - _id: 27
-    _name: ComAttack2
-    _depth: 3
-  - _id: 29
-    _name: ComAttack3
-    _depth: 3
-  - _id: 30
-    _name: ComAttack4
-    _depth: 3
-  - _id: 12
-    _name: Move
-    _depth: 2
-  - _id: 14
-    _name: Dash
-    _depth: 1
-  - _id: 11
-    _name: Defend
-    _depth: 1
-  - _id: 10
-    _name: Die
-    _depth: 1
-  - _id: 4
+  - _id: 46
     _name: State
     _depth: 0
-  - _id: 16
-    _name: DeBuff
+  - _id: 65
+    _name: Ability
     _depth: 1
-  - _id: 15
+  - _id: 66
+    _name: CancelWindow
+    _depth: 2
+  - _id: 64
+    _name: Moving
+    _depth: 1
+  - _id: 47
+    _name: Element
+    _depth: 0
+  - _id: 48
+    _name: Ability
+    _depth: 0
+  - _id: 60
+    _name: Name
+    _depth: 1
+  - _id: 68
+    _name: ComAtk1
+    _depth: 2
+  - _id: 69
+    _name: ComAtk2
+    _depth: 2
+  - _id: 70
+    _name: ComAtk3
+    _depth: 2
+  - _id: 71
+    _name: ComAtk4
+    _depth: 2
+  - _id: 61
+    _name: Movement
+    _depth: 2
+  - _id: 53
+    _name: Type
+    _depth: 1
+  - _id: 57
+    _name: Move
+    _depth: 2
+  - _id: 56
+    _name: Self
+    _depth: 2
+  - _id: 54
+    _name: Melee
+    _depth: 2
+  - _id: 55
+    _name: Ranged
+    _depth: 2
+  - _id: 49
+    _name: Env
+    _depth: 0
+  - _id: 50
+    _name: Effect
+    _depth: 0
+  - _id: 63
+    _name: Debuff
+    _depth: 1
+  - _id: 62
     _name: Buff
     _depth: 1
-  - _id: 38
-    _name: Combo
-    _depth: 2
-  - _id: 39
-    _name: AttackCombo
-    _depth: 3
-  - _id: 41
-    _name: AtkCombo1
-    _depth: 4
-  - _id: 42
-    _name: AtkCombo2
-    _depth: 4
-  - _id: 43
-    _name: AtkCombo3
-    _depth: 4
-  - _id: 45
-    _name: AtkCombo4
-    _depth: 4
-  - _id: 5
-    _name: Event
+  - _id: 51
+    _name: Role
     _depth: 0
-  - _id: 31
-    _name: BlockAbility
-    _depth: 1
-  - _id: 23
-    _name: UseAbility
-    _depth: 1
-  - _id: 22
-    _name: BlockMove
-    _depth: 1
-  - _id: 6
-    _name: CD
+  - _id: 52
+    _name: System
     _depth: 0
-  - _id: 20
-    _name: SuperSkill
-    _depth: 1
-  - _id: 19
-    _name: CommonSkill
-    _depth: 1
-  - _id: 7
-    _name: Ban
-    _depth: 0
-  - _id: 18
-    _name: Motion
-    _depth: 1
   Tags:
-  - _name: Faction
-    _hashCode: -168968830
-    _shortName: Faction
-    _ancestorHashCodes: 
-    _ancestorNames: []
-  - _name: Faction.Player
-    _hashCode: 1030057057
-    _shortName: Player
-    _ancestorHashCodes: 82bdedf5
-    _ancestorNames:
-    - Faction
-  - _name: Faction.Enemy
-    _hashCode: -1091112840
-    _shortName: Enemy
-    _ancestorHashCodes: 82bdedf5
-    _ancestorNames:
-    - Faction
-  - _name: Ability
-    _hashCode: -523153736
-    _shortName: Ability
-    _ancestorHashCodes: 
-    _ancestorNames: []
-  - _name: Ability.XingJianYa
-    _hashCode: 304410294
-    _shortName: XingJianYa
-    _ancestorHashCodes: b84ed1e0
-    _ancestorNames:
-    - Ability
-  - _name: Ability.XingJianYa.ComAttack
-    _hashCode: 1002331643
-    _shortName: ComAttack
-    _ancestorHashCodes: b84ed1e0b6ee2412
-    _ancestorNames:
-    - Ability
-    - Ability.XingJianYa
-  - _name: Ability.XingJianYa.ComAttack.ComAttack1
-    _hashCode: 537911237
-    _shortName: ComAttack1
-    _ancestorHashCodes: b84ed1e0b6ee2412fb5dbe3b
-    _ancestorNames:
-    - Ability
-    - Ability.XingJianYa
-    - Ability.XingJianYa.ComAttack
-  - _name: Ability.XingJianYa.ComAttack.ComAttack5
-    _hashCode: 537911241
-    _shortName: ComAttack5
-    _ancestorHashCodes: b84ed1e0b6ee2412fb5dbe3b
-    _ancestorNames:
-    - Ability
-    - Ability.XingJianYa
-    - Ability.XingJianYa.ComAttack
-  - _name: Ability.XingJianYa.ComAttack.ComAttack2
-    _hashCode: 537911240
-    _shortName: ComAttack2
-    _ancestorHashCodes: b84ed1e0b6ee2412fb5dbe3b
-    _ancestorNames:
-    - Ability
-    - Ability.XingJianYa
-    - Ability.XingJianYa.ComAttack
-  - _name: Ability.XingJianYa.ComAttack.ComAttack3
-    _hashCode: 537911239
-    _shortName: ComAttack3
-    _ancestorHashCodes: b84ed1e0b6ee2412fb5dbe3b
-    _ancestorNames:
-    - Ability
-    - Ability.XingJianYa
-    - Ability.XingJianYa.ComAttack
-  - _name: Ability.XingJianYa.ComAttack.ComAttack4
-    _hashCode: 537911242
-    _shortName: ComAttack4
-    _ancestorHashCodes: b84ed1e0b6ee2412fb5dbe3b
-    _ancestorNames:
-    - Ability
-    - Ability.XingJianYa
-    - Ability.XingJianYa.ComAttack
-  - _name: Ability.XingJianYa.Move
-    _hashCode: 277585543
-    _shortName: Move
-    _ancestorHashCodes: b84ed1e0b6ee2412
-    _ancestorNames:
-    - Ability
-    - Ability.XingJianYa
-  - _name: Ability.Dash
-    _hashCode: 1866515682
-    _shortName: Dash
-    _ancestorHashCodes: b84ed1e0
-    _ancestorNames:
-    - Ability
-  - _name: Ability.Defend
-    _hashCode: 465592122
-    _shortName: Defend
-    _ancestorHashCodes: b84ed1e0
-    _ancestorNames:
-    - Ability
-  - _name: Ability.Die
-    _hashCode: 265453460
-    _shortName: Die
-    _ancestorHashCodes: b84ed1e0
-    _ancestorNames:
-    - Ability
   - _name: State
     _hashCode: 1695958603
     _shortName: State
     _ancestorHashCodes: 
     _ancestorNames: []
-  - _name: State.DeBuff
-    _hashCode: -1227812349
-    _shortName: DeBuff
+  - _name: State.Ability
+    _hashCode: 1606657247
+    _shortName: Ability
     _ancestorHashCodes: 4b461665
     _ancestorNames:
     - State
-  - _name: State.Buff
-    _hashCode: 743086286
+  - _name: State.Ability.CancelWindow
+    _hashCode: 625583147
+    _shortName: CancelWindow
+    _ancestorHashCodes: 4b461665dfa4c35f
+    _ancestorNames:
+    - State
+    - State.Ability
+  - _name: State.Moving
+    _hashCode: 517006425
+    _shortName: Moving
+    _ancestorHashCodes: 4b461665
+    _ancestorNames:
+    - State
+  - _name: Element
+    _hashCode: -961118970
+    _shortName: Element
+    _ancestorHashCodes: 
+    _ancestorNames: []
+  - _name: Ability
+    _hashCode: -523153736
+    _shortName: Ability
+    _ancestorHashCodes: 
+    _ancestorNames: []
+  - _name: Ability.Name
+    _hashCode: 1463230855
+    _shortName: Name
+    _ancestorHashCodes: b84ed1e0
+    _ancestorNames:
+    - Ability
+  - _name: Ability.Name.ComAtk1
+    _hashCode: 795641419
+    _shortName: ComAtk1
+    _ancestorHashCodes: b84ed1e087213757
+    _ancestorNames:
+    - Ability
+    - Ability.Name
+  - _name: Ability.Name.ComAtk2
+    _hashCode: -770442522
+    _shortName: ComAtk2
+    _ancestorHashCodes: b84ed1e087213757
+    _ancestorNames:
+    - Ability
+    - Ability.Name
+  - _name: Ability.Name.ComAtk3
+    _hashCode: 1958440833
+    _shortName: ComAtk3
+    _ancestorHashCodes: b84ed1e087213757
+    _ancestorNames:
+    - Ability
+    - Ability.Name
+  - _name: Ability.Name.ComAtk4
+    _hashCode: 392356892
+    _shortName: ComAtk4
+    _ancestorHashCodes: b84ed1e087213757
+    _ancestorNames:
+    - Ability
+    - Ability.Name
+  - _name: Ability.Name.Movement
+    _hashCode: -1093971124
+    _shortName: Movement
+    _ancestorHashCodes: b84ed1e087213757
+    _ancestorNames:
+    - Ability
+    - Ability.Name
+  - _name: Ability.Type
+    _hashCode: 333930650
+    _shortName: Type
+    _ancestorHashCodes: b84ed1e0
+    _ancestorNames:
+    - Ability
+  - _name: Ability.Type.Move
+    _hashCode: -1526076213
+    _shortName: Move
+    _ancestorHashCodes: b84ed1e09a60e713
+    _ancestorNames:
+    - Ability
+    - Ability.Type
+  - _name: Ability.Type.Self
+    _hashCode: -1888696530
+    _shortName: Self
+    _ancestorHashCodes: b84ed1e09a60e713
+    _ancestorNames:
+    - Ability
+    - Ability.Type
+  - _name: Ability.Type.Melee
+    _hashCode: 52639236
+    _shortName: Melee
+    _ancestorHashCodes: b84ed1e09a60e713
+    _ancestorNames:
+    - Ability
+    - Ability.Type
+  - _name: Ability.Type.Ranged
+    _hashCode: 712496025
+    _shortName: Ranged
+    _ancestorHashCodes: b84ed1e09a60e713
+    _ancestorNames:
+    - Ability
+    - Ability.Type
+  - _name: Env
+    _hashCode: -1226284115
+    _shortName: Env
+    _ancestorHashCodes: 
+    _ancestorNames: []
+  - _name: Effect
+    _hashCode: 2083219487
+    _shortName: Effect
+    _ancestorHashCodes: 
+    _ancestorNames: []
+  - _name: Effect.Debuff
+    _hashCode: -2095591081
+    _shortName: Debuff
+    _ancestorHashCodes: 1f682b7c
+    _ancestorNames:
+    - Effect
+  - _name: Effect.Buff
+    _hashCode: -330856506
     _shortName: Buff
-    _ancestorHashCodes: 4b461665
+    _ancestorHashCodes: 1f682b7c
     _ancestorNames:
-    - State
-  - _name: State.Buff.Combo
-    _hashCode: 512860498
-    _shortName: Combo
-    _ancestorHashCodes: 4b461665ce984a2c
-    _ancestorNames:
-    - State
-    - State.Buff
-  - _name: State.Buff.Combo.AttackCombo
-    _hashCode: 1110985550
-    _shortName: AttackCombo
-    _ancestorHashCodes: 4b461665ce984a2c52a1911e
-    _ancestorNames:
-    - State
-    - State.Buff
-    - State.Buff.Combo
-  - _name: State.Buff.Combo.AttackCombo.AtkCombo1
-    _hashCode: 684409291
-    _shortName: AtkCombo1
-    _ancestorHashCodes: 4b461665ce984a2c52a1911e4e4b3842
-    _ancestorNames:
-    - State
-    - State.Buff
-    - State.Buff.Combo
-    - State.Buff.Combo.AttackCombo
-  - _name: State.Buff.Combo.AttackCombo.AtkCombo2
-    _hashCode: 1087693818
-    _shortName: AtkCombo2
-    _ancestorHashCodes: 4b461665ce984a2c52a1911e4e4b3842
-    _ancestorNames:
-    - State
-    - State.Buff
-    - State.Buff.Combo
-    - State.Buff.Combo.AttackCombo
-  - _name: State.Buff.Combo.AttackCombo.AtkCombo3
-    _hashCode: -478390123
-    _shortName: AtkCombo3
-    _ancestorHashCodes: 4b461665ce984a2c52a1911e4e4b3842
-    _ancestorNames:
-    - State
-    - State.Buff
-    - State.Buff.Combo
-    - State.Buff.Combo.AttackCombo
-  - _name: State.Buff.Combo.AttackCombo.AtkCombo4
-    _hashCode: -75105596
-    _shortName: AtkCombo4
-    _ancestorHashCodes: 4b461665ce984a2c52a1911e4e4b3842
-    _ancestorNames:
-    - State
-    - State.Buff
-    - State.Buff.Combo
-    - State.Buff.Combo.AttackCombo
-  - _name: Event
-    _hashCode: 667645442
-    _shortName: Event
+    - Effect
+  - _name: Role
+    _hashCode: 1414246534
+    _shortName: Role
     _ancestorHashCodes: 
     _ancestorNames: []
-  - _name: Event.BlockAbility
-    _hashCode: -166839487
-    _shortName: BlockAbility
-    _ancestorHashCodes: 0276cb27
-    _ancestorNames:
-    - Event
-  - _name: Event.UseAbility
-    _hashCode: 1395793715
-    _shortName: UseAbility
-    _ancestorHashCodes: 0276cb27
-    _ancestorNames:
-    - Event
-  - _name: Event.BlockMove
-    _hashCode: -35365248
-    _shortName: BlockMove
-    _ancestorHashCodes: 0276cb27
-    _ancestorNames:
-    - Event
-  - _name: CD
-    _hashCode: -1137859925
-    _shortName: CD
+  - _name: System
+    _hashCode: -279589575
+    _shortName: System
     _ancestorHashCodes: 
     _ancestorNames: []
-  - _name: CD.SuperSkill
-    _hashCode: -167840447
-    _shortName: SuperSkill
-    _ancestorHashCodes: aba22dbc
-    _ancestorNames:
-    - CD
-  - _name: CD.CommonSkill
-    _hashCode: -1941010223
-    _shortName: CommonSkill
-    _ancestorHashCodes: aba22dbc
-    _ancestorNames:
-    - CD
-  - _name: Ban
-    _hashCode: 696030461
-    _shortName: Ban
-    _ancestorHashCodes: 
-    _ancestorNames: []
-  - _name: Ban.Motion
-    _hashCode: 1305984585
-    _shortName: Motion
-    _ancestorHashCodes: fd947c29
-    _ancestorNames:
-    - Ban

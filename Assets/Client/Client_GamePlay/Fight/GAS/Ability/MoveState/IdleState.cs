@@ -10,9 +10,9 @@ public class IdleState : MoveStateBase
 
     public override void Update()
     {
-        if (movementCom.InputDir != Vector3.zero)
+        if (moveUnit.InputDir != Vector3.zero)
         {
-            movementCom.ChangeState(MoveState.RunStart);
+            moveUnit.ChangeState(MoveState.RunStart);
         }
     }
     

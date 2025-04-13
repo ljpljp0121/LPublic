@@ -17,17 +17,81 @@ MonoBehaviour:
   Cost: {fileID: 0}
   Cooldown: {fileID: 0}
   CooldownTime: 0
-  AssetTag: []
-  CancelAbilityTags: []
+  AssetTag:
+  - _name: Ability.XingJianYa.ComAttack.ComAttack5
+    _hashCode: 537911241
+    _shortName: ComAttack5
+    _ancestorHashCodes: b84ed1e0b6ee2412fb5dbe3b
+    _ancestorNames:
+    - Ability
+    - Ability.XingJianYa
+    - Ability.XingJianYa.ComAttack
+  CancelAbilityTags:
+  - _name: Ability.XingJianYa.ComAttack.ComAttack4
+    _hashCode: 537911242
+    _shortName: ComAttack4
+    _ancestorHashCodes: b84ed1e0b6ee2412fb5dbe3b
+    _ancestorNames:
+    - Ability
+    - Ability.XingJianYa
+    - Ability.XingJianYa.ComAttack
   BlockAbilityTags: []
-  ActivationOwnedTag: []
-  ActivationRequiredTags: []
-  ActivationBlockedTags: []
+  ActivationOwnedTag:
+  - _name: Event.UseAbility
+    _hashCode: 1395793715
+    _shortName: UseAbility
+    _ancestorHashCodes: 0276cb27
+    _ancestorNames:
+    - Event
+  - _name: Ability.XingJianYa.ComAttack.ComAttack5
+    _hashCode: 537911241
+    _shortName: ComAttack5
+    _ancestorHashCodes: b84ed1e0b6ee2412fb5dbe3b
+    _ancestorNames:
+    - Ability
+    - Ability.XingJianYa
+    - Ability.XingJianYa.ComAttack
+  ActivationRequiredTags:
+  - _name: Ability.XingJianYa.ComAttack.ComAttack4
+    _hashCode: 537911242
+    _shortName: ComAttack4
+    _ancestorHashCodes: b84ed1e0b6ee2412fb5dbe3b
+    _ancestorNames:
+    - Ability
+    - Ability.XingJianYa
+    - Ability.XingJianYa.ComAttack
+  ActivationBlockedTags:
+  - _name: Event.BlockAbility
+    _hashCode: -166839487
+    _shortName: BlockAbility
+    _ancestorHashCodes: 0276cb27
+    _ancestorNames:
+    - Event
   manualEndAbility: 0
-  FrameCount: 0
+  FrameCount: 140
   DurationalCues: []
-  InstantCues: []
+  InstantCues:
+  - trackName: 
+    markEvents:
+    - startFrame: 0
+      cues:
+      - {fileID: 11400000, guid: 29802b9615e17944c894075429b64e70, type: 2}
+    - startFrame: 26
+      cues:
+      - {fileID: 11400000, guid: b63fdf7654d06184381db74b11cba4ab, type: 2}
   ReleaseGameplayEffect: []
-  BuffGameplayEffects: []
+  BuffGameplayEffects:
+  - trackName: Buff
+    clipEvents:
+    - startFrame: 0
+      durationFrame: 21
+      buffTarget: 0
+      gameplayEffect: {fileID: 11400000, guid: fb1771f26a6df384b86aa13be4e4e5fb, type: 2}
+  - trackName: Buff
+    clipEvents:
+    - startFrame: 0
+      durationFrame: 21
+      buffTarget: 0
+      gameplayEffect: {fileID: 11400000, guid: 3dbb16681f78adf44916be5c05b73e8c, type: 2}
   InstantTasks: []
   OngoingTasks: []

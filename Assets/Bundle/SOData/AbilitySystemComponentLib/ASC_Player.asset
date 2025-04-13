@@ -24,7 +24,9 @@ MonoBehaviour:
     _ancestorNames:
     - Faction
   BaseAbilities:
+  - {fileID: 11400000, guid: 4e423903dfe6fb6498650986a4fa1213, type: 2}
   - {fileID: 11400000, guid: d4b528ba7cc454047a8502208015f364, type: 2}
   - {fileID: 11400000, guid: f19faaf6d8a37da448532eb410d17c17, type: 2}
   - {fileID: 11400000, guid: 9d49f5d28fc0b59418338c944ced2394, type: 2}
   - {fileID: 11400000, guid: ef62977ccbc9b964a86289b7344bb2da, type: 2}
+  - {fileID: 11400000, guid: 71482bbb677aa2441831cdf550b342dc, type: 2}

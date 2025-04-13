@@ -18,21 +18,23 @@ MonoBehaviour:
   Cooldown: {fileID: 0}
   CooldownTime: 0
   AssetTag:
-  - _name: Ability.XingJianYa.ComAttack3
-    _hashCode: -657556566
+  - _name: Ability.XingJianYa.ComAttack.ComAttack3
+    _hashCode: 537911239
     _shortName: ComAttack3
-    _ancestorHashCodes: b84ed1e0b6ee2412
+    _ancestorHashCodes: b84ed1e0b6ee2412fb5dbe3b
     _ancestorNames:
     - Ability
     - Ability.XingJianYa
+    - Ability.XingJianYa.ComAttack
   CancelAbilityTags:
-  - _name: Ability.XingJianYa.ComAttack2
-    _hashCode: -657556567
+  - _name: Ability.XingJianYa.ComAttack.ComAttack2
+    _hashCode: 537911240
     _shortName: ComAttack2
-    _ancestorHashCodes: b84ed1e0b6ee2412
+    _ancestorHashCodes: b84ed1e0b6ee2412fb5dbe3b
     _ancestorNames:
     - Ability
     - Ability.XingJianYa
+    - Ability.XingJianYa.ComAttack
   BlockAbilityTags: []
   ActivationOwnedTag:
   - _name: Ability.XingJianYa.ComAttack.ComAttack3
@@ -50,9 +52,9 @@ MonoBehaviour:
     _ancestorNames:
     - Event
   ActivationRequiredTags:
-  - _name: Ability.XingJianYa.ComAttack.ComAttack3
-    _hashCode: 537911239
-    _shortName: ComAttack3
+  - _name: Ability.XingJianYa.ComAttack.ComAttack2
+    _hashCode: 537911240
+    _shortName: ComAttack2
     _ancestorHashCodes: b84ed1e0b6ee2412fb5dbe3b
     _ancestorNames:
     - Ability
@@ -76,20 +78,26 @@ MonoBehaviour:
       - {fileID: 11400000, guid: 8b779fc797938f742bf0c919d0112ecd, type: 2}
     - startFrame: 18
       cues:
-      - {fileID: 11400000, guid: afe3d6368527cf0478aebd2b43a2da39, type: 2}
+      - {fileID: 11400000, guid: 99bcb2157943bb44eb68765882d589cd, type: 2}
   ReleaseGameplayEffect: []
   BuffGameplayEffects:
   - trackName: Buff
     clipEvents:
     - startFrame: 0
-      durationFrame: 21
+      durationFrame: 17
       buffTarget: 0
       gameplayEffect: {fileID: 11400000, guid: 3dbb16681f78adf44916be5c05b73e8c, type: 2}
   - trackName: Buff
     clipEvents:
     - startFrame: 0
-      durationFrame: 10
+      durationFrame: 17
       buffTarget: 0
       gameplayEffect: {fileID: 11400000, guid: fb1771f26a6df384b86aa13be4e4e5fb, type: 2}
+  - trackName: Buff
+    clipEvents:
+    - startFrame: 17
+      durationFrame: 75
+      buffTarget: 0
+      gameplayEffect: {fileID: 11400000, guid: 31e8fed44f3b5ba4f8192b2284b17918, type: 2}
   InstantTasks: []
   OngoingTasks: []

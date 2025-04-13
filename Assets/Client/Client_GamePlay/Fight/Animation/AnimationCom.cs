@@ -153,7 +153,7 @@ public class AnimationCom : GameComponent
     #region 单独动画
 
     public void PlaySingleAnimation(string clipName, float speed = 1, bool refreshAnimation = false,
-        float transitionFixedTime = 0.25f)
+        float transitionFixedTime = 0f)
     {
         string realClipName = Path.GetFileNameWithoutExtension(clipName);
         if (!animClipDic.TryGetValue(realClipName, out var animationClip))
@@ -186,7 +186,7 @@ public class AnimationCom : GameComponent
     }
 
     public void PlaySingleAnimation(AnimationClip animationClip, float speed = 1, bool refreshAnimation = false,
-        float transitionFixedTime = 0.25f)
+        float transitionFixedTime = 0f)
     {
         SingleAnimationNode singleAnimationNode = null;
         if (currentNode == null) // 首次播放

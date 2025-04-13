@@ -8,6 +8,4 @@ public enum MoveState
     RunStart,
     Run,
     RunEnd,
-    RunBack,
-    Lock,
 }

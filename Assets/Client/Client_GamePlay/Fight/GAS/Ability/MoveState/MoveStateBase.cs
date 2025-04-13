@@ -1,12 +1,12 @@
 public class MoveStateBase : StateBase
 {
     protected AnimationCom animationCom;
-    protected MovementCom movementCom;
+    protected MoveSpec moveUnit;
 
     public override void Init(IStateMachineOwner owner)
     {
         base.Init(owner);
-        movementCom = (MovementCom)owner;
-        animationCom = movementCom.AnimCom;
+        moveUnit = (MoveSpec)owner;
+        animationCom = moveUnit.AnimCom;
     }
 }
