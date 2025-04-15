@@ -172,12 +172,10 @@ namespace UnityEditor.TreeDataModel
         /// </summary>
         protected override DragAndDropVisualMode HandleDragAndDrop(DragAndDropArgs args)
         {
-            // Check if we can handle the current drag data (could be dragged in from other areas/windows in the editor)
             var draggedRows = DragAndDrop.GetGenericData(GenericDragID) as List<TreeViewItem>;
             if (draggedRows == null)
                 return DragAndDropVisualMode.None;
 
-            // Parent item is null when dragging outside any tree view items.
             switch (args.dragAndDropPosition)
             {
                 case DragAndDropPosition.UponItem:
