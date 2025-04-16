@@ -49,4 +49,11 @@ MonoBehaviour:
     _ancestorNames:
     - State
   ActivationRequiredTags: []
-  ActivationBlockedTags: []
+  ActivationBlockedTags:
+  - _name: Effect.Common.LockWindow
+    _hashCode: -1752371507
+    _shortName: LockWindow
+    _ancestorHashCodes: 1f682b7c86cb1bbb
+    _ancestorNames:
+    - Effect
+    - Effect.Common
