@@ -22,8 +22,8 @@ MonoBehaviour:
   - _id: 65
     _name: Ability
     _depth: 1
-  - _id: 66
-    _name: CancelWindow
+  - _id: 72
+    _name: Attacking
     _depth: 2
   - _id: 64
     _name: Moving
@@ -34,27 +34,15 @@ MonoBehaviour:
   - _id: 48
     _name: Ability
     _depth: 0
-  - _id: 60
-    _name: Name
-    _depth: 1
-  - _id: 68
-    _name: ComAtk1
-    _depth: 2
-  - _id: 69
-    _name: ComAtk2
-    _depth: 2
-  - _id: 70
-    _name: ComAtk3
-    _depth: 2
-  - _id: 71
-    _name: ComAtk4
-    _depth: 2
-  - _id: 61
-    _name: Movement
-    _depth: 2
   - _id: 53
     _name: Type
     _depth: 1
+  - _id: 76
+    _name: OnSite
+    _depth: 2
+  - _id: 75
+    _name: HandsOff
+    _depth: 2
   - _id: 57
     _name: Move
     _depth: 2
@@ -73,6 +61,18 @@ MonoBehaviour:
   - _id: 50
     _name: Effect
     _depth: 0
+  - _id: 73
+    _name: Common
+    _depth: 1
+  - _id: 77
+    _name: LockWindow
+    _depth: 2
+  - _id: 74
+    _name: ComboWindow
+    _depth: 2
+  - _id: 66
+    _name: CancelWindow
+    _depth: 2
   - _id: 63
     _name: Debuff
     _depth: 1
@@ -97,9 +97,9 @@ MonoBehaviour:
     _ancestorHashCodes: 4b461665
     _ancestorNames:
     - State
-  - _name: State.Ability.CancelWindow
-    _hashCode: 625583147
-    _shortName: CancelWindow
+  - _name: State.Ability.Attacking
+    _hashCode: -1097465699
+    _shortName: Attacking
     _ancestorHashCodes: 4b461665dfa4c35f
     _ancestorNames:
     - State
@@ -120,53 +120,26 @@ MonoBehaviour:
     _shortName: Ability
     _ancestorHashCodes: 
     _ancestorNames: []
-  - _name: Ability.Name
-    _hashCode: 1463230855
-    _shortName: Name
-    _ancestorHashCodes: b84ed1e0
-    _ancestorNames:
-    - Ability
-  - _name: Ability.Name.ComAtk1
-    _hashCode: 795641419
-    _shortName: ComAtk1
-    _ancestorHashCodes: b84ed1e087213757
-    _ancestorNames:
-    - Ability
-    - Ability.Name
-  - _name: Ability.Name.ComAtk2
-    _hashCode: -770442522
-    _shortName: ComAtk2
-    _ancestorHashCodes: b84ed1e087213757
-    _ancestorNames:
-    - Ability
-    - Ability.Name
-  - _name: Ability.Name.ComAtk3
-    _hashCode: 1958440833
-    _shortName: ComAtk3
-    _ancestorHashCodes: b84ed1e087213757
-    _ancestorNames:
-    - Ability
-    - Ability.Name
-  - _name: Ability.Name.ComAtk4
-    _hashCode: 392356892
-    _shortName: ComAtk4
-    _ancestorHashCodes: b84ed1e087213757
-    _ancestorNames:
-    - Ability
-    - Ability.Name
-  - _name: Ability.Name.Movement
-    _hashCode: -1093971124
-    _shortName: Movement
-    _ancestorHashCodes: b84ed1e087213757
-    _ancestorNames:
-    - Ability
-    - Ability.Name
   - _name: Ability.Type
     _hashCode: 333930650
     _shortName: Type
     _ancestorHashCodes: b84ed1e0
     _ancestorNames:
     - Ability
+  - _name: Ability.Type.OnSite
+    _hashCode: 1063488174
+    _shortName: OnSite
+    _ancestorHashCodes: b84ed1e09a60e713
+    _ancestorNames:
+    - Ability
+    - Ability.Type
+  - _name: Ability.Type.HandsOff
+    _hashCode: 1073100401
+    _shortName: HandsOff
+    _ancestorHashCodes: b84ed1e09a60e713
+    _ancestorNames:
+    - Ability
+    - Ability.Type
   - _name: Ability.Type.Move
     _hashCode: -1526076213
     _shortName: Move
@@ -205,6 +178,33 @@ MonoBehaviour:
     _shortName: Effect
     _ancestorHashCodes: 
     _ancestorNames: []
+  - _name: Effect.Common
+    _hashCode: -1155806330
+    _shortName: Common
+    _ancestorHashCodes: 1f682b7c
+    _ancestorNames:
+    - Effect
+  - _name: Effect.Common.LockWindow
+    _hashCode: -1752371507
+    _shortName: LockWindow
+    _ancestorHashCodes: 1f682b7c86cb1bbb
+    _ancestorNames:
+    - Effect
+    - Effect.Common
+  - _name: Effect.Common.ComboWindow
+    _hashCode: 142461882
+    _shortName: ComboWindow
+    _ancestorHashCodes: 1f682b7c86cb1bbb
+    _ancestorNames:
+    - Effect
+    - Effect.Common
+  - _name: Effect.Common.CancelWindow
+    _hashCode: 1543023942
+    _shortName: CancelWindow
+    _ancestorHashCodes: 1f682b7c86cb1bbb
+    _ancestorNames:
+    - Effect
+    - Effect.Common
   - _name: Effect.Debuff
     _hashCode: -2095591081
     _shortName: Debuff

@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b9395a0be3e547f48bd1c8320edc6c58, type: 3}
-  m_Name: LockMove
+  m_Name: ComboWindow
   m_EditorClassIdentifier: 
-  Name: LockMove
+  Name: 
   Description: 
   DurationPolicy: 3
   Duration: 3
@@ -22,12 +22,13 @@ MonoBehaviour:
   Modifiers: []
   AssetTags: []
   GrantedTags:
-  - _name: Event.BlockMove
-    _hashCode: -35365248
-    _shortName: BlockMove
-    _ancestorHashCodes: 0276cb27
+  - _name: Effect.Common.ComboWindow
+    _hashCode: 142461882
+    _shortName: ComboWindow
+    _ancestorHashCodes: 1f682b7c86cb1bbb
     _ancestorNames:
-    - Event
+    - Effect
+    - Effect.Common
   ApplicationRequiredTags: []
   OngoingRequiredTags: []
   RemoveGameplayEffectsWithTags: []

@@ -33,10 +33,10 @@ namespace GAS.Editor
         /// <summary>
         /// 版本信息
         /// </summary>
-        [ShowInInspector]
-        [BoxGroup("V",false,order:0)]
-        [HideLabel][DisplayAsString(TextAlignment.Left,true)]
-        private static string Version => $"<size=15><b><color=white>EX-GAS Version: {GasDefine.GAS_VERSION}</color></b></size>";
+        // [ShowInInspector]
+        // [BoxGroup("V",false,order:0)]
+        // [HideLabel][DisplayAsString(TextAlignment.Left,true)]
+        // private static string Version => $"<size=15><b><color=white>EX-GAS Version: {GasDefine.GAS_VERSION}</color></b></size>";
 
         /// <summary>
         /// 代码生成路径
@@ -171,7 +171,7 @@ namespace GAS.Editor
         [DisplayAsString(TextAlignment.Left,true)]
         [GUIColor(0,0.8f,0)]
         [PropertySpace(10)]
-        [InfoBox(GASTextDefine.TIP_CREATE_FOLDERS)]
+        // [InfoBox(GASTextDefine.TIP_CREATE_FOLDERS)]
         [Button(SdfIconType.FolderCheck,GASTextDefine.BUTTON_CheckAllPathFolderExist,ButtonHeight = 38)]
         void CheckAllPathFolderExist()
         {
@@ -190,7 +190,7 @@ namespace GAS.Editor
         [DisplayAsString(TextAlignment.Left, true)]
         [GUIColor(0.8f, 0.8f, 0)]
         [PropertySpace(10)]
-        [InfoBox(GASTextDefine.TIP_CREATE_GEN_AscUtilCode)]
+        // [InfoBox(GASTextDefine.TIP_CREATE_GEN_AscUtilCode)]
         [Button(SdfIconType.Upload, GASTextDefine.BUTTON_GenerateAscExtensionCode, ButtonHeight = 38)]
         void GenerateAscExtensionCode()
         {

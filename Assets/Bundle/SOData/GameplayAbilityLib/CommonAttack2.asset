@@ -18,55 +18,39 @@ MonoBehaviour:
   Cooldown: {fileID: 0}
   CooldownTime: 0
   AssetTag:
-  - _name: Ability.XingJianYa.ComAttack.ComAttack2
-    _hashCode: 537911240
-    _shortName: ComAttack2
-    _ancestorHashCodes: b84ed1e0b6ee2412fb5dbe3b
+  - _name: Ability.Type.Melee
+    _hashCode: 52639236
+    _shortName: Melee
+    _ancestorHashCodes: b84ed1e09a60e713
     _ancestorNames:
     - Ability
-    - Ability.XingJianYa
-    - Ability.XingJianYa.ComAttack
+    - Ability.Type
+  - _name: Ability.Type.HandsOff
+    _hashCode: 1073100401
+    _shortName: HandsOff
+    _ancestorHashCodes: b84ed1e09a60e713
+    _ancestorNames:
+    - Ability
+    - Ability.Type
   CancelAbilityTags:
-  - _name: Ability.XingJianYa.ComAttack.ComAttack1
-    _hashCode: 537911237
-    _shortName: ComAttack1
-    _ancestorHashCodes: b84ed1e0b6ee2412fb5dbe3b
+  - _name: Ability.Type.HandsOff
+    _hashCode: 1073100401
+    _shortName: HandsOff
+    _ancestorHashCodes: b84ed1e09a60e713
     _ancestorNames:
     - Ability
-    - Ability.XingJianYa
-    - Ability.XingJianYa.ComAttack
+    - Ability.Type
   BlockAbilityTags: []
   ActivationOwnedTag:
-  - _name: Ability.XingJianYa.ComAttack.ComAttack2
-    _hashCode: 537911240
-    _shortName: ComAttack2
-    _ancestorHashCodes: b84ed1e0b6ee2412fb5dbe3b
+  - _name: State.Ability.Attacking
+    _hashCode: -1097465699
+    _shortName: Attacking
+    _ancestorHashCodes: 4b461665dfa4c35f
     _ancestorNames:
-    - Ability
-    - Ability.XingJianYa
-    - Ability.XingJianYa.ComAttack
-  - _name: Event.UseAbility
-    _hashCode: 1395793715
-    _shortName: UseAbility
-    _ancestorHashCodes: 0276cb27
-    _ancestorNames:
-    - Event
-  ActivationRequiredTags:
-  - _name: Ability.XingJianYa.ComAttack.ComAttack1
-    _hashCode: 537911237
-    _shortName: ComAttack1
-    _ancestorHashCodes: b84ed1e0b6ee2412fb5dbe3b
-    _ancestorNames:
-    - Ability
-    - Ability.XingJianYa
-    - Ability.XingJianYa.ComAttack
-  ActivationBlockedTags:
-  - _name: Event.BlockAbility
-    _hashCode: -166839487
-    _shortName: BlockAbility
-    _ancestorHashCodes: 0276cb27
-    _ancestorNames:
-    - Event
+    - State
+    - State.Ability
+  ActivationRequiredTags: []
+  ActivationBlockedTags: []
   manualEndAbility: 0
   FrameCount: 128
   DurationalCues: []
@@ -83,21 +67,15 @@ MonoBehaviour:
   BuffGameplayEffects:
   - trackName: Buff
     clipEvents:
-    - startFrame: 0
-      durationFrame: 8
-      buffTarget: 0
-      gameplayEffect: {fileID: 11400000, guid: 3dbb16681f78adf44916be5c05b73e8c, type: 2}
-  - trackName: Buff
-    clipEvents:
-    - startFrame: 0
-      durationFrame: 8
-      buffTarget: 0
-      gameplayEffect: {fileID: 11400000, guid: fb1771f26a6df384b86aa13be4e4e5fb, type: 2}
-  - trackName: Buff
-    clipEvents:
     - startFrame: 8
-      durationFrame: 80
+      durationFrame: 9
       buffTarget: 0
-      gameplayEffect: {fileID: 11400000, guid: 1ad7cbe4cb06b9f4cbf0b13f3584f730, type: 2}
+      gameplayEffect: {fileID: 11400000, guid: 3274b533e5c89b040ab52829582c2e2c, type: 2}
+  - trackName: Buff
+    clipEvents:
+    - startFrame: 15
+      durationFrame: 113
+      buffTarget: 0
+      gameplayEffect: {fileID: 11400000, guid: 47218ddaf9bb04a43bd527674507c1e2, type: 2}
   InstantTasks: []
   OngoingTasks: []

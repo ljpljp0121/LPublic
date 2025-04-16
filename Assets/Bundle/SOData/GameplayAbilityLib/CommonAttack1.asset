@@ -18,74 +18,64 @@ MonoBehaviour:
   Cooldown: {fileID: 0}
   CooldownTime: 0
   AssetTag:
-  - _name: Ability.XingJianYa.ComAttack.ComAttack1
-    _hashCode: 537911237
-    _shortName: ComAttack1
-    _ancestorHashCodes: b84ed1e0b6ee2412fb5dbe3b
+  - _name: Ability.Type.Melee
+    _hashCode: 52639236
+    _shortName: Melee
+    _ancestorHashCodes: b84ed1e09a60e713
     _ancestorNames:
     - Ability
-    - Ability.XingJianYa
-    - Ability.XingJianYa.ComAttack
-  CancelAbilityTags: []
+    - Ability.Type
+  - _name: Ability.Type.HandsOff
+    _hashCode: 1073100401
+    _shortName: HandsOff
+    _ancestorHashCodes: b84ed1e09a60e713
+    _ancestorNames:
+    - Ability
+    - Ability.Type
+  CancelAbilityTags:
+  - _name: Ability.Type.HandsOff
+    _hashCode: 1073100401
+    _shortName: HandsOff
+    _ancestorHashCodes: b84ed1e09a60e713
+    _ancestorNames:
+    - Ability
+    - Ability.Type
   BlockAbilityTags: []
   ActivationOwnedTag:
-  - _name: Ability.XingJianYa.ComAttack.ComAttack1
-    _hashCode: 537911237
-    _shortName: ComAttack1
-    _ancestorHashCodes: b84ed1e0b6ee2412fb5dbe3b
+  - _name: State.Ability.Attacking
+    _hashCode: -1097465699
+    _shortName: Attacking
+    _ancestorHashCodes: 4b461665dfa4c35f
     _ancestorNames:
-    - Ability
-    - Ability.XingJianYa
-    - Ability.XingJianYa.ComAttack
-  - _name: Event.UseAbility
-    _hashCode: 1395793715
-    _shortName: UseAbility
-    _ancestorHashCodes: 0276cb27
-    _ancestorNames:
-    - Event
+    - State
+    - State.Ability
   ActivationRequiredTags: []
-  ActivationBlockedTags:
-  - _name: Event.BlockAbility
-    _hashCode: -166839487
-    _shortName: BlockAbility
-    _ancestorHashCodes: 0276cb27
-    _ancestorNames:
-    - Event
+  ActivationBlockedTags: []
   manualEndAbility: 0
   FrameCount: 120
-  DurationalCues:
-  - trackName: 
-    clipEvents: []
+  DurationalCues: []
   InstantCues:
   - trackName: 
     markEvents:
     - startFrame: 0
       cues:
       - {fileID: 11400000, guid: b0782bc94c689024385ef43cbbe2d14a, type: 2}
-    - startFrame: 17
+    - startFrame: 15
       cues:
       - {fileID: 11400000, guid: 1d09a00d73c368c45bbc54de7c445eee, type: 2}
   ReleaseGameplayEffect: []
   BuffGameplayEffects:
   - trackName: Buff
     clipEvents:
-    - startFrame: 0
-      durationFrame: 7
+    - startFrame: 16
+      durationFrame: 104
       buffTarget: 0
-      gameplayEffect: {fileID: 11400000, guid: 3dbb16681f78adf44916be5c05b73e8c, type: 2}
+      gameplayEffect: {fileID: 11400000, guid: 47218ddaf9bb04a43bd527674507c1e2, type: 2}
   - trackName: Buff
     clipEvents:
-    - startFrame: 0
-      durationFrame: 7
+    - startFrame: 6
+      durationFrame: 10
       buffTarget: 0
-      gameplayEffect: {fileID: 11400000, guid: fb1771f26a6df384b86aa13be4e4e5fb, type: 2}
-  - trackName: Buff
-    clipEvents:
-    - startFrame: 7
-      durationFrame: 82
-      buffTarget: 0
-      gameplayEffect: {fileID: 11400000, guid: b30985e386cfc0c4aa3f1ae3917c9ec1, type: 2}
-  InstantTasks:
-  - trackName: 
-    markEvents: []
+      gameplayEffect: {fileID: 11400000, guid: 3274b533e5c89b040ab52829582c2e2c, type: 2}
+  InstantTasks: []
   OngoingTasks: []

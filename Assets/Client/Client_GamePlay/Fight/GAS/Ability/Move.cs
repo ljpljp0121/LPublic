@@ -34,14 +34,12 @@ public class MoveSpec : AbilitySpec, IStateMachineOwner
     public override void ActivateAbility(params object[] args)
     {
         EventSystem.RegisterEvent<EOnInputMove>(OnMove);
-        animCom.SetRootMotionAction(OnRootMotion);
         ChangeState(MoveState.Idle);
     }
 
     public override void CancelAbility()
     {
         EventSystem.RemoveEvent<EOnInputMove>(OnMove);
-        animCom.ClearRootMotionAction();
     }
 
     public override void EndAbility()
@@ -59,12 +57,6 @@ public class MoveSpec : AbilitySpec, IStateMachineOwner
     private void OnMove(EOnInputMove obj)
     {
         InputDir = new Vector3(obj.MoveDir.x, 0, obj.MoveDir.y);
-    }
-
-    private void OnRootMotion(Vector3 deltaPosition, Quaternion deltaRotation)
-    {
-        animCom.transform.rotation *= deltaRotation;
-        characterController.Move(deltaPosition);
     }
 
     public void Rotate(Vector3 input, float rotateSpeed = 0)

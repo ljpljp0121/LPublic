@@ -18,14 +18,28 @@ MonoBehaviour:
   Cooldown: {fileID: 0}
   CooldownTime: 0
   AssetTag:
-  - _name: Ability.Name.Movement
-    _hashCode: -1093971124
-    _shortName: Movement
-    _ancestorHashCodes: b84ed1e087213757
+  - _name: Ability.Type.Move
+    _hashCode: -1526076213
+    _shortName: Move
+    _ancestorHashCodes: b84ed1e09a60e713
     _ancestorNames:
     - Ability
-    - Ability.Name
-  CancelAbilityTags: []
+    - Ability.Type
+  - _name: Ability.Type.HandsOff
+    _hashCode: 1073100401
+    _shortName: HandsOff
+    _ancestorHashCodes: b84ed1e09a60e713
+    _ancestorNames:
+    - Ability
+    - Ability.Type
+  CancelAbilityTags:
+  - _name: Ability.Type.HandsOff
+    _hashCode: 1073100401
+    _shortName: HandsOff
+    _ancestorHashCodes: b84ed1e09a60e713
+    _ancestorNames:
+    - Ability
+    - Ability.Type
   BlockAbilityTags: []
   ActivationOwnedTag:
   - _name: State.Moving
