@@ -23,6 +23,10 @@ public class UpdatePackageManifest : StateBase
         {
             LogSystem.Error("资源版本号不存在");
         }
+        if (!TryGetShareData("PlayMode", out EPlayMode playMode))
+        {
+            LogSystem.Error("没有设置对应的资源运行类型");
+        }
         var package = YooAssets.GetPackage(packageName);
         var operation = package.UpdatePackageManifestAsync(packageVersion);
         yield return operation;
@@ -32,9 +36,13 @@ public class UpdatePackageManifest : StateBase
             LogSystem.Error(operation.Error);
             EventSystem.DispatchEvent<UserTryUpdatePatchManifest>(new UserTryUpdatePatchManifest());
         }
-        else
+        else if (playMode == EPlayMode.HostPlayMode)
         {
             stateMachine.ChangeState<CreatePackageDownloader>();
+        }
+        else if (playMode == EPlayMode.OfflinePlayMode || playMode == EPlayMode.EditorSimulateMode)
+        {
+            stateMachine.ChangeState<ClearPackageCache>();
         }
     }
 }

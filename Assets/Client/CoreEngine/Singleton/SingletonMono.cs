@@ -10,14 +10,9 @@ public abstract class SingletonMono<T> : MonoBehaviour where T : SingletonMono<T
         {
             if (instance == null)
             {
-                instance = FindObjectOfType<T>();
-
-                if (instance == null)
-                {
-                    Debug.LogWarning($"未找到 {typeof(T).Name} 的实例，正在创建新实例。");
-                    var go = new GameObject(typeof(T).Name);
-                    instance = go.AddComponent<T>();
-                }
+                Debug.LogWarning($"未找到 {typeof(T).Name} 的实例，正在创建新实例。");
+                var go = new GameObject(typeof(T).Name);
+                instance = go.AddComponent<T>();
             }
             return instance;
         }

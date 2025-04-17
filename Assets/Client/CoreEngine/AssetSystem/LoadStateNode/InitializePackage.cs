@@ -93,24 +93,24 @@ public class InitializePackage : StateBase
 
         return hostServerIP;
 
-// #if UNITY_EDITOR
-//         if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.Android)
-//             return $"{hostServerIP}";
-//         else if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.iOS)
-//             return $"{hostServerIP}";
-//         else if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.WebGL)
-//             return $"{hostServerIP}";
-//         else
-//             return $"{hostServerIP}";
-// #else
-//         if (Application.platform == RuntimePlatform.Android)
-//             return $"{hostServerIP}";
-//         else if (Application.platform == RuntimePlatform.IPhonePlayer)
-//             return $"{hostServerIP}";
-//         else if (Application.platform == RuntimePlatform.WebGLPlayer)
-//             return $"{hostServerIP}";
-//         else
-//             return $"{hostServerIP}";
-// #endif
+        // #if UNITY_EDITOR
+        //         if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.Android)
+        //             return $"{hostServerIP}";
+        //         else if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.iOS)
+        //             return $"{hostServerIP}";
+        //         else if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.WebGL)
+        //             return $"{hostServerIP}";
+        //         else
+        //             return $"{hostServerIP}";
+        // #else
+        //         if (Application.platform == RuntimePlatform.Android)
+        //             return $"{hostServerIP}";
+        //         else if (Application.platform == RuntimePlatform.IPhonePlayer)
+        //             return $"{hostServerIP}";
+        //         else if (Application.platform == RuntimePlatform.WebGLPlayer)
+        //             return $"{hostServerIP}";
+        //         else
+        //             return $"{hostServerIP}";
+        // #endif
     }
 }
