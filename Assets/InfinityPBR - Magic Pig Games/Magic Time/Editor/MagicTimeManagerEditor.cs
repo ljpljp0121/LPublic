@@ -55,6 +55,10 @@ namespace MagicPigGames.MagicTime
                 Label($"Value: {timeScale.Value.Value}", false, true, true);
                 Label($"Subscribers: {timeScale.Value.SubscriberCount}", false, true, true);
                 Space();
+                foreach (var timer in timeScale.Value.SubscriberNames)
+                {
+                    Label($"订阅者: {timer}", false, true, true);
+                }
             }
         }
 

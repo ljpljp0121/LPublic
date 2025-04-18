@@ -87,15 +87,6 @@ namespace MagicPigGames.MagicTime
         // NOTE: If this isn't firing, make sure you are not overriding Update in a subclass!!!
         protected virtual void Update() => HandleTransition();
 
-        /// <summary>
-        /// This will immediately end the transition and set the current timeScale to the desired timeScale.
-        /// </summary>
-        public virtual void EndTransition()
-        {
-            _isTransitioning = false;
-            SetCurrentTimeScale(_desiredCombinedTimeScale);
-        }
-
         protected virtual void HandleTransition()
         {
             if (!_isTransitioning) return;
@@ -306,6 +297,15 @@ namespace MagicPigGames.MagicTime
             _transitionStartTime = Time.time;
             _transitionStartValue = _currentTimeScale; // Set this to whatever it is right now
             SetDesiredCombinedTimeScale(CombinedTimeScale()); // Set this to the new combined value
+        }
+        
+        /// <summary>
+        /// This will immediately end the transition and set the current timeScale to the desired timeScale.
+        /// </summary>
+        public virtual void EndTransition()
+        {
+            _isTransitioning = false;
+            SetCurrentTimeScale(_desiredCombinedTimeScale);
         }
     }
 }
