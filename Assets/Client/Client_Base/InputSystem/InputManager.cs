@@ -5,6 +5,12 @@ using UnityEngine.InputSystem;
 
 public class InputManager : Singleton<InputManager>, GameInput.IGamePlayActions, GameInput.IUIActions
 {
+    [InitOnLoad]
+    static void InitOnLoad()
+    {
+        Instance.Init();
+    }
+
     #region 初始化
 
     private GameInput gameInput;

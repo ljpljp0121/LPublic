@@ -36,10 +36,10 @@ public class ChronosSystemEditor : ToolEditor
             return;
         }
 
-        Label($"当前有 {Target.TimeScales.Count} 个时间刻度组", false, true, true);
+        Label($"当前有 {Target.TimeScalesByName.Count} 个时间刻度组", false, true, true);
         Label($"<i>本地时间刻度组将不会显示在这里</i>", false, true, true);
         Space();
-        foreach (var timeScale in Target.TimeScales.ToArray())
+        foreach (var timeScale in Target.TimeScalesByName.ToArray())
         {
             Label($"刻度组名称<b>{timeScale.Key}</b>", false, true, true);
             Label($"刻度组名称<i>{timeScale.Value.Name}</i>", false, true, true);

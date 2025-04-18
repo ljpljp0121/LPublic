@@ -4,6 +4,9 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
+/// <summary>
+/// 时间刻度组
+/// </summary>
 public class TimeScaleGroup
 {
     [SerializeField] protected float scaleValue = 1f;
@@ -14,8 +17,11 @@ public class TimeScaleGroup
     protected bool isPaused = false;
     protected readonly HashSet<IChronosComponent> localTimeContainer = new();
 
-    public string Name => name;
-    public int HashCode => name.GetHashCode();
+    public string Name
+    {
+        get => name;
+        private set => name = SanitizeName(value);
+    }
 
     public bool AutoRemoveWhenEmpty
     {
@@ -80,27 +86,41 @@ public class TimeScaleGroup
 
     #endregion
 
+    public TimeScaleGroup(string nameValue, float initValue = 1f, bool autoRemoveWhenEmpty = true)
+    {
+        Name = nameValue;
+        ScaleValue = initValue;
+        this.autoRemoveWhenEmpty = autoRemoveWhenEmpty;
+    }
+
+    /// <summary>
+    /// 设置时间组的时间刻度
+    /// </summary>
+    /// <param name="newValue"></param>
     public void SetScaleValue(float newValue)
     {
         if (Mathf.Approximately(ScaleValue, newValue)) return;
         ScaleValue = newValue;
     }
 
+    /// <summary>
+    /// 时间组暂停
+    /// 会让属于这个时间组的所有对象的时间刻度变为0
+    /// </summary>
     public void Pause()
     {
         lastValue = ScaleValue;
         ScaleValue = 0f;
     }
 
+    /// <summary>
+    /// 恢复时间组
+    /// </summary>
     public void Resume() => ScaleValue = lastValue;
 
-    public void Init(string nameValue, float initValue = 1f, bool autoRemoveWhenEmpty = true)
-    {
-        name = nameValue;
-        ScaleValue = initValue;
-        this.autoRemoveWhenEmpty = autoRemoveWhenEmpty;
-    }
-
+    /// <summary>
+    /// 注册组件到组中
+    /// </summary>
     public void Register(IChronosComponent chronosComponent)
     {
         localTimeContainer.Add(chronosComponent);
@@ -108,6 +128,9 @@ public class TimeScaleGroup
         OnRegisterUnityEvent?.Invoke(chronosComponent);
     }
 
+    /// <summary>
+    /// 从组中注销组件
+    /// </summary>
     public void UnRegister(IChronosComponent chronosComponent)
     {
         if (!localTimeContainer.Contains(chronosComponent))
@@ -123,14 +146,20 @@ public class TimeScaleGroup
             ChronosSystem.Instance.RemoveTimeScaleGroup(name);
     }
 
+    /// <summary>
+    /// 注销组中所有组件
+    /// </summary>
     public void UnRegisterAll()
     {
-        foreach (var localTimer in localTimeContainer.ToArray())
+        foreach (var chronosComponent in localTimeContainer.ToArray())
         {
-            UnRegister(localTimer);
+            UnRegister(chronosComponent);
         }
     }
 
+    /// <summary>
+    /// 释放资源
+    /// </summary>
     public void Dispose()
     {
         foreach (var localTimer in localTimeContainer)
@@ -139,5 +168,10 @@ public class TimeScaleGroup
         localTimeContainer.Clear();
         if (AutoRemoveWhenEmpty && ChronosSystem.Instance != null)
             ChronosSystem.Instance.RemoveTimeScaleGroup(name);
+    }
+
+    private string SanitizeName(string raw)
+    {
+        return raw.Trim().Replace(" ", "").ToLower();
     }
 }
