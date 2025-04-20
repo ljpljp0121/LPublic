@@ -9,9 +9,12 @@ public class AudioModule : MonoBehaviour
 {
     private static GameObjectPoolModule poolModule;
 
-    private AudioSource bgAudioSource;
-    private GameObject effectAudioPlayPrefab;
-    [SerializeField] private int EffectAudioPoolNum = 20;
+    [SerializeField, LabelText("背景音乐播放器")]
+    private AudioSource BgAudioSource;
+    [SerializeField, LabelText("音效播放器预制体")]
+    private GameObject EffectAudioPlayPrefab;
+    [SerializeField, LabelText("音效对象池预设数量")] 
+    private int EffectAudioPoolNum = 20;
     // 场景中生效的所有特效音乐播放器
     private List<AudioSource> audioPlayList;
 
@@ -109,7 +112,7 @@ public class AudioModule : MonoBehaviour
     /// </summary>
     private void UpdateBGAudioPlay()
     {
-        bgAudioSource.volume = bgVolume * globalVolume;
+        BgAudioSource.volume = bgVolume * globalVolume;
     }
 
     /// <summary>
@@ -158,7 +161,7 @@ public class AudioModule : MonoBehaviour
     /// </summary>
     private void UpdateMute()
     {
-        bgAudioSource.mute = isMute;
+        BgAudioSource.mute = isMute;
         UpdateEffectAudioPlay();
     }
 
@@ -167,7 +170,7 @@ public class AudioModule : MonoBehaviour
     /// </summary>
     private void UpdateLoop()
     {
-        bgAudioSource.loop = isLoop;
+        BgAudioSource.loop = isLoop;
     }
 
     /// <summary>
@@ -177,11 +180,11 @@ public class AudioModule : MonoBehaviour
     {
         if (isPause)
         {
-            bgAudioSource.Pause();
+            BgAudioSource.Pause();
         }
         else
         {
-            bgAudioSource.UnPause();
+            BgAudioSource.UnPause();
         }
     }
 
@@ -189,14 +192,11 @@ public class AudioModule : MonoBehaviour
 
     public void Init()
     {
-        bgAudioSource = GetComponent<AudioSource>();
         Transform poolRoot = new GameObject("AudioPoolRoot").transform;
         poolRoot.SetParent(transform);
         poolModule = new GameObjectPoolModule();
         poolModule.Init(poolRoot);
-        effectAudioPlayPrefab = new GameObject("AudioPlay");
-        effectAudioPlayPrefab.AddComponent<AudioSource>();
-        poolModule.InitObjectPool(effectAudioPlayPrefab, -1, EffectAudioPoolNum);
+        poolModule.InitObjectPool(EffectAudioPlayPrefab, -1, EffectAudioPoolNum);
         audioPlayList = new List<AudioSource>(EffectAudioPoolNum);
         audioPlayRoot = new GameObject("AudioPlayRoot").transform;
         audioPlayRoot.SetParent(transform);
@@ -230,11 +230,11 @@ public class AudioModule : MonoBehaviour
             yield return CoroutineTool.WaitForFrames();
             if (!isPause) currTime += Time.deltaTime;
             float ratio = Mathf.Lerp(1, 0, currTime / fadeOutTime);
-            bgAudioSource.volume = bgVolume * globalVolume * ratio;
+            BgAudioSource.volume = bgVolume * globalVolume * ratio;
         }
 
-        bgAudioSource.clip = clip;
-        bgAudioSource.Play();
+        BgAudioSource.clip = clip;
+        BgAudioSource.Play();
         LogSystem.Log($"开始播放背景音乐: {clip.name}");
         currTime = 0;
         // 提高音量，也就是淡入
@@ -243,7 +243,7 @@ public class AudioModule : MonoBehaviour
             yield return CoroutineTool.WaitForFrames();
             if (!isPause) currTime += Time.deltaTime;
             float ratio = Mathf.InverseLerp(0, 1, currTime / fadeInTime);
-            bgAudioSource.volume = bgVolume * globalVolume * ratio;
+            BgAudioSource.volume = bgVolume * globalVolume * ratio;
         }
         fadeCoroutine = null;
     }
@@ -284,8 +284,8 @@ public class AudioModule : MonoBehaviour
     {
         if (bgWithClipsCoroutine != null) MonoSystem.EndCoroutine(bgWithClipsCoroutine);
         if (fadeCoroutine != null) MonoSystem.EndCoroutine(fadeCoroutine);
-        bgAudioSource.Stop();
-        bgAudioSource.clip = null;
+        BgAudioSource.Stop();
+        BgAudioSource.clip = null;
     }
 
     public void PauseBgAudio()
@@ -314,8 +314,8 @@ public class AudioModule : MonoBehaviour
         GameObject audioPlay = poolModule.GetObject("AudioPlay", audioPlayRoot);
         if (audioPlay.IsNull())
         {
-            audioPlay = GameObject.Instantiate(effectAudioPlayPrefab, audioPlayRoot);
-            audioPlay.name = effectAudioPlayPrefab.name;
+            audioPlay = GameObject.Instantiate(EffectAudioPlayPrefab, audioPlayRoot);
+            audioPlay.name = EffectAudioPlayPrefab.name;
         }
         AudioSource audioSource = audioPlay.GetComponent<AudioSource>();
         SetEffectAudioPlay(audioSource, is3D ? 1f : 0f);

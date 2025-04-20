@@ -62,6 +62,11 @@ public abstract class UIBehavior : MonoBehaviour
 
     }
 
+    protected virtual void OnHide()
+    {
+
+    }
+
     #endregion
 
     #region 显示/隐藏实现
@@ -102,7 +107,10 @@ public abstract class UIBehavior : MonoBehaviour
         try
         {
             LogSystem.Log("Hide:" + GetType());
+            OnPreHide();
+            OnHide();
             gameObject.SetActive(false);
+            OnPostHide();
             if (wndInfo.DestroyOnHide)
             {
                 DestroyImp();
@@ -163,14 +171,19 @@ public abstract class UIBehavior : MonoBehaviour
 
     #region 显示关闭其他UI
 
-    private void ShowUI<T>(params object[] args) where T : UIBehavior
+    protected void ShowUI<T>(params object[] args) where T : UIBehavior
     {
         uiSystem.ShowUI<T>(args);
     }
 
-    private void HideUI<T>() where T : UIBehavior
+    protected void HideUI<T>() where T : UIBehavior
     {
         uiSystem.HideUI<T>();
+    }
+
+    protected void Hide()
+    {
+        uiSystem.HideUIByName(wndInfo.Name);
     }
 
     #endregion
