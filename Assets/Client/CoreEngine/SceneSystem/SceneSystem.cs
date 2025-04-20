@@ -14,7 +14,7 @@ public static class SceneSystem
         SceneHandle handle = YooAssets.LoadSceneSync($"{assetPath}{sceneName}", loadMode, physicsMode);
     }
 
-    public static void LoadSceneAsync(string sceneName, Action<float> onProgress = null, Action callback = null,
+    public static void LoadSceneAsync(string sceneName, Action<float> onProgress = null, Action onComplete = null,
         LoadSceneMode loadMode = LoadSceneMode.Single,
         LocalPhysicsMode physicsMode = LocalPhysicsMode.None, bool suspendLoad = false)
     {
@@ -23,7 +23,7 @@ public static class SceneSystem
         handle.Completed += (obj) =>
         {
             MonoSystem.EndCoroutine(loadCoroutine);
-            callback?.Invoke();
+            onComplete?.Invoke();
             obj.Release();
         };
     }

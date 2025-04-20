@@ -13,7 +13,7 @@ public class AudioModule : MonoBehaviour
     private AudioSource BgAudioSource;
     [SerializeField, LabelText("音效播放器预制体")]
     private GameObject EffectAudioPlayPrefab;
-    [SerializeField, LabelText("音效对象池预设数量")] 
+    [SerializeField, LabelText("音效对象池预设数量")]
     private int EffectAudioPoolNum = 20;
     // 场景中生效的所有特效音乐播放器
     private List<AudioSource> audioPlayList;
@@ -33,7 +33,7 @@ public class AudioModule : MonoBehaviour
         }
     }
 
-    [SerializeField] [Range(0, 1)] [OnValueChanged("UpdateBGAudioPlay")]
+    [SerializeField, Range(0, 1), OnValueChanged("UpdateBGAudioPlay")]
     private float bgVolume;
     public float BGVolume
     {
@@ -46,7 +46,7 @@ public class AudioModule : MonoBehaviour
         }
     }
 
-    [SerializeField] [Range(0, 1)] [OnValueChanged("UpdateEffectAudioPlay")]
+    [SerializeField, Range(0, 1), OnValueChanged("UpdateEffectAudioPlay")]
     private float effectVolume;
     public float EffectVolume
     {
@@ -59,7 +59,7 @@ public class AudioModule : MonoBehaviour
         }
     }
 
-    [SerializeField] [OnValueChanged("UpdateMute")]
+    [SerializeField, OnValueChanged("UpdateMute")]
     private bool isMute = false;
     public bool IsMute
     {
@@ -72,7 +72,7 @@ public class AudioModule : MonoBehaviour
         }
     }
 
-    [SerializeField] [OnValueChanged("UpdateLoop")]
+    [SerializeField, OnValueChanged("UpdateLoop")]
     private bool isLoop = true;
     public bool IsLoop
     {
@@ -85,7 +85,7 @@ public class AudioModule : MonoBehaviour
         }
     }
 
-    [SerializeField] [OnValueChanged("UpdatePause")]
+    [SerializeField, OnValueChanged("UpdatePause")]
     private bool isPause = false;
     public bool IsPause
     {
