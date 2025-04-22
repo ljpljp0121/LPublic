@@ -265,7 +265,20 @@ public static class AssetSystem
             LogSystem.Error($"加载资源失败: {assetName}");
             return null;
         }
+     
         return handle.AssetObject as T;
+    }
+
+    public static void LoadAsset<T>(string assetName, Action<T> onLoaded) where T : UnityEngine.Object
+    {
+        AssetHandle handle = YooAssets.LoadAssetSync<T>($"{assetPath}{assetName}");
+        if (handle?.AssetObject == null)
+        {
+            LogSystem.Error($"加载资源失败: {assetName}");
+            return;
+        }
+        T obj = handle.AssetObject as T;
+        onLoaded?.Invoke(obj);
     }
 
     /// <summary>
@@ -274,29 +287,40 @@ public static class AssetSystem
     /// <typeparam name="T">资源类型</typeparam>
     /// <param name="assetName">AB资源名称</param>
     /// <param name="callBack">回调函数</param>
-    public static void LoadAssetAsync<T>(string assetName, Action<T> callBack) where T : UnityEngine.Object
+    public static async Task<T> LoadAssetAsync<T>(string assetName) where T : UnityEngine.Object
     {
         AssetHandle handle = YooAssets.LoadAssetAsync<T>($"{assetPath}{assetName}");
-        if (handle?.AssetObject == null)
+        try
         {
-            LogSystem.Error($"加载资源失败: {assetName}");
-            return;
+            await handle.Task;
+
+            if (handle.Status == EOperationStatus.Succeed)
+            {
+                return handle.AssetObject as T;
+            }
+            else
+            {
+                LogSystem.Error($"加载失败: {assetName}");
+                return null;
+            }
         }
-        handle.Completed += (obj) => { callBack?.Invoke(obj.AssetObject as T); };
+        finally
+        {
+            handle.Release();
+        }
     }
 
-    public static Task<T> LoadAssetAsync<T>(string assetName) where T : UnityEngine.Object
+    public static async void LoadAssetAsync<T>(string assetName, Action<T> callback) where T : UnityEngine.Object
     {
-        var tcs = new TaskCompletionSource<T>();
-
-        LoadAssetAsync<T>(assetName, obj =>
+        try
         {
-            if (obj != null)
-                tcs.SetResult(obj);
-            else
-                tcs.SetException(new Exception($"加载失败: {assetName}"));
-        });
-        return tcs.Task;
+            T result = await LoadAssetAsync<T>(assetName);
+            callback?.Invoke(result);
+        }
+        catch (Exception e)
+        {
+            LogSystem.Error($"异步加载异常: {e.Message}");
+        }
     }
 
 
