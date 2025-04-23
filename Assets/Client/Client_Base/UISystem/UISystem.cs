@@ -89,7 +89,7 @@ public class UISystem : SingletonMono<UISystem>, IUIStorage
 
     #region 数据修改接口
 
-    public void ChangeOrAddUIDic(string uiName, UIBehavior uiBehavior)
+    public  void ChangeOrAddUIDic(string uiName, UIBehavior uiBehavior)
     {
         uiBehaviorDic[uiName] = uiBehavior;
     }
@@ -152,44 +152,44 @@ public class UISystem : SingletonMono<UISystem>, IUIStorage
 
     #region UI调用对外接口
 
-    public void ShowUIByName(string uiName, params object[] args)
+    public static void ShowUIByName(string uiName, params object[] args)
     {
-        ShowUIByNameImp(uiName, args).Run();
+        Instance.ShowUIByNameImp(uiName, args).Run();
     }
 
-    public void ShowUI<T>() where T : UIBehavior
+    public static void ShowUI<T>() where T : UIBehavior
     {
-        ShowUIByNameImp(typeof(T).Name).Run();
+        Instance.ShowUIByNameImp(typeof(T).Name).Run();
     }
 
-    public void ShowUI<T>(params object[] args) where T : UIBehavior
+    public static void ShowUI<T>(params object[] args) where T : UIBehavior
     {
-        ShowUIByNameImp(typeof(T).Name, args).Run();
+        Instance.ShowUIByNameImp(typeof(T).Name, args).Run();
     }
 
-    public Task ShowUIByNameAsync(string uiName, params object[] args)
+    public static Task ShowUIByNameAsync(string uiName, params object[] args)
     {
-        return ShowUIByNameImp(uiName, args);
+        return Instance.ShowUIByNameImp(uiName, args);
     }
 
-    public Task ShowUIAsync<T>() where T : UIBehavior
+    public static Task ShowUIAsync<T>() where T : UIBehavior
     {
-        return ShowUIByNameImp(typeof(T).Name);
+        return Instance.ShowUIByNameImp(typeof(T).Name);
     }
 
-    public Task ShowUIAsync<T>(params object[] args) where T : UIBehavior
+    public static Task ShowUIAsync<T>(params object[] args) where T : UIBehavior
     {
-        return ShowUIByNameImp(typeof(T).Name, args);
+        return Instance.ShowUIByNameImp(typeof(T).Name, args);
     }
 
-    public void HideUIByName(string uiName)
+    public static void HideUIByName(string uiName)
     {
-        HideUIByNameImp(uiName);
+        Instance.HideUIByNameImp(uiName);
     }
 
-    public void HideUI<T>() where T : UIBehavior
+    public static void HideUI<T>() where T : UIBehavior
     {
-        HideUIByNameImp(typeof(T).Name);
+        Instance.HideUIByNameImp(typeof(T).Name);
     }
 
     #endregion

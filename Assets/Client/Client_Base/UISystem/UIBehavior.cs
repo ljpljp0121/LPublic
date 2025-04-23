@@ -13,7 +13,6 @@ public abstract class UIBehavior : MonoBehaviour
     private UIWnd wndInfo;
     private Canvas canvas;
     private GraphicRaycaster rayCaster;
-    private UISystem uiSystem;
 
     public UIWnd WndInfo
     {
@@ -30,7 +29,6 @@ public abstract class UIBehavior : MonoBehaviour
 
     protected virtual void Awake()
     {
-        uiSystem = UISystem.Instance;
         Canvas.overrideSorting = true;
         AutoBindComponents();
     }
@@ -125,17 +123,17 @@ public abstract class UIBehavior : MonoBehaviour
     private void DestroyImp()
     {
         string uiName = wndInfo.Name;
-        if (uiSystem.TryGetFromPrefabDic(uiName, out var prefab))
+        if (UISystem.Instance.TryGetFromPrefabDic(uiName, out var prefab))
         {
             Destroy(prefab);
-            uiSystem.TryRemovePrefabDic(uiName);
+            UISystem.Instance.TryRemovePrefabDic(uiName);
             LogSystem.Log("-----Destroy Prefab:" + uiName);
         }
         else
         {
             LogSystem.Log("=====DestroyUI Can't find uibehaviourName:" + uiName);
         }
-        uiSystem.TryRemoveUIDic(uiName);
+        UISystem.Instance.TryRemoveUIDic(uiName);
         Destroy(gameObject);
     }
 
@@ -173,17 +171,17 @@ public abstract class UIBehavior : MonoBehaviour
 
     protected void ShowUI<T>(params object[] args) where T : UIBehavior
     {
-        uiSystem.ShowUI<T>(args);
+        UISystem.ShowUI<T>(args);
     }
 
     protected void HideUI<T>() where T : UIBehavior
     {
-        uiSystem.HideUI<T>();
+        UISystem.HideUI<T>();
     }
 
     protected void Hide()
     {
-        uiSystem.HideUIByName(wndInfo.Name);
+        UISystem.HideUIByName(wndInfo.Name);
     }
 
     #endregion
