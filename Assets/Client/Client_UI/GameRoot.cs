@@ -25,6 +25,6 @@ public class GameRoot : MonoBehaviour
         LogSystem.Log("InitUIOnLoad.Init");
         InitUIOnLoad.Init();
 
-        UISystem.Instance.ShowUI<StartPanel>();
+        UISystem.ShowUI<StartPanel>();
     }
 }

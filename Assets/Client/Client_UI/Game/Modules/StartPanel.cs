@@ -19,7 +19,7 @@ public class StartPanel : UIBehavior
     private void OnStartBtnClick()
     {
         Debug.Log("开始游戏");
-        UISystem.Instance.HideUI<StartPanel>();
+        UISystem.HideUI<StartPanel>();
         UISystem.Instance.SetBgVisible(false);
 
         CinemachineFreeLook _camera = GameObject.Find("CharacterCamera").GetComponent<CinemachineFreeLook>();
