@@ -76,8 +76,9 @@ public class AtlasTool : OdinEditorWindow
         }
     }
 
-    private void CreateAtlases(string atlasFolderPath, List<string> spritesFolderPaths)
+    private void CreateAtlases(string atlasFolderPath, List<string> folders)
     {
+        int idx = 0;
 
     }
 }
