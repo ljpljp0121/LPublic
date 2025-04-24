@@ -19,7 +19,9 @@ public class MyEditorTool : OdinMenuEditorWindow
         tree.Config.DrawScrollView = true;
         tree.Config.AutoHandleKeyboardNavigation = true;
 
-        tree.Add("ShowUITool", CreateInstance<UITool>());
+        var uiTool = CreateInstance<UITool>();
+        uiTool.Init();
+        tree.Add("ShowUITool", uiTool);
         tree.Add("AtlasTool", CreateInstance<AtlasTool>());
 
         return tree;

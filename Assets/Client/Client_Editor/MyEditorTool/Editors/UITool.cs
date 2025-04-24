@@ -12,14 +12,16 @@ using UnityEngine;
 public class UITool : OdinEditorWindow
 {
     private static IEnumerable UIChoices = new ValueDropdownList<string>();
-
-    public UITool()
+    public void Init()
     {
+        if (IsEditMode())
+            return;
         SetUINameChoices();
         SetTypeChoices();
     }
 
-    [InfoBox("<size=50>请注意,由于ShowUI会涉及到如资源系统,UI系统,所以一定要启动游戏并且初始化完成后才能够正常使用该工具", InfoMessageType.Error,VisibleIf = "IsPlay")]
+    [InfoBox("<size=50>请注意,由于ShowUI会涉及到如资源系统,UI系统,所以一定要启动游戏并且初始化完成后才能够正常使用该工具", InfoMessageType.Error
+        , "IsEditMode")]
     [LabelText("UI名称")]
     [ValueDropdown("UIChoices", HideChildProperties = true)]
     public string UIName;
@@ -94,9 +96,9 @@ public class UITool : OdinEditorWindow
         return type.Namespace?.Split('.').Length > 1;
     }
 
-    bool IsPlay()
+    static bool IsEditMode()
     {
-        return Application.isPlaying;
+        return !Application.isPlaying;
     }
 }
 
