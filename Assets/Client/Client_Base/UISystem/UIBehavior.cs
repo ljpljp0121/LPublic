@@ -23,6 +23,8 @@ public abstract class UIBehavior : MonoBehaviour
     public GraphicRaycaster RayCaster => rayCaster != null ? rayCaster : (rayCaster = GetComponent<GraphicRaycaster>());
     public int SortingOrder => Canvas.sortingOrder;
 
+    public bool IsVisible { get; private set; }
+
     #endregion
 
     #region 生命周期管理
@@ -182,6 +184,21 @@ public abstract class UIBehavior : MonoBehaviour
     protected void Hide()
     {
         UISystem.HideUIByName(wndInfo.Name);
+    }
+
+    #endregion
+
+
+    #region 拓展
+
+    public Task SetVisible(bool value)
+    {
+        IsVisible = value;
+        if (UISystem.SetVisibleFunc != null && this.gameObject != null)
+        {
+            return UISystem.SetVisibleFunc(this.gameObject, value);
+        }
+        return Task.CompletedTask;
     }
 
     #endregion

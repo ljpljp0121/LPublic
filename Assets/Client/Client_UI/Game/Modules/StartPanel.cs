@@ -20,7 +20,6 @@ public class StartPanel : UIBehavior
     {
         Debug.Log("开始游戏");
         UISystem.HideUI<StartPanel>();
-        UISystem.Instance.SetBgVisible(false);
 
         CinemachineFreeLook _camera = GameObject.Find("CharacterCamera").GetComponent<CinemachineFreeLook>();
         GameObject go = AssetSystem.LoadAsset<GameObject>("Prefab/Role/星见雅");

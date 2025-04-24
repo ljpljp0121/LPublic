@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using DG.Tweening.Plugins;
-using Sirenix.OdinInspector;
+﻿using Sirenix.OdinInspector;
 using Sirenix.OdinInspector.Editor;
+using System.Collections.Generic;
+using System.IO;
 using UnityEditor;
 using UnityEditor.U2D;
 using UnityEngine;
@@ -36,16 +35,29 @@ public class AtlasTool : OdinEditorWindow
         var paths = Directory.GetDirectories(SpritesFolderPath, "*", SearchOption.AllDirectories);
         foreach (string path in paths)
         {
-            string[] guids = Directory.GetDirectories(path.Replace("\\","/"), "*", SearchOption.TopDirectoryOnly);
+            string[] guids = Directory.GetDirectories(path.Replace("\\", "/"), "*", SearchOption.TopDirectoryOnly);
             if (guids.Length != 0) continue;
             folders.Add(path.Replace("\\", "/"));
         }
+        //foreach (var path in paths)
+        //{
+        //    string normalizedpath = path.Replace("\\", "/");
+
+        //    string[] imageFiles = Directory.GetFiles(normalizedpath, "*.*", SearchOption.TopDirectoryOnly)
+        //        .Where(file =>
+        //            file.EndsWith(".png", StringComparison.OrdinalIgnoreCase) ||
+        //            file.EndsWith(".jpg", StringComparison.OrdinalIgnoreCase))
+        //        .ToArray();
+
+        //    if (imageFiles.Length > 0)
+        //    {
+        //        folders.Add(normalizedpath);
+        //    }
+        //}
+
         return folders;
     }
 
-    /// <summary>
-    /// 检查图集是否已经生成，生成的话就删掉
-    /// </summary>
     private void RePackAtlases(string atlasFolderPath, ref List<string> spritesFolderPaths)
     {
         var existAtlasGuids = AssetDatabase.FindAssets(".spriteatlas", new string[] { atlasFolderPath });

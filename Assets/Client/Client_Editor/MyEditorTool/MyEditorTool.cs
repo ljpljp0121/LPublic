@@ -23,6 +23,8 @@ public class MyEditorTool : OdinMenuEditorWindow
         uiTool.Init();
         tree.Add("ShowUITool", uiTool);
         tree.Add("AtlasTool", CreateInstance<AtlasTool>());
+        tree.Add("BuildTool", CreateInstance<BuildTool>());
+
 
         return tree;
     }

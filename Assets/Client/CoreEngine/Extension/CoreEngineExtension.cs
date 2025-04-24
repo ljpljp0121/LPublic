@@ -12,6 +12,17 @@ public static class CoreEngineExtension
         return ReferenceEquals(obj, null);
     }
 
+    public static T TryAddComponent<T>(this GameObject obj) where T : Component
+    {
+        if (obj == null) return null;
+        T curComponent = obj.GetComponent<T>();
+        if (curComponent == null)
+        {
+            curComponent = obj.AddComponent<T>();
+        }
+        return curComponent;
+    }
+
     #endregion
 
     #region 资源管理

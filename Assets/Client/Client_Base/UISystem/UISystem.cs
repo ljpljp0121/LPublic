@@ -2,7 +2,23 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using cfg.UI;
+using DG.Tweening;
+using UITool;
 using UnityEngine;
+
+public interface IVisibleHandler
+{
+    /// <summary>
+    /// UI显示在界面上的时候触发
+    /// </summary>
+    /// <param name="isOpen">如果为True,表示主动Show的时候,如果为False,表示其他UI关闭使它显示在最上层</param>
+    void OnVisible(bool isOpen);
+    /// <summary>
+    /// UI关闭的时候触发
+    /// </summary>
+    /// <param name="isClose">如果为True,表示主动Hide的时候,如果为False,表示其他UI打开使它不显示在最上层</param>
+    void OnDisVisible(bool isClose);
+}
 
 public class UISystem : SingletonMono<UISystem>, IUIStorage
 {
@@ -14,7 +30,7 @@ public class UISystem : SingletonMono<UISystem>, IUIStorage
     private Transform uiRoot;
     private RectTransform windowRoot;
     private Camera uiCamera;
-    private GameObject bgImg;
+    private CanvasGroup black;
 
     public Transform UIRoot
     {
@@ -47,22 +63,20 @@ public class UISystem : SingletonMono<UISystem>, IUIStorage
         }
     }
 
-    public GameObject BgImg
+    public CanvasGroup Black
     {
         get
         {
-            if (bgImg == null)
+            if (black == null)
             {
-                bgImg = windowRoot.Find("BgCanvas").gameObject;
+                var blackGo = (GameObject)GameObject.Instantiate(Resources.Load("Black"), WindowRoot);
+                black = blackGo.GetComponent<CanvasGroup>();
+                black.GetComponent<RectTransform>().SetFullRect();
             }
-            return bgImg;
+            return black;
         }
     }
 
-    public void SetBgVisible(bool isVisible)
-    {
-        BgImg.SetActive(isVisible);
-    }
 
     #endregion
 
@@ -74,6 +88,8 @@ public class UISystem : SingletonMono<UISystem>, IUIStorage
     private readonly Stack<UIBehavior> uiBehaviorStack = new Stack<UIBehavior>();
     //窗口排序值记录字典
     private readonly Dictionary<int, SortedSet<int>> layerOrders = new Dictionary<int, SortedSet<int>>();
+    //各个层级最上层的UI
+    private readonly Dictionary<UIWindowLayer, UIBehavior> topWindows = new Dictionary<UIWindowLayer, UIBehavior>();
 
     #region 生命周期管理
 
@@ -83,13 +99,14 @@ public class UISystem : SingletonMono<UISystem>, IUIStorage
         uiRoot = GetComponent<Transform>();
         uiCamera = uiRoot.Find("UICamera").GetComponent<Camera>();
         windowRoot = uiRoot.Find("WindowRoot").GetComponent<RectTransform>();
+        Init();
     }
 
     #endregion
 
     #region 数据修改接口
 
-    public  void ChangeOrAddUIDic(string uiName, UIBehavior uiBehavior)
+    public void ChangeOrAddUIDic(string uiName, UIBehavior uiBehavior)
     {
         uiBehaviorDic[uiName] = uiBehavior;
     }
@@ -201,12 +218,13 @@ public class UISystem : SingletonMono<UISystem>, IUIStorage
         Debug.Log($"ShowUIByNameImp:{uiName}");
         var tcs = new TaskCompletionSource<bool>();
 
+        //UI显示流程
         void ShowUIBehavior(UIBehavior uiBase)
         {
             TaskUtil.Run(async () =>
             {
-                UpdateSortingLayer(uiBase, true);
-                await uiBase.ShowImp(args);
+                await uiBase.ShowImp(args); //UIBehavior自定义流程
+                OnUIShown?.Invoke(uiBase, args);
                 tcs.SetResult(true);
             });
         }
@@ -382,4 +400,200 @@ public class UISystem : SingletonMono<UISystem>, IUIStorage
     }
 
     #endregion
+
+    #region 拓展事件
+
+    /// <summary>
+    /// UIShow之后
+    /// </summary>
+    public static event Action<UIBehavior, object[]> OnUIShown;
+    /// <summary>
+    /// UIHide事件
+    /// </summary>
+    public static event Action<UIBehavior> OnUIHide;
+    /// <summary>
+    /// 设置可见性
+    /// </summary>
+    public static Func<GameObject, bool, Task> SetVisibleFunc;
+
+    #endregion
+
+    #region 拓展
+
+    private void Init()
+    {
+        OnUIShown += PostShowUI;
+        OnUIHide += PreUIHide;
+        SetVisibleFunc += SetVisibleImp;
+    }
+
+    private void PostShowUI(UIBehavior uiBehavior, object[] args)
+    {
+        Debug.Log($"PostShowUI: {uiBehavior.name}");
+        SetTopWindowOnShow(uiBehavior);
+        UpdateSortingLayer(uiBehavior, true);
+    }
+
+    private void PreUIHide(UIBehavior uiBehavior)
+    {
+        Debug.Log($"UISystem HideUI : {uiBehavior.name}");
+        DealTopWindowOnHide(uiBehavior);
+    }
+
+    private void SetTopWindowOnShow(UIBehavior uiBehavior)
+    {
+        SetTopWindow(uiBehavior);
+        if (uiBehavior is IVisibleHandler)
+        {
+            (uiBehavior as IVisibleHandler).OnVisible(true);
+        }
+        if (uiBehavior.WndInfo.Layer == 1)
+        {
+            List<UIBehavior> all = GetAllBehavior();
+            for (int i = all.Count - 1; i >= 0; i--)
+            {
+                UIBehavior bhvr = all[i];
+                if (bhvr != uiBehavior && bhvr.WndInfo.Layer == uiBehavior.WndInfo.Layer && bhvr.IsVisible)
+                {
+                    if (bhvr is IVisibleHandler)
+                        (bhvr as IVisibleHandler).OnDisVisible(false);
+                }
+            }
+        }
+    }
+
+    private void DealTopWindowOnHide(UIBehavior uiBehavior)
+    {
+        if (uiBehavior is IVisibleHandler)
+            (uiBehavior as IVisibleHandler).OnDisVisible(true);
+
+    }
+
+    private void SetTopWindow(UIBehavior uiBehavior)
+    {
+        UIWindowLayer layer = (UIWindowLayer)uiBehavior.WndInfo.Layer;
+        if (topWindows.ContainsKey(layer))
+            topWindows[layer] = uiBehavior;
+        else
+            topWindows.Add(layer, uiBehavior);
+    }
+
+    private List<UIBehavior> GetAllBehavior()
+    {
+        var list = new List<UIBehavior>(uiBehaviorDic.Values);
+        var keys = new List<string>(uiBehaviorDic.Keys);
+        for (int i = list.Count - 1; i >= 0; i--)
+        {
+            if (list[i] == null)
+            {
+                list.RemoveAt(i);
+                var t = keys[i];
+                uiBehaviorDic.Remove(t);
+                Debug.LogWarning($"UIBehavior name : {t} is NULL !!!");
+            }
+        }
+        list.Sort(UIBehaviorSortFunc);
+        return list;
+    }
+
+    private int UIBehaviorSortFunc(UIBehavior x, UIBehavior y)
+    {
+        return x.SortingOrder - y.SortingOrder;
+    }
+
+    private async Task SetVisibleImp(GameObject obj, bool visible)
+    {
+        try
+        {
+            Debug.Log($"UISystem SetVisible: {obj.name}- {visible}");
+            var bhvr = obj.GetComponent<UIBehavior>();
+            Animator anim = obj.GetComponent<UIBehavior>().GetAnim();
+            if (visible)
+            {
+                obj.gameObject.SetActive(true);
+                obj.transform.localPosition = Vector3.zero;
+                if (anim != null)
+                {
+                    anim.SetTrigger("open");
+                }
+            }
+            else
+            {
+                if (anim != null)
+                {
+                    anim.SetTrigger("close");
+                    black.gameObject.SetActive(true);
+
+                    var hide = obj.TryAddComponent<UIHide>();
+                    var timer = anim.GetAnimDuration("out", 1f);
+                    await hide.Hide(timer);
+                    obj.transform.localPosition = new Vector3(-50000, -50000, 0);
+                    black.gameObject.SetActive(false);
+                }
+                else
+                {
+                    obj.transform.localPosition = new Vector3(-50000, -50000, 0);
+                }
+            }
+
+            Debug.Log($"UISystem SetVisible localPosition :{obj.transform.localPosition}");
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"{e.Message}\n{e.StackTrace}");
+        }
+    }
+
+    public bool IsTop(UIBehavior uiBehavior)
+    {
+        UIWindowLayer layer = (UIWindowLayer)uiBehavior.WndInfo.Layer;
+        if (topWindows.TryGetValue(layer, out var topWindow))
+        {
+            return topWindow.Equals(uiBehavior);
+        }
+        return false;
+    }
+
+    #endregion
+}
+
+public enum UIWindowLayer
+{
+    Normal = 1,
+    PopUp = 2,
+    Tip = 3,
+    Marquee = 4,
+    Common = 5,
+    Loading = 6,
+}
+
+public class UIHide : MonoBehaviour
+{
+    private Tween tw;
+    private TaskCompletionSource<bool> tcs;
+    public Task Hide(float delayTimer = 1f)
+    {
+        tcs = new TaskCompletionSource<bool>();
+        tw = DOVirtual.DelayedCall(delayTimer, DelayDo);
+        return tcs.Task;
+    }
+
+    public virtual void UIHideFinish()
+    {
+        if (tw != null)
+        {
+            tw.Kill();
+            tw = null;
+            tcs.SetResult(true);
+        }
+    }
+
+    private void DelayDo()
+    {
+        if (tw != null)
+        {
+            tcs.SetResult(true);
+            tw = null;
+        }
+    }
 }
