@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Battle_StageIcon
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 0
+      compressionQuality: 0
+      maxTextureSize: 0
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 1
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 0
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 7e58a2cccc5807a448d3ee6a80c7c106, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: c314d1c2026b9604ca8725b9186a3371, type: 3}
+  - {fileID: 21300000, guid: 6d4a822358e69e747adbf50b5f7260c3, type: 3}
+  - {fileID: 21300000, guid: c0b73cf42bd57c748a29319c2e34a78d, type: 3}
+  - {fileID: 21300000, guid: 84534c18b5546d540b9ac58598478102, type: 3}
+  - {fileID: 21300000, guid: 8e80208925350324c8b4f60d4e2541cc, type: 3}
+  - {fileID: 21300000, guid: c7a9da9d892c6b64c90682452a7b8d0a, type: 3}
+  - {fileID: 21300000, guid: 66d7f3bdb41d85f4cb4b3e0a148a4b38, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - ui_zd_pucong
+  - ui_zd_renzi
+  - ui_zd_junwang
+  - ui_zd_dansheng
+  - ui_zd_shenzi
+  - ui_zd_shounan
+  - ui_zd_chuandao
+  m_RenderDataMap: {}
+  m_Tag: Battle_StageIcon
+  m_IsVariant: 0

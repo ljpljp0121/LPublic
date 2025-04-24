@@ -1,0 +1,120 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Battle_BattleEntry_TreasurePage
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 0
+      compressionQuality: 0
+      maxTextureSize: 0
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 1
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 0
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 6b52dddbf6d6d4943a9f4faeda4bb4fa, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 116b4e402f3d69e46a3304e38f60c731, type: 3}
+  - {fileID: 21300000, guid: 3563ae9020a4341468e106a0d1a03ab8, type: 3}
+  - {fileID: 21300000, guid: 7a82f4d079d33f047bf8b8976c8eaef1, type: 3}
+  - {fileID: 21300000, guid: ecb7ae52ba013b448927f72bcf2eeba0, type: 3}
+  - {fileID: 21300000, guid: e125b5939de160f41ab52225af8cfa92, type: 3}
+  - {fileID: 21300000, guid: 544b45c3d1d7d304eb3c8f57eff893fb, type: 3}
+  - {fileID: 21300000, guid: 9687a9d3454583d48af100a31273d131, type: 3}
+  - {fileID: 21300000, guid: 104bd6748839e43489e81ff3e27ba67c, type: 3}
+  - {fileID: 21300000, guid: c3895f946e524e849b7be604bc8b8ac8, type: 3}
+  - {fileID: 21300000, guid: 146cbbf426309db49bd1ceaac34440a0, type: 3}
+  - {fileID: 21300000, guid: 18985ad5ff126dc41b4d9ed5a2f65009, type: 3}
+  - {fileID: 21300000, guid: e29b4196b387fee4d833b325848eecfc, type: 3}
+  - {fileID: 21300000, guid: b4baf9b69dd327a4bb3ab3ce3a4df321, type: 3}
+  - {fileID: 21300000, guid: 234d8ff62d9eda845905554541dc2b9b, type: 3}
+  - {fileID: 21300000, guid: 5a991727d479f5f49add9605d00a42b3, type: 3}
+  - {fileID: 21300000, guid: ed64114800cb4b045aa76772067b7c70, type: 3}
+  - {fileID: 21300000, guid: f9717698829fc234c8ef6cc65b389943, type: 3}
+  - {fileID: 21300000, guid: 7dde775910ea56248a76d9651a46d74e, type: 3}
+  - {fileID: 21300000, guid: 75089db9d015b3f45ac9a60d92ef9ca8, type: 3}
+  - {fileID: 21300000, guid: 0c4905f9374cc5d4da2874ca7a63e895, type: 3}
+  - {fileID: 21300000, guid: 2267b03a4d0d70e48856c0c51e6168b7, type: 3}
+  - {fileID: 21300000, guid: a169c7fb00fb1d44ab131da7521b9160, type: 3}
+  - {fileID: 21300000, guid: e830311c460e59744b2afe41528a88f6, type: 3}
+  - {fileID: 21300000, guid: 64886abc01c03734faee0d53b3327ed5, type: 3}
+  - {fileID: 21300000, guid: 1bcbd62dbc91567469606e9eeb5b63b4, type: 3}
+  - {fileID: 21300000, guid: 722a184d6d30d124eb15fd5d45b897a8, type: 3}
+  - {fileID: 21300000, guid: dbc5e37eb3df5534a8f439b52961e7fd, type: 3}
+  - {fileID: 21300000, guid: 351758ee79138db498030939624d2105, type: 3}
+  - {fileID: 21300000, guid: c3d560fe770debc4683a07fdc75b909f, type: 3}
+  - {fileID: 21300000, guid: 71b7214fee26ade4cbd5c22434e09402, type: 3}
+  - {fileID: 21300000, guid: 767e62bfedff8cd4c801a916c0b029c9, type: 3}
+  - {fileID: 21300000, guid: 9e22a8cf5798ca8418bb5bf0028a7a5b, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - ui_cj_baoku_2_2
+  - ui_cj_baoku_fenye_6
+  - ui_cj_baoku_2
+  - ui_cj_baoku_fenye_3
+  - ui_cj_baoku_4_2
+  - ui_cj_baoku_fenye_1
+  - ui_cj_icon_baoku_7
+  - ui_cj_icon_baoku_3
+  - ui_cj_icon_baoku_1
+  - ui_cj_baoku_fenye_5
+  - ui_cj_icon_baoku_4
+  - ui_cj_zi_gate
+  - ui_cj_baoku_fenye_di
+  - ui_cj_baoku_7
+  - ui_cj_baoku_zhezhao
+  - ui_cj_baoku_fenye_zi
+  - ui_cj_baoku_5_2
+  - ui_cj_baoku_fenye_2
+  - ui_cj_baoku_5
+  - ui_cj_baoku_1_2
+  - ui_cj_baoku_6
+  - ui_cj_zhangjie_huodong _suo_di
+  - ui_cj_baoku_fenye_zi_di
+  - ui_cj_baoku_fenye_4
+  - ui_cj_icon_baoku_5
+  - ui_cj_baoku_3
+  - ui_cj_baoku_1
+  - ui_cj_icon_baoku_2
+  - ui_cj_baoku_3_2
+  - ui_cj_baoku_fenye_7
+  - ui_cj_baoku_4
+  - ui_cj_baoku_shuangbei_1
+  m_RenderDataMap: {}
+  m_Tag: Battle_BattleEntry_TreasurePage
+  m_IsVariant: 0

@@ -1,0 +1,120 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Battle_FightBuff
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 0
+      compressionQuality: 0
+      maxTextureSize: 0
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 1
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 0
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 5e21e6a618e2afd499fc50c2c65f97a5, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: df83eba0f46086c45b120586cf80db6b, type: 3}
+  - {fileID: 21300000, guid: fd6c0f41303dbe644a530d8af4dd56e6, type: 3}
+  - {fileID: 21300000, guid: 9b9315513fa5f824db33fe8e3632493e, type: 3}
+  - {fileID: 21300000, guid: 2a37d9d236816e84887f0f752711c55f, type: 3}
+  - {fileID: 21300000, guid: 4dbe6ef3aef64a74db1e472b23468daf, type: 3}
+  - {fileID: 21300000, guid: 7a44c7543123c134fa9dbb50a0019ba5, type: 3}
+  - {fileID: 21300000, guid: 0930a1b5f5854d34eb2be34db6c283b7, type: 3}
+  - {fileID: 21300000, guid: 2e5736b5925f3fc4f863b1e5d0a8d415, type: 3}
+  - {fileID: 21300000, guid: 015ddb36fb19cf249bb135abeef92413, type: 3}
+  - {fileID: 21300000, guid: 62fde9a6127f0b8408486b3405b811f3, type: 3}
+  - {fileID: 21300000, guid: 98b2df874cb5bd049b717f7b966db0c9, type: 3}
+  - {fileID: 21300000, guid: eedf87f7bf087824cb84df634b955b08, type: 3}
+  - {fileID: 21300000, guid: 7cb4ff180eafe6949ba6360e0d1c6a57, type: 3}
+  - {fileID: 21300000, guid: b554f1b8ba65b66499c1464ecbce56d2, type: 3}
+  - {fileID: 21300000, guid: fab7ba59913e3a742b9a8532b22a2faf, type: 3}
+  - {fileID: 21300000, guid: e538d8d913c33794983b2a6e025e1db4, type: 3}
+  - {fileID: 21300000, guid: a140342a5ded53148ac61798cc83bbc6, type: 3}
+  - {fileID: 21300000, guid: cc01bc9a0ceedaf43a3e3115a1598983, type: 3}
+  - {fileID: 21300000, guid: 8dc10f9ae1a920744b82ec9ea34b991b, type: 3}
+  - {fileID: 21300000, guid: ad8a63aa8a37db84abbe2a3290afbea7, type: 3}
+  - {fileID: 21300000, guid: af37d5fa5fe02f54bb8c0de6306f85b3, type: 3}
+  - {fileID: 21300000, guid: 36fa590b58d824243a43ffd913e48da3, type: 3}
+  - {fileID: 21300000, guid: cc22044b48921c64890822359d264de5, type: 3}
+  - {fileID: 21300000, guid: 29f0485bd6aceb04297f5ffbfd875d45, type: 3}
+  - {fileID: 21300000, guid: 284931abbb4f84542a679752fb6ec9a5, type: 3}
+  - {fileID: 21300000, guid: f8bac35de7dae8044a56f0ac4cc107f4, type: 3}
+  - {fileID: 21300000, guid: 2ad84abdfa7c31c46b6ee85fcec4e0be, type: 3}
+  - {fileID: 21300000, guid: 84c8b57e06925a54eb143a9425e5e8f0, type: 3}
+  - {fileID: 21300000, guid: cd5e079e0c612e0479b42ee0cf9b2263, type: 3}
+  - {fileID: 21300000, guid: b815a1ae760f1f345828e97b6bb373d9, type: 3}
+  - {fileID: 21300000, guid: aee02f0fd11ccf6469fafd758b1adcaf, type: 3}
+  - {fileID: 21300000, guid: 0750e48ff3c99dd409be7dd2271efadf, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - ui_zd_icon_qinshi
+  - ui_zd_zi_fangyushang
+  - ui_zd_tc_3900005_di
+  - ui_zd_icon_huixue
+  - ui_zd_xiangqing_cengshu
+  - ui_zd_tc_3900003_di
+  - ui_zd_zi_zhongdu
+  - ui_zd_tc_3900001
+  - ui_zd_tc_3900003
+  - ui_zd_xiangqing_huihe
+  - ui_zd_zi_gongjishang
+  - unbreak_state
+  - ui_zd_zi_chaofeng
+  - ui_zd_zi_shanbi
+  - ui_zd_icon_hudun1
+  - ui_zd_tc_3900006_di
+  - ui_zd_tc_3900002
+  - ui_zd_tc_3900005
+  - ui_zd_tc_3900002_di
+  - ui_zd_tc_3900001_di
+  - ui_zd_tc_3900006
+  - ui_zd_icon_bp
+  - ui_zd_icon_fanshang
+  - ui_zd_tc_3900004_di
+  - ui_zd_zi_chenmo
+  - ui_zd_tc_3900004
+  - ui_zd_zi_avoid_death
+  - ui_zd_zi_fangyuxia
+  - ui_zd_xiangqing_cishu
+  - ui_zd_icon_gandian
+  - ui_zd_icon_zhuoshao
+  - ui_zd_zi_invincible
+  m_RenderDataMap: {}
+  m_Tag: Battle_FightBuff
+  m_IsVariant: 0

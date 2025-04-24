@@ -1,0 +1,108 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Battle_Common
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 0
+      compressionQuality: 0
+      maxTextureSize: 0
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 1
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 0
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: eac42e16843ea8a47a2d3c04ca562dc3, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 7b3ace406d6dcc84f9adc7eab212d5f7, type: 3}
+  - {fileID: 21300000, guid: 7ee1cc50038e43e4aa467cdd80ac047e, type: 3}
+  - {fileID: 21300000, guid: 9445a2b0b53482e4ebb9b80935a4ca5b, type: 3}
+  - {fileID: 21300000, guid: da71ed6113f517b428b93ad51633c9e6, type: 3}
+  - {fileID: 21300000, guid: ba40b40201d432249bf8999c34b2b110, type: 3}
+  - {fileID: 21300000, guid: a10523048257c93408e200add471ef03, type: 3}
+  - {fileID: 21300000, guid: 1b49e8752c5855e4cba54a8956d88da0, type: 3}
+  - {fileID: 21300000, guid: f3da2a46d923d3148bbf5571a28a12ae, type: 3}
+  - {fileID: 21300000, guid: 62075366ca257ae4c8f76b9923ab3071, type: 3}
+  - {fileID: 21300000, guid: ed6824d6011055845a4574b98c4061a3, type: 3}
+  - {fileID: 21300000, guid: 02fdb0f680d539549b20622b10bbc37e, type: 3}
+  - {fileID: 21300000, guid: ce57c327d9051864ea7814386793e387, type: 3}
+  - {fileID: 21300000, guid: 3b726537d94a0b147a3028ef134e3f31, type: 3}
+  - {fileID: 21300000, guid: 9dd3a3571dfbc4646b98b385c0df7be9, type: 3}
+  - {fileID: 21300000, guid: 9bf5db97a67c08d40bb29aaa1c81d139, type: 3}
+  - {fileID: 21300000, guid: 7c95c9c7b3f23824e85aaab7f39218df, type: 3}
+  - {fileID: 21300000, guid: a876e528584b0724c91debe8e75de31f, type: 3}
+  - {fileID: 21300000, guid: 278e2ad80f8091846bc45c352e58f8ea, type: 3}
+  - {fileID: 21300000, guid: f2bf5369a0618a94da9783ab13641e34, type: 3}
+  - {fileID: 21300000, guid: 13ff51f961dbdbb4689c789e35a82fb7, type: 3}
+  - {fileID: 21300000, guid: b557686aebf71fe4094ad77e93ae2c0d, type: 3}
+  - {fileID: 21300000, guid: e6228b7a011fedd4eb507344497b03dd, type: 3}
+  - {fileID: 21300000, guid: 08fc492c14b64274e893074fa0da4045, type: 3}
+  - {fileID: 21300000, guid: 8b4c598cee79ee14fbbf276031ad715f, type: 3}
+  - {fileID: 21300000, guid: c20a7abc7cd8ed14bbfa9b80356db5f6, type: 3}
+  - {fileID: 21300000, guid: 3815f47d391cf4a479abda37d86736a5, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - ui_zd_baoqi_di_1
+  - 3000004_1_zd
+  - ui_zd_baoqi_dou_3
+  - ui_zd_baoqi_di_2
+  - 3000004_2_zd
+  - 3000006_2_zd
+  - 3000000_1_zd
+  - 3000005_2_zd
+  - 3000005_1_zd
+  - 3000002_2_zd
+  - ui_zd_baoqi_dou_1
+  - 3000006_1_zd
+  - 3000001_1_zd
+  - 3000004_3_zd
+  - 3000003_3_zd
+  - 3000000_2_zd
+  - 3000005_3_zd
+  - 3000003_2_zd
+  - 3000001_3_zd
+  - 3000001_2_zd
+  - 3000002_1_zd
+  - 3000003_1_zd
+  - ui_zd_baoqi_dou_2
+  - 3000002_3_zd
+  - 3000006_3_zd
+  - 3000000_3_zd
+  m_RenderDataMap: {}
+  m_Tag: Battle_Common
+  m_IsVariant: 0

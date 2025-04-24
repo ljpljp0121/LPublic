@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Battle_FightBuff_buffDetail
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 0
+      compressionQuality: 0
+      maxTextureSize: 0
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 1
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 0
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 2d8ecd5a3694a09468fc747f2829f0ff, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 9b9315513fa5f824db33fe8e3632493e, type: 3}
+  - {fileID: 21300000, guid: 7a44c7543123c134fa9dbb50a0019ba5, type: 3}
+  - {fileID: 21300000, guid: 2e5736b5925f3fc4f863b1e5d0a8d415, type: 3}
+  - {fileID: 21300000, guid: 015ddb36fb19cf249bb135abeef92413, type: 3}
+  - {fileID: 21300000, guid: a140342a5ded53148ac61798cc83bbc6, type: 3}
+  - {fileID: 21300000, guid: cc01bc9a0ceedaf43a3e3115a1598983, type: 3}
+  - {fileID: 21300000, guid: 8dc10f9ae1a920744b82ec9ea34b991b, type: 3}
+  - {fileID: 21300000, guid: ad8a63aa8a37db84abbe2a3290afbea7, type: 3}
+  - {fileID: 21300000, guid: 29f0485bd6aceb04297f5ffbfd875d45, type: 3}
+  - {fileID: 21300000, guid: f8bac35de7dae8044a56f0ac4cc107f4, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - ui_zd_tc_3900005_di
+  - ui_zd_tc_3900003_di
+  - ui_zd_tc_3900001
+  - ui_zd_tc_3900003
+  - ui_zd_tc_3900002
+  - ui_zd_tc_3900005
+  - ui_zd_tc_3900002_di
+  - ui_zd_tc_3900001_di
+  - ui_zd_tc_3900004_di
+  - ui_zd_tc_3900004
+  m_RenderDataMap: {}
+  m_Tag: Battle_FightBuff_buffDetail
+  m_IsVariant: 0
