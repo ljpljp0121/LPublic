@@ -20,7 +20,7 @@ public interface IVisibleHandler
     void OnDisVisible(bool isClose);
 }
 
-public class UISystem : SingletonMono<UISystem>, IUIStorage
+public class UISystem : SingletonMono<UISystem>
 {
     private const int LAYER_BASE_INTERVAL = 2000;
     private const int LAYER_ORDER_STEP = 100;
@@ -104,69 +104,6 @@ public class UISystem : SingletonMono<UISystem>, IUIStorage
 
     #endregion
 
-    #region 数据修改接口
-
-    public void ChangeOrAddUIDic(string uiName, UIBehavior uiBehavior)
-    {
-        uiBehaviorDic[uiName] = uiBehavior;
-    }
-
-    public bool TryGetFromUIDic(string uiName, out UIBehavior uiBehavior)
-    {
-        return uiBehaviorDic.TryGetValue(uiName, out uiBehavior);
-    }
-
-    public void TryRemoveUIDic(string uiName)
-    {
-        bool removed = uiBehaviorDic.Remove(uiName);
-        if (!removed)
-        {
-            LogSystem.Warning($"Key {uiName} not found in UIBehaviorDic");
-        }
-    }
-
-    public void ChangeOrAddPrefabDic(string uiName, GameObject prefab)
-    {
-        loadedUIPrefabDic[uiName] = prefab;
-    }
-
-    public bool TryGetFromPrefabDic(string uiName, out GameObject prefab)
-    {
-        return loadedUIPrefabDic.TryGetValue(uiName, out prefab);
-    }
-
-    public void TryRemovePrefabDic(string uiName)
-    {
-        bool removed = loadedUIPrefabDic.Remove(uiName);
-        if (!removed)
-        {
-            LogSystem.Warning($"Key {uiName} not found in LoadedUIPrefabDic");
-        }
-    }
-
-    public void PushUIStack(UIBehavior uiBehavior)
-    {
-        uiBehaviorStack.Push(uiBehavior);
-    }
-
-    public UIBehavior TryPopUIStack()
-    {
-        if (uiBehaviorStack.Count != 0)
-            return uiBehaviorStack.Pop();
-        LogSystem.Error("UIBehaviorStack Is Empty!!!");
-        return null;
-    }
-
-    public UIBehavior TryPeekUIStack()
-    {
-        if (uiBehaviorStack.Count != 0)
-            return uiBehaviorStack.Peek();
-        LogSystem.Error("UIBehaviorStack Is Empty!!!");
-        return null;
-    }
-
-    #endregion
-
     #region UI调用对外接口
 
     public static void ShowUIByName(string uiName, params object[] args)
@@ -208,6 +145,17 @@ public class UISystem : SingletonMono<UISystem>, IUIStorage
     {
         Instance.HideUIByNameImp(typeof(T).Name);
     }
+    public static bool IsShow(string wndName)
+    {
+        if (Instance.uiBehaviorDic.TryGetValue(wndName, out var uiBehavior))
+        {
+            return uiBehavior.IsVisible;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
     #endregion
 
@@ -223,6 +171,7 @@ public class UISystem : SingletonMono<UISystem>, IUIStorage
         {
             TaskUtil.Run(async () =>
             {
+                OnUIPreShow?.Invoke(uiBase);
                 await uiBase.ShowImp(args); //UIBehavior自定义流程
                 OnUIShown?.Invoke(uiBase, args);
                 tcs.SetResult(true);
@@ -244,8 +193,8 @@ public class UISystem : SingletonMono<UISystem>, IUIStorage
     {
         if (uiBehaviorDic.TryGetValue(uiName, out var uiBehavior))
         {
-            UpdateSortingLayer(uiBehavior, false);
             uiBehavior.HideImp();
+            OnUIHide?.Invoke(uiBehavior);
         }
         else
         {
@@ -404,6 +353,10 @@ public class UISystem : SingletonMono<UISystem>, IUIStorage
     #region 拓展事件
 
     /// <summary>
+    /// UIShow之前
+    /// </summary>
+    public static event Action<UIBehavior> OnUIPreShow;
+    /// <summary>
     /// UIShow之后
     /// </summary>
     public static event Action<UIBehavior, object[]> OnUIShown;
@@ -422,11 +375,23 @@ public class UISystem : SingletonMono<UISystem>, IUIStorage
 
     private void Init()
     {
+        OnUIPreShow += PreShowUI;
         OnUIShown += PostShowUI;
-        OnUIHide += PreUIHide;
+        OnUIHide += PostUIHide;
         SetVisibleFunc += SetVisibleImp;
     }
 
+    /// <summary>
+    /// ShowUI之前拓展
+    /// </summary>
+    private void PreShowUI(UIBehavior uiBehavior)
+    {
+
+    }
+
+    /// <summary>
+    /// ShowUI之后拓展
+    /// </summary>
     private void PostShowUI(UIBehavior uiBehavior, object[] args)
     {
         Debug.Log($"PostShowUI: {uiBehavior.name}");
@@ -434,73 +399,21 @@ public class UISystem : SingletonMono<UISystem>, IUIStorage
         UpdateSortingLayer(uiBehavior, true);
     }
 
-    private void PreUIHide(UIBehavior uiBehavior)
+    /// <summary>
+    /// HideUI拓展
+    /// </summary>
+    private void PostUIHide(UIBehavior uiBehavior)
     {
         Debug.Log($"UISystem HideUI : {uiBehavior.name}");
+        uiBehavior.gameObject.SetActive(false);
+        DealDestroyImp(uiBehavior);
+        UpdateSortingLayer(uiBehavior, false);
         DealTopWindowOnHide(uiBehavior);
     }
 
-    private void SetTopWindowOnShow(UIBehavior uiBehavior)
-    {
-        SetTopWindow(uiBehavior);
-        if (uiBehavior is IVisibleHandler)
-        {
-            (uiBehavior as IVisibleHandler).OnVisible(true);
-        }
-        if (uiBehavior.WndInfo.Layer == 1)
-        {
-            List<UIBehavior> all = GetAllBehavior();
-            for (int i = all.Count - 1; i >= 0; i--)
-            {
-                UIBehavior bhvr = all[i];
-                if (bhvr != uiBehavior && bhvr.WndInfo.Layer == uiBehavior.WndInfo.Layer && bhvr.IsVisible)
-                {
-                    if (bhvr is IVisibleHandler)
-                        (bhvr as IVisibleHandler).OnDisVisible(false);
-                }
-            }
-        }
-    }
-
-    private void DealTopWindowOnHide(UIBehavior uiBehavior)
-    {
-        if (uiBehavior is IVisibleHandler)
-            (uiBehavior as IVisibleHandler).OnDisVisible(true);
-
-    }
-
-    private void SetTopWindow(UIBehavior uiBehavior)
-    {
-        UIWindowLayer layer = (UIWindowLayer)uiBehavior.WndInfo.Layer;
-        if (topWindows.ContainsKey(layer))
-            topWindows[layer] = uiBehavior;
-        else
-            topWindows.Add(layer, uiBehavior);
-    }
-
-    private List<UIBehavior> GetAllBehavior()
-    {
-        var list = new List<UIBehavior>(uiBehaviorDic.Values);
-        var keys = new List<string>(uiBehaviorDic.Keys);
-        for (int i = list.Count - 1; i >= 0; i--)
-        {
-            if (list[i] == null)
-            {
-                list.RemoveAt(i);
-                var t = keys[i];
-                uiBehaviorDic.Remove(t);
-                Debug.LogWarning($"UIBehavior name : {t} is NULL !!!");
-            }
-        }
-        list.Sort(UIBehaviorSortFunc);
-        return list;
-    }
-
-    private int UIBehaviorSortFunc(UIBehavior x, UIBehavior y)
-    {
-        return x.SortingOrder - y.SortingOrder;
-    }
-
+    /// <summary>
+    /// 设置UI是否可见
+    /// </summary>
     private async Task SetVisibleImp(GameObject obj, bool visible)
     {
         try
@@ -542,6 +455,109 @@ public class UISystem : SingletonMono<UISystem>, IUIStorage
         {
             Debug.LogError($"{e.Message}\n{e.StackTrace}");
         }
+    }
+
+    private void SetTopWindowOnShow(UIBehavior uiBehavior)
+    {
+        SetTopWindow(uiBehavior);
+        if (uiBehavior is IVisibleHandler)
+        {
+            (uiBehavior as IVisibleHandler).OnVisible(true);
+        }
+        if (uiBehavior.WndInfo.Layer == 1)
+        {
+            List<UIBehavior> all = GetAllBehavior();
+            for (int i = all.Count - 1; i >= 0; i--)
+            {
+                UIBehavior bhvr = all[i];
+                if (bhvr != uiBehavior && bhvr.WndInfo.Layer == uiBehavior.WndInfo.Layer && bhvr.IsVisible)
+                {
+                    if (bhvr is IVisibleHandler)
+                        (bhvr as IVisibleHandler).OnDisVisible(false);
+                }
+            }
+        }
+    }
+
+    private void DealDestroyImp(UIBehavior uiBehavior)
+    {
+        if (uiBehavior.WndInfo.DestroyOnHide)
+        {
+            string uiName = uiBehavior.WndInfo.Name;
+            if (loadedUIPrefabDic.TryGetValue(uiName, out var prefab))
+            {
+                Destroy(prefab);
+                if (!loadedUIPrefabDic.Remove(uiName))
+                {
+                    LogSystem.Warning($"Key {uiName} not found in LoadedUIPrefabDic");
+                }
+                LogSystem.Log("-----Destroy Prefab:" + uiName);
+            }
+            else
+            {
+                LogSystem.Log("=====DestroyUI Can't find uibehaviourName:" + uiName);
+            }
+            if (!uiBehaviorDic.Remove(uiName))
+            {
+                LogSystem.Warning($"Key {uiName} not found in UIBehaviorDic");
+            }
+            Destroy(uiBehavior.gameObject);
+        }
+    }
+
+    private void DealTopWindowOnHide(UIBehavior uiBehavior)
+    {
+        if (uiBehavior is IVisibleHandler)
+            (uiBehavior as IVisibleHandler).OnDisVisible(true);
+        if (IsTop(uiBehavior) && uiBehavior.WndInfo.Layer == 1)
+        {
+            List<UIBehavior> all = GetAllBehavior();
+            for (int i = all.Count - 1; i >= 0; i--)
+            {
+                UIBehavior bhvr = all[i];
+                if (bhvr != uiBehavior && bhvr.WndInfo.Layer == uiBehavior.WndInfo.Layer)
+                {
+                    SetTopWindow(bhvr);
+                    if (bhvr is IVisibleHandler)
+                        (bhvr as IVisibleHandler).OnVisible(false);
+                    return;
+                }
+            }
+            UIWindowLayer layer = (UIWindowLayer)uiBehavior.WndInfo.Layer;
+            topWindows.Remove(layer);
+        }
+    }
+
+    private void SetTopWindow(UIBehavior uiBehavior)
+    {
+        UIWindowLayer layer = (UIWindowLayer)uiBehavior.WndInfo.Layer;
+        if (topWindows.ContainsKey(layer))
+            topWindows[layer] = uiBehavior;
+        else
+            topWindows.Add(layer, uiBehavior);
+    }
+
+    private List<UIBehavior> GetAllBehavior()
+    {
+        var list = new List<UIBehavior>(uiBehaviorDic.Values);
+        var keys = new List<string>(uiBehaviorDic.Keys);
+        for (int i = list.Count - 1; i >= 0; i--)
+        {
+            if (list[i] == null)
+            {
+                list.RemoveAt(i);
+                var t = keys[i];
+                uiBehaviorDic.Remove(t);
+                Debug.LogWarning($"UIBehavior name : {t} is NULL !!!");
+            }
+        }
+        list.Sort(UIBehaviorSortFunc);
+        return list;
+    }
+
+    private int UIBehaviorSortFunc(UIBehavior x, UIBehavior y)
+    {
+        return x.SortingOrder - y.SortingOrder;
     }
 
     public bool IsTop(UIBehavior uiBehavior)

@@ -25,6 +25,8 @@ public abstract class UIBehavior : MonoBehaviour
 
     public bool IsVisible { get; private set; }
 
+    public bool IsShowing => UISystem.IsShow(wndInfo.Name);
+
     #endregion
 
     #region 生命周期管理
@@ -39,32 +41,15 @@ public abstract class UIBehavior : MonoBehaviour
 
     #region UI调用管理
 
-    protected virtual void OnShow(params object[] args)
-    {
-    }
-
+    protected virtual void OnShow(params object[] args) { }
     protected virtual Task OnShowAsync(params object[] args) => Task.CompletedTask;
     protected virtual Task OnPreShowAsync(params object[] args) => Task.CompletedTask;
     protected virtual Task OnPostShowAsync(params object[] args) => Task.CompletedTask;
+    protected virtual void OnHide() { }
 
     public virtual Animator GetAnim()
     {
         return this.transform.GetComponent<Animator>();
-    }
-
-    protected virtual void OnPreHide()
-    {
-
-    }
-
-    protected virtual void OnPostHide()
-    {
-
-    }
-
-    protected virtual void OnHide()
-    {
-
     }
 
     #endregion
@@ -79,6 +64,20 @@ public abstract class UIBehavior : MonoBehaviour
         try
         {
             transform.localPosition = new Vector3(-50000, -50000, 0);
+            if (IsShowing)
+            {
+                try
+                {
+                    HideImp();
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError(e);
+                }
+
+                await SetVisible(false);
+                gameObject.SetActive(false);
+            }
             try
             {
                 await OnPreShowAsync(args);
@@ -86,6 +85,11 @@ public abstract class UIBehavior : MonoBehaviour
                 OnShow(args);
                 await OnShowAsync(args);
                 await OnPostShowAsync(args);
+
+                if (!IsVisible)
+                {
+                    await SetVisible(true);
+                }
             }
             catch (Exception e)
             {
@@ -107,13 +111,28 @@ public abstract class UIBehavior : MonoBehaviour
         try
         {
             LogSystem.Log("Hide:" + GetType());
-            OnPreHide();
-            OnHide();
-            gameObject.SetActive(false);
-            OnPostHide();
-            if (wndInfo.DestroyOnHide)
+            if (IsShowing)
             {
-                DestroyImp();
+                try
+                {
+                    OnHide();
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError(e);
+                }
+                IsVisible = false;
+            }
+            else if(gameObject.activeSelf)
+            {
+                try
+                {
+                    OnHide();
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError(e);
+                }
             }
         }
         catch (Exception e)
@@ -122,22 +141,6 @@ public abstract class UIBehavior : MonoBehaviour
         }
     }
 
-    private void DestroyImp()
-    {
-        string uiName = wndInfo.Name;
-        if (UISystem.Instance.TryGetFromPrefabDic(uiName, out var prefab))
-        {
-            Destroy(prefab);
-            UISystem.Instance.TryRemovePrefabDic(uiName);
-            LogSystem.Log("-----Destroy Prefab:" + uiName);
-        }
-        else
-        {
-            LogSystem.Log("=====DestroyUI Can't find uibehaviourName:" + uiName);
-        }
-        UISystem.Instance.TryRemoveUIDic(uiName);
-        Destroy(gameObject);
-    }
 
     #endregion
 
@@ -187,7 +190,6 @@ public abstract class UIBehavior : MonoBehaviour
     }
 
     #endregion
-
 
     #region 拓展
 
