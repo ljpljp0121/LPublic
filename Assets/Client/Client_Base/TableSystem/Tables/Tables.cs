@@ -20,7 +20,6 @@ public interface IVOFun
 
 public partial class Tables
 {
-    public role.TbRoleRes TbRoleRes {get; }
     public Skill.TbSkillClip TbSkillClip {get; }
     public UI.TbUIWnd TbUIWnd {get; }
 
@@ -28,7 +27,6 @@ public partial class Tables
     
     private void ResolveRef()
     {
-        TbRoleRes.ResolveRef(this);
         TbSkillClip.ResolveRef(this);
         TbUIWnd.ResolveRef(this);
     }

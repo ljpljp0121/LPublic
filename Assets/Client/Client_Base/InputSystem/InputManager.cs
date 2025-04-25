@@ -1,5 +1,3 @@
-using System;
-using cfg.role;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
