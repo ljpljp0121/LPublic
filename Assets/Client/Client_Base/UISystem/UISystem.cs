@@ -5,6 +5,7 @@ using cfg.UI;
 using DG.Tweening;
 using UITool;
 using UnityEngine;
+using static PlasticGui.WorkspaceWindow.Merge.MergeViewAction;
 
 public interface IVisibleHandler
 {
@@ -20,8 +21,35 @@ public interface IVisibleHandler
     void OnDisVisible(bool isClose);
 }
 
-public class UISystem : SingletonMono<UISystem>
+public class UISystem : MonoBehaviour
 {
+    [InitOnLoad]
+    static void InitOnLoad()
+    {
+        Instance.InitUISystem();
+    }
+
+    private static UISystem instance;
+
+    public static UISystem Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                Debug.Log("UISystem instance is null. Start find UIRoot GameObject......");
+                var go = GameObject.Find("UIRoot");
+                if (go == null)
+                {
+                    Debug.LogError("not found UIRoot!!!!!! UISystem will stop run, please check it");
+                    return null;
+                }
+                instance = go.TryAddComponent<UISystem>();
+            }
+            return instance;
+        }
+    }
+
     private const int LAYER_BASE_INTERVAL = 2000;
     private const int LAYER_ORDER_STEP = 100;
 
@@ -86,16 +114,13 @@ public class UISystem : SingletonMono<UISystem>
     private readonly Dictionary<string, GameObject> loadedUIPrefabDic = new Dictionary<string, GameObject>();
     //UI实例栈,存储已经打开的UI
     private readonly Stack<UIBehavior> uiBehaviorStack = new Stack<UIBehavior>();
-    //窗口排序值记录字典
-    private readonly Dictionary<int, SortedSet<int>> layerOrders = new Dictionary<int, SortedSet<int>>();
     //各个层级最上层的UI
     private readonly Dictionary<UIWindowLayer, UIBehavior> topWindows = new Dictionary<UIWindowLayer, UIBehavior>();
 
     #region 生命周期管理
 
-    protected override void Awake()
+    public void InitUISystem()
     {
-        base.Awake();
         uiRoot = GetComponent<Transform>();
         uiCamera = uiRoot.Find("UICamera").GetComponent<Camera>();
         windowRoot = uiRoot.Find("WindowRoot").GetComponent<RectTransform>();
@@ -171,7 +196,10 @@ public class UISystem : SingletonMono<UISystem>
         {
             TaskUtil.Run(async () =>
             {
-                OnUIPreShow?.Invoke(uiBase);
+                if (OnUIPreShow != null)
+                {
+                    await OnUIPreShow(uiBase);
+                }
                 await uiBase.ShowImp(args); //UIBehavior自定义流程
                 OnUIShown?.Invoke(uiBase, args);
                 tcs.SetResult(true);
@@ -322,30 +350,39 @@ public class UISystem : SingletonMono<UISystem>
             return;
         }
         int layer = uiBehavior.WndInfo.Layer;
-        if (layer < 1 || layer > 5)
-        {
-            LogSystem.Error($"Invalid UI layer: {layer}");
-            layer = Mathf.Clamp(layer, 1, 5);
-        }
-
-        if (!layerOrders.TryGetValue(layer, out var orders))
-        {
-            orders = new SortedSet<int>();
-            layerOrders[layer] = orders;
-        }
 
         if (isShowing)
         {
-            int baseOrder = layer * LAYER_BASE_INTERVAL;
-            int newOrder = orders.Count > 0 ? orders.Max + LAYER_ORDER_STEP : baseOrder;
+            int order = GetCurOrderNum(uiBehavior);
+            var canvas = uiBehavior.Canvas;
+            if (canvas != null)
+            {
+                canvas.overrideSorting = true;
+                canvas.sortingOrder = order;
+            }
+        }
+    }
 
-            orders.Add(newOrder);
-            uiBehavior.Canvas.sortingOrder = newOrder;
-        }
-        else
+    private int GetCurOrderNum(UIBehavior uiBehavior)
+    {
+        int order = 0;
+        List<UIBehavior> all = GetAllBehavior();
+        for (int i = all.Count - 1; i >= 0; i--)
         {
-            orders.Remove(uiBehavior.Canvas.sortingOrder);
+            UIBehavior bhvr = all[i];
+            if (bhvr != uiBehavior && bhvr.WndInfo.Layer == uiBehavior.WndInfo.Layer)
+            {
+                order = bhvr.GetComponent<Canvas>().sortingOrder + LAYER_ORDER_STEP;
+                break;
+            }
         }
+
+        if (order == 0)
+        {
+            order = uiBehavior.WndInfo.Layer * LAYER_BASE_INTERVAL;
+        }
+
+        return order;
     }
 
     #endregion
@@ -355,7 +392,7 @@ public class UISystem : SingletonMono<UISystem>
     /// <summary>
     /// UIShow之前
     /// </summary>
-    public static event Action<UIBehavior> OnUIPreShow;
+    public static event Func<UIBehavior, Task> OnUIPreShow;
     /// <summary>
     /// UIShow之后
     /// </summary>
@@ -369,25 +406,69 @@ public class UISystem : SingletonMono<UISystem>
     /// </summary>
     public static Func<GameObject, bool, Task> SetVisibleFunc;
 
-    #endregion
-
-    #region 拓展
-
     private void Init()
     {
-        OnUIPreShow += PreShowUI;
+        OnUIPreShow += async (behavior) =>
+        {
+            await PreShowUI(behavior);
+        };
         OnUIShown += PostShowUI;
         OnUIHide += PostUIHide;
         SetVisibleFunc += SetVisibleImp;
     }
 
+    #endregion
+
+    #region ShowUI之前拓展
+
     /// <summary>
     /// ShowUI之前拓展
     /// </summary>
-    private void PreShowUI(UIBehavior uiBehavior)
+    private async Task PreShowUI(UIBehavior uiBehavior)
     {
-
+        await DealLayerOnShow(uiBehavior);
     }
+
+    private async Task DealLayerOnShow(UIBehavior uiBehavior)
+    {
+        var layer = uiBehavior.WndInfo.Layer;
+        Debug.Log($"DealLayerOnShow: {layer}");
+        if (layer == 3)
+        {
+            List<UIBehavior> all = GetAllBehavior();
+            for (int i = all.Count - 1; i >= 0; i--)
+            {
+                UIBehavior bhvr = all[i];
+                if (bhvr != uiBehavior)
+                {
+                    if (bhvr.WndInfo.Layer == layer)
+                    {
+                        HideUIByNameImp(bhvr.WndInfo.Name);
+                    }
+                }
+            }
+        }
+        else if (layer == 1)
+        {
+            List<UIBehavior> all = GetAllBehavior();
+            for (int i = all.Count - 1; i >= 0; i--)
+            {
+                UIBehavior bhvr = all[i];
+                if (bhvr != uiBehavior)
+                {
+                    if (bhvr.WndInfo.Layer == layer && bhvr.IsVisible)
+                    {
+                        Debug.Log($"{bhvr.name} SetVisibleNotChangeVisible (false)");
+                        await bhvr.SetVisibleNotChangeVisible(false);
+                    }
+                }
+            }
+        }
+    }
+
+    #endregion
+
+    #region ShowUI之后拓展
 
     /// <summary>
     /// ShowUI之后拓展
@@ -399,6 +480,32 @@ public class UISystem : SingletonMono<UISystem>
         UpdateSortingLayer(uiBehavior, true);
     }
 
+    private void SetTopWindowOnShow(UIBehavior uiBehavior)
+    {
+        SetTopWindow(uiBehavior);
+        if (uiBehavior is IVisibleHandler)
+        {
+            (uiBehavior as IVisibleHandler).OnVisible(true);
+        }
+        if (uiBehavior.WndInfo.Layer == 1)
+        {
+            List<UIBehavior> all = GetAllBehavior();
+            for (int i = all.Count - 1; i >= 0; i--)
+            {
+                UIBehavior bhvr = all[i];
+                if (bhvr != uiBehavior && bhvr.WndInfo.Layer == uiBehavior.WndInfo.Layer && bhvr.IsVisible)
+                {
+                    if (bhvr is IVisibleHandler)
+                        (bhvr as IVisibleHandler).OnDisVisible(false);
+                }
+            }
+        }
+    }
+
+    #endregion
+
+    #region HideUI拓展
+
     /// <summary>
     /// HideUI拓展
     /// </summary>
@@ -406,14 +513,85 @@ public class UISystem : SingletonMono<UISystem>
     {
         Debug.Log($"UISystem HideUI : {uiBehavior.name}");
         uiBehavior.gameObject.SetActive(false);
-        DealDestroyImp(uiBehavior);
         UpdateSortingLayer(uiBehavior, false);
+        DealLayerOnHide(uiBehavior);
         DealTopWindowOnHide(uiBehavior);
+        DealDestroyImp(uiBehavior);
     }
 
-    /// <summary>
-    /// 设置UI是否可见
-    /// </summary>
+    private void DealLayerOnHide(UIBehavior uiBehavior)
+    {
+        Debug.Log($"DealLayerOnHide: {uiBehavior.name}");
+        var layer = uiBehavior.WndInfo.Layer;
+        if (layer == 1)
+        {
+            List<UIBehavior> all = GetAllBehavior();
+            Debug.Log($"DealLayerOnShow : all window count : {all.Count}");
+            for (int i = all.Count - 1; i >= 0; i--)
+            {
+                UIBehavior bhvr = all[i];
+                if (bhvr != uiBehavior && bhvr.WndInfo.Layer == layer && bhvr.IsVisible)
+                {
+                    bhvr.SetVisibleNotChangeVisible(true).Run();
+                    break;
+                }
+            }
+        }
+    }
+
+    private void DealTopWindowOnHide(UIBehavior uiBehavior)
+    {
+        if (uiBehavior is IVisibleHandler)
+            (uiBehavior as IVisibleHandler).OnDisVisible(true);
+        if (IsTop(uiBehavior) && uiBehavior.WndInfo.Layer == 1)
+        {
+            List<UIBehavior> all = GetAllBehavior();
+            for (int i = all.Count - 1; i >= 0; i--)
+            {
+                UIBehavior bhvr = all[i];
+                if (bhvr != uiBehavior && bhvr.WndInfo.Layer == uiBehavior.WndInfo.Layer)
+                {
+                    SetTopWindow(bhvr);
+                    if (bhvr is IVisibleHandler)
+                        (bhvr as IVisibleHandler).OnVisible(false);
+                    return;
+                }
+            }
+            UIWindowLayer layer = (UIWindowLayer)uiBehavior.WndInfo.Layer;
+            topWindows.Remove(layer);
+        }
+    }
+
+    private void DealDestroyImp(UIBehavior uiBehavior)
+    {
+        if (uiBehavior.WndInfo.DestroyOnHide)
+        {
+            string uiName = uiBehavior.WndInfo.Name;
+            if (loadedUIPrefabDic.TryGetValue(uiName, out var prefab))
+            {
+                Destroy(prefab);
+                if (!loadedUIPrefabDic.Remove(uiName))
+                {
+                    LogSystem.Warning($"Key {uiName} not found in LoadedUIPrefabDic");
+                }
+                LogSystem.Log("-----Destroy Prefab:" + uiName);
+            }
+            else
+            {
+                LogSystem.Log("=====DestroyUI Can't find uibehaviourName:" + uiName);
+            }
+            if (!uiBehaviorDic.Remove(uiName))
+            {
+                LogSystem.Warning($"Key {uiName} not found in UIBehaviorDic");
+            }
+            Destroy(uiBehavior.gameObject);
+        }
+    }
+
+    #endregion
+
+    #region 内部接口拓展
+
     private async Task SetVisibleImp(GameObject obj, bool visible)
     {
         try
@@ -454,77 +632,6 @@ public class UISystem : SingletonMono<UISystem>
         catch (Exception e)
         {
             Debug.LogError($"{e.Message}\n{e.StackTrace}");
-        }
-    }
-
-    private void SetTopWindowOnShow(UIBehavior uiBehavior)
-    {
-        SetTopWindow(uiBehavior);
-        if (uiBehavior is IVisibleHandler)
-        {
-            (uiBehavior as IVisibleHandler).OnVisible(true);
-        }
-        if (uiBehavior.WndInfo.Layer == 1)
-        {
-            List<UIBehavior> all = GetAllBehavior();
-            for (int i = all.Count - 1; i >= 0; i--)
-            {
-                UIBehavior bhvr = all[i];
-                if (bhvr != uiBehavior && bhvr.WndInfo.Layer == uiBehavior.WndInfo.Layer && bhvr.IsVisible)
-                {
-                    if (bhvr is IVisibleHandler)
-                        (bhvr as IVisibleHandler).OnDisVisible(false);
-                }
-            }
-        }
-    }
-
-    private void DealDestroyImp(UIBehavior uiBehavior)
-    {
-        if (uiBehavior.WndInfo.DestroyOnHide)
-        {
-            string uiName = uiBehavior.WndInfo.Name;
-            if (loadedUIPrefabDic.TryGetValue(uiName, out var prefab))
-            {
-                Destroy(prefab);
-                if (!loadedUIPrefabDic.Remove(uiName))
-                {
-                    LogSystem.Warning($"Key {uiName} not found in LoadedUIPrefabDic");
-                }
-                LogSystem.Log("-----Destroy Prefab:" + uiName);
-            }
-            else
-            {
-                LogSystem.Log("=====DestroyUI Can't find uibehaviourName:" + uiName);
-            }
-            if (!uiBehaviorDic.Remove(uiName))
-            {
-                LogSystem.Warning($"Key {uiName} not found in UIBehaviorDic");
-            }
-            Destroy(uiBehavior.gameObject);
-        }
-    }
-
-    private void DealTopWindowOnHide(UIBehavior uiBehavior)
-    {
-        if (uiBehavior is IVisibleHandler)
-            (uiBehavior as IVisibleHandler).OnDisVisible(true);
-        if (IsTop(uiBehavior) && uiBehavior.WndInfo.Layer == 1)
-        {
-            List<UIBehavior> all = GetAllBehavior();
-            for (int i = all.Count - 1; i >= 0; i--)
-            {
-                UIBehavior bhvr = all[i];
-                if (bhvr != uiBehavior && bhvr.WndInfo.Layer == uiBehavior.WndInfo.Layer)
-                {
-                    SetTopWindow(bhvr);
-                    if (bhvr is IVisibleHandler)
-                        (bhvr as IVisibleHandler).OnVisible(false);
-                    return;
-                }
-            }
-            UIWindowLayer layer = (UIWindowLayer)uiBehavior.WndInfo.Layer;
-            topWindows.Remove(layer);
         }
     }
 
@@ -573,6 +680,9 @@ public class UISystem : SingletonMono<UISystem>
     #endregion
 }
 
+/// <summary>
+/// UIWindow层级
+/// </summary>
 public enum UIWindowLayer
 {
     Normal = 1,

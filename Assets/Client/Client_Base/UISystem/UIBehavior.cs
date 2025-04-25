@@ -19,23 +19,24 @@ public abstract class UIBehavior : MonoBehaviour
         get => wndInfo;
         set => wndInfo = value;
     }
-    public Canvas Canvas => canvas != null ? canvas : canvas = GetComponent<Canvas>();
+    public Canvas Canvas
+    {
+        get
+        {
+            if (canvas == null)
+            {
+                canvas = gameObject.TryAddComponent<Canvas>();
+            }
+            return canvas;
+        }
+    }
+
     public GraphicRaycaster RayCaster => rayCaster != null ? rayCaster : (rayCaster = GetComponent<GraphicRaycaster>());
     public int SortingOrder => Canvas.sortingOrder;
 
     public bool IsVisible { get; private set; }
 
     public bool IsShowing => UISystem.IsShow(wndInfo.Name);
-
-    #endregion
-
-    #region 生命周期管理
-
-    protected virtual void Awake()
-    {
-        Canvas.overrideSorting = true;
-        AutoBindComponents();
-    }
 
     #endregion
 
@@ -80,6 +81,7 @@ public abstract class UIBehavior : MonoBehaviour
             }
             try
             {
+                AutoBindComponents();
                 await OnPreShowAsync(args);
                 gameObject.SetActive(true);
                 OnShow(args);
@@ -123,7 +125,7 @@ public abstract class UIBehavior : MonoBehaviour
                 }
                 IsVisible = false;
             }
-            else if(gameObject.activeSelf)
+            else if (gameObject.activeSelf)
             {
                 try
                 {
@@ -196,6 +198,15 @@ public abstract class UIBehavior : MonoBehaviour
     public Task SetVisible(bool value)
     {
         IsVisible = value;
+        if (UISystem.SetVisibleFunc != null && this.gameObject != null)
+        {
+            return UISystem.SetVisibleFunc(this.gameObject, value);
+        }
+        return Task.CompletedTask;
+    }
+
+    public Task SetVisibleNotChangeVisible(bool value)
+    {
         if (UISystem.SetVisibleFunc != null && this.gameObject != null)
         {
             return UISystem.SetVisibleFunc(this.gameObject, value);
