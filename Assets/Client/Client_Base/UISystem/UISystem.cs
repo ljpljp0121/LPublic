@@ -5,7 +5,6 @@ using cfg.UI;
 using DG.Tweening;
 using UITool;
 using UnityEngine;
-using static PlasticGui.WorkspaceWindow.Merge.MergeViewAction;
 
 public interface IVisibleHandler
 {

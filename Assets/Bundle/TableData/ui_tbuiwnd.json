@@ -26,7 +26,13 @@
   {
     "Name": "TestPanel3",
     "Path": "MainUI/TestPanel3",
-    "Layer": 2,
+    "Layer": 3,
+    "DestroyOnHide": true
+  },
+  {
+    "Name": "TestPanel4",
+    "Path": "MainUI/TestPanel4",
+    "Layer": 3,
     "DestroyOnHide": true
   }
 ]
