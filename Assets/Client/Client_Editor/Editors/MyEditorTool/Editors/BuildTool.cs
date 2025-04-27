@@ -2,6 +2,7 @@
 using System.Collections;
 using System.IO;
 using HybridCLR.Editor;
+using HybridCLR.Editor.Commands;
 using Sirenix.OdinInspector;
 using Sirenix.OdinInspector.Editor;
 using UnityEditor;
@@ -51,8 +52,10 @@ public class BuildTool : OdinEditorWindow
     [ValueDropdown("PackageChoices", HideChildProperties = true)]
     private string packageName;
 
+    [Title("CDN配置")]
     [SerializeField, LabelText("CDN地址")]
     private string CdnUrl;
+
 
     private static void SetPackageChoices()
     {
@@ -114,17 +117,15 @@ public class BuildTool : OdinEditorWindow
         Debug.Log("完成生成Dll文件");
     }
 
-    [TabGroup("打包流程", "你好")]
-    [Button("111")]
-    private void De()
+    [TabGroup("打包流程", "新包流程")]
+    [Button("构建新资源包")]
+    private void BuildNew()
     {
+        Debug.Log("开始构建新包");
+        PrebuildCommand.GenerateAll();
+        GenerateDllBytesFile();
 
     }
 
-    [TabGroup("一键打包")]
-    [Button]
-    private void BuildAll()
-    {
 
-    }
 }
