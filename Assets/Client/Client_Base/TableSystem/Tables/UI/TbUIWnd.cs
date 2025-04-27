@@ -18,7 +18,8 @@ public partial class TbUIWnd : IVOFun
 {
     private readonly System.Collections.Generic.Dictionary<string, UI.UIWnd> _dataMap;
     private readonly System.Collections.Generic.List<UI.UIWnd> _dataList;
-    
+
+
     public TbUIWnd()
     {
         _dataMap = new System.Collections.Generic.Dictionary<string, UI.UIWnd>();

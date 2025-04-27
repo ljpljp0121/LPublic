@@ -6,5 +6,5 @@
         <var name="DestroyOnHide" type="bool"/>
     </bean>
 
-    <table name="TbUIWnd" value="UIWnd"  input="UIWnd.xlsx"/>
+    <table name="TbUIWnd" index="Name" mode="map"  value="UIWnd"  input="UIWnd.xlsx"/>
 </module>

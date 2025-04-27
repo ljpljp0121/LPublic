@@ -18,7 +18,8 @@ public partial class TbSkillClip : IVOFun
 {
     private readonly System.Collections.Generic.Dictionary<int, Skill.SkillClip> _dataMap;
     private readonly System.Collections.Generic.List<Skill.SkillClip> _dataList;
-    
+
+
     public TbSkillClip()
     {
         _dataMap = new System.Collections.Generic.Dictionary<int, Skill.SkillClip>();
