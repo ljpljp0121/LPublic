@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using cfg.UI;
 using DG.Tweening;
-using UITool;
 using UnityEngine;
 
 public interface IVisibleHandler
