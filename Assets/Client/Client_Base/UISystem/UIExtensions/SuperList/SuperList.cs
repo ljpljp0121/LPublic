@@ -6,6 +6,9 @@ using Sirenix.OdinInspector.Editor.Validation;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// 无限循环等高列表实现
+/// </summary>
 public class SuperList : MonoBehaviour
 {
 
