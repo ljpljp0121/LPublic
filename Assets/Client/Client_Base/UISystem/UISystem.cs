@@ -340,7 +340,7 @@ public class UISystem : MonoBehaviour
 
     #region 层级管理
 
-    private void UpdateSortingLayer(UIBehavior uiBehavior, bool isShowing)
+    private void UpdateSortingLayer(UIBehavior uiBehavior, bool isShow)
     {
         if (uiBehavior.WndInfo == null)
         {
@@ -349,7 +349,7 @@ public class UISystem : MonoBehaviour
         }
         int layer = uiBehavior.WndInfo.Layer;
 
-        if (isShowing)
+        if (isShow)
         {
             int order = GetCurOrderNum(uiBehavior);
             var canvas = uiBehavior.Canvas;
@@ -357,6 +357,17 @@ public class UISystem : MonoBehaviour
             {
                 canvas.overrideSorting = true;
                 canvas.sortingOrder = order;
+            }
+
+            var sortRoot = uiBehavior.gameObject.TryAddComponent<UISortingRoot>();
+            if (sortRoot != null)
+            {
+                sortRoot.SetOrder(order);
+            }
+
+            foreach (var sorting in uiBehavior.GetComponentsInChildren<UISortingOrder>())
+            {
+                sorting.ForceRefresh();
             }
         }
     }

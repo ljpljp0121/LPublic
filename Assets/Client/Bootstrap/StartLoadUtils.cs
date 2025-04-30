@@ -1,6 +1,9 @@
 ﻿
+using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
+using HybridCLR;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using YooAsset;
@@ -10,54 +13,56 @@ public class StartLoadUtils
 {
     private const int MAX_RETRY_TIME = 3;
 
+    public static List<string> AOTMetaAssemblyFiles { get; } = new List<string>()
+    {
+        "mscorlib.dll",
+        "System.dll",
+        "System.Core.dll",
+    };
+
+    public static List<string> HotUpdateAssets { get; } = new List<string>() //顺序很重要,越下层的越先加载
+    {
+        "Client_Base.dll",
+        "Client_Logic.dll",
+        "Client_GamePlay.dll",
+        "Client_UI.dll",
+    };
+
+    public static Dictionary<string, byte[]> assetDataDic = new Dictionary<string, byte[]>();
+
     public static async Task InitDll(string packageName, EPlayMode playMode)
     {
         Debug.Log($"Start Load Dll Package{packageName}");
-        await InitPackage(packageName, playMode);
-        string packageVersion = await UpdatePackageVersion(packageName);
-        await UpdatePackageManifest(packageName, packageVersion);
-        if (playMode == EPlayMode.EditorSimulateMode || playMode == EPlayMode.OfflinePlayMode)
-        {
-            await ClearPackageCache(packageName);
-        }
-        else if (playMode == EPlayMode.HostPlayMode)
-        {
-            var downloader = CreatePackageDownloader(packageName);
-            if (downloader.TotalDownloadCount == 0)
-            {
-                Debug.Log("Not found any download files !");
-            }
-            else
-            {
-                await DownloadPackageFiles(downloader);
-            }
-        }
+        await LoadPackage(packageName, playMode);
+        await LoadPackageDll(packageName);//加载热更DLL
         Debug.Log($"Load Dll success Package{packageName}");
     }
 
     public static async Task InitResource(string packageName, EPlayMode playMode)
     {
-        Debug.Log($"start load assetPackage Package{packageName}");
-        await InitPackage(packageName, playMode);
-        string packageVersion = await UpdatePackageVersion(packageName);
-        await UpdatePackageManifest(packageName, packageVersion);
-        if (playMode == EPlayMode.EditorSimulateMode || playMode == EPlayMode.OfflinePlayMode)
+        Debug.Log($"Start load assetPackage Package{packageName}");
+        await LoadPackage(packageName, playMode);
+        Debug.Log($"load assetPackage success Package{packageName}");
+    }
+
+    private static async Task LoadPackage(string packageName, EPlayMode playMode)
+    {
+        await InitPackage(packageName, playMode); //初始化资源包
+        string packageVersion = await UpdatePackageVersion(packageName); //更新资源版本号
+        await UpdatePackageManifest(packageName, packageVersion);//更新资源清单
+        if (playMode == EPlayMode.HostPlayMode)
         {
-            await ClearPackageCache(packageName);
-        }
-        else
-        {
-            var downloader = CreatePackageDownloader(packageName);
-            if (downloader.TotalDownloadCount == 0)
+            var downloader = CreatePackageDownloader(packageName); //创建资源下载器
+            if (downloader.TotalDownloadCount != 0)//有新资源
             {
-                Debug.Log("Not found any download files !");
+                await DownloadPackageFiles(downloader);//下载资源文件
             }
             else
             {
-                await DownloadPackageFiles(downloader);
+                Debug.Log("Not found any download files !");
             }
         }
-        Debug.Log($"load assetPackage success Package{packageName}");
+        await ClearPackageCache(packageName);//清理资源缓存
     }
 
     /// <summary>
@@ -197,6 +202,51 @@ public class StartLoadUtils
         }
     }
 
+    public static async Task LoadPackageDll(string packageName)
+    {
+        Debug.Log($"加载热更DLL Package{packageName}");
+        var package = YooAssets.GetPackage(packageName);
+        await LoadDllAssets(package, AOTMetaAssemblyFiles, "AOTDll", true);
+        await LoadDllAssets(package, HotUpdateAssets, "HotUpdateDll");
+        LoadHotUpdateAssemblies();
+    }
+
+    /// <summary>
+    /// 加载DLL资源
+    /// </summary>
+    private static async Task LoadDllAssets(ResourcePackage package, List<string> assets, string pathName,
+        bool isAOTMetadata = false)
+    {
+        foreach (var asset in assets)
+        {
+            RawFileHandle handle = package.LoadRawFileAsync($"Assets/Bundle/{pathName}/{asset}");
+            await handle;
+            if (handle.Status != EOperationStatus.Succeed)
+            {
+                Debug.LogError($"加载失败: {asset}, 错误: {handle.LastError}");
+                continue;
+            }
+            byte[] fileData = handle.GetRawFileData();
+            assetDataDic[asset] = fileData;
+            Debug.Log($"{asset} 加载成功，大小: {fileData.Length}");
+            if (isAOTMetadata)//加载AOT数据
+            {
+                try
+                {
+                    // 使用 HybridCLR 的 API 加载 AOT 元数据
+                    HomologousImageMode mode = HomologousImageMode.SuperSet;
+                    RuntimeApi.LoadMetadataForAOTAssembly(fileData, mode);
+                    Debug.Log($"AOT 元数据加载成功: {asset}");
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError($"AOT 元数据加载失败: {asset}, 错误: {e}");
+                }
+            }
+            handle.Release();
+        }
+    }
+
     /// <summary>
     /// 清理资源缓存
     /// </summary>
@@ -206,6 +256,27 @@ public class StartLoadUtils
         var package = YooAssets.GetPackage(packageName);
         var operation = package.ClearCacheFilesAsync(EFileClearMode.ClearUnusedBundleFiles);
         await operation;
+        assetDataDic.Clear();
+    }
+
+    private static void LoadHotUpdateAssemblies()
+    {
+        for (var i = 0; i < HotUpdateAssets.Count; i++)
+        {
+            var asset = HotUpdateAssets[i];
+            if (assetDataDic.TryGetValue(asset, out byte[] dllData))
+            {
+                try
+                {
+                    System.Reflection.Assembly.Load(dllData);
+                    Debug.Log($"热更新 DLL 加载成功: {asset}");
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError($"热更新 DLL 加载失败: {asset}, 错误: {e}");
+                }
+            }
+        }
     }
 
     /// <summary>
