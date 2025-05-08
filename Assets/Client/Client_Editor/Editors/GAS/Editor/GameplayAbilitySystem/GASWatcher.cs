@@ -26,7 +26,7 @@ namespace GAS.Editor
         private AbilitySystemComponent _selected;
         
         [HideLabel] [DisplayAsString(TextAlignment.Center, true)]
-        public string windowTitle = "<size=18><b>EX Gameplay Ability System Watcher</b></size>";
+        public string windowTitle = "<size=18><b>Runtime Watcher</b></size>";
 
         [BoxGroup(BOXGROUP_TIPS)] [HideLabel] [DisplayAsString(TextAlignment.Left, true)]
         public string tips = GASTextDefine.TIP_WATCHER;
@@ -134,7 +134,7 @@ namespace GAS.Editor
         private static void OpenWindow()
         {
             var window = GetWindow<GASWatcher>();
-            window.titleContent = new GUIContent("EX Gameplay Ability System Watcher");
+            window.titleContent = new GUIContent("Runtime Watcher");
             window.Show();
         }
         
