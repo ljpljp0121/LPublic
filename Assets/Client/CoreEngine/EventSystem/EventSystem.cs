@@ -261,6 +261,9 @@ public static class EventSystem
     #endregion
 }
 
+/// <summary>
+/// 事件基类,所有类型事件都要继承这个类
+/// </summary>
 public class BaseEvent
 {
 }
