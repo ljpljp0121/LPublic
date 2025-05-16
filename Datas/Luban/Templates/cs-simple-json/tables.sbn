@@ -23,9 +23,7 @@ public partial class {{__name}}
     
     private void ResolveRef()
     {
-        {{~for table in __tables ~}}
-        {{format_property_name __code_style table.name}}.ResolveRef(this);
-        {{~end~}}
+        
     }
 }
 
