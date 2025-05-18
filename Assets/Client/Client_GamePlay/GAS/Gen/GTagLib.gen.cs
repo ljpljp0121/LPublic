@@ -9,6 +9,7 @@ namespace GAS.Runtime
 {
     public static class GTagLib
     {
+        public static GameplayTag Test { get; } = new GameplayTag("Test");
         public static GameplayTag State { get; } = new GameplayTag("State");
         public static GameplayTag State_Ability { get; } = new GameplayTag("State.Ability");
         public static GameplayTag State_Ability_Attacking { get; } = new GameplayTag("State.Ability.Attacking");
@@ -35,6 +36,7 @@ namespace GAS.Runtime
 
         public static Dictionary<string, GameplayTag> TagMap = new Dictionary<string, GameplayTag>
         {
+            ["Test"] = Test,
             ["State"] = State,
             ["State.Ability"] = State_Ability,
             ["State.Ability.Attacking"] = State_Ability_Attacking,

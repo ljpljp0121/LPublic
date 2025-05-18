@@ -16,6 +16,9 @@ MonoBehaviour:
   - _id: 1
     _name: Root
     _depth: -1
+  - _id: 78
+    _name: Test
+    _depth: 0
   - _id: 46
     _name: State
     _depth: 0
@@ -86,6 +89,11 @@ MonoBehaviour:
     _name: System
     _depth: 0
   Tags:
+  - _name: Test
+    _hashCode: -871204762
+    _shortName: Test
+    _ancestorHashCodes: 
+    _ancestorNames: []
   - _name: State
     _hashCode: 1695958603
     _shortName: State
