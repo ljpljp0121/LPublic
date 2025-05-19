@@ -78,18 +78,18 @@ MonoBehaviour:
     - startFrame: 13
       durationFrame: 20
       buffTarget: 0
-      SkillEffect: {fileID: 0}
+      SkillEffect: {fileID: 11400000, guid: 3274b533e5c89b040ab52829582c2e2c, type: 2}
   - trackName: Buff
     clipEvents:
     - startFrame: 17
       durationFrame: 110
       buffTarget: 0
-      SkillEffect: {fileID: 0}
+      SkillEffect: {fileID: 11400000, guid: 110f9b6108cb92a40b5081371f1d1e90, type: 2}
   - trackName: Buff
     clipEvents:
     - startFrame: 0
       durationFrame: 14
       buffTarget: 0
-      SkillEffect: {fileID: 0}
+      SkillEffect: {fileID: 11400000, guid: 47218ddaf9bb04a43bd527674507c1e2, type: 2}
   InstantTasks: []
   OngoingTasks: []
