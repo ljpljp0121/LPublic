@@ -34,7 +34,7 @@ public partial struct vector4
     public readonly float W;
    
 
-    public  void ResolveRef(Tables tables)
+    public  void ResolveRef()
     {
     }
 

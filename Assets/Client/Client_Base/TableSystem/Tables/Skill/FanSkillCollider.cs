@@ -38,9 +38,9 @@ public sealed partial class FanSkillCollider : ShapeCollider
     public const int __ID__ = -242993329;
     public override int GetTypeId() => __ID__;
 
-    public override void ResolveRef(Tables tables)
+    public override void ResolveRef()
     {
-        base.ResolveRef(tables);
+        base.ResolveRef();
     }
 
     public override string ToString()

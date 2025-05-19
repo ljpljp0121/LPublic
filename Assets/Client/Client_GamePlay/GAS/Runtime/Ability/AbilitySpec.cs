@@ -32,7 +32,7 @@ namespace GAS.Runtime
         {
             _onActivateResult += onActivateResult;
         }
-        
+
         public void UnregisterActivateResult(Action<AbilityActivateResult> onActivateResult)
         {
             _onActivateResult -= onActivateResult;
@@ -42,25 +42,25 @@ namespace GAS.Runtime
         {
             _onEndAbility += onEndAbility;
         }
-        
+
         public void UnregisterEndAbility(Action onEndAbility)
         {
             _onEndAbility -= onEndAbility;
         }
-        
+
         public void RegisterCancelAbility(Action onCancelAbility)
         {
             _onCancelAbility += onCancelAbility;
         }
-        
+
         public void UnregisterCancelAbility(Action onCancelAbility)
         {
             _onCancelAbility -= onCancelAbility;
         }
-        
-        public virtual AbilityActivateResult CanActivate()
+
+        public virtual AbilityActivateResult CanActivate(bool isReStart = false)
         {
-            if (IsActive) return AbilityActivateResult.FailHasActivated;
+            if (IsActive && !isReStart) return AbilityActivateResult.FailHasActivated;
             if (!CheckGameplayTagsValidTpActivate()) return AbilityActivateResult.FailTagRequirement;
             if (!CheckCost()) return AbilityActivateResult.FailCost;
             if (CheckCooldown().TimeRemaining > 0) return AbilityActivateResult.FailCooldown;
@@ -135,10 +135,10 @@ namespace GAS.Runtime
             }
         }
 
-        public virtual bool TryActivateAbility(params object[] args)
+        public virtual bool TryActivateAbility(bool isReStart = false, params object[] args)
         {
             _abilityArguments = args;
-            var result = CanActivate();
+            var result = CanActivate(isReStart);
             var success = result == AbilityActivateResult.Success;
             if (success)
             {

@@ -1,0 +1,20 @@
+[
+  {
+    "SkillID": 1001,
+    "ComboID": 100001,
+    "NextSkill": [],
+    "Group": 1001
+  },
+  {
+    "SkillID": 1002,
+    "ComboID": 100101,
+    "NextSkill": [],
+    "Group": 1001
+  },
+  {
+    "SkillID": 1003,
+    "ComboID": 100201,
+    "NextSkill": [],
+    "Group": 1001
+  }
+]

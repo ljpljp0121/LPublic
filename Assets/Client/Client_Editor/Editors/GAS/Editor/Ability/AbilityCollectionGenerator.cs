@@ -46,6 +46,7 @@ namespace GAS.Editor
                     writer.WriteLine("{");
                     writer.Indent++;
                     {
+                        writer.WriteLine("public int ID;");
                         writer.WriteLine("public string Name;");
                         writer.WriteLine("public string AssetPath;");
                         writer.WriteLine("public Type AbilityClassType;");
@@ -73,6 +74,7 @@ namespace GAS.Editor
                         writer.WriteLine(
                             $"public static AbilityInfo {ability.UniqueName} = " +
                             $"new AbilityInfo {{ " +
+                            $"ID = {ability.ID}, " +
                             $"Name = \"{ability.UniqueName}\", " +
                             $"AssetPath = \"{path}\"," +
                             $"AbilityClassType = typeof({ability.InstanceAbilityClassFullName}) }};");
@@ -88,21 +90,6 @@ namespace GAS.Editor
                         writer.Indent--;
                         writer.WriteLine("};");
 #endif
-                        // writer.WriteLine($"private static {ability.InstanceAbilityClassFullName} _{validName};");
-                        // writer.WriteLine($"public static {ability.InstanceAbilityClassFullName} {validName}()");
-                        // writer.WriteLine("{");
-                        // writer.Indent++;
-                        // {
-                        //     writer.WriteLine($"if (_{validName} == null) _{validName} = new {ability.InstanceAbilityClassFullName}({validName}_Info.Asset());");
-                        //     writer.Indent++;
-                        //     {
-                        //         writer.WriteLine($"return _{validName};");
-                        //     }
-                        //     writer.Indent--;
-                        // }
-                        // writer.Indent--;
-                        // writer.WriteLine("}");
-
                         writer.WriteLine("");
                     }
 
@@ -116,6 +103,20 @@ namespace GAS.Editor
                         foreach (var ability in abilityAssets)
                         {
                             writer.WriteLine($"[\"{ability.UniqueName}\"] = {ability.UniqueName},");
+                        }
+                    }
+                    writer.Indent--;
+                    writer.WriteLine("};");
+
+                    writer.WriteLine("");
+                    writer.WriteLine(
+                        "public static Dictionary<int, AbilityInfo> AbilityMapByID = new Dictionary<int, AbilityInfo>()");
+                    writer.WriteLine("{");
+                    writer.Indent++;
+                    {
+                        foreach (var ability in abilityAssets)
+                        {
+                            writer.WriteLine($"[{ability.ID}] = {ability.UniqueName},");
                         }
                     }
                     writer.Indent--;

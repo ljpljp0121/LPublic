@@ -34,9 +34,9 @@ public abstract partial class ShapeCollider : ColliderBase
     public readonly UnityEngine.Vector3 Position;
    
 
-    public override void ResolveRef(Tables tables)
+    public override void ResolveRef()
     {
-        base.ResolveRef(tables);
+        base.ResolveRef();
     }
 
     public override string ToString()

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d763af469c524557946c477b9bea3a46, type: 3}
   m_Name: CommonAttack5
   m_EditorClassIdentifier: 
+  ID: 1005
   UniqueName: CommonAttack5
   Description: 
   Cost: {fileID: 0}
@@ -77,12 +78,12 @@ MonoBehaviour:
     - startFrame: 10
       durationFrame: 130
       buffTarget: 0
-      gameplayEffect: {fileID: 11400000, guid: 47218ddaf9bb04a43bd527674507c1e2, type: 2}
+      SkillEffect: {fileID: 0}
   - trackName: Buff
     clipEvents:
     - startFrame: 0
       durationFrame: 10
       buffTarget: 0
-      gameplayEffect: {fileID: 11400000, guid: 110f9b6108cb92a40b5081371f1d1e90, type: 2}
+      SkillEffect: {fileID: 0}
   InstantTasks: []
   OngoingTasks: []

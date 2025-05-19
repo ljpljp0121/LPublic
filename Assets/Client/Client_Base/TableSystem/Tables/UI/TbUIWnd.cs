@@ -18,8 +18,7 @@ public partial class TbUIWnd : IVOFun
 {
     private readonly System.Collections.Generic.Dictionary<string, UI.UIWnd> _dataMap;
     private readonly System.Collections.Generic.List<UI.UIWnd> _dataList;
-
-
+    
     public TbUIWnd()
     {
         _dataMap = new System.Collections.Generic.Dictionary<string, UI.UIWnd>();
@@ -33,14 +32,6 @@ public partial class TbUIWnd : IVOFun
     public UI.UIWnd Get(string key) => _dataMap[key];
     public UI.UIWnd this[string key] => _dataMap[key];
 
-    public void ResolveRef(Tables tables)
-    {
-        foreach(var _v in _dataList)
-        {
-            _v.ResolveRef(tables);
-        }
-    }
-
 
     public void _LoadData()
     {
@@ -52,6 +43,7 @@ public partial class TbUIWnd : IVOFun
             { if(!_ele.IsObject) { throw new SerializationException(); }  _v = UI.UIWnd.DeserializeUIWnd(_ele);  }
             _dataList.Add(_v);
             _dataMap.Add(_v.Name, _v);
+            _v.ResolveRef();
         }
     }
 

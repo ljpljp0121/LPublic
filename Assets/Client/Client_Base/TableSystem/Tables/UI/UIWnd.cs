@@ -36,7 +36,7 @@ public sealed partial class UIWnd : Luban.BeanBase
     public const int __ID__ = -424015521;
     public override int GetTypeId() => __ID__;
 
-    public  void ResolveRef(Tables tables)
+    public  void ResolveRef()
     {
     }
 

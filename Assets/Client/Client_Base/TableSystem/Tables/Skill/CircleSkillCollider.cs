@@ -30,9 +30,9 @@ public sealed partial class CircleSkillCollider : ShapeCollider
     public const int __ID__ = 97439512;
     public override int GetTypeId() => __ID__;
 
-    public override void ResolveRef(Tables tables)
+    public override void ResolveRef()
     {
-        base.ResolveRef(tables);
+        base.ResolveRef();
     }
 
     public override string ToString()

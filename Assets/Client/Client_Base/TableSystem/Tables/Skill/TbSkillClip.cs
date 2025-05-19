@@ -18,8 +18,7 @@ public partial class TbSkillClip : IVOFun
 {
     private readonly System.Collections.Generic.Dictionary<int, Skill.SkillClip> _dataMap;
     private readonly System.Collections.Generic.List<Skill.SkillClip> _dataList;
-
-
+    
     public TbSkillClip()
     {
         _dataMap = new System.Collections.Generic.Dictionary<int, Skill.SkillClip>();
@@ -33,14 +32,6 @@ public partial class TbSkillClip : IVOFun
     public Skill.SkillClip Get(int key) => _dataMap[key];
     public Skill.SkillClip this[int key] => _dataMap[key];
 
-    public void ResolveRef(Tables tables)
-    {
-        foreach(var _v in _dataList)
-        {
-            _v.ResolveRef(tables);
-        }
-    }
-
 
     public void _LoadData()
     {
@@ -52,6 +43,7 @@ public partial class TbSkillClip : IVOFun
             { if(!_ele.IsObject) { throw new SerializationException(); }  _v = Skill.SkillClip.DeserializeSkillClip(_ele);  }
             _dataList.Add(_v);
             _dataMap.Add(_v.SkillID, _v);
+            _v.ResolveRef();
         }
     }
 

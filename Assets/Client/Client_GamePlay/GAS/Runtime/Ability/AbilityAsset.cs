@@ -59,9 +59,13 @@ namespace GAS.Runtime
             }
         }
 #endif
+        [Title(SkillDefine.ABILITY_BASEINFO, bold: true)]
+        [VerticalGroup(GRP_BASE_H_LEFT)]
+        [InfoBox("主要作为配置表ID来读取")]
+        public int ID;
         
         [BoxGroup(GRP_BASE, false)]
-        [Title(SkillDefine.ABILITY_BASEINFO, bold: true)]
+       
         [HorizontalGroup(GRP_BASE_H, Width = WIDTH_GRP_BASE_H_LEFT)]
         [VerticalGroup(GRP_BASE_H_LEFT)]
         [InfoBox(SkillDefine.TIP_UNAME)]

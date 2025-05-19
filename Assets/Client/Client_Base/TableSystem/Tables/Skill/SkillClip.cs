@@ -46,13 +46,13 @@ public sealed partial class SkillClip : Luban.BeanBase
     public const int __ID__ = 1078810020;
     public override int GetTypeId() => __ID__;
 
-    public  void ResolveRef(Tables tables)
+    public  void ResolveRef()
     {
-        foreach (var _e in CustomEvent.Values) { _e?.ResolveRef(tables); }
-        foreach (var _e in AnimationEvent.Values) { _e?.ResolveRef(tables); }
-        foreach (var _e in AudioEvent) { _e?.ResolveRef(tables); }
-        foreach (var _e in EffectEvent) { _e?.ResolveRef(tables); }
-        foreach (var _e in ColliderEvent) { _e?.ResolveRef(tables); }
+        foreach (var _e in CustomEvent.Values) { _e?.ResolveRef(); }
+        foreach (var _e in AnimationEvent.Values) { _e?.ResolveRef(); }
+        foreach (var _e in AudioEvent) { _e?.ResolveRef(); }
+        foreach (var _e in EffectEvent) { _e?.ResolveRef(); }
+        foreach (var _e in ColliderEvent) { _e?.ResolveRef(); }
     }
 
     public override string ToString()

@@ -34,9 +34,9 @@ public sealed partial class SkillColliderEvent : Luban.BeanBase
     public const int __ID__ = -1242271950;
     public override int GetTypeId() => __ID__;
 
-    public  void ResolveRef(Tables tables)
+    public  void ResolveRef()
     {
-        ColliderData?.ResolveRef(tables);
+        ColliderData?.ResolveRef();
     }
 
     public override string ToString()

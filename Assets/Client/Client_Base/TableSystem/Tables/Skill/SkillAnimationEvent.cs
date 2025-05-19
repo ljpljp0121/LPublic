@@ -32,7 +32,7 @@ public sealed partial class SkillAnimationEvent : Luban.BeanBase
     public const int __ID__ = -1169960246;
     public override int GetTypeId() => __ID__;
 
-    public  void ResolveRef(Tables tables)
+    public  void ResolveRef()
     {
     }
 

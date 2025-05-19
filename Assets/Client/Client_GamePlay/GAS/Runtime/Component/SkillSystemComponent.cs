@@ -8,19 +8,19 @@ namespace GAS.Runtime
     {
         [SerializeField] private SkillSystemComponentPreset preset;
         public SkillSystemComponentPreset Preset => preset;
-        
-        public SkillEffectContainer SkillEffectContainer { get; private set; } 
 
-        public GameplayTagAggregator GameplayTagAggregator { get; private set;} 
+        public SkillEffectContainer SkillEffectContainer { get; private set; }
 
-        public AbilityContainer AbilityContainer { get; private set;}
+        public GameplayTagAggregator GameplayTagAggregator { get; private set; }
 
-        public AttributeSetContainer AttributeSetContainer { get; private set;}
+        public AbilityContainer AbilityContainer { get; private set; }
+
+        public AttributeSetContainer AttributeSetContainer { get; private set; }
 
         private bool _ready;
         private void Prepare()
         {
-            if(_ready) return;
+            if (_ready) return;
             AbilityContainer = new AbilityContainer(this);
             SkillEffectContainer = new SkillEffectContainer(this);
             AttributeSetContainer = new AttributeSetContainer(this);
@@ -35,7 +35,7 @@ namespace GAS.Runtime
             ClearGameplayEffects();
             GameplayTagAggregator?.OnDisable();
         }
-        
+
         private void Awake()
         {
             Prepare();
@@ -58,16 +58,16 @@ namespace GAS.Runtime
         {
             preset = ascPreset;
         }
-        
-        public void Init(GameplayTag[] baseTags, Type[] attrSetTypes,AbilityAsset[] baseAbilities,int level)
+
+        public void Init(GameplayTag[] baseTags, Type[] attrSetTypes, AbilityAsset[] baseAbilities, int level)
         {
             Prepare();
             if (baseTags != null) GameplayTagAggregator.Init(baseTags);
-            
+
             if (attrSetTypes != null)
                 foreach (var attrSetType in attrSetTypes)
                     AttributeSetContainer.AddAttributeSet(attrSetType);
-            
+
             if (baseAbilities != null)
                 foreach (var info in baseAbilities)
                     if (info != null)
@@ -76,7 +76,7 @@ namespace GAS.Runtime
                         AbilityContainer.GrantAbility(ability);
                     }
         }
-        
+
         public bool HasTag(GameplayTag gameplayTag)
         {
             return GameplayTagAggregator.HasTag(gameplayTag);
@@ -111,7 +111,7 @@ namespace GAS.Runtime
         {
             GameplayTagAggregator.RemoveFixedTag(tag);
         }
-        
+
         public void RemoveGameplayEffect(SkillEffectSpec spec)
         {
             SkillEffectContainer.RemoveGameplayEffectSpec(spec);
@@ -170,16 +170,16 @@ namespace GAS.Runtime
             return AttributeSetContainer.Snapshot();
         }
 
-        public bool TryActivateAbility(string abilityName, params object[] args)
+        public bool TryActivateAbility(string abilityName, bool isReStart = false, params object[] args)
         {
-            return AbilityContainer.TryActivateAbility(abilityName, args);
+            return AbilityContainer.TryActivateAbility(abilityName, isReStart, args);
         }
 
         public void TryEndAbility(string abilityName)
         {
             AbilityContainer.EndAbility(abilityName);
         }
-        
+
         public void TryCancelAbility(string abilityName)
         {
             AbilityContainer.CancelAbility(abilityName);
@@ -221,7 +221,7 @@ namespace GAS.Runtime
             AttributeSetContainer.TryGetAttributeSet<T>(out var attrSet);
             return attrSet;
         }
-        
+
         public void ClearGameplayEffect()
         {
             // _abilityContainer = new AbilityContainer(this);

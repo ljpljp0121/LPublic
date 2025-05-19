@@ -42,10 +42,10 @@ namespace GAS.Runtime
             _abilities.Remove(abilityName);
         }
 
-        public bool TryActivateAbility(string abilityName, params object[] args)
+        public bool TryActivateAbility(string abilityName, bool isReStart = false, params object[] args)
         {
             if (!_abilities.ContainsKey(abilityName)) return false;
-            if (!_abilities[abilityName].TryActivateAbility(args)) return false;
+            if (!_abilities[abilityName].TryActivateAbility(isReStart, args)) return false;
 
             var tags = _abilities[abilityName].Ability.Tag.CancelAbilitiesWithTags;
             foreach (var kv in _abilities)

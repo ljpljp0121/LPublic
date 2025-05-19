@@ -33,7 +33,7 @@ public abstract partial class ColliderBase : Luban.BeanBase
 
    
 
-    public virtual void ResolveRef(Tables tables)
+    public virtual void ResolveRef()
     {
     }
 

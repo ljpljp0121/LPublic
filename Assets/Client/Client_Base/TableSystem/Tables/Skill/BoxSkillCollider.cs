@@ -32,9 +32,9 @@ public sealed partial class BoxSkillCollider : ShapeCollider
     public const int __ID__ = 669413271;
     public override int GetTypeId() => __ID__;
 
-    public override void ResolveRef(Tables tables)
+    public override void ResolveRef()
     {
-        base.ResolveRef(tables);
+        base.ResolveRef();
     }
 
     public override string ToString()

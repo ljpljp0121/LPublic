@@ -32,7 +32,7 @@ public sealed partial class SkillAudioEvent : Luban.BeanBase
     public const int __ID__ = -45580360;
     public override int GetTypeId() => __ID__;
 
-    public  void ResolveRef(Tables tables)
+    public  void ResolveRef()
     {
     }
 

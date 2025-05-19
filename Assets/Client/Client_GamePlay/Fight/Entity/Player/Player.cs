@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 
 
-public class Player : GameComponent 
+public class Player : GameComponent
 {
     public Role RoleConfig = new Role();
     private SkillSystemComponent asc;
@@ -17,7 +17,7 @@ public class Player : GameComponent
     private string nextCombo = GAbilityLib.CommonAttack2.Name;
 
     #region 组件初始化
-    
+
     public void Awake()
     {
         PreLoadAssets();
@@ -58,7 +58,7 @@ public class Player : GameComponent
         characterController.Move(deltaPosition);
         SendEvent<EOnInputMove>();
     }
-    
+
     public void SendEvent<T>() where T : BaseEvent
     {
         EventSystem.RegisterEvent<T>(OnTick);
@@ -66,7 +66,7 @@ public class Player : GameComponent
 
     private void OnTick<T>(T obj) where T : BaseEvent
     {
-        
+
     }
 
     private void OnCommonAttack(EOnInputCommonAttack obj)
@@ -83,7 +83,7 @@ public class Player : GameComponent
         }
         else
         {
-            result = asc.TryActivateAbility(GAbilityLib.CommonAttack1.Name);
+            result = asc.TryActivateAbility(GAbilityLib.CommonAttack1.Name, true);
             if (result)
             {
                 curComboName = GAbilityLib.CommonAttack1.Name;
@@ -92,7 +92,7 @@ public class Player : GameComponent
         }
         if (asc.HasTag(GTagLib.Effect_Common_CancelWindow))
         {
-            result = asc.TryActivateAbility(GAbilityLib.CommonAttack1.Name);
+            result = asc.TryActivateAbility(GAbilityLib.CommonAttack1.Name, true);
             if (result)
             {
                 curComboName = GAbilityLib.CommonAttack1.Name;

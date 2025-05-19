@@ -32,9 +32,6 @@ namespace GAS.Runtime
         public InstantAbilityTask task;
     }
 
-    /// <summary>
-    /// 控制技能时间轴的 ​播放逻辑，处理帧事件触发、状态更新。
-    /// </summary>
     public class TimelineAbilityPlayer<T> where T : AbstractAbility
     {
         private readonly TimelineAbilitySpecT<T> _abilitySpec;

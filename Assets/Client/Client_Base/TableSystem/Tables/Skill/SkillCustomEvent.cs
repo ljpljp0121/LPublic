@@ -30,7 +30,7 @@ public sealed partial class SkillCustomEvent : Luban.BeanBase
     public const int __ID__ = 1037515989;
     public override int GetTypeId() => __ID__;
 
-    public  void ResolveRef(Tables tables)
+    public  void ResolveRef()
     {
     }
 
