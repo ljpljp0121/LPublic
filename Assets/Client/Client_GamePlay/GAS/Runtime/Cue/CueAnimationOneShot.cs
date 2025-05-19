@@ -5,22 +5,22 @@ using UnityEngine;
 namespace GAS.Runtime
 {
     [CreateAssetMenu(fileName = "CuePlayAnimation", menuName = "GAS/Cue/CuePlayAnimation")]
-    public class CueAnimationOneShot : GameplayCueInstant
+    public class CueAnimationOneShot : SkillCueInstant
     {
         [BoxGroup]
-        [InfoBox(GASTextDefine.CUE_ANIMATION_PATH_TIP)]
-        [LabelText(GASTextDefine.CUE_ANIMATION_PATH)]
+        [InfoBox(SkillDefine.CUE_ANIMATION_PATH_TIP)]
+        [LabelText(SkillDefine.CUE_ANIMATION_PATH)]
         [SerializeField]
         private string _animatorRelativePath;
 
-        [BoxGroup] [LabelText(GASTextDefine.CUE_ANIMATION_STATE)] [SerializeField]
+        [BoxGroup] [LabelText(SkillDefine.CUE_ANIMATION_STATE)] [SerializeField]
         private string _stateName;
 
         public string AnimatorRelativePath => _animatorRelativePath;
         public string StateName => _stateName;
 
 
-        public override GameplayCueInstantSpec CreateSpec(GameplayCueParameters parameters)
+        public override SkillCueInstantSpec CreateSpec(SkillCueParameters parameters)
         {
             return new CueAnimationOneShotSpec(this, parameters);
         }
@@ -48,11 +48,11 @@ namespace GAS.Runtime
 #endif
     }
 
-    public class CueAnimationOneShotSpec : GameplayCueInstantSpec<CueAnimationOneShot>
+    public class CueAnimationOneShotSpec : SkillCueInstantSpec<CueAnimationOneShot>
     {
         private readonly Animator _animator;
 
-        public CueAnimationOneShotSpec(CueAnimationOneShot cue, GameplayCueParameters parameters) : base(cue,
+        public CueAnimationOneShotSpec(CueAnimationOneShot cue, SkillCueParameters parameters) : base(cue,
             parameters)
         {
             var animatorTransform = Owner.transform.Find(cue.AnimatorRelativePath);

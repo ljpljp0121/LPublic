@@ -12,13 +12,13 @@ namespace GAS.Runtime
 
     internal class RuntimeDurationCueClip : RuntimeClipInfo
     {
-        public GameplayCueDurationalSpec cueSpec;
+        public SkillCueDurationalSpec cueSpec;
     }
 
     internal class RuntimeBuffClip : RuntimeClipInfo
     {
-        public GameplayEffect buff;
-        public GameplayEffectSpec buffSpec;
+        public SkillEffect buff;
+        public SkillEffectSpec buffSpec;
     }
 
     internal class RuntimeTaskClip : RuntimeClipInfo
@@ -63,7 +63,7 @@ namespace GAS.Runtime
 
         public TimelineAbilityAsset AbilityAsset => _abilitySpec.Ability.DataReference as TimelineAbilityAsset;
         private int FrameCount => AbilityAsset.FrameCount;
-        private int FrameRate => GASTimer.FrameRate;
+        private int FrameRate => SkillTimer.FrameRate;
 
         private void Cache()
         {
@@ -113,14 +113,14 @@ namespace GAS.Runtime
             foreach (var track in AbilityAsset.BuffGameplayEffects)
                 foreach (var clipEvent in track.clipEvents)
                     // 只有持续型的GameplayEffect可视作buff
-                    if (clipEvent.gameplayEffect.DurationPolicy is EffectsDurationPolicy.Duration
+                    if (clipEvent.SkillEffect.DurationPolicy is EffectsDurationPolicy.Duration
                         or EffectsDurationPolicy.Infinite)
                     {
                         var runtimeBuffClip = new RuntimeBuffClip
                         {
                             startFrame = clipEvent.startFrame,
                             endFrame = clipEvent.EndFrame,
-                            buff = new GameplayEffect(clipEvent.gameplayEffect),
+                            buff = new SkillEffect(clipEvent.SkillEffect),
                             buffSpec = null
                         };
                         _cacheBuffGameplayEffectTrack.Add(runtimeBuffClip);
@@ -218,7 +218,7 @@ namespace GAS.Runtime
                         foreach (var asc in targets)
                             mark.gameplayEffectAssets
                                 .ForEach(effect =>
-                                    _abilitySpec.Owner.ApplyGameplayEffectTo(new GameplayEffect(effect), asc));
+                                    _abilitySpec.Owner.ApplyGameplayEffectTo(new SkillEffect(effect), asc));
                 }
 
             // Instant Task

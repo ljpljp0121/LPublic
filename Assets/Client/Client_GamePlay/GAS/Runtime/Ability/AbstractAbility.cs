@@ -18,11 +18,11 @@ namespace GAS.Runtime
 
         public AbilityTagContainer Tag { get; protected set; }
 
-        public GameplayEffect Cooldown { get; protected set; }
+        public SkillEffect Cooldown { get; protected set; }
 
         public float CooldownTime { get; protected set; }
 
-        public GameplayEffect Cost { get; protected set; }
+        public SkillEffect Cost { get; protected set; }
 
         public AbstractAbility(AbilityAsset abilityAsset)
         {
@@ -32,15 +32,15 @@ namespace GAS.Runtime
             Tag = new AbilityTagContainer(
                 DataReference.AssetTag, DataReference.CancelAbilityTags, DataReference.BlockAbilityTags,
                 DataReference.ActivationOwnedTag, DataReference.ActivationRequiredTags, DataReference.ActivationBlockedTags);
-            Cooldown = DataReference.Cooldown ? new GameplayEffect(DataReference.Cooldown) : default;
-            Cost = DataReference.Cost ? new GameplayEffect(DataReference.Cost) : default;
+            Cooldown = DataReference.Cooldown ? new SkillEffect(DataReference.Cooldown) : default;
+            Cost = DataReference.Cost ? new SkillEffect(DataReference.Cost) : default;
 
             CooldownTime = DataReference.CooldownTime;
         }
 
-        public abstract AbilitySpec CreateSpec(AbilitySystemComponent owner);
+        public abstract AbilitySpec CreateSpec(SkillSystemComponent owner);
 
-        public void SetCooldown(GameplayEffect coolDown)
+        public void SetCooldown(SkillEffect coolDown)
         {
             if (coolDown.DurationPolicy == EffectsDurationPolicy.Duration)
             {
@@ -54,7 +54,7 @@ namespace GAS.Runtime
 #endif
         }
 
-        public void SetCost(GameplayEffect cost)
+        public void SetCost(SkillEffect cost)
         {
             if (cost.DurationPolicy == EffectsDurationPolicy.Instant)
             {

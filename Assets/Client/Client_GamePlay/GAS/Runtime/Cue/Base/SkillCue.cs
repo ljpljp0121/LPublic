@@ -9,10 +9,8 @@ using UnityEngine;
 
 namespace GAS.Runtime
 {
-    /// <summary>
-    /// 所有提示效果的配置基类
-    /// </summary>
-    public abstract class GameplayCue : ScriptableObject
+
+    public abstract class SkillCue : ScriptableObject
     {
         private const string TopGroup = "TopGroup";
         private const string TopGroup_H = "TopGroup/H";
@@ -46,7 +44,7 @@ namespace GAS.Runtime
         [ValueDropdown("TagChoices",HideChildProperties = true)]
         public GameplayTag[] ImmunityTags;
 
-        public virtual bool Triggerable(AbilitySystemComponent owner)
+        public virtual bool Triggerable(SkillSystemComponent owner)
         {
             if (owner == null) return false;
             // 持有【所有】RequiredTags才可触发
@@ -98,8 +96,8 @@ namespace GAS.Runtime
     /// <summary>
     /// 通过抽象方法CreateSpec()强制子类实现Spec创建
     /// </summary>
-    public abstract class GameplayCue<T> : GameplayCue where T : GameplayCueSpec
+    public abstract class SkillCue<T> : SkillCue where T : SkillCueSpec
     {
-        public abstract T CreateSpec(GameplayCueParameters parameters);
+        public abstract T CreateSpec(SkillCueParameters parameters);
     }
 }

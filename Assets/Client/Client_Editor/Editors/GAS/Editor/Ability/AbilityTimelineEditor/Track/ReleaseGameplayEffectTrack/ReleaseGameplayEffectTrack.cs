@@ -65,7 +65,7 @@ namespace GAS.Editor
             var markEvent = new ReleaseGameplayEffectMarkEvent
             {
                 startFrame = GetTrackIndexByMouse(action.eventInfo.localMousePosition.x),
-                gameplayEffectAssets = new List<GameplayEffectAsset>()
+                gameplayEffectAssets = new List<SkillEffectAsset>()
             };
             ReleaseGameplayEffectTrackData.markEvents.Add(markEvent);
 

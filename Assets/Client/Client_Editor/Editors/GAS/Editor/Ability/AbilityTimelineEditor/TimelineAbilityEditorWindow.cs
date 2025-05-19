@@ -18,7 +18,7 @@ namespace GAS.Editor
             base.OnInspectorGUI();
 
             EditorGUILayout.BeginVertical(GUI.skin.box);
-            if (GUILayout.Button(GASTextDefine.BUTTON_CHECK_TIMELINE_ABILITY, GUILayout.Height(30), GUILayout.Width(300))) EditAbilityTimeline();
+            if (GUILayout.Button(SkillDefine.BUTTON_CHECK_TIMELINE_ABILITY, GUILayout.Height(30), GUILayout.Width(300))) EditAbilityTimeline();
             EditorGUILayout.EndVertical();
         }
 

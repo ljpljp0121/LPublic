@@ -37,7 +37,7 @@ namespace GAS.Editor
         [BoxGroup]
         [AssetSelector]
         [OnValueChanged("OnCueChanged")]
-        public GameplayCueDurational Cue;
+        public SkillCueDurational Cue;
 
         [BoxGroup]
         [Button]

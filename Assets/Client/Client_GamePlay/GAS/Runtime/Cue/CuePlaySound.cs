@@ -6,27 +6,27 @@ using Object = UnityEngine.Object;
 
 namespace GAS.Runtime
 {
-    public class CuePlaySound : GameplayCueDurational
+    public class CuePlaySound : SkillCueDurational
     {
         [BoxGroup]
-        [LabelText(GASTextDefine.CUE_SOUND_EFFECT)]
+        [LabelText(SkillDefine.CUE_SOUND_EFFECT)]
         public AudioClip soundEffect; 
         
         [BoxGroup]
-        [LabelText(GASTextDefine.CUE_ATTACH_TO_OWNER)]
+        [LabelText(SkillDefine.CUE_ATTACH_TO_OWNER)]
         public bool isAttachToOwner = true;
         
-        public override GameplayCueDurationalSpec CreateSpec(GameplayCueParameters parameters)
+        public override SkillCueDurationalSpec CreateSpec(SkillCueParameters parameters)
         {
             return new CuePlaySoundSpec(this, parameters);
         }
     }
     
-    public class CuePlaySoundSpec : GameplayCueDurationalSpec<CuePlaySound>
+    public class CuePlaySoundSpec : SkillCueDurationalSpec<CuePlaySound>
     {
         private AudioSource _audioSource;
         
-        public CuePlaySoundSpec(CuePlaySound cue, GameplayCueParameters parameters) : base(cue,
+        public CuePlaySoundSpec(CuePlaySound cue, SkillCueParameters parameters) : base(cue,
             parameters)
         {
             if (cue.isAttachToOwner)

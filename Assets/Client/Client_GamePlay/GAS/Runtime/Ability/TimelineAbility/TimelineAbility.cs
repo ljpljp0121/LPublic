@@ -14,14 +14,14 @@
         /// <summary>
         /// 向性技能的作用目标
         /// </summary>
-        public AbilitySystemComponent Target { get; private set; }
+        public SkillSystemComponent Target { get; private set; }
 
-        protected TimelineAbilitySpecT(T ability, AbilitySystemComponent owner) : base(ability, owner)
+        protected TimelineAbilitySpecT(T ability, SkillSystemComponent owner) : base(ability, owner)
         {
             _player = new TimelineAbilityPlayer<T>(this);
         }
 
-        public void SetAbilityTarget(AbilitySystemComponent mainTarget)
+        public void SetAbilityTarget(SkillSystemComponent mainTarget)
         {
             Target = mainTarget;
         }
@@ -56,7 +56,7 @@
         {
         }
 
-        public override AbilitySpec CreateSpec(AbilitySystemComponent owner)
+        public override AbilitySpec CreateSpec(SkillSystemComponent owner)
         {
             return new TimelineAbilitySpec(this, owner);
         }
@@ -67,7 +67,7 @@
     /// </summary>
     public sealed class TimelineAbilitySpec : TimelineAbilitySpecT<TimelineAbility>
     {
-        public TimelineAbilitySpec(TimelineAbility ability, AbilitySystemComponent owner) : base(ability, owner)
+        public TimelineAbilitySpec(TimelineAbility ability, SkillSystemComponent owner) : base(ability, owner)
         {
         }
     }

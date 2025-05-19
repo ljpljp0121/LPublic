@@ -26,10 +26,10 @@ namespace GAS.Editor
         [HorizontalGroup("A/R", order: 1)]
         [DisplayAsString(TextAlignment.Left, FontSize = 18)]
         [HideLabel]
-        [InfoBox(GASTextDefine.ERROR_DuplicatedAttribute, InfoMessageType.Error,
+        [InfoBox(SkillDefine.ERROR_DuplicatedAttribute, InfoMessageType.Error,
             VisibleIf = "ExistDuplicatedAttribute")]
-        [InfoBox(GASTextDefine.ERROR_Empty, InfoMessageType.Error, VisibleIf = "EmptyAttribute")]
-        [InfoBox(GASTextDefine.ERROR_EmptyName, InfoMessageType.Error, VisibleIf = "EmptyAttributeSetName")]
+        [InfoBox(SkillDefine.ERROR_Empty, InfoMessageType.Error, VisibleIf = "EmptyAttribute")]
+        [InfoBox(SkillDefine.ERROR_EmptyName, InfoMessageType.Error, VisibleIf = "EmptyAttributeSetName")]
         public string Name = "Unnamed";
 
         [Space]
@@ -138,8 +138,8 @@ namespace GAS.Editor
 
         [VerticalGroup("Generate AttributeSet Code", order: 0)]
         [GUIColor(0, 0.9f, 0)]
-        [Button(SdfIconType.Upload, GASTextDefine.BUTTON_GenerateAttributeSetCode, ButtonHeight = 30, Expanded = true)]
-        [InfoBox(GASTextDefine.ERROR_InElements, InfoMessageType.Error, VisibleIf = "ErrorInElements")]
+        [Button(SdfIconType.Upload, SkillDefine.BUTTON_GenerateAttributeSetCode, ButtonHeight = 30, Expanded = true)]
+        [InfoBox(SkillDefine.ERROR_InElements, InfoMessageType.Error, VisibleIf = "ErrorInElements")]
         private void GenCode()
         {
             if (ExistDuplicatedAttributeSetName() || ErrorInElements())
@@ -175,7 +175,7 @@ namespace GAS.Editor
                 var duplicatedAttributeSets = duplicates.Aggregate("", (current, d) => current + d + ",");
                 duplicatedAttributeSets = duplicatedAttributeSets.Remove(duplicatedAttributeSets.Length - 1, 1);
                 ERROR_DuplicatedAttributeSet =
-                    string.Format(GASTextDefine.ERROR_DuplicatedAttributeSet, duplicatedAttributeSets);
+                    string.Format(SkillDefine.ERROR_DuplicatedAttributeSet, duplicatedAttributeSets);
             }
 
             return duplicates.Count > 0;

@@ -4,22 +4,22 @@ using UnityEngine;
 
 namespace GAS.Runtime
 {
-    public class CueAnimation:GameplayCueDurational
+    public class CueAnimation:SkillCueDurational
     {
         [BoxGroup]
-        [InfoBox(GASTextDefine.CUE_ANIMATION_PATH_TIP)]
-        [LabelText(GASTextDefine.CUE_ANIMATION_PATH)]
+        [InfoBox(SkillDefine.CUE_ANIMATION_PATH_TIP)]
+        [LabelText(SkillDefine.CUE_ANIMATION_PATH)]
         [SerializeField]
         private string _animatorRelativePath;
 
-        [BoxGroup] [LabelText(GASTextDefine.CUE_ANIMATION_STATE)] [SerializeField]
+        [BoxGroup] [LabelText(SkillDefine.CUE_ANIMATION_STATE)] [SerializeField]
         private string _stateName;
 
         public string AnimatorRelativePath => _animatorRelativePath;
         public string StateName => _stateName;
 
 
-        public override GameplayCueDurationalSpec CreateSpec(GameplayCueParameters parameters)
+        public override SkillCueDurationalSpec CreateSpec(SkillCueParameters parameters)
         {
             return new CueAnimationSpec(this, parameters);
         }
@@ -47,11 +47,11 @@ namespace GAS.Runtime
 #endif
     }
     
-    public class CueAnimationSpec : GameplayCueDurationalSpec<CueAnimation>
+    public class CueAnimationSpec : SkillCueDurationalSpec<CueAnimation>
     {
         private readonly Animator _animator;
 
-        public CueAnimationSpec(CueAnimation cue, GameplayCueParameters parameters) : base(cue,
+        public CueAnimationSpec(CueAnimation cue, SkillCueParameters parameters) : base(cue,
             parameters)
         {
             var animatorTransform = Owner.transform.Find(cue.AnimatorRelativePath);

@@ -1,9 +1,6 @@
 ﻿namespace GAS.Runtime
 {
-    /// <summary>
-    /// https://github.com/BillEliot/GASDocumentation_Chinese?tab=readme-ov-file#457-gameplayeffect%E6%A0%87%E7%AD%BE
-    /// </summary>
-    public struct GameplayEffectTagContainer
+    public struct SkillEffectTagContainer
     {
         public GameplayTagSet AssetTags;
         
@@ -16,7 +13,7 @@
         
         public GameplayTagSet ApplicationImmunityTags;
 
-        public GameplayEffectTagContainer(
+        public SkillEffectTagContainer(
             GameplayTag[] assetTags, 
             GameplayTag[] grantedTags,
             GameplayTag[] applicationRequiredTags,

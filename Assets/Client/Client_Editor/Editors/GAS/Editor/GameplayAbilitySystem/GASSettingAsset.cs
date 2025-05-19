@@ -33,9 +33,9 @@ namespace GAS.Editor
         /// <summary>
         /// 代码生成路径
         /// </summary>
-        [Title(GASTextDefine.TITLE_SETTING, Bold = true)]
+        [Title(SkillDefine.TITLE_SETTING, Bold = true)]
         [BoxGroup("A", false, order: 1)]
-        [LabelText(GASTextDefine.LABLE_OF_CodeGeneratePath)]
+        [LabelText(SkillDefine.LABLE_OF_CodeGeneratePath)]
         [LabelWidth(LABEL_WIDTH)]
         [FolderPath]
         [OnValueChanged("SaveAsset")]
@@ -45,7 +45,7 @@ namespace GAS.Editor
         /// 配置资源路径
         /// </summary>
         [BoxGroup("A")]
-        [LabelText(GASTextDefine.LABLE_OF_GASConfigAssetPath)]
+        [LabelText(SkillDefine.LABLE_OF_GASConfigAssetPath)]
         [LabelWidth(LABEL_WIDTH)]
         [FolderPath]
         [OnValueChanged("SaveAsset")]
@@ -54,7 +54,7 @@ namespace GAS.Editor
         /// <summary>
         /// 能力系统组件路径
         /// </summary>
-        [Title(GASTextDefine.TITLE_PATHS,Bold = true)]
+        [Title(SkillDefine.TITLE_PATHS,Bold = true)]
         [PropertySpace(10)]
         [ShowInInspector]
         [BoxGroup("A")]
@@ -164,7 +164,7 @@ namespace GAS.Editor
         [GUIColor(0,0.8f,0)]
         [PropertySpace(10)]
         // [InfoBox(GASTextDefine.TIP_CREATE_FOLDERS)]
-        [Button(SdfIconType.FolderCheck,GASTextDefine.BUTTON_CheckAllPathFolderExist,ButtonHeight = 38)]
+        [Button(SdfIconType.FolderCheck,SkillDefine.BUTTON_CheckAllPathFolderExist,ButtonHeight = 38)]
         void CheckAllPathFolderExist()
         {
             CheckPathFolderExist(GASConfigAssetPath);
@@ -183,7 +183,7 @@ namespace GAS.Editor
         [GUIColor(0.8f, 0.8f, 0)]
         [PropertySpace(10)]
         // [InfoBox(GASTextDefine.TIP_CREATE_GEN_AscUtilCode)]
-        [Button(SdfIconType.Upload, GASTextDefine.BUTTON_GenerateAscExtensionCode, ButtonHeight = 38)]
+        [Button(SdfIconType.Upload, SkillDefine.BUTTON_GenerateAscExtensionCode, ButtonHeight = 38)]
         void GenerateAscExtensionCode()
         {
             string pathWithoutAssets = Application.dataPath.Substring(0, Application.dataPath.Length - 6);

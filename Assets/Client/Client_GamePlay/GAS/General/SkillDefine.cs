@@ -1,9 +1,6 @@
 ﻿namespace GAS.General
 {
-    /// <summary>
-    /// GAS所有的文本定义
-    /// </summary>
-    public static class GASTextDefine
+    public static class SkillDefine
     {
         public const string TITLE_SETTING = "设置";
         public const string TITLE_PATHS = "路径";
@@ -125,7 +122,7 @@
 
         #region Watcher
 
-        public const string TIP_WATCHER = "该窗口用于监视GAS运行状态,建议在调试GAS的角色能力，效果时打开该窗口。";
+        public const string TIP_WATCHER = "该窗口用于监视技能运行状态";
         public const string TIP_WATCHER_OnlyForGameRunning = 
             "<size=20><b><color=yellow>监视器只在游戏运行时可用.</color></b></size>";
 

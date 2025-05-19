@@ -11,15 +11,15 @@ namespace GAS.Runtime
     public class AttributeAggregator
     {
         AttributeBase _processedAttribute;
-        AbilitySystemComponent _owner;
+        SkillSystemComponent _owner;
 
         /// <summary>
         ///  modifiers的顺序很重要，因为modifiers的执行是按照顺序来的。
         /// </summary>
-        private List<Tuple<GameplayEffectSpec, GameplayEffectModifier>> _modifierCache =
-            new List<Tuple<GameplayEffectSpec, GameplayEffectModifier>>();
+        private List<Tuple<SkillEffectSpec, GameplayEffectModifier>> _modifierCache =
+            new List<Tuple<SkillEffectSpec, GameplayEffectModifier>>();
         
-        public AttributeAggregator(AttributeBase attribute , AbilitySystemComponent owner)
+        public AttributeAggregator(AttributeBase attribute , SkillSystemComponent owner)
         {
             _processedAttribute = attribute;
             _owner = owner;
@@ -30,13 +30,13 @@ namespace GAS.Runtime
         void OnCreated()
         {
             _processedAttribute.RegisterPostBaseValueChange(UpdateCurrentValueWhenBaseValueIsDirty);
-            _owner.GameplayEffectContainer.RegisterOnGameplayEffectContainerIsDirty(RefreshModifierCache);
+            _owner.SkillEffectContainer.RegisterOnGameplayEffectContainerIsDirty(RefreshModifierCache);
         }
         
         public void OnDispose()
         {
             _processedAttribute.UnregisterPostBaseValueChange(UpdateCurrentValueWhenBaseValueIsDirty);
-            _owner.GameplayEffectContainer.UnregisterOnGameplayEffectContainerIsDirty(RefreshModifierCache);
+            _owner.SkillEffectContainer.UnregisterOnGameplayEffectContainerIsDirty(RefreshModifierCache);
         }
         
         /// <summary>
@@ -47,16 +47,16 @@ namespace GAS.Runtime
             // 注销属性变化监听回调
             UnregisterAttributeChangedListen();
             _modifierCache.Clear();
-            var gameplayEffects = _owner.GameplayEffectContainer.GameplayEffects();
+            var gameplayEffects = _owner.SkillEffectContainer.GameplayEffects();
             foreach (var geSpec in gameplayEffects)
             {
                 if (geSpec.IsActive)
                 {
-                    foreach (var modifier in geSpec.GameplayEffect.Modifiers)
+                    foreach (var modifier in geSpec.SkillEffect.Modifiers)
                     {
                         if (modifier.AttributeName == _processedAttribute.Name)
                         {
-                            _modifierCache.Add(new Tuple<GameplayEffectSpec, GameplayEffectModifier>(geSpec, modifier));
+                            _modifierCache.Add(new Tuple<SkillEffectSpec, GameplayEffectModifier>(geSpec, modifier));
                             TryRegisterAttributeChangedListen(geSpec, modifier);
                         }
                     }
@@ -118,7 +118,7 @@ namespace GAS.Runtime
                 TryUnregisterAttributeChangedListen(tuple.Item1, tuple.Item2);
         }
 
-        private void TryUnregisterAttributeChangedListen(GameplayEffectSpec ge, GameplayEffectModifier modifier)
+        private void TryUnregisterAttributeChangedListen(SkillEffectSpec ge, GameplayEffectModifier modifier)
         {
             if (modifier.MMC is AttributeBasedModCalculation mmc &&
                 mmc.captureType == AttributeBasedModCalculation.GEAttributeCaptureType.Track)
@@ -138,7 +138,7 @@ namespace GAS.Runtime
             }
         }
         
-        private void TryRegisterAttributeChangedListen(GameplayEffectSpec ge, GameplayEffectModifier modifier)
+        private void TryRegisterAttributeChangedListen(SkillEffectSpec ge, GameplayEffectModifier modifier)
         {
             if (modifier.MMC is AttributeBasedModCalculation mmc &&
                 mmc.captureType == AttributeBasedModCalculation.GEAttributeCaptureType.Track)

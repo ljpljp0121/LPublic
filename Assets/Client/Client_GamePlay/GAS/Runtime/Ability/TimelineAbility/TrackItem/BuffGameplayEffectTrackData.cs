@@ -27,7 +27,7 @@ namespace GAS.Runtime
     public class BuffGameplayEffectClipEvent : ClipEventBase
     {
         public BuffTarget buffTarget;
-        [FormerlySerializedAs("gameplayEffects")] public GameplayEffectAsset gameplayEffect;
+        [FormerlySerializedAs("gameplayEffects")] public SkillEffectAsset SkillEffect;
     }
 
     public enum BuffTarget

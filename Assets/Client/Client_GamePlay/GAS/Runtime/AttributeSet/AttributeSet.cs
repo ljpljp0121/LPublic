@@ -6,11 +6,11 @@
     /// </summary>
     public abstract class AttributeSet
     {
-        protected AbilitySystemComponent _owner;
+        protected SkillSystemComponent _owner;
         
         public abstract AttributeBase this[string key] { get; }
         public abstract string[] AttributeNames { get; }
-        public abstract void SetOwner(AbilitySystemComponent owner);
+        public abstract void SetOwner(SkillSystemComponent owner);
         public void ChangeAttributeBase(string attributeShortName, float value)
         {
             if (this[attributeShortName] != null)

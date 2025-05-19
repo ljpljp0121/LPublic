@@ -31,7 +31,7 @@ namespace GAS.Editor
         [AssetSelector]
         [ListDrawerSettings(Expanded = true, DraggableItems = true)]
         [OnValueChanged("OnCueListChanged")]
-        public List<GameplayCueInstant> Cues;
+        public List<SkillCueInstant> Cues;
         
         [BoxGroup]
         [Button]

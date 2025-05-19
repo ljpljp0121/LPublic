@@ -9,7 +9,7 @@ namespace GAS.Runtime
     public class SetByCallerFromTagModCalculation:ModifierMagnitudeCalculation
     {
         [SerializeField] private GameplayTag _tag;
-        public override float CalculateMagnitude(GameplayEffectSpec spec  ,float input)
+        public override float CalculateMagnitude(SkillEffectSpec spec  ,float input)
         {
             var value = spec.GetMapValue(_tag);
 #if UNITY_EDITOR

@@ -9,7 +9,7 @@ namespace GAS.Runtime
     {
         protected object[] _abilityArguments;
 
-        public AbilitySpec(AbstractAbility ability, AbilitySystemComponent owner)
+        public AbilitySpec(AbstractAbility ability, SkillSystemComponent owner)
         {
             Ability = ability;
             Owner = owner;
@@ -17,7 +17,7 @@ namespace GAS.Runtime
 
         public AbstractAbility Ability { get; }
 
-        public AbilitySystemComponent Owner { get; protected set; }
+        public SkillSystemComponent Owner { get; protected set; }
 
         public float Level { get; }
 
@@ -91,7 +91,7 @@ namespace GAS.Runtime
         protected virtual bool CheckCost()
         {
             if (Ability.Cost == null) return true;
-            var costSpec = Ability.Cost.CreateSpec(Owner, Owner, Level);
+            var costSpec = Ability.Cost.CreateSpec(Owner, Owner);
             if (costSpec == null) return false;
 
             if (Ability.Cost.DurationPolicy != EffectsDurationPolicy.Instant) return true;
@@ -193,7 +193,7 @@ namespace GAS.Runtime
     {
         protected T data;
 
-        protected AbilitySpec(T ability, AbilitySystemComponent owner) : base(ability, owner)
+        protected AbilitySpec(T ability, SkillSystemComponent owner) : base(ability, owner)
         {
             data = ability;
         }

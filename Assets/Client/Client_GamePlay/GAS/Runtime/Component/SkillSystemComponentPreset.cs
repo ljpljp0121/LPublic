@@ -13,7 +13,7 @@ using Sirenix.Utilities.Editor;
 namespace GAS.Runtime
 {
     [CreateAssetMenu(fileName = "AbilitySystemComponentPreset", menuName = "GAS/AbilitySystemComponentPreset")]
-    public class AbilitySystemComponentPreset : ScriptableObject
+    public class SkillSystemComponentPreset : ScriptableObject
     {
         private const string GRP_BASE = "Base Info";
         private const string GRP_BASE_H = "Base Info/H";
@@ -37,8 +37,8 @@ namespace GAS.Runtime
         
         
         [BoxGroup(GRP_BASE,false)]
-        [Title(GASTextDefine.ABILITY_BASEINFO, bold: true)]
-        [InfoBox(GASTextDefine.TIP_ASC_BASEINFO)]
+        [Title(SkillDefine.ABILITY_BASEINFO, bold: true)]
+        [InfoBox(SkillDefine.TIP_ASC_BASEINFO)]
         [HorizontalGroup(GRP_BASE_H,Width = WIDTH_GRP_BASE_H_LEFT)]
         [VerticalGroup(GRP_BASE_H_LEFT)]
         public string Name;
@@ -50,7 +50,7 @@ namespace GAS.Runtime
         public string Description;
 
 
-        [Title(GASTextDefine.ASC_AttributeSet, bold: true)]
+        [Title(SkillDefine.ASC_AttributeSet, bold: true)]
         [HorizontalGroup(GRP_BASE_H,PaddingLeft = 0.025f)]
         [VerticalGroup(GRP_BASE_H_RIGHT)]
         [LabelWidth(WIDTH_LABEL)]
@@ -68,7 +68,7 @@ namespace GAS.Runtime
 #endif
         }
         
-        [Title(GASTextDefine.ASC_BASE_TAG,bold:true)]
+        [Title(SkillDefine.ASC_BASE_TAG,bold:true)]
         [BoxGroup(GRP_DATA,false)]
         [HorizontalGroup(GRP_DATA_H)]
         [VerticalGroup(GRP_DATA_TAG)]
@@ -86,7 +86,7 @@ namespace GAS.Runtime
             #endif
         }
         
-        [Title(GASTextDefine.ASC_BASE_ABILITY,bold:true)]
+        [Title(SkillDefine.ASC_BASE_ABILITY,bold:true)]
         [HorizontalGroup(GRP_DATA_H)]
         [VerticalGroup(GRP_DATA_ABILITY)]
         [ListDrawerSettings(Expanded = true, OnTitleBarGUI = "DrawBaseAbilitiesButtons")]

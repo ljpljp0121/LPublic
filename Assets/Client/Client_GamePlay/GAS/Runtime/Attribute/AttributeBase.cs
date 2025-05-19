@@ -20,8 +20,8 @@ namespace GAS.Runtime
         protected IEnumerable<Func<AttributeBase, float, float>> _preBaseValueChangelisteners;
         
         private AttributeValue _value;
-        private AbilitySystemComponent _owner;
-        public AbilitySystemComponent Owner => _owner;
+        private SkillSystemComponent _owner;
+        public SkillSystemComponent Owner => _owner;
 
         public AttributeBase(string attrSetName, string attrName, float value)
         {
@@ -43,7 +43,7 @@ namespace GAS.Runtime
         public float BaseValue => _value.BaseValue;
         public float CurrentValue => _value.CurrentValue;
 
-        public void SetOwner(AbilitySystemComponent owner)
+        public void SetOwner(SkillSystemComponent owner)
         {
             _owner = owner;
         }

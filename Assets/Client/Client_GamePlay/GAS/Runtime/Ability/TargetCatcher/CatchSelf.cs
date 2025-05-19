@@ -5,9 +5,9 @@ namespace GAS.Runtime
 {
     public class CatchSelf : TargetCatcherBase
     {
-        public override List<AbilitySystemComponent> CatchTargets(AbilitySystemComponent mainTarget)
+        public override List<SkillSystemComponent> CatchTargets(SkillSystemComponent mainTarget)
         {
-            return new List<AbilitySystemComponent> { Owner };
+            return new List<SkillSystemComponent> { Owner };
         }
     }
 }

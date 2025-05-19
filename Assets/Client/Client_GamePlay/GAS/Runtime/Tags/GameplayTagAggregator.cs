@@ -6,7 +6,7 @@ namespace GAS.Runtime
 {
     public class GameplayTagAggregator
     {
-        private AbilitySystemComponent _owner;
+        private SkillSystemComponent _owner;
 
         private Dictionary<GameplayTag, List<object>> _dynamicAddedTags =
             new Dictionary<GameplayTag, List<object>>();
@@ -18,7 +18,7 @@ namespace GAS.Runtime
 
         private static Pool _pool = new Pool(typeof(List<object>), 1024);
 
-        public GameplayTagAggregator(AbilitySystemComponent owner)
+        public GameplayTagAggregator(SkillSystemComponent owner)
         {
             _owner = owner;
         }
@@ -43,12 +43,12 @@ namespace GAS.Runtime
 
         public void OnEnable()
         {
-            OnTagIsDirty += _owner.GameplayEffectContainer.RefreshGameplayEffectState;
+            OnTagIsDirty += _owner.SkillEffectContainer.RefreshGameplayEffectState;
         }
 
         public void OnDisable()
         {
-            OnTagIsDirty -= _owner.GameplayEffectContainer.RefreshGameplayEffectState;
+            OnTagIsDirty -= _owner.SkillEffectContainer.RefreshGameplayEffectState;
         }
 
 
@@ -118,7 +118,7 @@ namespace GAS.Runtime
 
         private bool TryAddDynamicAddedTag<T>(T source, GameplayTag tag)
         {
-            if (!(source is GameplayEffectSpec) && !(source is AbilitySpec))
+            if (!(source is SkillEffectSpec) && !(source is AbilitySpec))
             {
                 return false;
             }
@@ -156,7 +156,7 @@ namespace GAS.Runtime
 
         private bool TryAddDynamicRemovedTag<T>(T source, GameplayTag tag)
         {
-            if (!(source is GameplayEffectSpec) && !(source is AbilitySpec)) return false;
+            if (!(source is SkillEffectSpec) && !(source is AbilitySpec)) return false;
             var dirty = false;
             if (_dynamicAddedTags.TryGetValue(tag, out var addedTag))
             {
@@ -182,7 +182,7 @@ namespace GAS.Runtime
         private bool TryRemoveDynamicTag<T>(ref Dictionary<GameplayTag, List<object>> dynamicTag, T source,
             GameplayTag tag)
         {
-            if (!(source is GameplayEffectSpec) && !(source is AbilitySpec)) return false;
+            if (!(source is SkillEffectSpec) && !(source is AbilitySpec)) return false;
             var dirty = false;
             if (dynamicTag.TryGetValue(tag, out var tagList))
             {
@@ -208,10 +208,10 @@ namespace GAS.Runtime
             return TryRemoveDynamicTag(ref _dynamicRemovedTags, source, tag);
         }
 
-        public void ApplyGameplayEffectDynamicTag(GameplayEffectSpec source)
+        public void ApplyGameplayEffectDynamicTag(SkillEffectSpec source)
         {
             var tagIsDirty = false;
-            var grantedTagSet = source.GameplayEffect.TagContainer.GrantedTags;
+            var grantedTagSet = source.SkillEffect.TagContainer.GrantedTags;
             foreach (var tag in grantedTagSet.Tags)
             {
                 var dirty = TryAddDynamicAddedTag(source, tag);
@@ -246,9 +246,9 @@ namespace GAS.Runtime
             if (tagIsDirty) TagIsDirty(tagSet);
         }
 
-        public void RestoreGameplayEffectDynamicTags(GameplayEffectSpec effectSpec)
+        public void RestoreGameplayEffectDynamicTags(SkillEffectSpec effectSpec)
         {
-            RestoreDynamicTags(effectSpec, effectSpec.GameplayEffect.TagContainer.GrantedTags);
+            RestoreDynamicTags(effectSpec, effectSpec.SkillEffect.TagContainer.GrantedTags);
         }
 
         public void RestoreGameplayAbilityDynamicTags(AbilitySpec abilitySpec)

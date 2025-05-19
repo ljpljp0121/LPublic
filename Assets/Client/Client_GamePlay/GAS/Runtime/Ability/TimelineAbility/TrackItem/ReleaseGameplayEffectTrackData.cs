@@ -26,7 +26,7 @@ namespace GAS.Runtime
         {
             Type = typeof(CatchSelf).FullName // 默认 CatchSelf
         };
-        public List<GameplayEffectAsset> gameplayEffectAssets = new List<GameplayEffectAsset>();
+        public List<SkillEffectAsset> gameplayEffectAssets = new List<SkillEffectAsset>();
 
         
         private TargetCatcherBase _targetCatcher;

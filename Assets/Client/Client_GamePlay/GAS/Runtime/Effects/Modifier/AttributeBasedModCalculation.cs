@@ -28,7 +28,7 @@ namespace GAS.Runtime
         public float k = 1;
         public float b = 0;
 
-        public override float CalculateMagnitude(GameplayEffectSpec spec, float modifierMagnitude)
+        public override float CalculateMagnitude(SkillEffectSpec spec, float modifierMagnitude)
         {
             if (attributeFromType == AttributeFrom.Source)
             {

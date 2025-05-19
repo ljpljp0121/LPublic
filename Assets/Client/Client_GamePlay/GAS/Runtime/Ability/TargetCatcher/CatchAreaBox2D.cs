@@ -14,7 +14,7 @@ namespace GAS.Runtime
         public Vector2 size;
         public EffectCenterType centerType;
         
-        public void Init(AbilitySystemComponent owner, LayerMask tCheckLayer, Vector2 offset, Vector2 size,
+        public void Init(SkillSystemComponent owner, LayerMask tCheckLayer, Vector2 offset, Vector2 size,
             float rotation)
         {
             base.Init(owner, tCheckLayer);
@@ -23,9 +23,9 @@ namespace GAS.Runtime
             this.rotation = rotation;
         }
 
-        public override List<AbilitySystemComponent> CatchTargets(AbilitySystemComponent mainTarget)
+        public override List<SkillSystemComponent> CatchTargets(SkillSystemComponent mainTarget)
         {
-            var result = new List<AbilitySystemComponent>();
+            var result = new List<SkillSystemComponent>();
 
             Collider2D[] targets = centerType switch
             {
@@ -38,7 +38,7 @@ namespace GAS.Runtime
             if (targets == null) return result;
             foreach (var target in targets)
             {
-                var targetUnit = target.GetComponent<AbilitySystemComponent>();
+                var targetUnit = target.GetComponent<SkillSystemComponent>();
                 if (targetUnit != null) result.Add(targetUnit);
             }
 

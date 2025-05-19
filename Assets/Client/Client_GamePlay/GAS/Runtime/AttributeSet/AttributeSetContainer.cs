@@ -8,13 +8,13 @@ namespace GAS.Runtime
     /// </summary>
     public class AttributeSetContainer
     {
-        private readonly AbilitySystemComponent _owner;
+        private readonly SkillSystemComponent _owner;
         private readonly Dictionary<string,AttributeSet> _attributeSets = new Dictionary<string,AttributeSet>();
         private readonly Dictionary<AttributeBase,AttributeAggregator> _attributeAggregators = new Dictionary<AttributeBase, AttributeAggregator>();
         
         public Dictionary<string,AttributeSet> Sets => _attributeSets;
         
-        public AttributeSetContainer(AbilitySystemComponent owner)
+        public AttributeSetContainer(SkillSystemComponent owner)
         {
             _owner = owner;
         }

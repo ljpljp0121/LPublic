@@ -24,10 +24,10 @@ namespace GAS.Editor
         private static readonly Type[] Types = new Type[5]
         {
             typeof(ModifierMagnitudeCalculation),
-            typeof(GameplayCue),
-            typeof(GameplayEffectAsset),
+            typeof(SkillCue),
+            typeof(SkillEffectAsset),
             typeof(AbilityAsset),
-            typeof(AbilitySystemComponentPreset)
+            typeof(SkillSystemComponentPreset)
         };
 
         private static string[] libPaths;
@@ -266,16 +266,16 @@ namespace GAS.Editor
                 ScriptableObjectCreator.ShowDialog<ModifierMagnitudeCalculation>(directoryInfo.RootDirectory,
                     TrySelectMenuItemWithObject);
             else if (directoryInfo.AssetType == Types[1])
-                ScriptableObjectCreator.ShowDialog<GameplayCue>(directoryInfo.RootDirectory,
+                ScriptableObjectCreator.ShowDialog<SkillCue>(directoryInfo.RootDirectory,
                     TrySelectMenuItemWithObject);
             else if (directoryInfo.AssetType == Types[2])
-                ScriptableObjectCreator.ShowDialog<GameplayEffectAsset>(directoryInfo.RootDirectory,
+                ScriptableObjectCreator.ShowDialog<SkillEffectAsset>(directoryInfo.RootDirectory,
                     TrySelectMenuItemWithObject);
             else if (directoryInfo.AssetType == Types[3])
                 ScriptableObjectCreator.ShowDialog<AbilityAsset>(directoryInfo.RootDirectory,
                     TrySelectMenuItemWithObject);
             else if (directoryInfo.AssetType == Types[4])
-                ScriptableObjectCreator.ShowDialog<AbilitySystemComponentPreset>(directoryInfo.RootDirectory,
+                ScriptableObjectCreator.ShowDialog<SkillSystemComponentPreset>(directoryInfo.RootDirectory,
                     TrySelectMenuItemWithObject);
         }
 

@@ -6,7 +6,7 @@ public class Move : AbstractAbility<AAMove>
 {
     public Move(AAMove abilityAsset) : base(abilityAsset) { }
 
-    public override AbilitySpec CreateSpec(AbilitySystemComponent owner) => new MoveSpec(this, owner);
+    public override AbilitySpec CreateSpec(SkillSystemComponent owner) => new MoveSpec(this, owner);
 }
 
 public class MoveSpec : AbilitySpec, IStateMachineOwner
@@ -21,7 +21,7 @@ public class MoveSpec : AbilitySpec, IStateMachineOwner
     private readonly Camera mainCamera;
     private MoveState curState = MoveState.Idle;
 
-    public MoveSpec(AbstractAbility ability, AbilitySystemComponent owner) : base(ability, owner)
+    public MoveSpec(AbstractAbility ability, SkillSystemComponent owner) : base(ability, owner)
     {
         player = owner.GetComponent<Player>();
         animCom = owner.GetComponentInChildren<AnimationCom>();

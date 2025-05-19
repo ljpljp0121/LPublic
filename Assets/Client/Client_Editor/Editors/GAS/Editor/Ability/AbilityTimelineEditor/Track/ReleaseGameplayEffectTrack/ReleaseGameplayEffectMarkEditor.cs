@@ -54,7 +54,7 @@ namespace GAS.Editor
         [AssetSelector]
         [ListDrawerSettings(Expanded = true, DraggableItems = true)]
         [OnValueChanged("OnGameplayEffectListChanged")]
-        public List<GameplayEffectAsset> gameplayEffects;
+        public List<SkillEffectAsset> gameplayEffects;
         
         [BoxGroup(GRP_BOX)]
         [Button]

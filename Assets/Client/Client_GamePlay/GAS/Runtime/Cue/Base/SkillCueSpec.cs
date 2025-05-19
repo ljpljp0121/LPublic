@@ -4,24 +4,24 @@ namespace GAS.Runtime
     /// <summary>
     /// 效果的运行时实例逻辑
     /// </summary>
-    public abstract class GameplayCueSpec
+    public abstract class SkillCueSpec
     {
-        protected readonly GameplayCue _cue;
-        protected readonly GameplayCueParameters _parameters;
-        public AbilitySystemComponent Owner { get; protected set; }
+        protected readonly SkillCue _cue;
+        protected readonly SkillCueParameters _parameters;
+        public SkillSystemComponent Owner { get; protected set; }
 
         public virtual bool Triggerable()
         {
             return _cue.Triggerable(Owner);
         }
         
-        public GameplayCueSpec(GameplayCue cue, GameplayCueParameters cueParameters)
+        public SkillCueSpec(SkillCue cue, SkillCueParameters cueParameters)
         {
             _cue = cue;
             _parameters = cueParameters;
-            if (_parameters.sourceGameplayEffectSpec != null)
+            if (_parameters.SourceSkillEffectSpec != null)
             {
-                Owner = _parameters.sourceGameplayEffectSpec.Owner;
+                Owner = _parameters.SourceSkillEffectSpec.Owner;
             }
             else if (_parameters.sourceAbilitySpec != null)
             {

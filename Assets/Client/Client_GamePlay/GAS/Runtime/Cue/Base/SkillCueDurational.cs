@@ -5,20 +5,20 @@ namespace GAS.Runtime
     /// <summary>
     ///  持续型提示
     /// </summary>
-    public abstract class GameplayCueDurational : GameplayCue<GameplayCueDurationalSpec>
+    public abstract class SkillCueDurational : SkillCue<SkillCueDurationalSpec>
     {
-        public GameplayCueDurationalSpec ApplyFrom(GameplayEffectSpec gameplayEffectSpec)
+        public SkillCueDurationalSpec ApplyFrom(SkillEffectSpec skillEffectSpec)
         {
-            if (!Triggerable(gameplayEffectSpec.Owner)) return null;
-            var durationalCue = CreateSpec(new GameplayCueParameters
-                { sourceGameplayEffectSpec = gameplayEffectSpec });
+            if (!Triggerable(skillEffectSpec.Owner)) return null;
+            var durationalCue = CreateSpec(new SkillCueParameters
+                { SourceSkillEffectSpec = skillEffectSpec });
             return durationalCue;
         }
         
-        public GameplayCueDurationalSpec ApplyFrom(AbilitySpec abilitySpec,params object[] customArguments)
+        public SkillCueDurationalSpec ApplyFrom(AbilitySpec abilitySpec,params object[] customArguments)
         {
             if (!Triggerable(abilitySpec.Owner)) return null;
-            var durationalCue = CreateSpec(new GameplayCueParameters
+            var durationalCue = CreateSpec(new SkillCueParameters
                 { sourceAbilitySpec = abilitySpec, customArguments = customArguments});
             return durationalCue;
         }
@@ -33,9 +33,9 @@ namespace GAS.Runtime
     /// <summary>
     /// 持续型提示运行时实例逻辑
     /// </summary>
-    public abstract class GameplayCueDurationalSpec : GameplayCueSpec
+    public abstract class SkillCueDurationalSpec : SkillCueSpec
     {
-        protected GameplayCueDurationalSpec(GameplayCueDurational cue, GameplayCueParameters parameters) : 
+        protected SkillCueDurationalSpec(SkillCueDurational cue, SkillCueParameters parameters) : 
             base(cue, parameters)
         {
         }
@@ -47,11 +47,11 @@ namespace GAS.Runtime
         public abstract void OnTick();
     }
 
-    public abstract class GameplayCueDurationalSpec<T> : GameplayCueDurationalSpec where T : GameplayCueDurational
+    public abstract class SkillCueDurationalSpec<T> : SkillCueDurationalSpec where T : SkillCueDurational
     {
         public readonly T cue;
 
-        protected GameplayCueDurationalSpec(T cue, GameplayCueParameters parameters) : base(cue, parameters)
+        protected SkillCueDurationalSpec(T cue, SkillCueParameters parameters) : base(cue, parameters)
         {
             this.cue = cue;
         }

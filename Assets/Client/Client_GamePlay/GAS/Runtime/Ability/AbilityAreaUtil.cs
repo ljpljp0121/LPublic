@@ -13,7 +13,7 @@ namespace GAS.Runtime
 
     public static class AbilityAreaUtil
     {
-        public static Collider2D[] OverlapBox2D(this AbilitySystemComponent asc, Vector2 offset, Vector2 size,
+        public static Collider2D[] OverlapBox2D(this SkillSystemComponent asc, Vector2 offset, Vector2 size,
             float angle, int layerMask, Transform relativeTransform = null)
         {
             relativeTransform ??= asc.transform;
@@ -42,7 +42,7 @@ namespace GAS.Runtime
             return null;
         }
 
-        public static Collider2D[] OverlapCircle2D(this AbilitySystemComponent asc, Vector2 offset, float radius,
+        public static Collider2D[] OverlapCircle2D(this SkillSystemComponent asc, Vector2 offset, float radius,
             int layerMask, Transform relativeTransform = null)
         {
             relativeTransform ??= asc.transform;
@@ -53,7 +53,7 @@ namespace GAS.Runtime
             return Physics2D.OverlapCircleAll(center, radius, layerMask);
         }
 
-        public static Collider[] OverlapBox3D(this AbilitySystemComponent asc, Vector3 offset, Vector3 size, Vector3 rotation, int layerMask, Transform relativeTransform = null)
+        public static Collider[] OverlapBox3D(this SkillSystemComponent asc, Vector3 offset, Vector3 size, Vector3 rotation, int layerMask, Transform relativeTransform = null)
         {
             relativeTransform ??= asc.transform;
 
@@ -63,7 +63,7 @@ namespace GAS.Runtime
             return Physics.OverlapBox(center, size / 2f, angle, layerMask);
         }
 
-        public static Collider[] OverlapSphere3D(this AbilitySystemComponent asc, Vector3 offset, float radius, int layerMask, Transform relativeTransform = null)
+        public static Collider[] OverlapSphere3D(this SkillSystemComponent asc, Vector3 offset, float radius, int layerMask, Transform relativeTransform = null)
         {
             relativeTransform ??= asc.transform;
             Vector3 worldOffset = relativeTransform.TransformDirection(offset);

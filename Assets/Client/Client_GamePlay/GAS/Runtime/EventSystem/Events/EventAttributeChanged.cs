@@ -4,7 +4,7 @@ namespace GAS.Runtime
 {
     public class AttributeChangedEventArgs : EventArgs
     {
-        public AttributeChangedEventArgs(AbilitySystemComponent owner, AttributeBase attribute, float oldValue,
+        public AttributeChangedEventArgs(SkillSystemComponent owner, AttributeBase attribute, float oldValue,
             float newValue)
         {
             Owner = owner;
@@ -13,7 +13,7 @@ namespace GAS.Runtime
             NewValue = newValue;
         }
 
-        public AbilitySystemComponent Owner { get; }
+        public SkillSystemComponent Owner { get; }
         public AttributeBase Attribute { get; }
         public float OldValue { get; }
         public float NewValue { get; }
@@ -21,7 +21,7 @@ namespace GAS.Runtime
 
     public class AttributeChangedEvent:EventBase<AttributeChangedEventArgs>
     {
-        public void Publish(AbilitySystemComponent owner, AttributeBase attribute, float oldValue, float newValue)
+        public void Publish(SkillSystemComponent owner, AttributeBase attribute, float oldValue, float newValue)
         {
             Publish(new AttributeChangedEventArgs(owner, attribute, oldValue, newValue));
         }

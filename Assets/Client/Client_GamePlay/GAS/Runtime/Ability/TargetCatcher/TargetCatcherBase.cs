@@ -6,19 +6,19 @@ namespace GAS.Runtime
 {
     public abstract class TargetCatcherBase
     {
-        public AbilitySystemComponent Owner;
+        public SkillSystemComponent Owner;
 
         public TargetCatcherBase()
         {
 
         }
 
-        public virtual void Init(AbilitySystemComponent owner)
+        public virtual void Init(SkillSystemComponent owner)
         {
             Owner = owner;
         }
 
-        public abstract List<AbilitySystemComponent> CatchTargets(AbilitySystemComponent mainTarget);
+        public abstract List<SkillSystemComponent> CatchTargets(SkillSystemComponent mainTarget);
 
 #if UNITY_EDITOR
         public virtual void OnEditorPreview(GameObject obj)

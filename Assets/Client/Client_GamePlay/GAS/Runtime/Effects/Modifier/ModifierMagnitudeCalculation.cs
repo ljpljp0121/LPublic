@@ -8,7 +8,7 @@ namespace GAS.Runtime
     /// </summary>
     public abstract class ModifierMagnitudeCalculation : ScriptableObject
     {
-        public abstract float CalculateMagnitude(GameplayEffectSpec spec, float modifierMagnitude);
+        public abstract float CalculateMagnitude(SkillEffectSpec spec, float modifierMagnitude);
 
 #if UNITY_EDITOR
         private void OnValidate()

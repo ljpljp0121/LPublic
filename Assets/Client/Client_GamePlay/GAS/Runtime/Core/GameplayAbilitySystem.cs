@@ -11,9 +11,9 @@ namespace GAS
 
         private GameplayAbilitySystem()
         {
-            AbilitySystemComponents = new List<AbilitySystemComponent>();
+            AbilitySystemComponents = new List<SkillSystemComponent>();
             GameComponents = new List<GameComponent>();
-            GASTimer.InitStartTimestamp();
+            SkillTimer.InitStartTimestamp();
 
             GasHost = new GameObject("GAS Host").AddComponent<GasHost>();
             GasHost.hideFlags = HideFlags.HideAndDontSave;
@@ -21,7 +21,7 @@ namespace GAS
             GasHost.gameObject.SetActive(true);
         }
 
-        public List<AbilitySystemComponent> AbilitySystemComponents { get; }
+        public List<SkillSystemComponent> AbilitySystemComponents { get; }
         public List<GameComponent> GameComponents { get; }
 
         private GasHost GasHost { get; }
@@ -37,15 +37,15 @@ namespace GAS
 
         public bool IsPaused => !GasHost.enabled;
 
-        public void Register(AbilitySystemComponent abilitySystemComponent)
+        public void Register(SkillSystemComponent skillSystemComponent)
         {
-            if (AbilitySystemComponents.Contains(abilitySystemComponent)) return;
-            AbilitySystemComponents.Add(abilitySystemComponent);
+            if (AbilitySystemComponents.Contains(skillSystemComponent)) return;
+            AbilitySystemComponents.Add(skillSystemComponent);
         }
 
-        public bool Unregister(AbilitySystemComponent abilitySystemComponent)
+        public bool Unregister(SkillSystemComponent skillSystemComponent)
         {
-            return AbilitySystemComponents.Remove(abilitySystemComponent);
+            return AbilitySystemComponents.Remove(skillSystemComponent);
         }
 
         public void Register(GameComponent gameComponent)

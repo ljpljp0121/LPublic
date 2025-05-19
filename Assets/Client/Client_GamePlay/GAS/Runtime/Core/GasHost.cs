@@ -10,7 +10,7 @@ namespace GAS
 
         private void Update()
         {
-            GASTimer.UpdateCurrentFrameCount();
+            SkillTimer.UpdateCurrentFrameCount();
             var snapshot = _gas.AbilitySystemComponents.ToArray();
             foreach (var abilitySystemComponent in snapshot) abilitySystemComponent.Tick();
             var snapshot2 = _gas.GameComponents.ToArray();

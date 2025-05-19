@@ -5,14 +5,14 @@ namespace GAS.Runtime
     /// <summary>
     /// 即时型提示
     /// </summary>
-    public abstract class GameplayCueInstant : GameplayCue<GameplayCueInstantSpec>
+    public abstract class SkillCueInstant : SkillCue<SkillCueInstantSpec>
     {
-        public virtual void ApplyFrom(GameplayEffectSpec gameplayEffectSpec)
+        public virtual void ApplyFrom(SkillEffectSpec skillEffectSpec)
         {
-            if (Triggerable(gameplayEffectSpec.Owner))
+            if (Triggerable(skillEffectSpec.Owner))
             {
-                var instantCue = CreateSpec(new GameplayCueParameters
-                    { sourceGameplayEffectSpec = gameplayEffectSpec });
+                var instantCue = CreateSpec(new SkillCueParameters
+                    { SourceSkillEffectSpec = skillEffectSpec });
                 instantCue?.Trigger();
             }
         }
@@ -21,7 +21,7 @@ namespace GAS.Runtime
         {
             if (Triggerable(abilitySpec.Owner))
             {
-                var instantCue = CreateSpec(new GameplayCueParameters
+                var instantCue = CreateSpec(new SkillCueParameters
                     { sourceAbilitySpec = abilitySpec, customArguments = customArguments });
                 instantCue?.Trigger();
             }
@@ -37,9 +37,9 @@ namespace GAS.Runtime
     /// <summary>
     /// 即时型提示运行时实例逻辑
     /// </summary>
-    public abstract class GameplayCueInstantSpec : GameplayCueSpec
+    public abstract class SkillCueInstantSpec : SkillCueSpec
     {
-        public GameplayCueInstantSpec(GameplayCueInstant cue, GameplayCueParameters parameters) : base(cue,
+        public SkillCueInstantSpec(SkillCueInstant cue, SkillCueParameters parameters) : base(cue,
             parameters)
         {
         }
@@ -47,11 +47,11 @@ namespace GAS.Runtime
         public abstract void Trigger();
     }
     
-    public abstract class GameplayCueInstantSpec<T>:GameplayCueInstantSpec where T:GameplayCueInstant
+    public abstract class SkillCueInstantSpec<T>:SkillCueInstantSpec where T:SkillCueInstant
     {
         public readonly T cue;
         
-        public GameplayCueInstantSpec(T cue, GameplayCueParameters parameters) : base(cue, parameters)
+        public SkillCueInstantSpec(T cue, SkillCueParameters parameters) : base(cue, parameters)
         {
             this.cue = cue;
         }

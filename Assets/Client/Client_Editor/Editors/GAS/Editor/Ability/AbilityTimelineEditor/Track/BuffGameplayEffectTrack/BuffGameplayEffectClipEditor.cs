@@ -38,7 +38,7 @@ namespace GAS.Editor
         [BoxGroup]
         [AssetSelector]
         [OnValueChanged("OnBuffChanged")]
-        public GameplayEffectAsset Buff;
+        public SkillEffectAsset Buff;
 
         [BoxGroup]
         [Button]

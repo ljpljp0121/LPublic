@@ -4,14 +4,12 @@ using UnityEngine;
 
 namespace GAS.Runtime
 {
-    public class AbilitySystemComponent : MonoBehaviour, IAbilitySystemComponent
+    public class SkillSystemComponent : MonoBehaviour, ISkillSystemComponent
     {
-        [SerializeField] private AbilitySystemComponentPreset preset;
-        public AbilitySystemComponentPreset Preset => preset;
+        [SerializeField] private SkillSystemComponentPreset preset;
+        public SkillSystemComponentPreset Preset => preset;
         
-        public int Level { get; protected set; }
-
-        public GameplayEffectContainer GameplayEffectContainer { get; private set; } 
+        public SkillEffectContainer SkillEffectContainer { get; private set; } 
 
         public GameplayTagAggregator GameplayTagAggregator { get; private set;} 
 
@@ -24,7 +22,7 @@ namespace GAS.Runtime
         {
             if(_ready) return;
             AbilityContainer = new AbilityContainer(this);
-            GameplayEffectContainer = new GameplayEffectContainer(this);
+            SkillEffectContainer = new SkillEffectContainer(this);
             AttributeSetContainer = new AttributeSetContainer(this);
             GameplayTagAggregator = new GameplayTagAggregator(this);
             _ready = true;
@@ -56,7 +54,7 @@ namespace GAS.Runtime
             GameplayAbilitySystem.GAS.Unregister(this);
         }
 
-        public void SetPreset(AbilitySystemComponentPreset ascPreset)
+        public void SetPreset(SkillSystemComponentPreset ascPreset)
         {
             preset = ascPreset;
         }
@@ -64,7 +62,6 @@ namespace GAS.Runtime
         public void Init(GameplayTag[] baseTags, Type[] attrSetTypes,AbilityAsset[] baseAbilities,int level)
         {
             Prepare();
-            SetLevel(level);
             if (baseTags != null) GameplayTagAggregator.Init(baseTags);
             
             if (attrSetTypes != null)
@@ -78,11 +75,6 @@ namespace GAS.Runtime
                         var ability = Activator.CreateInstance(info.AbilityType(), args: info) as AbstractAbility;
                         AbilityContainer.GrantAbility(ability);
                     }
-        }
-
-        public void SetLevel(int level)
-        {
-            Level = level;
         }
         
         public bool HasTag(GameplayTag gameplayTag)
@@ -120,29 +112,29 @@ namespace GAS.Runtime
             GameplayTagAggregator.RemoveFixedTag(tag);
         }
         
-        public void RemoveGameplayEffect(GameplayEffectSpec spec)
+        public void RemoveGameplayEffect(SkillEffectSpec spec)
         {
-            GameplayEffectContainer.RemoveGameplayEffectSpec(spec);
+            SkillEffectContainer.RemoveGameplayEffectSpec(spec);
         }
 
 
-        public GameplayEffectSpec ApplyGameplayEffectTo(GameplayEffect gameplayEffect, AbilitySystemComponent target)
+        public SkillEffectSpec ApplyGameplayEffectTo(SkillEffect skillEffect, SkillSystemComponent target)
         {
 #if UNITY_EDITOR
-            if (gameplayEffect == null)
+            if (skillEffect == null)
             {
                 Debug.LogError($"Try To Apply a NULL GameplayEffect From {name} To {target.name}!");
                 return null;
             }
 #endif
-            return gameplayEffect.CanApplyTo(target)
-                ? target.AddGameplayEffect(gameplayEffect.CreateSpec(this, target, Level))
+            return skillEffect.CanApplyTo(target)
+                ? target.AddGameplayEffect(skillEffect.CreateSpec(this, target))
                 : null;
         }
 
-        public GameplayEffectSpec ApplyGameplayEffectToSelf(GameplayEffect gameplayEffect)
+        public SkillEffectSpec ApplyGameplayEffectToSelf(SkillEffect skillEffect)
         {
-            return ApplyGameplayEffectTo(gameplayEffect, this);
+            return ApplyGameplayEffectTo(skillEffect, this);
         }
 
         public void GrantAbility(AbstractAbility ability)
@@ -170,7 +162,7 @@ namespace GAS.Runtime
         public void Tick()
         {
             AbilityContainer.Tick();
-            GameplayEffectContainer.Tick();
+            SkillEffectContainer.Tick();
         }
 
         public Dictionary<string, float> DataSnapshot()
@@ -193,9 +185,9 @@ namespace GAS.Runtime
             AbilityContainer.CancelAbility(abilityName);
         }
 
-        public void ApplyModFromInstantGameplayEffect(GameplayEffectSpec spec)
+        public void ApplyModFromInstantGameplayEffect(SkillEffectSpec spec)
         {
-            foreach (var modifier in spec.GameplayEffect.Modifiers)
+            foreach (var modifier in spec.SkillEffect.Modifiers)
             {
                 var attributeBaseValue = GetAttributeBaseValue(modifier.AttributeSetName, modifier.AttributeShortName);
                 if (attributeBaseValue == null) continue;
@@ -221,7 +213,7 @@ namespace GAS.Runtime
 
         public CooldownTimer CheckCooldownFromTags(GameplayTagSet tags)
         {
-            return GameplayEffectContainer.CheckCooldownFromTags(tags);
+            return SkillEffectContainer.CheckCooldownFromTags(tags);
         }
 
         public T AttrSet<T>() where T : AttributeSet
@@ -236,12 +228,12 @@ namespace GAS.Runtime
             // GameplayEffectContainer = new GameplayEffectContainer(this);
             // _attributeSetContainer = new AttributeSetContainer(this);
             // tagAggregator = new GameplayTagAggregator(this);
-            GameplayEffectContainer.ClearGameplayEffect();
+            SkillEffectContainer.ClearGameplayEffect();
         }
 
-        private GameplayEffectSpec AddGameplayEffect(GameplayEffectSpec spec)
+        private SkillEffectSpec AddGameplayEffect(SkillEffectSpec spec)
         {
-            var success = GameplayEffectContainer.AddGameplayEffectSpec(spec);
+            var success = SkillEffectContainer.AddGameplayEffectSpec(spec);
             return success ? spec : null;
         }
 
@@ -252,7 +244,7 @@ namespace GAS.Runtime
 
         private void ClearGameplayEffects()
         {
-            GameplayEffectContainer.ClearGameplayEffect();
+            SkillEffectContainer.ClearGameplayEffect();
         }
 
         private void DisposeAttributeSetContainer()

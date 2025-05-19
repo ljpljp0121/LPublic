@@ -61,10 +61,10 @@ namespace GAS.Runtime
 #endif
         
         [BoxGroup(GRP_BASE, false)]
-        [Title(GASTextDefine.ABILITY_BASEINFO, bold: true)]
+        [Title(SkillDefine.ABILITY_BASEINFO, bold: true)]
         [HorizontalGroup(GRP_BASE_H, Width = WIDTH_GRP_BASE_H_LEFT)]
         [VerticalGroup(GRP_BASE_H_LEFT)]
-        [InfoBox(GASTextDefine.TIP_UNAME)]
+        [InfoBox(SkillDefine.TIP_UNAME)]
         [LabelText("U-Name")]
         [LabelWidth(WIDTH_LABLE)]
         [InfoBox("Invalid UniqueName", InfoMessageType.Error, "IsUniqueNameInvalid")]
@@ -91,18 +91,18 @@ namespace GAS.Runtime
         [VerticalGroup(GRP_BASE_H_LEFT)]
         [LabelWidth(WIDTH_LABLE)]
         [AssetSelector]
-        [LabelText(GASTextDefine.ABILITY_EFFECT_COST)]
-        public GameplayEffectAsset Cost;
+        [LabelText(SkillDefine.ABILITY_EFFECT_COST)]
+        public SkillEffectAsset Cost;
         
         [VerticalGroup(GRP_BASE_H_LEFT)]
         [LabelWidth(WIDTH_LABLE)]
         [AssetSelector]
-        [LabelText(GASTextDefine.ABILITY_EFFECT_CD)]
-        public GameplayEffectAsset Cooldown;
+        [LabelText(SkillDefine.ABILITY_EFFECT_CD)]
+        public SkillEffectAsset Cooldown;
         
         [VerticalGroup(GRP_BASE_H_LEFT)]
         [LabelWidth(WIDTH_LABLE)]
-        [LabelText(SdfIconType.ClockFill,Text = GASTextDefine.ABILITY_CD_TIME)]
+        [LabelText(SdfIconType.ClockFill,Text = SkillDefine.ABILITY_CD_TIME)]
         public float CooldownTime;
         
         // Tags

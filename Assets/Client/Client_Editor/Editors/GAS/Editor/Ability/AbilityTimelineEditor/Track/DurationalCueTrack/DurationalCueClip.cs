@@ -68,7 +68,7 @@ namespace GAS.Editor
             clipData = updatedClip;
         }
         
-        public void UpdateClipDataCue(GameplayCueDurational newCue)
+        public void UpdateClipDataCue(SkillCueDurational newCue)
         {
             var updatedClip = ClipDataForSave;
             ClipDataForSave.cue = newCue;

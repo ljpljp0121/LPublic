@@ -2,21 +2,18 @@
 
 namespace GAS.Runtime
 {
-    /// <summary>
-    /// 管理持续效果的周期性执行（如每2秒造成一次伤害）。
-    /// </summary>
-    public class GameplayEffectPeriodTicker
+    public class SkillEffectPeriodTicker
     {
         private float _periodRemaining;
-        private readonly GameplayEffectSpec _spec;
+        private readonly SkillEffectSpec _spec;
 
-        public GameplayEffectPeriodTicker(GameplayEffectSpec spec)
+        public SkillEffectPeriodTicker(SkillEffectSpec spec)
         {
             _spec = spec;
             _periodRemaining = Period;
         }
 
-        private float Period => _spec.GameplayEffect.Period;
+        private float Period => _spec.SkillEffect.Period;
 
         public void Tick()
         {

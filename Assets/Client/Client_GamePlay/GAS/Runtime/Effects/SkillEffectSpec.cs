@@ -5,52 +5,44 @@ using UnityEngine;
 
 namespace GAS.Runtime
 {
-    /// <summary>
-    /// 存储 GameplayEffect 的运行时数据
-    /// </summary>
-    public class GameplayEffectSpec
+    public class SkillEffectSpec
     {
         private Dictionary<GameplayTag, float> _valueMapWithTag = new Dictionary<GameplayTag, float>();
         private Dictionary<string, float> _valueMapWithName = new Dictionary<string, float>();
-        private List<GameplayCueDurationalSpec> _cueDurationalSpecs = new List<GameplayCueDurationalSpec>();
+        private List<SkillCueDurationalSpec> _cueDurationalSpecs = new List<SkillCueDurationalSpec>();
         
-        /// <summary>
-        /// The execution type of onImmunity is one shot.
-        /// </summary>
-        public event Action<AbilitySystemComponent,GameplayEffectSpec> onImmunity; 
+        public event Action<SkillSystemComponent,SkillEffectSpec> onImmunity; 
 
-        public GameplayEffectSpec(
-            GameplayEffect gameplayEffect,
-            AbilitySystemComponent source,
-            AbilitySystemComponent owner,
-            float level = 1)
+        public SkillEffectSpec(
+            SkillEffect skillEffect,
+            SkillSystemComponent source,
+            SkillSystemComponent owner)
         {
-            GameplayEffect = gameplayEffect;
+            SkillEffect = skillEffect;
             Source = source;
             Owner = owner;
-            Level = level;
-            Duration = GameplayEffect.Duration;
-            DurationPolicy = GameplayEffect.DurationPolicy;
-            if (gameplayEffect.DurationPolicy != EffectsDurationPolicy.Instant)
+            Duration = SkillEffect.Duration;
+            DurationPolicy = SkillEffect.DurationPolicy;
+            if (skillEffect.DurationPolicy != EffectsDurationPolicy.Instant)
             {
-                PeriodExecution = GameplayEffect.PeriodExecution?.CreateSpec(source, owner);
-                PeriodTicker = new GameplayEffectPeriodTicker(this);
+                PeriodExecution = SkillEffect.PeriodExecution?.CreateSpec(source, owner);
+                PeriodTicker = new SkillEffectPeriodTicker(this);
             }
 
             CaptureDataFromSource();
         }
 
-        public GameplayEffect GameplayEffect { get; }
+        public SkillEffect SkillEffect { get; }
         public long ActivationTime { get; private set; }
         public float Level { get; private set; }
-        public AbilitySystemComponent Source { get; }
-        public AbilitySystemComponent Owner { get; }
+        public SkillSystemComponent Source { get; }
+        public SkillSystemComponent Owner { get; }
         public bool IsApplied { get; private set; }
         public bool IsActive { get; private set; }
-        public GameplayEffectPeriodTicker PeriodTicker { get; }
+        public SkillEffectPeriodTicker PeriodTicker { get; }
         public float Duration { get; private set; }
         public EffectsDurationPolicy DurationPolicy { get; private set; }
-        public GameplayEffectSpec PeriodExecution{ get; private set; }
+        public SkillEffectSpec PeriodExecution{ get; private set; }
 
         public Dictionary<string, float> SnapshotAttributes { get; private set; }
 
@@ -59,7 +51,7 @@ namespace GAS.Runtime
             if (DurationPolicy == EffectsDurationPolicy.Infinite)
                 return -1;
 
-            return Mathf.Max(0, Duration - (GASTimer.Timestamp() - ActivationTime) / 1000f);
+            return Mathf.Max(0, Duration - (SkillTimer.Timestamp() - ActivationTime) / 1000f);
         }
 
         public void SetLevel(float level)
@@ -77,7 +69,7 @@ namespace GAS.Runtime
             DurationPolicy = durationPolicy;
         }
         
-        public void SetPeriodExecution(GameplayEffectSpec periodExecution)
+        public void SetPeriodExecution(SkillEffectSpec periodExecution)
         {
             PeriodExecution = periodExecution;
         }
@@ -100,7 +92,7 @@ namespace GAS.Runtime
         {
             if (IsActive) return;
             IsActive = true;
-            ActivationTime = GASTimer.Timestamp();
+            ActivationTime = SkillTimer.Timestamp();
             TriggerOnActivation();
         }
 
@@ -113,7 +105,7 @@ namespace GAS.Runtime
 
         public bool CanRunning()
         {
-            return Owner.HasAllTags(GameplayEffect.TagContainer.OngoingRequiredTags);
+            return Owner.HasAllTags(SkillEffect.TagContainer.OngoingRequiredTags);
         }
 
         public void Tick()
@@ -121,26 +113,26 @@ namespace GAS.Runtime
             PeriodTicker?.Tick();
         }
 
-        void TriggerInstantCues(GameplayCueInstant[] cues)
+        void TriggerInstantCues(SkillCueInstant[] cues)
         {
             foreach (var cue in cues) cue.ApplyFrom(this);
         }
         
         private void TriggerCueOnExecute()
         {
-            if (GameplayEffect.CueOnExecute == null || GameplayEffect.CueOnExecute.Length <= 0) return;
-            TriggerInstantCues(GameplayEffect.CueOnExecute);
+            if (SkillEffect.CueOnExecute == null || SkillEffect.CueOnExecute.Length <= 0) return;
+            TriggerInstantCues(SkillEffect.CueOnExecute);
         }
 
         private void TriggerCueOnAdd()
         {
-            if (GameplayEffect.CueOnAdd != null && GameplayEffect.CueOnAdd.Length > 0)
-                TriggerInstantCues(GameplayEffect.CueOnAdd);
+            if (SkillEffect.CueOnAdd != null && SkillEffect.CueOnAdd.Length > 0)
+                TriggerInstantCues(SkillEffect.CueOnAdd);
 
-            if (GameplayEffect.CueDurational != null && GameplayEffect.CueDurational.Length > 0)
+            if (SkillEffect.CueDurational != null && SkillEffect.CueDurational.Length > 0)
             {
                 _cueDurationalSpecs.Clear();
-                foreach (var cueDurational in GameplayEffect.CueDurational)
+                foreach (var cueDurational in SkillEffect.CueDurational)
                 {
                     var cueSpec = cueDurational.ApplyFrom(this);
                     if (cueSpec != null) _cueDurationalSpecs.Add(cueSpec);
@@ -152,10 +144,10 @@ namespace GAS.Runtime
 
         private void TriggerCueOnRemove()
         {
-            if (GameplayEffect.CueOnRemove != null && GameplayEffect.CueOnRemove.Length > 0)
-                TriggerInstantCues(GameplayEffect.CueOnRemove);
+            if (SkillEffect.CueOnRemove != null && SkillEffect.CueOnRemove.Length > 0)
+                TriggerInstantCues(SkillEffect.CueOnRemove);
 
-            if (GameplayEffect.CueDurational != null && GameplayEffect.CueDurational.Length > 0)
+            if (SkillEffect.CueDurational != null && SkillEffect.CueDurational.Length > 0)
             {
                 foreach (var cue in _cueDurationalSpecs) cue.OnRemove();
 
@@ -165,27 +157,27 @@ namespace GAS.Runtime
 
         private void TriggerCueOnActivation()
         {
-            if (GameplayEffect.CueOnActivate != null && GameplayEffect.CueOnActivate.Length > 0)
-                TriggerInstantCues(GameplayEffect.CueOnActivate);
+            if (SkillEffect.CueOnActivate != null && SkillEffect.CueOnActivate.Length > 0)
+                TriggerInstantCues(SkillEffect.CueOnActivate);
 
-            if (GameplayEffect.CueDurational != null && GameplayEffect.CueDurational.Length > 0)
+            if (SkillEffect.CueDurational != null && SkillEffect.CueDurational.Length > 0)
                 foreach (var cue in _cueDurationalSpecs)
                     cue.OnGameplayEffectActivate();
         }
 
         private void TriggerCueOnDeactivation()
         {
-            if (GameplayEffect.CueOnDeactivate != null && GameplayEffect.CueOnDeactivate.Length > 0)
-                TriggerInstantCues(GameplayEffect.CueOnDeactivate);
+            if (SkillEffect.CueOnDeactivate != null && SkillEffect.CueOnDeactivate.Length > 0)
+                TriggerInstantCues(SkillEffect.CueOnDeactivate);
 
-            if (GameplayEffect.CueDurational != null && GameplayEffect.CueDurational.Length > 0)
+            if (SkillEffect.CueDurational != null && SkillEffect.CueDurational.Length > 0)
                 foreach (var cue in _cueDurationalSpecs)
                     cue.OnGameplayEffectDeactivate();
         }
 
         private void CueOnTick()
         {
-            if (GameplayEffect.CueDurational == null || GameplayEffect.CueDurational.Length <= 0) return;
+            if (SkillEffect.CueDurational == null || SkillEffect.CueDurational.Length <= 0) return;
             foreach (var cue in _cueDurationalSpecs) cue.OnTick();
         }
 
@@ -193,7 +185,7 @@ namespace GAS.Runtime
         {
             TriggerCueOnExecute();
 
-            Owner.GameplayEffectContainer.RemoveGameplayEffectWithAnyTags(GameplayEffect.TagContainer
+            Owner.SkillEffectContainer.RemoveGameplayEffectWithAnyTags(SkillEffect.TagContainer
                 .RemoveGameplayEffectsWithTags);
             Owner.ApplyModFromInstantGameplayEffect(this);
         }
@@ -212,7 +204,7 @@ namespace GAS.Runtime
         {
             TriggerCueOnActivation();
             Owner.GameplayTagAggregator.ApplyGameplayEffectDynamicTag(this);
-            Owner.GameplayEffectContainer.RemoveGameplayEffectWithAnyTags(GameplayEffect.TagContainer
+            Owner.SkillEffectContainer.RemoveGameplayEffectWithAnyTags(SkillEffect.TagContainer
                 .RemoveGameplayEffectsWithTags);
         }
 
@@ -237,7 +229,7 @@ namespace GAS.Runtime
         
         public void RemoveSelf()
         {
-            Owner.GameplayEffectContainer.RemoveGameplayEffectSpec(this);
+            Owner.SkillEffectContainer.RemoveGameplayEffectSpec(this);
         }
 
         private void CaptureDataFromSource()

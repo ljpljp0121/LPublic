@@ -3,9 +3,8 @@ using UnityEngine;
 
 namespace GAS.General
 {
-    public class GASTimer
+    public class SkillTimer
     {
-        // TODO 矫正时间差(服务器客户端时间差/暂停游戏导致的时间差)
         static int _deltaTime;
         
         public static long Timestamp() => DateTimeOffset.UtcNow.ToUnixTimeMilliseconds() + _deltaTime;

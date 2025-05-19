@@ -1,12 +1,12 @@
 using GAS.Runtime;
 using UnityEngine;
 
-public class CuePlayAnim : GameplayCueInstant
+public class CuePlayAnim : SkillCueInstant
 {
     [SerializeField] private AnimationClip AnimClip;
     public AnimationClip AnimationClip => AnimClip;
 
-    public override GameplayCueInstantSpec CreateSpec(GameplayCueParameters parameters) =>
+    public override SkillCueInstantSpec CreateSpec(SkillCueParameters parameters) =>
         new CuePlayAnimSpec(this, parameters);
 #if UNITY_EDITOR
     public override void OnEditorPreview(GameObject previewObject, int frame, int startFrame)
@@ -28,11 +28,11 @@ public class CuePlayAnim : GameplayCueInstant
 #endif
 }
 
-public class CuePlayAnimSpec : GameplayCueInstantSpec
+public class CuePlayAnimSpec : SkillCueInstantSpec
 {
     private readonly CuePlayAnim cuePlayAnim;
 
-    public CuePlayAnimSpec(GameplayCueInstant cue, GameplayCueParameters parameters) : base(cue, parameters)
+    public CuePlayAnimSpec(SkillCueInstant cue, SkillCueParameters parameters) : base(cue, parameters)
     {
         cuePlayAnim = cue as CuePlayAnim;
     }

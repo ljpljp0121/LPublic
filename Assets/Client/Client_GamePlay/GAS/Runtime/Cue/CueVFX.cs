@@ -4,24 +4,24 @@ using UnityEngine;
 
 namespace GAS.Runtime
 {
-    public class CueVFX : GameplayCueDurational
+    public class CueVFX : SkillCueDurational
     {
-        [BoxGroup] [LabelText(GASTextDefine.CUE_VFX_PREFAB)]
+        [BoxGroup] [LabelText(SkillDefine.CUE_VFX_PREFAB)]
         public GameObject VfxPrefab;
 
-        [BoxGroup] [LabelText(GASTextDefine.CUE_ATTACH_TO_OWNER)]
+        [BoxGroup] [LabelText(SkillDefine.CUE_ATTACH_TO_OWNER)]
         public bool IsAttachToTarget = true;
 
-        [BoxGroup] [LabelText(GASTextDefine.CUE_VFX_OFFSET)]
+        [BoxGroup] [LabelText(SkillDefine.CUE_VFX_OFFSET)]
         public Vector3 Offset;
 
-        [BoxGroup] [LabelText(GASTextDefine.CUE_VFX_ROTATION)]
+        [BoxGroup] [LabelText(SkillDefine.CUE_VFX_ROTATION)]
         public Vector3 Rotation;
         
-        [BoxGroup] [LabelText(GASTextDefine.CUE_VFX_SCALE)]
+        [BoxGroup] [LabelText(SkillDefine.CUE_VFX_SCALE)]
         public Vector3 Scale = Vector3.one;
         
-        public override GameplayCueDurationalSpec CreateSpec(GameplayCueParameters parameters)
+        public override SkillCueDurationalSpec CreateSpec(SkillCueParameters parameters)
         {
             return new CueVFXSpec(this, parameters);
         }
@@ -51,7 +51,7 @@ namespace GAS.Runtime
                 var particleSystems = _effectPreviewInstance.GetComponentsInChildren<ParticleSystem>();
                 foreach (var ps in particleSystems)
                 {
-                    var t = (frameIndex - startFrame) / GASTimer.FrameRate;
+                    var t = (frameIndex - startFrame) / SkillTimer.FrameRate;
                     ps.Simulate(t);
                 }
             }
@@ -67,11 +67,11 @@ namespace GAS.Runtime
 #endif
     }
 
-    public class CueVFXSpec : GameplayCueDurationalSpec<CueVFX>
+    public class CueVFXSpec : SkillCueDurationalSpec<CueVFX>
     {
         private GameObject _vfxInstance;
 
-        public CueVFXSpec(CueVFX cue, GameplayCueParameters parameters) : base(cue,
+        public CueVFXSpec(CueVFX cue, SkillCueParameters parameters) : base(cue,
             parameters)
         {
         }

@@ -3,19 +3,19 @@ using System.Collections.Generic;
 
 namespace GAS.Runtime
 {
-    public class GameplayEffectContainer
+    public class SkillEffectContainer
     {
-        private List<GameplayEffectSpec> _gameplayEffectSpecs = new List<GameplayEffectSpec>();
-        private readonly AbilitySystemComponent _owner;
+        private List<SkillEffectSpec> _gameplayEffectSpecs = new List<SkillEffectSpec>();
+        private readonly SkillSystemComponent _owner;
 
-        public GameplayEffectContainer(AbilitySystemComponent owner)
+        public SkillEffectContainer(SkillSystemComponent owner)
         {
             _owner = owner;
         }
 
         private event Action OnGameplayEffectContainerIsDirty;
 
-        public List<GameplayEffectSpec> GameplayEffects()
+        public List<SkillEffectSpec> GameplayEffects()
         {
             return _gameplayEffectSpecs;
         }
@@ -43,17 +43,17 @@ namespace GAS.Runtime
         {
             if (tags.Empty) return;
 
-            var removeList = new List<GameplayEffectSpec>();
+            var removeList = new List<SkillEffectSpec>();
             foreach (var gameplayEffectSpec in _gameplayEffectSpecs)
             {
-                var assetTags = gameplayEffectSpec.GameplayEffect.TagContainer.AssetTags;
+                var assetTags = gameplayEffectSpec.SkillEffect.TagContainer.AssetTags;
                 if (!assetTags.Empty && assetTags.HasAnyTags(tags))
                 {
                     removeList.Add(gameplayEffectSpec);
                     continue;
                 }
 
-                var grantedTags = gameplayEffectSpec.GameplayEffect.TagContainer.GrantedTags;
+                var grantedTags = gameplayEffectSpec.SkillEffect.TagContainer.GrantedTags;
                 if (!grantedTags.Empty && grantedTags.HasAnyTags(tags)) removeList.Add(gameplayEffectSpec);
             }
 
@@ -67,16 +67,16 @@ namespace GAS.Runtime
         ///     If the added effect is an instant effect,return false.
         ///     If the added effect is a duration effect and activate successfully ,return true.
         /// </returns>
-        public bool AddGameplayEffectSpec(GameplayEffectSpec spec)
+        public bool AddGameplayEffectSpec(SkillEffectSpec spec)
         {
             // Check Immunity Tags
-            if (_owner.HasAnyTags(spec.GameplayEffect.TagContainer.ApplicationImmunityTags))
+            if (_owner.HasAnyTags(spec.SkillEffect.TagContainer.ApplicationImmunityTags))
             {
                 spec.TriggerOnImmunity();
                 return false;
             }
 
-            if (spec.GameplayEffect.DurationPolicy == EffectsDurationPolicy.Instant)
+            if (spec.SkillEffect.DurationPolicy == EffectsDurationPolicy.Instant)
             {
                 spec.TriggerOnExecute();
                 return false;
@@ -96,7 +96,7 @@ namespace GAS.Runtime
             return canRunning;
         }
 
-        public void RemoveGameplayEffectSpec(GameplayEffectSpec spec)
+        public void RemoveGameplayEffectSpec(SkillEffectSpec spec)
         {
             spec.DisApply();
             spec.TriggerOnRemove();
@@ -134,14 +134,14 @@ namespace GAS.Runtime
             {
                 if (spec.IsActive)
                 {
-                    var grantedTags = spec.GameplayEffect.TagContainer.GrantedTags;
+                    var grantedTags = spec.SkillEffect.TagContainer.GrantedTags;
                     if (grantedTags.Empty) continue;
                     foreach (var t in grantedTags.Tags)
                     foreach (var targetTag in tags.Tags)
                     {
                         if (t != targetTag) continue;
                         // If this is an infinite GE, then return null to signify this is on CD
-                        if (spec.GameplayEffect.DurationPolicy ==
+                        if (spec.SkillEffect.DurationPolicy ==
                             EffectsDurationPolicy.Infinite)
                             return new CooldownTimer { TimeRemaining = -1, Duration = 0 };
 

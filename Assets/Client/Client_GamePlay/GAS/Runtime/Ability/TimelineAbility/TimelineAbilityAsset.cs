@@ -13,7 +13,7 @@ namespace GAS.Runtime
     /// </summary>
     public class TimelineAbilityAsset : AbilityAsset
     {
-        [BoxGroup] [LabelText(GASTextDefine.ABILITY_MANUAL_ENDABILITY)] [LabelWidth(100)]
+        [BoxGroup] [LabelText(SkillDefine.ABILITY_MANUAL_ENDABILITY)] [LabelWidth(100)]
         public bool manualEndAbility;
 
         [HideInInspector] public int FrameCount; // 能力结束时间

@@ -3,14 +3,11 @@ using System.Collections.Generic;
 
 namespace GAS.Runtime
 {
-    public interface IAbilitySystemComponent
+    public interface ISkillSystemComponent
     {
-        void SetPreset(AbilitySystemComponentPreset ascPreset);
+        void SetPreset(SkillSystemComponentPreset ascPreset);
         
         void Init(GameplayTag[] baseTags, Type[] attrSetTypes, AbilityAsset[] baseAbilities,int level);
-        
-        void SetLevel(int level);
-        
         bool HasTag(GameplayTag tag);
         
         bool HasAllTags(GameplayTagSet tags);
@@ -23,13 +20,13 @@ namespace GAS.Runtime
         void RemoveFixedTags(GameplayTagSet tags);
         void RemoveFixedTag(GameplayTag tag);
 
-        GameplayEffectSpec ApplyGameplayEffectTo(GameplayEffect gameplayEffect,AbilitySystemComponent target);
+        SkillEffectSpec ApplyGameplayEffectTo(SkillEffect skillEffect,SkillSystemComponent target);
         
-        GameplayEffectSpec ApplyGameplayEffectToSelf(GameplayEffect gameplayEffect);
+        SkillEffectSpec ApplyGameplayEffectToSelf(SkillEffect skillEffect);
 
-        void ApplyModFromInstantGameplayEffect(GameplayEffectSpec spec);
+        void ApplyModFromInstantGameplayEffect(SkillEffectSpec spec);
         
-        void RemoveGameplayEffect(GameplayEffectSpec spec);
+        void RemoveGameplayEffect(SkillEffectSpec spec);
         
         void Tick();
         

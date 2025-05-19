@@ -8,7 +8,7 @@ using UnityEngine.Serialization;
 public class Player : GameComponent 
 {
     public Role RoleConfig = new Role();
-    private AbilitySystemComponent asc;
+    private SkillSystemComponent asc;
     private AnimationCom animCom;
     private CharacterController characterController;
     private Dictionary<string, string> comboMap = new Dictionary<string, string>();
@@ -21,7 +21,7 @@ public class Player : GameComponent
     public void Awake()
     {
         PreLoadAssets();
-        asc = GetComponent<AbilitySystemComponent>();
+        asc = GetComponent<SkillSystemComponent>();
         animCom = GetComponentInChildren<AnimationCom>();
         characterController = GetComponent<CharacterController>();
         asc.InitPreset(1);

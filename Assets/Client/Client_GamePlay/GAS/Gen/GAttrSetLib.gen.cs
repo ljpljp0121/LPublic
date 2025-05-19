@@ -134,7 +134,7 @@ namespace GAS.Runtime
             "Sprite",
         };
 
-        public override void SetOwner(AbilitySystemComponent owner)
+        public override void SetOwner(SkillSystemComponent owner)
         {
             _owner = owner;
             _HP.SetOwner(owner);

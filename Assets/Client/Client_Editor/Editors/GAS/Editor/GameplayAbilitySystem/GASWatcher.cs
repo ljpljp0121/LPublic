@@ -23,19 +23,19 @@ namespace GAS.Editor
         private const string BOXGROUP_ASC_H_R_A_VC = "Ability System Components/H/R/A/VC";
 
 
-        private AbilitySystemComponent _selected;
+        private SkillSystemComponent _selected;
         
         [HideLabel] [DisplayAsString(TextAlignment.Center, true)]
         public string windowTitle = "<size=18><b>Runtime Watcher</b></size>";
 
         [BoxGroup(BOXGROUP_TIPS)] [HideLabel] [DisplayAsString(TextAlignment.Left, true)]
-        public string tips = GASTextDefine.TIP_WATCHER;
+        public string tips = SkillDefine.TIP_WATCHER;
         
               [BoxGroup(BOXGROUP_TIPS_RUNNINGTIP, false)]
               [HideLabel]
               [DisplayAsString(TextAlignment.Center, true)]
               [HideIf("IsPlaying")]
-              public string onlyForGameRunning = GASTextDefine.TIP_WATCHER_OnlyForGameRunning;
+              public string onlyForGameRunning = SkillDefine.TIP_WATCHER_OnlyForGameRunning;
             
 
         [BoxGroup(BOXGROUP_ASC)]
@@ -122,7 +122,7 @@ namespace GAS.Editor
                 if (_selected == null || _selected.gameObject == null)
                 {
                     _selected = GAS.GameplayAbilitySystem.GAS.AbilitySystemComponents.Count > 0
-                        ? GAS.GameplayAbilitySystem.GAS.AbilitySystemComponents[0] as AbilitySystemComponent
+                        ? GAS.GameplayAbilitySystem.GAS.AbilitySystemComponents[0] as SkillSystemComponent
                         : null;
                 }
                 RefreshAscInfo();
@@ -145,7 +145,7 @@ namespace GAS.Editor
             menuScrollPos = EditorGUILayout.BeginScrollView(menuScrollPos, GUI.skin.box);
             foreach (var iasc in GAS.GameplayAbilitySystem.GAS.AbilitySystemComponents)
             {
-                var asc = (AbilitySystemComponent)iasc;
+                var asc = (SkillSystemComponent)iasc;
                 if (GUILayout.Button($"{asc.GetInstanceID()}"))
                 {
                     _selected = asc;
@@ -173,7 +173,6 @@ namespace GAS.Editor
             
             IID = _selected.GetInstanceID();
             instance = _selected.gameObject;
-            Level = _selected.Level;
             Abilities.Clear();
             foreach (var ability in _selected.AbilityContainer.AbilitySpecs())
             {
@@ -194,13 +193,13 @@ namespace GAS.Editor
             }
             
             Effects.Clear();
-            var gameplayEffects = _selected.GameplayEffectContainer.GameplayEffects();
+            var gameplayEffects = _selected.SkillEffectContainer.GameplayEffects();
             foreach (var ge in gameplayEffects)
             {
                 if (ge.IsActive)
                 {
                     string geState =
-                        $"{ge.GameplayEffect.GameplayEffectName};DUR:{ge.DurationRemaining()}/{ge.Duration}(s)";
+                        $"{ge.SkillEffect.GameplayEffectName};DUR:{ge.DurationRemaining()}/{ge.Duration}(s)";
                     Effects.Add(geState);
                 }
             }
@@ -218,10 +217,10 @@ namespace GAS.Editor
                 DynamicTag.Add($"{tagName} ↓ ");
                 foreach (var obj in kv.Value)
                 {
-                    if (obj is GameplayEffectSpec spec)
+                    if (obj is SkillEffectSpec spec)
                     {
                         var owner = spec.Owner;
-                        DynamicTag.Add($"--From:{owner.GetInstanceID()}-GE:{spec.GameplayEffect.GameplayEffectName}"); 
+                        DynamicTag.Add($"--From:{owner.GetInstanceID()}-GE:{spec.SkillEffect.GameplayEffectName}"); 
                     }
                     else if (obj is AbilitySpec ability)
                     {

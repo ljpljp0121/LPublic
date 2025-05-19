@@ -13,7 +13,7 @@ namespace GAS.Runtime
         public Vector3 rotation;
         public EffectCenterType centerType;
 
-        public void Init(AbilitySystemComponent owner, LayerMask checkLayer, Vector3 offset, Vector3 size, Vector3 rotation)
+        public void Init(SkillSystemComponent owner, LayerMask checkLayer, Vector3 offset, Vector3 size, Vector3 rotation)
         {
             base.Init(owner, checkLayer);
             this.offset = offset;
@@ -21,9 +21,9 @@ namespace GAS.Runtime
             this.rotation = rotation;
         }
 
-        public override List<AbilitySystemComponent> CatchTargets(AbilitySystemComponent mainTarget)
+        public override List<SkillSystemComponent> CatchTargets(SkillSystemComponent mainTarget)
         {
-            var result = new List<AbilitySystemComponent>();
+            var result = new List<SkillSystemComponent>();
 
             Collider[] targets = centerType switch
             {
@@ -36,7 +36,7 @@ namespace GAS.Runtime
             if (targets == null) return result;
             foreach (Collider target in targets)
             {
-                var targetUnit = target.GetComponent<AbilitySystemComponent>();
+                var targetUnit = target.GetComponent<SkillSystemComponent>();
                 if (targetUnit != null) result.Add(targetUnit);
             }
             return result;

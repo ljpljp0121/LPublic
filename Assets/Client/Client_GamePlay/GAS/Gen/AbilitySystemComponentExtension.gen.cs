@@ -9,7 +9,7 @@ namespace GAS.Runtime
 {
     public static class ASCExtension
     {
-        public static Type[] PresetAttributeSetTypes(this AbilitySystemComponent asc)
+        public static Type[] PresetAttributeSetTypes(this SkillSystemComponent asc)
         {
             if (asc.Preset == null) return null;
             var attrSetTypes = new Type[asc.Preset.AttributeSets.Length];
@@ -18,13 +18,13 @@ namespace GAS.Runtime
             return attrSetTypes;
         }
 
-        public static GameplayTag[] PresetBaseTags(this AbilitySystemComponent asc)
+        public static GameplayTag[] PresetBaseTags(this SkillSystemComponent asc)
         {
             if (asc.Preset == null) return null;
             return asc.Preset.BaseTags;
         }
 
-        public static void InitPreset(this AbilitySystemComponent asc,int level, AbilitySystemComponentPreset preset = null)
+        public static void InitPreset(this SkillSystemComponent asc,int level, SkillSystemComponentPreset preset = null)
         {
             if (preset != null) asc.SetPreset(preset);
             if (asc.Preset == null) return;

@@ -9,11 +9,8 @@ using UnityEngine;
 
 namespace GAS.Runtime
 {
-    /// <summary>
-    /// GE资源配置
-    /// </summary>
-    [CreateAssetMenu(fileName = "GameplayEffect", menuName = "GAS/GameplayEffect")]
-    public class GameplayEffectAsset : ScriptableObject
+    [CreateAssetMenu(fileName = "SkillEffect", menuName = "Skill/SkillEffect")]
+    public class SkillEffectAsset : ScriptableObject
     {
         private const string GRP_BASE = "Base Info";
         private const string GRP_BASE_H = "Base Info/H";
@@ -44,63 +41,63 @@ namespace GAS.Runtime
         private static IEnumerable TagChoices = new ValueDropdownList<GameplayTag>();
 
         [BoxGroup(GRP_BASE, false)]
-        [InfoBox(GASTextDefine.TIP_BASEINFO)]
-        [Title(GASTextDefine.TITLE_BASEINFO, bold: true)]
+        [InfoBox(SkillDefine.TIP_BASEINFO)]
+        [Title(SkillDefine.TITLE_BASEINFO, bold: true)]
         [HorizontalGroup(GRP_BASE_H, Width = WIDTH_GRP_BASE_H_LEFT)]
         [VerticalGroup(GRP_BASE_H_LEFT)]
-        [LabelText(GASTextDefine.LABLE_GE_NAME)]
+        [LabelText(SkillDefine.LABLE_GE_NAME)]
         public string Name;
 
         [VerticalGroup(GRP_BASE_H_LEFT)]
-        [Title(GASTextDefine.TITLE_DESCRIPTION, bold: false)]
+        [Title(SkillDefine.TITLE_DESCRIPTION, bold: false)]
         [HideLabel]
         [MultiLineProperty(5)]
         public string Description;
 
 
-        [Title(GASTextDefine.TITLE_GE_POLICY, bold: true)]
+        [Title(SkillDefine.TITLE_GE_POLICY, bold: true)]
         [HorizontalGroup(GRP_BASE_H, PaddingLeft = 0.025f)]
         [VerticalGroup(GRP_BASE_H_RIGHT)]
-        [LabelText(GASTextDefine.LABLE_GE_POLICY)]
+        [LabelText(SkillDefine.LABLE_GE_POLICY)]
         [LabelWidth(WIDTH_LABEL)]
         [InfoBox(ERROR_DURATION, InfoMessageType.Error, "IsDurationInvalid")]
         [InfoBox(ERROR_PERIOD, InfoMessageType.Error, "IsPeriodInvalid")]
         [InfoBox(ERROR_PERIOD_GE_NONE, InfoMessageType.Error, VisibleIf = "IsPeriodGameplayEffectNone")]
-        [InfoBox(GASTextDefine.TIP_GE_POLICY)]
+        [InfoBox(SkillDefine.TIP_GE_POLICY)]
         public EffectsDurationPolicy DurationPolicy = EffectsDurationPolicy.Instant;
 
         [VerticalGroup(GRP_BASE_H_RIGHT)]
         [LabelWidth(WIDTH_LABEL)]
         [ShowIf("DurationPolicy", EffectsDurationPolicy.Duration)]
         [Unit(Units.Second)]
-        [LabelText(GASTextDefine.LABLE_GE_DURATION)]
+        [LabelText(SkillDefine.LABLE_GE_DURATION)]
         public float Duration;
 
         [VerticalGroup(GRP_BASE_H_RIGHT)]
         [HorizontalGroup(GRP_BASE_H_RIGHT_PERIOD, width: 100)]
-        [LabelText(GASTextDefine.LABLE_GE_PER)]
+        [LabelText(SkillDefine.LABLE_GE_PER)]
         [LabelWidth(25)]
         [ShowIf("IsDurationalPolicy")]
         [Unit(Units.Second)]
         public float Period;
         
         [HorizontalGroup(GRP_BASE_H_RIGHT_PERIOD)]
-        [LabelText(GASTextDefine.LABLE_GE_EXEC)]
+        [LabelText(SkillDefine.LABLE_GE_EXEC)]
         [LabelWidth(50)]
         [ShowIf("IsPeriodic")]
         [AssetSelector]
-        public GameplayEffectAsset PeriodExecution;
+        public SkillEffectAsset PeriodExecution;
 
         [Space]
         [VerticalGroup(GRP_BASE_H_RIGHT)]
-        [Title(GASTextDefine.TITLE_GE_GrantedAbilities, Bold = true)]
+        [Title(SkillDefine.TITLE_GE_GrantedAbilities, Bold = true)]
         [AssetSelector]
         [ShowIf("IsDurationalPolicy")]
         [ListDrawerSettings(Expanded = true, ShowIndexLabels = false, ShowItemCount = false)]
         public AbilityAsset[] GrantedAbilities;
 
         // Mod
-        [Title(GASTextDefine.TITLE_GE_MOD, bold: true)]
+        [Title(SkillDefine.TITLE_GE_MOD, bold: true)]
         [BoxGroup(GRP_DATA, false)]
         [HorizontalGroup(GRP_DATA_H)]
         [VerticalGroup(GRP_DATA_MOD)]
@@ -108,108 +105,108 @@ namespace GAS.Runtime
         public GameplayEffectModifier[] Modifiers;
 
         // Tag Container
-        [Title(GASTextDefine.TITLE_GE_TAG, bold: true)]
+        [Title(SkillDefine.TITLE_GE_TAG, bold: true)]
         [HorizontalGroup(GRP_DATA_H)]
         [VerticalGroup(GRP_DATA_TAG)]
         [ListDrawerSettings(Expanded = true)]
         [ValueDropdown("TagChoices", HideChildProperties = true)]
-        [LabelText(GASTextDefine.TITLE_GE_TAG_AssetTags)]
-        [Tooltip(GASTextDefine.TIP_GE_TAG_AssetTags)]
+        [LabelText(SkillDefine.TITLE_GE_TAG_AssetTags)]
+        [Tooltip(SkillDefine.TIP_GE_TAG_AssetTags)]
         public GameplayTag[] AssetTags;
 
         [Title("")]
         [VerticalGroup(GRP_DATA_TAG)]
         [ListDrawerSettings(Expanded = true)]
         [ValueDropdown("TagChoices", HideChildProperties = true)]
-        [LabelText(GASTextDefine.TITLE_GE_TAG_GrantedTags)]
-        [Tooltip(GASTextDefine.TIP_GE_TAG_GrantedTags)]
+        [LabelText(SkillDefine.TITLE_GE_TAG_GrantedTags)]
+        [Tooltip(SkillDefine.TIP_GE_TAG_GrantedTags)]
         public GameplayTag[] GrantedTags;
 
         [Title("")]
         [VerticalGroup(GRP_DATA_TAG)]
         [ListDrawerSettings(Expanded = true)]
         [ValueDropdown("TagChoices", HideChildProperties = true)]
-        [LabelText(GASTextDefine.TITLE_GE_TAG_ApplicationRequiredTags)]
-        [Tooltip(GASTextDefine.TIP_GE_TAG_ApplicationRequiredTags)]
+        [LabelText(SkillDefine.TITLE_GE_TAG_ApplicationRequiredTags)]
+        [Tooltip(SkillDefine.TIP_GE_TAG_ApplicationRequiredTags)]
         public GameplayTag[] ApplicationRequiredTags;
 
         [Title("")]
         [VerticalGroup(GRP_DATA_TAG)]
         [ListDrawerSettings(Expanded = true)]
         [ValueDropdown("TagChoices", HideChildProperties = true)]
-        [LabelText(GASTextDefine.TITLE_GE_TAG_OngoingRequiredTags)]
-        [Tooltip(GASTextDefine.TIP_GE_TAG_OngoingRequiredTags)]
+        [LabelText(SkillDefine.TITLE_GE_TAG_OngoingRequiredTags)]
+        [Tooltip(SkillDefine.TIP_GE_TAG_OngoingRequiredTags)]
         public GameplayTag[] OngoingRequiredTags;
 
         [Title("")]
         [VerticalGroup(GRP_DATA_TAG)]
         [ListDrawerSettings(Expanded = true)]
         [ValueDropdown("TagChoices", HideChildProperties = true)]
-        [LabelText(GASTextDefine.TITLE_GE_TAG_RemoveGameplayEffectsWithTags)]
-        [Tooltip(GASTextDefine.TIP_GE_TAG_RemoveGameplayEffectsWithTags)]
+        [LabelText(SkillDefine.TITLE_GE_TAG_RemoveGameplayEffectsWithTags)]
+        [Tooltip(SkillDefine.TIP_GE_TAG_RemoveGameplayEffectsWithTags)]
         public GameplayTag[] RemoveGameplayEffectsWithTags;
 
         [Title("")]
         [VerticalGroup(GRP_DATA_TAG)]
         [ListDrawerSettings(Expanded = true)]
         [ValueDropdown("TagChoices", HideChildProperties = true)]
-        [LabelText(GASTextDefine.TITLE_GE_TAG_ApplicationImmunityTags)]
-        [Tooltip(GASTextDefine.TIP_GE_TAG_ApplicationImmunityTags)]
+        [LabelText(SkillDefine.TITLE_GE_TAG_ApplicationImmunityTags)]
+        [Tooltip(SkillDefine.TIP_GE_TAG_ApplicationImmunityTags)]
         public GameplayTag[] ApplicationImmunityTags;
 
 
         // Cues
-        [Title(GASTextDefine.TITLE_GE_CUE, bold: true)]
+        [Title(SkillDefine.TITLE_GE_CUE, bold: true)]
         [HorizontalGroup(GRP_DATA_H)]
         [VerticalGroup(GRP_DATA_CUE)]
         [ListDrawerSettings(Expanded = true)]
         [ShowIf("IsInstantPolicy")]
         [InfoBox(ERROR_NONE_CUE, InfoMessageType.Error, VisibleIf = "IsCueExecuteNone")]
         [AssetSelector]
-        [LabelText(GASTextDefine.TITLE_GE_CUE_CueOnExecute)]
-        public GameplayCueInstant[] CueOnExecute;
+        [LabelText(SkillDefine.TITLE_GE_CUE_CueOnExecute)]
+        public SkillCueInstant[] CueOnExecute;
 
-        [Title(GASTextDefine.TITLE_GE_CUE, bold: true)]
+        [Title(SkillDefine.TITLE_GE_CUE, bold: true)]
         [VerticalGroup(GRP_DATA_CUE)]
         [ListDrawerSettings(Expanded = true)]
         [ShowIf("IsDurationalPolicy")]
         [InfoBox(ERROR_NONE_CUE, InfoMessageType.Error, VisibleIf = "IsCueDurationalNone")]
         [AssetSelector]
-        [LabelText(GASTextDefine.TITLE_GE_CUE_CueDurational)]
+        [LabelText(SkillDefine.TITLE_GE_CUE_CueDurational)]
         [Tooltip("生命周期完全和GameplayEffect同步")]
-        public GameplayCueDurational[] CueDurational;
+        public SkillCueDurational[] CueDurational;
 
         [Title("")]
         [VerticalGroup(GRP_DATA_CUE)]
         [ListDrawerSettings(Expanded = true)]
         [ShowIf("IsDurationalPolicy")]
         [AssetSelector]
-        [LabelText(GASTextDefine.TITLE_GE_CUE_CueOnAdd)]
-        public GameplayCueInstant[] CueOnAdd;
+        [LabelText(SkillDefine.TITLE_GE_CUE_CueOnAdd)]
+        public SkillCueInstant[] CueOnAdd;
 
         [Title("")]
         [VerticalGroup(GRP_DATA_CUE)]
         [ListDrawerSettings(Expanded = true)]
         [ShowIf("IsDurationalPolicy")]
         [AssetSelector]
-        [LabelText(GASTextDefine.TITLE_GE_CUE_CueOnRemove)]
-        public GameplayCueInstant[] CueOnRemove;
+        [LabelText(SkillDefine.TITLE_GE_CUE_CueOnRemove)]
+        public SkillCueInstant[] CueOnRemove;
 
         [Title("")]
         [VerticalGroup(GRP_DATA_CUE)]
         [ListDrawerSettings(Expanded = true)]
         [ShowIf("IsDurationalPolicy")]
         [AssetSelector]
-        [LabelText(GASTextDefine.TITLE_GE_CUE_CueOnActivate)]
-        public GameplayCueInstant[] CueOnActivate;
+        [LabelText(SkillDefine.TITLE_GE_CUE_CueOnActivate)]
+        public SkillCueInstant[] CueOnActivate;
 
         [Title("")]
         [VerticalGroup(GRP_DATA_CUE)]
         [ListDrawerSettings(Expanded = true)]
         [ShowIf("IsDurationalPolicy")]
         [AssetSelector]
-        [LabelText(GASTextDefine.TITLE_GE_CUE_CueOnDeactivate)]
-        public GameplayCueInstant[] CueOnDeactivate;
+        [LabelText(SkillDefine.TITLE_GE_CUE_CueOnDeactivate)]
+        public SkillCueInstant[] CueOnDeactivate;
 
 
         // TODO
