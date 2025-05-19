@@ -9,7 +9,7 @@ namespace GAS.Editor
     {
         private  Editor _editor;
         
-        public GameplayTagsSettingsProvider() : base("Project/EX Gameplay Ability System/Tag Manager", SettingsScope.Project)
+        public GameplayTagsSettingsProvider() : base("Project/GAS/Tag Manager", SettingsScope.Project)
         {
         }
         

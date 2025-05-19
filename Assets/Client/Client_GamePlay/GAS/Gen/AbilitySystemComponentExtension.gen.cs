@@ -7,7 +7,7 @@ using System;
 
 namespace GAS.Runtime
 {
-    public static class AbilitySystemComponentExtension
+    public static class ASCExtension
     {
         public static Type[] PresetAttributeSetTypes(this AbilitySystemComponent asc)
         {
@@ -24,7 +24,7 @@ namespace GAS.Runtime
             return asc.Preset.BaseTags;
         }
 
-        public static void InitWithPreset(this AbilitySystemComponent asc,int level, AbilitySystemComponentPreset preset = null)
+        public static void InitPreset(this AbilitySystemComponent asc,int level, AbilitySystemComponentPreset preset = null)
         {
             if (preset != null) asc.SetPreset(preset);
             if (asc.Preset == null) return;

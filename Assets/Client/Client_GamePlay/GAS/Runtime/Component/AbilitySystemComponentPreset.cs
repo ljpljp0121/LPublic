@@ -120,7 +120,7 @@ namespace GAS.Runtime
             Type attributeSetUtil = TypeUtil.FindTypeInAllAssemblies("GAS.Runtime.GAttrSetLib");
             if(attributeSetUtil == null)
             {
-                Debug.LogError("[EX] Type 'GAttrSetLib' not found. Please generate the AttributeSet CODE first!");
+                Debug.LogError("Type 'GAttrSetLib' not found. Please generate the AttributeSet CODE first!");
                 AttributeSetChoice = new ValueDropdownList<string>();
                 return;
             }
@@ -144,7 +144,7 @@ namespace GAS.Runtime
             Type gameplayTagSumCollectionType = TypeUtil.FindTypeInAllAssemblies("GAS.Runtime.GTagLib");
             if(gameplayTagSumCollectionType == null)
             {
-                Debug.LogError("[EX] Type 'GTagLib' not found. Please generate the TAGS CODE first!");
+                Debug.LogError("Type 'GTagLib' not found. Please generate the TAGS CODE first!");
                 TagChoices = new ValueDropdownList<GameplayTag>();
                 return;
             }

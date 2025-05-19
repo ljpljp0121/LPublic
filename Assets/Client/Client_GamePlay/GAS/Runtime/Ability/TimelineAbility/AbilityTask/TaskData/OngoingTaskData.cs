@@ -33,7 +33,7 @@ namespace GAS.Runtime
             var type = OngoingTaskSonTypes.FirstOrDefault(sonType => sonType.FullName == dataType);
             if (type == null)
             {
-                Debug.LogError("[EX] OngoingAbilityTask SonType not found: " + dataType);
+                Debug.LogError("OngoingAbilityTask SonType not found: " + dataType);
             }
             else
             {

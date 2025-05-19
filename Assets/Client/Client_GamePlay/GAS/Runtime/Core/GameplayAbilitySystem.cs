@@ -39,24 +39,12 @@ namespace GAS
 
         public void Register(AbilitySystemComponent abilitySystemComponent)
         {
-            // if (!GasHost.enabled)
-            // {
-            //     Debug.LogWarning("[EX] GAS is paused, can't register new ASC!");
-            //     return;
-            // }
-
             if (AbilitySystemComponents.Contains(abilitySystemComponent)) return;
             AbilitySystemComponents.Add(abilitySystemComponent);
         }
 
         public bool Unregister(AbilitySystemComponent abilitySystemComponent)
         {
-            // if (!GasHost.enabled)
-            // {
-            //     Debug.LogWarning("[EX] GAS is paused, can't unregister ASC!");
-            //     return false;
-            // }
-
             return AbilitySystemComponents.Remove(abilitySystemComponent);
         }
 

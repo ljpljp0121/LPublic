@@ -131,7 +131,7 @@ namespace GAS.Runtime
 #if UNITY_EDITOR
             if (gameplayEffect == null)
             {
-                Debug.LogError($"[EX] Try To Apply a NULL GameplayEffect From {name} To {target.name}!");
+                Debug.LogError($"Try To Apply a NULL GameplayEffect From {name} To {target.name}!");
                 return null;
             }
 #endif

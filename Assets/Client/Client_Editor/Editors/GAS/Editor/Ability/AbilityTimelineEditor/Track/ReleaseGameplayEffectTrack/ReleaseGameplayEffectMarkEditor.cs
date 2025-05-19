@@ -86,7 +86,7 @@ namespace GAS.Editor
             else
             {
                 Catcher = null;
-                Debug.LogWarning($"[EX] TargetCatcherInspector not found: {catcher.GetType()}");
+                Debug.LogWarning($"TargetCatcherInspector not found: {catcher.GetType()}");
             }
         }
         

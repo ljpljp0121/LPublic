@@ -24,7 +24,7 @@ public class Player : GameComponent
         asc = GetComponent<AbilitySystemComponent>();
         animCom = GetComponentInChildren<AnimationCom>();
         characterController = GetComponent<CharacterController>();
-        asc.InitWithPreset(1);
+        asc.InitPreset(1);
         asc.AttrSet<AS_Fight>().InitHP(100);
         asc.AttrSet<AS_Fight>().InitATK(10);
     }

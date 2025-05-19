@@ -68,7 +68,7 @@ namespace GAS.Editor
 
         private void SaveAsset()
         {
-            Debug.Log("[EX] Attribute Asset save!");
+            Debug.Log("Attribute Asset save!");
             EditorUtility.SetDirty(this);
             UpdateAsset(this);
             Save();
@@ -82,7 +82,7 @@ namespace GAS.Editor
 
             if (!result) return -1;
 
-            Debug.Log($"[EX] Attribute Asset remove element:{attribute.Name} !");
+            Debug.Log($"Attribute Asset remove element:{attribute.Name} !");
             SaveAsset();
             return attributes.IndexOf(attribute);
         }
@@ -97,7 +97,7 @@ namespace GAS.Editor
             if (!result) return -1;
 
             attributes.RemoveAt(index);
-            Debug.Log($"[EX] Attribute Asset remove element:{attribute.Name} !");
+            Debug.Log($" Attribute Asset remove element:{attribute.Name} !");
             SaveAsset();
             return index;
         }
@@ -108,7 +108,7 @@ namespace GAS.Editor
             {
                 attributes.Add(new AttributeAccessor(d.Name, d.Comment));
                 SaveAsset();
-                Debug.Log("[EX] Attribute Asset add element!");
+                Debug.Log("Attribute Asset add element!");
             }), "Add new Attribute");
             GUIUtility.ExitGUI(); // In order to solve: "EndLayoutGroup: BeginLayoutGroup must be called first."
         }

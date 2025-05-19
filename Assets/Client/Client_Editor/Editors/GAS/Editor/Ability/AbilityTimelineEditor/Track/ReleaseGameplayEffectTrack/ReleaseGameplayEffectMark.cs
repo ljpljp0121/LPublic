@@ -79,7 +79,7 @@ namespace GAS.Editor
         //     }
         //     else
         //     {
-        //         Debug.LogError($"[EX] TargetCatcherInspector not found: {targetCatcher.GetType()}");
+        //         Debug.LogError($"TargetCatcherInspector not found: {targetCatcher.GetType()}");
         //     }
         //
         //     // GameplayEffects

@@ -77,7 +77,7 @@ namespace GAS.Editor
             // 选中新Clip
             item.ClipVe.OnSelect();
 
-            Debug.Log("[EX] Add a new Durational Cue Clip");
+            Debug.Log("Add a new Durational Cue Clip");
         }
 
         protected override void OnRemoveTrack(DropdownMenuAction action)
@@ -88,7 +88,7 @@ namespace GAS.Editor
             // 删除显示
             TrackParent.Remove(TrackRoot);
             MenuParent.Remove(MenuRoot);
-            Debug.Log("[EX] Remove Durational Cue Track");
+            Debug.Log("Remove Durational Cue Track");
         }
 
         public override UnityEngine.Object DataInspector => DurationalCueTrackEditor.Create(this);

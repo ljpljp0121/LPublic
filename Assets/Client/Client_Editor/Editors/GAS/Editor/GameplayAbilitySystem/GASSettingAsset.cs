@@ -31,14 +31,6 @@ namespace GAS.Editor
         public static string CodeGenPath => Setting.CodeGeneratePath;
 
         /// <summary>
-        /// 版本信息
-        /// </summary>
-        // [ShowInInspector]
-        // [BoxGroup("V",false,order:0)]
-        // [HideLabel][DisplayAsString(TextAlignment.Left,true)]
-        // private static string Version => $"<size=15><b><color=white>EX-GAS Version: {GasDefine.GAS_VERSION}</color></b></size>";
-
-        /// <summary>
         /// 代码生成路径
         /// </summary>
         [Title(GASTextDefine.TITLE_SETTING, Bold = true)]
@@ -160,7 +152,7 @@ namespace GAS.Editor
                 if (!AssetDatabase.IsValidFolder(newFolderPath))
                 {
                     AssetDatabase.CreateFolder(parentFolderPath, newFolderName);
-                    Debug.Log("[EX] Folder created at path: " + newFolderPath);
+                    Debug.Log("Folder created at path: " + newFolderPath);
                 }
 
                 parentFolderPath += "/" + newFolderName;

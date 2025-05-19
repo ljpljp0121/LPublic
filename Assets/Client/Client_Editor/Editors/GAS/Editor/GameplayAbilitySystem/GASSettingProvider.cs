@@ -11,7 +11,7 @@ namespace GAS.Editor
         private  GASSettingAsset _asset;
         private  Editor _editor;
         
-        public GASSettingProvider() : base("Project/EX Gameplay Ability System", SettingsScope.Project)
+        public GASSettingProvider() : base("Project/GAS", SettingsScope.Project)
         {
         }
         

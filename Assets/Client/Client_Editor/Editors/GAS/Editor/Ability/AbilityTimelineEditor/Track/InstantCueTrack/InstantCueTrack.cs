@@ -104,7 +104,7 @@ namespace GAS.Editor
             _trackItems.Add(mark);
 
             mark.OnSelect();
-            Debug.Log("[EX] Add Instant Cue Mark");
+            Debug.Log("Add Instant Cue Mark");
         }
 
         protected override void OnRemoveTrack(DropdownMenuAction action)
@@ -115,7 +115,7 @@ namespace GAS.Editor
             // 删除显示
             TrackParent.Remove(TrackRoot);
             MenuParent.Remove(MenuRoot);
-            Debug.Log("[EX] Remove Instant Cue Track");
+            Debug.Log("Remove Instant Cue Track");
         }
 
         public override UnityEngine.Object DataInspector => InstantCueTrackEditor.Create(this);

@@ -55,7 +55,7 @@ namespace GAS.Runtime
 
             var type = TargetCatcherSonTypes.FirstOrDefault(sonType => sonType.FullName == dataType);
             if (type == null)
-                Debug.LogError("[EX] TargetCatcherBase SonType not found: " + dataType);
+                Debug.LogError("TargetCatcherBase SonType not found: " + dataType);
             else
             {
                 if (string.IsNullOrEmpty(jsonData))

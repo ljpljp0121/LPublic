@@ -133,7 +133,7 @@ namespace GAS.Editor
             EditorUtility.SetDirty(this);
             UpdateAsset(this);
             Save();
-            Debug.Log("[EX] AttributeSetAsset save!");
+            Debug.Log("AttributeSetAsset save!");
         }
 
         [VerticalGroup("Generate AttributeSet Code", order: 0)]
@@ -212,7 +212,7 @@ namespace GAS.Editor
 
             if (!result) return -1;
 
-            Debug.Log($"[EX] AttributeSet Asset remove element:{attributeSet.Name} !");
+            Debug.Log($" AttributeSet Asset remove element:{attributeSet.Name} !");
             SaveAsset();
             return AttributeSetConfigs.IndexOf(attributeSet);
         }
@@ -227,7 +227,7 @@ namespace GAS.Editor
             if (!result) return -1;
 
             AttributeSetConfigs.RemoveAt(index);
-            Debug.Log($"[EX] Attribute Asset remove element:{attributeSet.Name} !");
+            Debug.Log($" Attribute Asset remove element:{attributeSet.Name} !");
             SaveAsset();
             return index;
         }

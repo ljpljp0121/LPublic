@@ -13,7 +13,7 @@ namespace GAS.Runtime
         {
             var value = spec.GetMapValue(valueName);
 #if UNITY_EDITOR
-            if(value==null) Debug.LogWarning($"[EX] SetByCallerModCalculation: GE's '{valueName}' value(name map) is not set");
+            if(value==null) Debug.LogWarning($"SetByCallerModCalculation: GE's '{valueName}' value(name map) is not set");
 #endif
             return value ?? 0;
         }

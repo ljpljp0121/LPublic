@@ -73,7 +73,7 @@ namespace GAS.Editor
 
             TrackView.TrackList.Add(track);
 
-            Debug.Log("[EX] Add a new track:" + _trackType.Name);
+            Debug.Log("Add a new track:" + _trackType.Name);
 
             AbilityAsset.Save();
         }

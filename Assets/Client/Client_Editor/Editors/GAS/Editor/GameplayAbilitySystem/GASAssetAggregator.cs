@@ -240,7 +240,7 @@ namespace GAS.Editor
                     var newPath = directoryInfo.Directory + "/" + s;
                     AssetDatabase.CreateFolder(directoryInfo.Directory, s);
                     Refresh();
-                    Debug.Log($"[EX] {newPath} folder created!");
+                    Debug.Log($"{newPath} folder created!");
                 });
         }
 
@@ -256,7 +256,7 @@ namespace GAS.Editor
 
             AssetDatabase.DeleteAsset(directoryInfo.Directory);
             Refresh();
-            Debug.Log($"[EX] {directoryInfo.Directory} folder deleted!");
+            Debug.Log($"{directoryInfo.Directory} folder deleted!");
         }
 
         // 创建新资产（根据类型调用不同创建方法）
@@ -288,7 +288,7 @@ namespace GAS.Editor
             var name = asset.name; // Get the name before deleting
             AssetDatabase.DeleteAsset(AssetDatabase.GetAssetPath(asset));
             Refresh();
-            Debug.Log($"[EX] {name} asset deleted!");
+            Debug.Log($"{name} asset deleted!");
         }
 
         // 菜单选择变化回调（用于刷新能力概览）

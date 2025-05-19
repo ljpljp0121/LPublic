@@ -49,7 +49,7 @@ namespace GAS.Runtime
 #if UNITY_EDITOR
             else
             {
-                UnityEngine.Debug.LogError("[EX] Cooldown must be duration policy!");
+                UnityEngine.Debug.LogError("Cooldown must be duration policy!");
             }
 #endif
         }
@@ -63,7 +63,7 @@ namespace GAS.Runtime
 #if UNITY_EDITOR
             else
             {
-                UnityEngine.Debug.LogError("[EX] Cost must be instant policy!");
+                UnityEngine.Debug.LogError("Cost must be instant policy!");
             }
 #endif
         }

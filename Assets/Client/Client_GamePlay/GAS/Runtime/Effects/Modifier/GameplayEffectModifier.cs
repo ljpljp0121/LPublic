@@ -93,7 +93,7 @@ namespace GAS.Runtime
             Type attributeSetUtil = TypeUtil.FindTypeInAllAssemblies("GAS.Runtime.GAttrSetLib");
             if(attributeSetUtil == null)
             {
-                Debug.LogError("[EX] Type 'GAttrSetLib' not found. Please generate the AttributeSet CODE first!");
+                Debug.LogError("Type 'GAttrSetLib' not found. Please generate the AttributeSet CODE first!");
                 AttributeChoices = new ValueDropdownList<string>();
                 return;
             }

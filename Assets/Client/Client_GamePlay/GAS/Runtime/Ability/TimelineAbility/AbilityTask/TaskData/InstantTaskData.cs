@@ -33,7 +33,7 @@ namespace GAS.Runtime
             var type = InstantTaskSonTypes.FirstOrDefault(sonType => sonType.FullName == dataType);
             if (type == null)
             {
-                Debug.LogError("[EX] InstantAbilityTask SonType not found: " + dataType);
+                Debug.LogError("InstantAbilityTask SonType not found: " + dataType);
             }
             else
             {

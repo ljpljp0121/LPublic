@@ -76,7 +76,7 @@ namespace GAS.Editor
             
             mark.OnSelect();
 
-            Debug.Log("[EX] Add ReleaseGameplayEffect Mark");
+            Debug.Log(" Add ReleaseGameplayEffect Mark");
         }
 
         protected override void OnRemoveTrack(DropdownMenuAction action)
@@ -87,7 +87,7 @@ namespace GAS.Editor
             // 删除显示
             TrackParent.Remove(TrackRoot);
             MenuParent.Remove(MenuRoot);
-            Debug.Log("[EX] Remove Release GameplayEffect Track");
+            Debug.Log("Remove Release GameplayEffect Track");
         }
     }
 }

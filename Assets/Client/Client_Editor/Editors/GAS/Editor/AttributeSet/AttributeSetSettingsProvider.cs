@@ -9,7 +9,7 @@ namespace GAS.Editor
         private  AttributeSetAsset _asset;
         private  Editor _editor;
         
-        public AttributeSetSettingsProvider() : base("Project/EX Gameplay Ability System/AttributeSet Manager", SettingsScope.Project)
+        public AttributeSetSettingsProvider() : base("Project/GAS/AttributeSet Manager", SettingsScope.Project)
         {
         }
         
