@@ -83,7 +83,7 @@ public class Player : GameComponent
         }
         else
         {
-            result = asc.TryActivateAbility(GAbilityLib.CommonAttack1.Name, true);
+            result = asc.TryActivateAbility(GAbilityLib.CommonAttack1.Name);
             if (result)
             {
                 curComboName = GAbilityLib.CommonAttack1.Name;
@@ -92,7 +92,7 @@ public class Player : GameComponent
         }
         if (asc.HasTag(GTagLib.Effect_Common_CancelWindow))
         {
-            result = asc.TryActivateAbility(GAbilityLib.CommonAttack1.Name, true);
+            result = asc.TryActivateAbility(GAbilityLib.CommonAttack1.Name);
             if (result)
             {
                 curComboName = GAbilityLib.CommonAttack1.Name;
